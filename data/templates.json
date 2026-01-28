@@ -413,6 +413,15 @@
           "C2": 4,
           "C3": 6
         }
+      },
+      "result_noun": {
+        "template": "Qitl",
+        "geez_note": "ቂትል (ውጤት/ፊደል ቅጥ)",
+        "pattern": {
+          "C1": 3,
+          "C2": 1,
+          "C3": 6
+        }
       }
     }
   },
@@ -818,6 +827,15 @@
           "C2": 1,
           "C3": 6
         }
+      },
+      "result_noun": {
+        "template": "Fidäl",
+        "geez_note": "ፊደል (ውጤት - ፈደለ→ፊደል)",
+        "pattern": {
+          "C1": 3,
+          "C2": 1,
+          "C3": 6
+        }
       }
     }
   },
@@ -1220,6 +1238,15 @@
           "C2": 4,
           "C3": 6
         }
+      },
+      "result_noun": {
+        "template": "Birk",
+        "geez_note": "ቢርክ (ውጤት)",
+        "pattern": {
+          "C1": 3,
+          "C2": 1,
+          "C3": 6
+        }
       }
     }
   },
@@ -1592,6 +1619,15 @@
           "C2": 1,
           "C3": 6
         }
+      },
+      "result_noun": {
+        "template": "Timr",
+        "geez_note": "ጢምር (ውጤት)",
+        "pattern": {
+          "C1": 3,
+          "C2": 1,
+          "C3": 6
+        }
       }
     }
   },
@@ -1956,6 +1992,15 @@
         "pattern": {
           "C1": 5,
           "C2": 4,
+          "C3": 6
+        }
+      },
+      "result_noun": {
+        "template": "Sisəy",
+        "geez_note": "ሲሰይ (ውጤት)",
+        "pattern": {
+          "C1": 3,
+          "C2": 1,
           "C3": 6
         }
       }
@@ -2351,6 +2396,16 @@
           "C4": 7
         },
         "suffix": "ት"
+      },
+      "result_noun": {
+        "template": "Mihrək",
+        "geez_note": "ሚሕርክ (ውጤት)",
+        "pattern": {
+          "C1": 3,
+          "C2": 6,
+          "C3": 1,
+          "C4": 6
+        }
       }
     }
   },
@@ -2745,6 +2800,16 @@
           "C4": 7
         },
         "suffix": "ት"
+      },
+      "result_noun": {
+        "template": "Tinbəl",
+        "geez_note": "ቲንብል (ውጤት)",
+        "pattern": {
+          "C1": 3,
+          "C2": 6,
+          "C3": 1,
+          "C4": 6
+        }
       }
     }
   },
@@ -3517,6 +3582,15 @@
         "pattern": {
           "C1": 6,
           "C2": 6,
+          "C3": 6
+        }
+      },
+      "result_noun": {
+        "template": "Kihl",
+        "geez_note": "ኪህል (ውጤት)",
+        "pattern": {
+          "C1": 3,
+          "C2": 1,
           "C3": 6
         }
       }
