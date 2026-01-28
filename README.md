@@ -4,9 +4,9 @@
 
 A rule-based morphological system for Classical Ge'ez (ግእዝ) that analyzes words into roots and generates conjugations from roots.
 
-🌐 **Live Demo**: [ethiomorph.esubalew.et](https://ethiomorph.esubalew.et)
+🌐 ** Demo**: [ethiomorph.esubalew.et](https://ethiomorph.esubalew.et)
 
-> ⚠️ **Note**: This is a work-in-progress project. It may have bugs and incomplete features. Contributions and feedback are welcome.
+> ⚠️ **Note**: This is a work-in-progress project. It may have bugs and incomplete features.
 
 ## What It Does
 
@@ -51,11 +51,6 @@ Generate: ቀተለ → ቀተለ, ይቀትል, ይትቀተል, ያቀትል, 
 | `/api/analyze?word=ያስተቃትል` | Analyze a word |
 | `/api/expand?root=ቀተለ` | Generate conjugations |
 
-## License
-
-MIT License
-
-## Author
 
 **Esubalew Chekol**  
 Addis Ababa University
