@@ -1,0 +1,9491 @@
+{
+  "roots": [
+    {
+      "root": "ወሀበ",
+      "type": "weak_initial",
+      "meaning": "to give"
+    },
+    {
+      "root": "ወረደ",
+      "type": "weak_initial",
+      "meaning": "to go down"
+    },
+    {
+      "root": "ወሐደ",
+      "type": "weak_initial",
+      "meaning": "to be one/unique"
+    },
+    {
+      "root": "ቀወመ",
+      "type": "hollow_w",
+      "meaning": "to stand"
+    },
+    {
+      "root": "ሀየረ",
+      "type": "hollow_y",
+      "meaning": "to be good/kind"
+    },
+    {
+      "root": "ገየሰ",
+      "type": "hollow_y",
+      "meaning": "to go"
+    },
+    {
+      "root": "በየተ",
+      "type": "hollow_y",
+      "meaning": "to spend the night"
+    },
+    {
+      "root": "ገበረ",
+      "type": "type_a",
+      "meaning": "to work/do"
+    },
+    {
+      "root": "ቀደሰ",
+      "type": "type_b",
+      "meaning": "to be holy"
+    },
+    {
+      "root": "ደነገጸ",
+      "type": "quadriliteral",
+      "meaning": "to be startled"
+    },
+    {
+      "root": "መነገነ",
+      "type": "quadriliteral",
+      "meaning": "to despise"
+    },
+    {
+      "root": "ሰአለ",
+      "type": "type_a",
+      "meaning": "to ask/pray"
+    },
+    {
+      "root": "ሰከበ",
+      "type": "type_a",
+      "meaning": "to lie down/sleep"
+    },
+    {
+      "root": "ሰመየ",
+      "type": "type_a",
+      "meaning": "to name"
+    },
+    {
+      "root": "ፈደለ",
+      "type": "type_b",
+      "meaning": "to spell/write"
+    },
+    {
+      "root": "ገአዘ",
+      "type": "type_a",
+      "meaning": "to be free/Ge'ez"
+    },
+    {
+      "root": "ሀጸነ",
+      "type": "type_a",
+      "meaning": "to nurse/protect"
+    },
+    {
+      "root": "መሀረ",
+      "type": "type_a",
+      "meaning": "to teach"
+    },
+    {
+      "root": "ወፀአ",
+      "type": "weak_initial",
+      "meaning": "to go out"
+    },
+    {
+      "root": "ሐወረ",
+      "type": "hollow_w",
+      "meaning": "to go"
+    },
+    {
+      "root": "ቀተለ",
+      "type": "type_a",
+      "meaning": "to kill"
+    },
+    {
+      "root": "ባረከ",
+      "type": "type_c",
+      "meaning": "to bless"
+    },
+    {
+      "root": "ማሕረከ",
+      "type": "type_mahräka",
+      "meaning": "to capture"
+    },
+    {
+      "root": "ሴሰየ",
+      "type": "type_c_e",
+      "meaning": "to feed"
+    },
+    {
+      "root": "ክህለ",
+      "type": "type_d",
+      "meaning": "to be able"
+    },
+    {
+      "root": "ጦመረ",
+      "type": "type_c_o",
+      "meaning": "to write"
+    },
+    {
+      "root": "ተንበለ",
+      "type": "type_tanbala",
+      "meaning": "to intercede"
+    },
+    {
+      "root": "ሀልሀ",
+      "type": "type_a",
+      "meaning": "-ወደረ"
+    },
+    {
+      "root": "ለስሐ",
+      "type": "type_a",
+      "meaning": "አልጫ ኾነ"
+    },
+    {
+      "root": "ለሕሐ",
+      "type": "type_d",
+      "meaning": "ቀዳ(የውኃ)"
+    },
+    {
+      "root": "ለቅሐ",
+      "type": "type_b",
+      "meaning": "አበደረ"
+    },
+    {
+      "root": "ላሕልሐ",
+      "type": "type_mahräka",
+      "meaning": "ራሰ"
+    },
+    {
+      "root": "ለብሐ",
+      "type": "type_b",
+      "meaning": "ሠራ(የሽከላ ብቻ)"
+    },
+    {
+      "root": "ለትሐ",
+      "type": "type_mahräka",
+      "meaning": "ተጐነጨ"
+    },
+    {
+      "root": "መሕምሐ",
+      "type": "type_tanbala",
+      "meaning": "አፈረሰ"
+    },
+    {
+      "root": "ሎሐ",
+      "type": "type_a",
+      "meaning": "-ጻፈ"
+    },
+    {
+      "root": "መልኀ",
+      "type": "type_a",
+      "meaning": "መዘዘ"
+    },
+    {
+      "root": "ለጥሐ",
+      "type": "type_b",
+      "meaning": "ገበረ"
+    },
+    {
+      "root": "መስሐ",
+      "type": "type_a",
+      "meaning": "ምሳ አደረገ"
+    },
+    {
+      "root": "መርሐ",
+      "type": "type_a",
+      "meaning": "መራ"
+    },
+    {
+      "root": "ሞርቅሐ",
+      "type": "type_c_o",
+      "meaning": "ላጠ"
+    },
+    {
+      "root": "መትሀ",
+      "type": "type_a",
+      "meaning": "ሣሣ፣ቀጠነ፣ረቀቀ"
+    },
+    {
+      "root": "መድሐ",
+      "type": "type_a",
+      "meaning": "ፈጨ"
+    },
+    {
+      "root": "ሞጥሐ",
+      "type": "type_c_o",
+      "meaning": "ለበሰ"
+    },
+    {
+      "root": "ሰርሐ",
+      "type": "type_a",
+      "meaning": "ሠራ"
+    },
+    {
+      "root": "ሠርሐ",
+      "type": "type_b",
+      "meaning": "አቅናና፣አብራራ"
+    },
+    {
+      "root": "ሣርኀ",
+      "type": "type_c",
+      "meaning": "አበራ"
+    },
+    {
+      "root": "ሰብሐ",
+      "type": "type_b",
+      "meaning": "አመሰገነ"
+    },
+    {
+      "root": "ሠብሐ",
+      "type": "type_a",
+      "meaning": "ሰብኾነ"
+    },
+    {
+      "root": "ሰንሐ",
+      "type": "type_a",
+      "meaning": "በራ ኾነ"
+    },
+    {
+      "root": "ሰይሐ",
+      "type": "type_b",
+      "meaning": "ታመመ"
+    },
+    {
+      "root": "ሰጥሐ",
+      "type": "type_a",
+      "meaning": "አሳጣ፣ዘረጋ"
+    },
+    {
+      "root": "ሰፍሐ",
+      "type": "type_a",
+      "meaning": "ሰፋ"
+    },
+    {
+      "root": "ረምሐ",
+      "type": "type_a",
+      "meaning": "ወጋ"
+    },
+    {
+      "root": "ረብሐ",
+      "type": "type_a",
+      "meaning": "ረባ"
+    },
+    {
+      "root": "ረስሐ",
+      "type": "type_a",
+      "meaning": "ጎሰቆለ"
+    },
+    {
+      "root": "ረውሐ",
+      "type": "type_b",
+      "meaning": "ቀደደ"
+    },
+    {
+      "root": "ቈልሐ",
+      "type": "type_b",
+      "meaning": "ፍሬ ያዘ"
+    },
+    {
+      "root": "ቀርሐ",
+      "type": "type_b",
+      "meaning": "ጨለጠ"
+    },
+    {
+      "root": "ቃርሐ",
+      "type": "type_c",
+      "meaning": "ተኰሰ"
+    },
+    {
+      "root": "ቄሐ",
+      "type": "type_b",
+      "meaning": "ቀላ"
+    },
+    {
+      "root": "ቀይሐ",
+      "type": "type_b",
+      "meaning": "ቀላ"
+    },
+    {
+      "root": "ቀድሐ",
+      "type": "type_a",
+      "meaning": "ቀዳ"
+    },
+    {
+      "root": "ረቅሐ",
+      "type": "type_a",
+      "meaning": "ጋረጠ"
+    },
+    {
+      "root": "ቀምሐ",
+      "type": "type_a",
+      "meaning": "አፈራ"
+    },
+    {
+      "root": "ቄቅሐ",
+      "type": "type_c_e",
+      "meaning": "ፈተገ"
+    },
+    {
+      "root": "ባኅብኀ",
+      "type": "type_tanbala",
+      "meaning": "ከረፋ፣ቀረና"
+    },
+    {
+      "root": "በኍበኈ",
+      "type": "type_tanbala",
+      "meaning": "ሸተተ፣በሰበሰ"
+    },
+    {
+      "root": "በርሀ",
+      "type": "type_a",
+      "meaning": "ብሩህ፣ብርሃን ኾነ"
+    },
+    {
+      "root": "በልኀ",
+      "type": "type_a",
+      "meaning": "ተሳለ(ስለት ኾነ)"
+    },
+    {
+      "root": "በርሐ",
+      "type": "type_a",
+      "meaning": "በራ ኾነ"
+    },
+    {
+      "root": "በጥሐ",
+      "type": "type_a",
+      "meaning": "በጣ"
+    },
+    {
+      "root": "በጽሐ",
+      "type": "type_a",
+      "meaning": "ደረሰ"
+    },
+    {
+      "root": "ታሕታሐ",
+      "type": "type_mahräka",
+      "meaning": "ፈላ"
+    },
+    {
+      "root": "ተቃድሐ",
+      "type": "type_a",
+      "meaning": "ተደነባበረ"
+    },
+    {
+      "root": "ተወፅኀ",
+      "type": "type_b",
+      "meaning": "ተፈጨ"
+    },
+    {
+      "root": "ተይሀ",
+      "type": "type_b",
+      "meaning": "ቀላወጠ"
+    },
+    {
+      "root": "ተግሀ",
+      "type": "type_a",
+      "meaning": "ተጋ"
+    },
+    {
+      "root": "ተጻብሐ",
+      "type": "type_a",
+      "meaning": "እንዴት አደርክ ተባባለ"
+    },
+    {
+      "root": "ናሕንሐ",
+      "type": "type_mahräka",
+      "meaning": "ትርፍርፍ አለ"
+    },
+    {
+      "root": "ነቅሀ",
+      "type": "type_a",
+      "meaning": "ነቃ"
+    },
+    {
+      "root": "ተመክሐ",
+      "type": "type_b",
+      "meaning": "ታበየ፣ኮራ፣ተመካ"
+    },
+    {
+      "root": "ተራኅርኀ",
+      "type": "type_mahräka",
+      "meaning": "ራራ፣ቸረ ኾነ"
+    },
+    {
+      "root": "ባልሐ",
+      "type": "type_c",
+      "meaning": "አዳነ"
+    },
+    {
+      "root": "በዝኀ",
+      "type": "type_a",
+      "meaning": "በዛ"
+    },
+    {
+      "root": "ቶስሐ",
+      "type": "type_c_o",
+      "meaning": ""
+    },
+    {
+      "root": "ተበውሐ",
+      "type": "type_b",
+      "meaning": "ሠለጠነ"
+    },
+    {
+      "root": "ተንሀ",
+      "type": "type_b",
+      "meaning": "አገመ"
+    },
+    {
+      "root": "ተዋህውኀ",
+      "type": "type_mahräka",
+      "meaning": "ተመላለሰ"
+    },
+    {
+      "root": "ተየውሀ",
+      "type": "type_b",
+      "meaning": "የዋህ ኾነ"
+    },
+    {
+      "root": "ተጋህግሀ",
+      "type": "type_mahräka",
+      "meaning": "-ክፍት ክፍት አለ"
+    },
+    {
+      "root": "ተጋውሐ",
+      "type": "type_a",
+      "meaning": "ጐረቢት ኾነ"
+    },
+    {
+      "root": "ተፈሥሐ",
+      "type": "type_b",
+      "meaning": "ደስ ተሰኘ"
+    },
+    {
+      "root": "ነስሐ",
+      "type": "type_b",
+      "meaning": "ተጸጸተ"
+    },
+    {
+      "root": "ነስኀ",
+      "type": "type_b",
+      "meaning": "ሸተተ፣ከረፋ"
+    },
+    {
+      "root": "ነብሐ",
+      "type": "type_a",
+      "meaning": "ጮኸ"
+    },
+    {
+      "root": "ነድሐ",
+      "type": "type_a",
+      "meaning": "ነዳ"
+    },
+    {
+      "root": "ኖኀ",
+      "type": "type_a",
+      "meaning": "ረዘመ"
+    },
+    {
+      "root": "ነግሀ",
+      "type": "type_a",
+      "meaning": "ነጋ"
+    },
+    {
+      "root": "ነዝሀ",
+      "type": "type_a",
+      "meaning": "ረጨ"
+    },
+    {
+      "root": "ነጽሐ",
+      "type": "type_a",
+      "meaning": "ንጹሕ ኾነ"
+    },
+    {
+      "root": "ነፍኀ",
+      "type": "type_a",
+      "meaning": "ነፋ"
+    },
+    {
+      "root": "አምኀ",
+      "type": "type_b",
+      "meaning": "እጅ ነሣ"
+    },
+    {
+      "root": "አመልትሐ",
+      "type": "type_tanbala",
+      "meaning": "አመሰቃቀለ"
+    },
+    {
+      "root": "አመርግሐ",
+      "type": "type_tanbala",
+      "meaning": ""
+    },
+    {
+      "root": "አመድቅሐ",
+      "type": "type_tanbala",
+      "meaning": "ሠራ"
+    },
+    {
+      "root": "አመብኵሐ",
+      "type": "type_tanbala",
+      "meaning": "አናፋ"
+    },
+    {
+      "root": "አቅያይሐ",
+      "type": "type_mahräka",
+      "meaning": "አቅላላ"
+    },
+    {
+      "root": "አስተማዝሐ",
+      "type": "type_a",
+      "meaning": "አቀበጠ"
+    },
+    {
+      "root": "አብሐ",
+      "type": "type_a",
+      "meaning": "አሰናበተ፣ፈቀደ"
+    },
+    {
+      "root": "አንሳሕስሐ",
+      "type": "type_mahräka",
+      "meaning": "አነሳሳ፣ተነሳሳ"
+    },
+    {
+      "root": "አንቆቅሐ",
+      "type": "type_c_o",
+      "meaning": "ቋቋ አለ"
+    },
+    {
+      "root": "አንካሕክሐ",
+      "type": "type_mahräka",
+      "meaning": "ፈተፈተ"
+    },
+    {
+      "root": "አንግሀ",
+      "type": "type_a",
+      "meaning": "ማለደ"
+    },
+    {
+      "root": "አንባሕብሐ",
+      "type": "type_mahräka",
+      "meaning": "ዱብ ዱብ አደረገ"
+    },
+    {
+      "root": "አውጽሐ",
+      "type": "type_a",
+      "meaning": "አቀረበ"
+    },
+    {
+      "root": "አይኀ",
+      "type": "type_b",
+      "meaning": "ጠፋ"
+    },
+    {
+      "root": "አጽናሕንሐ",
+      "type": "type_tanbala",
+      "meaning": "ወዘወዘ(የጽና)"
+    },
+    {
+      "root": "አጸነሕሐ",
+      "type": "type_tanbala",
+      "meaning": "አሻተተ"
+    },
+    {
+      "root": "ከልሐ",
+      "type": "type_b",
+      "meaning": "ጮኸ"
+    },
+    {
+      "root": "ከልትሐ",
+      "type": "type_tanbala",
+      "meaning": "አሰረ"
+    },
+    {
+      "root": "ኰስሐ",
+      "type": "type_a",
+      "meaning": "ተናጻ"
+    },
+    {
+      "root": "ኰርሀ",
+      "type": "type_a",
+      "meaning": "ግድ አለ"
+    },
+    {
+      "root": "ወክሐ",
+      "type": "type_b",
+      "meaning": "ደነፋ፣ፎከረ"
+    },
+    {
+      "root": "ወጥሐ",
+      "type": "type_b",
+      "meaning": "ከመረ"
+    },
+    {
+      "root": "ዛሕዝሐ",
+      "type": "type_mahräka",
+      "meaning": "ትርፍርፈ አለ"
+    },
+    {
+      "root": "ዘልሐ",
+      "type": "type_b",
+      "meaning": "ጠመቀ"
+    },
+    {
+      "root": "ዘብሐ",
+      "type": "type_b",
+      "meaning": "አረደ"
+    },
+    {
+      "root": "ዘግሐ",
+      "type": "type_a",
+      "meaning": "ዘጋ"
+    },
+    {
+      "root": "የውሐ",
+      "type": "type_b",
+      "meaning": "አታለለ"
+    },
+    {
+      "root": "ዳኅኀ",
+      "type": "type_d",
+      "meaning": "ጸና"
+    },
+    {
+      "root": "ደምሐ",
+      "type": "type_a",
+      "meaning": "ጠለቀ"
+    },
+    {
+      "root": "ደርግሐ",
+      "type": "type_tanbala",
+      "meaning": "ደረተ፣ሰፋ"
+    },
+    {
+      "root": "ደቅሐ",
+      "type": "type_a",
+      "meaning": "ደቃ፣ቀጠቀጠ"
+    },
+    {
+      "root": "ገህሀ",
+      "type": "type_d",
+      "meaning": "አበራ"
+    },
+    {
+      "root": "ገሀግሀ",
+      "type": "type_tanbala",
+      "meaning": "ክፍት ክፍተ አደረገ"
+    },
+    {
+      "root": "ገምሀ",
+      "type": "type_a",
+      "meaning": "ነጨ፣አሰፋ፣መለጠ"
+    },
+    {
+      "root": "ጎሐ",
+      "type": "type_b",
+      "meaning": "ጠባ"
+    },
+    {
+      "root": "ጠብሐ",
+      "type": "type_a",
+      "meaning": "አረደ"
+    },
+    {
+      "root": "ጠፍልሐ",
+      "type": "type_a",
+      "meaning": "መዘነ"
+    },
+    {
+      "root": "ጠፍሐ",
+      "type": "type_a",
+      "meaning": "አጨበጨበ"
+    },
+    {
+      "root": "ጻሕጽሐ",
+      "type": "type_mahräka",
+      "meaning": "አጐረፈ"
+    },
+    {
+      "root": "ጸርሐ",
+      "type": "type_a",
+      "meaning": "ጮኸ"
+    },
+    {
+      "root": "ጸብሐ",
+      "type": "type_a",
+      "meaning": "ጠባ"
+    },
+    {
+      "root": "ጸፍሐ",
+      "type": "type_a",
+      "meaning": "ገለበጠ"
+    },
+    {
+      "root": "ፈልሐ",
+      "type": "type_a",
+      "meaning": "ፈላ ፤"
+    },
+    {
+      "root": "ፈርሐ",
+      "type": "type_a",
+      "meaning": "ፈራ ፤"
+    },
+    {
+      "root": "ፈትሐ",
+      "type": "type_a",
+      "meaning": "ፈታ ፤"
+    },
+    {
+      "root": "ፎሐ",
+      "type": "type_a",
+      "meaning": "ገመሰ"
+    },
+    {
+      "root": "ፈጽሐ",
+      "type": "type_a",
+      "meaning": "ገመሰ፣ሰነጠቀ"
+    },
+    {
+      "root": "ሐመለ",
+      "type": "type_a",
+      "meaning": "ለቀመ፣ቀነጠነ"
+    },
+    {
+      "root": "ሐሰለ",
+      "type": "type_a",
+      "meaning": "ለበበ፣የልጓም መሸበብ"
+    },
+    {
+      "root": "ሐበለ",
+      "type": "type_a",
+      "meaning": "ታታ"
+    },
+    {
+      "root": "ሐብለ",
+      "type": "type_a",
+      "meaning": "ዋሸ"
+    },
+    {
+      "root": "ሐንበለ",
+      "type": "type_tanbala",
+      "meaning": "ጫነ(የኮርቻ)"
+    },
+    {
+      "root": "ሖለ",
+      "type": "type_b",
+      "meaning": "ቀላቀለ፣አደባለቀ"
+    },
+    {
+      "root": "ሐወለ",
+      "type": "type_b",
+      "meaning": "ቀላቀለ፣አደባለቀ"
+    },
+    {
+      "root": "ሐዘለ",
+      "type": "type_a",
+      "meaning": "አዘለ"
+    },
+    {
+      "root": "ኀየለ",
+      "type": "type_b",
+      "meaning": "በረታ"
+    },
+    {
+      "root": "ኄለ",
+      "type": "type_b",
+      "meaning": "መነጨ"
+    },
+    {
+      "root": "ኀይለ",
+      "type": "type_b",
+      "meaning": "መነጨ"
+    },
+    {
+      "root": "ሀጕለ",
+      "type": "type_a",
+      "meaning": "ጠፋ"
+    },
+    {
+      "root": "ሐፈለ",
+      "type": "type_a",
+      "meaning": "ቁንጥር ቁንጥር አለ"
+    },
+    {
+      "root": "መሰለ",
+      "type": "type_a",
+      "meaning": "መሰለ"
+    },
+    {
+      "root": "መበለ",
+      "type": "type_b",
+      "meaning": "ብልጭ አለ"
+    },
+    {
+      "root": "መዐለ",
+      "type": "type_a",
+      "meaning": "ወነጀለ"
+    },
+    {
+      "root": "መከለ",
+      "type": "type_b",
+      "meaning": "ቆረጠ"
+    },
+    {
+      "root": "ሞጽበለ",
+      "type": "type_c_o",
+      "meaning": "ሞረደ"
+    },
+    {
+      "root": "ሰሐለ",
+      "type": "type_a",
+      "meaning": "ሳለ(የብረት)"
+    },
+    {
+      "root": "ሳሕለለ",
+      "type": "type_mahräka",
+      "meaning": "ደረቀ"
+    },
+    {
+      "root": "ሰመለ",
+      "type": "type_b",
+      "meaning": "አለዘበ(የጠባይ፣የእንጨት)"
+    },
+    {
+      "root": "ሰሰለ",
+      "type": "type_b",
+      "meaning": "ወገደ"
+    },
+    {
+      "root": "ሰንሰለ",
+      "type": "type_tanbala",
+      "meaning": "አያያዘ፣አቆራኘ"
+    },
+    {
+      "root": "ሰደለ",
+      "type": "type_a",
+      "meaning": "መዘነ"
+    },
+    {
+      "root": "ረመለ",
+      "type": "type_a",
+      "meaning": "ጠነቆለ"
+    },
+    {
+      "root": "ቀለ",
+      "type": "type_a",
+      "meaning": "ቀለለ"
+    },
+    {
+      "root": "ሰከለ",
+      "type": "type_a",
+      "meaning": "አፈራ"
+    },
+    {
+      "root": "ሰገለ",
+      "type": "type_a",
+      "meaning": "ጠነቆለ"
+    },
+    {
+      "root": "ሶለ",
+      "type": "type_b",
+      "meaning": "ሸተ፣ጨረቋ"
+    },
+    {
+      "root": "ሰወለ",
+      "type": "type_b",
+      "meaning": "ሸተ፣ጨረቋ"
+    },
+    {
+      "root": "ሰፈለ",
+      "type": "type_tanbala",
+      "meaning": "መታ(የዱቄት፣የብረት)"
+    },
+    {
+      "root": "ረወለ",
+      "type": "type_a",
+      "meaning": "በሳ፣ቀደደ"
+    },
+    {
+      "root": "ሮለ",
+      "type": "type_a",
+      "meaning": "በሳ፣ቀደደ"
+    },
+    {
+      "root": "ቈልቈለ",
+      "type": "type_tanbala",
+      "meaning": "ዘቀዘቀ፣ደፋ"
+    },
+    {
+      "root": "ቀበለ",
+      "type": "type_b",
+      "meaning": "ሸኘ"
+    },
+    {
+      "root": "ቀብለ",
+      "type": "type_a",
+      "meaning": "ጐደለ"
+    },
+    {
+      "root": "ቀፈለ",
+      "type": "type_a",
+      "meaning": "ለበጠ፣ሸለመ - ብህለ----አለ"
+    },
+    {
+      "root": "ረገለ",
+      "type": "type_a",
+      "meaning": "ቀዘፈ"
+    },
+    {
+      "root": "ቈስለ",
+      "type": "type_a",
+      "meaning": "ቈሰለ"
+    },
+    {
+      "root": "በልበለ",
+      "type": "type_tanbala",
+      "meaning": "አረጀ፣አለቀ"
+    },
+    {
+      "root": "በሰለ",
+      "type": "type_a",
+      "meaning": "በሰለ"
+    },
+    {
+      "root": "-በቈለ",
+      "type": "type_a",
+      "meaning": "በቀለ"
+    },
+    {
+      "root": "ብዕለ",
+      "type": "type_d",
+      "meaning": "ባለ ጸጋኾነ"
+    },
+    {
+      "root": "ቤወለ",
+      "type": "type_c_e",
+      "meaning": "ወደደ"
+    },
+    {
+      "root": "በጠለ",
+      "type": "type_a",
+      "meaning": "ጠፋ"
+    },
+    {
+      "root": "ተለዐለ",
+      "type": "type_d",
+      "meaning": "ከፍ ከፍ አለ"
+    },
+    {
+      "root": "ተልዕለ",
+      "type": "type_d",
+      "meaning": "ከፍ ከፍ አለ"
+    },
+    {
+      "root": "ተማሕለለ",
+      "type": "type_mahräka",
+      "meaning": "ምሕላ ያዘ"
+    },
+    {
+      "root": "ተመዝጐለ",
+      "type": "type_tanbala",
+      "meaning": "ተከራከረ"
+    },
+    {
+      "root": "ተሥህለ",
+      "type": "type_a",
+      "meaning": "ይቅር አለ"
+    },
+    {
+      "root": "ተሠሀለ",
+      "type": "type_a",
+      "meaning": "ይቅር አለ"
+    },
+    {
+      "root": "ተሰንአለ",
+      "type": "type_tanbala",
+      "meaning": "ተስማማ"
+    },
+    {
+      "root": "ተአንተለ",
+      "type": "type_tanbala",
+      "meaning": "ቸልቸል"
+    },
+    {
+      "root": "ተዐገለ",
+      "type": "type_b",
+      "meaning": "ቀማ"
+    },
+    {
+      "root": "-ተከለ",
+      "type": "type_a",
+      "meaning": "ተከለ"
+    },
+    {
+      "root": "ተከወለ",
+      "type": "type_c_e",
+      "meaning": "ወደኋለ አለ"
+    },
+    {
+      "root": "ተኬወለ",
+      "type": "type_c_e",
+      "meaning": "ወደኋለ አለ"
+    },
+    {
+      "root": "ተወከለ",
+      "type": "type_b",
+      "meaning": "ታመነ"
+    },
+    {
+      "root": "-ተድሕለ",
+      "type": "type_d",
+      "meaning": "ኰበለለ"
+    },
+    {
+      "root": "ተጋደለ",
+      "type": "type_a",
+      "meaning": "ተጋደለ"
+    },
+    {
+      "root": "ተፋወለ",
+      "type": "type_a",
+      "meaning": "አሟረተ"
+    },
+    {
+      "root": "ንኅለ",
+      "type": "type_d",
+      "meaning": "ፈረሰ"
+    },
+    {
+      "root": "ነቀለ",
+      "type": "type_a",
+      "meaning": "ነቀለ"
+    },
+    {
+      "root": "ነዐለ",
+      "type": "type_a",
+      "meaning": "ተጫማ"
+    },
+    {
+      "root": "ነደለ",
+      "type": "type_a",
+      "meaning": "በሳ፣ነደለ"
+    },
+    {
+      "root": "ነጸለ",
+      "type": "type_a",
+      "meaning": "ለየ፣ነጠለ"
+    },
+    {
+      "root": "አሕመልመለ",
+      "type": "type_tanbala",
+      "meaning": "ለመለመ"
+    },
+    {
+      "root": "ዐለለ",
+      "type": "type_b",
+      "meaning": "ጐለተ"
+    },
+    {
+      "root": "አመስቀለ",
+      "type": "type_tanbala",
+      "meaning": "አመሳቀለ"
+    },
+    {
+      "root": "አማዕቀለ",
+      "type": "type_mahräka",
+      "meaning": "ጥልቅ አደረገ"
+    },
+    {
+      "root": "አማዕበለ",
+      "type": "type_mahräka",
+      "meaning": "ማዕበል አደረገ"
+    },
+    {
+      "root": "አማእከለ",
+      "type": "type_mahräka",
+      "meaning": "መካከል አደረገ"
+    },
+    {
+      "root": "አንሳሕለለ",
+      "type": "type_mahräka",
+      "meaning": "አለል ዘለል አለ፣የሥራ መፍታት"
+    },
+    {
+      "root": "አንዛህለለ",
+      "type": "type_mahräka",
+      "meaning": "አለል ዘለል አለ፣የሥራ መፍታት"
+    },
+    {
+      "root": "አመድበለ",
+      "type": "type_tanbala",
+      "meaning": "አከማቸ"
+    },
+    {
+      "root": "አቊጸለ",
+      "type": "type_a",
+      "meaning": "ለመለመ"
+    },
+    {
+      "root": "ዐበለ",
+      "type": "type_b",
+      "meaning": "አሰኘ"
+    },
+    {
+      "root": "አንቀልቀለ",
+      "type": "type_tanbala",
+      "meaning": "ተነዋወጠ፣አነዋወጠ"
+    },
+    {
+      "root": "አንበልበለ",
+      "type": "type_tanbala",
+      "meaning": "ነበልባል አደረገ፣አንቦገቦገ፣ተንቦገቦገ"
+    },
+    {
+      "root": "አንኮለለ",
+      "type": "type_c_o",
+      "meaning": "ዱብ ዱብ አደረገ"
+    },
+    {
+      "root": "አንጦለለ",
+      "type": "type_c_o",
+      "meaning": "ለየ"
+    },
+    {
+      "root": "አከለ",
+      "type": "type_a",
+      "meaning": "በቃ፣ልክ ኾነ፣እኩል"
+    },
+    {
+      "root": "ዐዘለ",
+      "type": "type_b",
+      "meaning": "በረታ"
+    },
+    {
+      "root": "-ዔለ",
+      "type": "type_b",
+      "meaning": "ዞረ፣ተንከራተተ -አገንጰለተን---ጻፈ፣ገለበጠ"
+    },
+    {
+      "root": "ዐየለ",
+      "type": "type_b",
+      "meaning": "ዞረ፣ተንከራተተ -አገንጰለተን---ጻፈ፣ገለበጠ"
+    },
+    {
+      "root": "ዐገለ",
+      "type": "type_a",
+      "meaning": "አቆመ፣በገረ፣አስበገረ፣ደረደረ"
+    },
+    {
+      "root": "አጰንገለ",
+      "type": "type_tanbala",
+      "meaning": "ተረጎመ፣ጻፈ"
+    },
+    {
+      "root": "አጽለለ",
+      "type": "type_a",
+      "meaning": "አረፈ፣አሳረፈ"
+    },
+    {
+      "root": "አጽደልደለ",
+      "type": "type_tanbala",
+      "meaning": "አበራ"
+    },
+    {
+      "root": "ኵሕለ",
+      "type": "type_d",
+      "meaning": "ኳለ"
+    },
+    {
+      "root": "ገደለ",
+      "type": "type_a",
+      "meaning": "ጣለ(የጥንብ)"
+    },
+    {
+      "root": "ጥሕለ",
+      "type": "type_a",
+      "meaning": "አተለ፣የሚትል ሁሉ"
+    },
+    {
+      "root": "ጠሐለ",
+      "type": "type_a",
+      "meaning": "አተለ፣የሚትል ሁሉ"
+    },
+    {
+      "root": "ጠለ",
+      "type": "type_a",
+      "meaning": "ለመለመ"
+    },
+    {
+      "root": "ጠለለ",
+      "type": "type_a",
+      "meaning": "ለመለመ"
+    },
+    {
+      "root": "ጠቀለ",
+      "type": "type_a",
+      "meaning": "በነገር ነካ፣ዐመፀ"
+    },
+    {
+      "root": "ጸለለ",
+      "type": "type_b",
+      "meaning": "ጋረደ"
+    },
+    {
+      "root": "ጸንጸለ",
+      "type": "type_a",
+      "meaning": "መታ"
+    },
+    {
+      "root": "ጸዐለ",
+      "type": "type_a",
+      "meaning": "ሰደበ"
+    },
+    {
+      "root": "ጽእለ",
+      "type": "type_d",
+      "meaning": "ቆሰለ"
+    },
+    {
+      "root": "ጸደለ",
+      "type": "type_b",
+      "meaning": "በራ"
+    },
+    {
+      "root": "ፈልፈለ",
+      "type": "type_tanbala",
+      "meaning": "መነጨ፣ወጣ፣ፈሰሰ ፤"
+    },
+    {
+      "root": "ፈተለ",
+      "type": "type_a",
+      "meaning": "አከረረ ፈደለ----ጻፈ"
+    },
+    {
+      "root": "ሐለመ",
+      "type": "type_a",
+      "meaning": "አለመ"
+    },
+    {
+      "root": "ሐሠመ",
+      "type": "type_a",
+      "meaning": "ከፋ"
+    },
+    {
+      "root": "ሐመ",
+      "type": "type_a",
+      "meaning": "ታመመ"
+    },
+    {
+      "root": "ሐመመ",
+      "type": "type_a",
+      "meaning": "ተመቀኘ"
+    },
+    {
+      "root": "ሐርተመ",
+      "type": "type_tanbala",
+      "meaning": "ጐሰቆለ"
+    },
+    {
+      "root": "ኀተመ",
+      "type": "type_tanbala",
+      "meaning": "አተመ"
+    },
+    {
+      "root": "ሀደመ",
+      "type": "type_tanbala",
+      "meaning": "አንቀላፋ"
+    },
+    {
+      "root": "ሐደመ",
+      "type": "type_b",
+      "meaning": "አወጋ፣ተረታ"
+    },
+    {
+      "root": "ለምለመ",
+      "type": "type_tanbala",
+      "meaning": "ለመለመ"
+    },
+    {
+      "root": "ሰለመ",
+      "type": "type_a",
+      "meaning": "ፈታ"
+    },
+    {
+      "root": "ሠረመ",
+      "type": "type_a",
+      "meaning": "አጠለቀ፣አሰጠመ፣ዋጠ"
+    },
+    {
+      "root": "ሰቀመ",
+      "type": "type_a",
+      "meaning": "ማረከ"
+    },
+    {
+      "root": "ሰተመ",
+      "type": "type_a",
+      "meaning": "ደረሰ"
+    },
+    {
+      "root": "ሰዐመ",
+      "type": "type_a",
+      "meaning": "ሳመ"
+    },
+    {
+      "root": "ሰከመ",
+      "type": "type_a",
+      "meaning": "ተሸከመ"
+    },
+    {
+      "root": "ረመ",
+      "type": "type_a",
+      "meaning": "ረመመ(የብራና)"
+    },
+    {
+      "root": "ረመመ",
+      "type": "type_a",
+      "meaning": "ጻፈ"
+    },
+    {
+      "root": "ረቀመ",
+      "type": "type_a",
+      "meaning": "ረጨ(የቀለም)"
+    },
+    {
+      "root": "ረዐመ",
+      "type": "type_a",
+      "meaning": "ጮኸ"
+    },
+    {
+      "root": "ሬመ",
+      "type": "type_a",
+      "meaning": "ከፍ ክፍአለ ወጣ(የሰማይ፣የዝናብ)"
+    },
+    {
+      "root": "ረገመ",
+      "type": "type_a",
+      "meaning": "ረገመ"
+    },
+    {
+      "root": "ቀለመ",
+      "type": "type_a",
+      "meaning": "ጻፈ"
+    },
+    {
+      "root": "ቀሠመ",
+      "type": "type_a",
+      "meaning": "ለቀመ"
+    },
+    {
+      "root": "ቀሰመ",
+      "type": "type_b",
+      "meaning": "አጣፈጠ"
+    },
+    {
+      "root": "ቀረመ",
+      "type": "type_a",
+      "meaning": "ለቀመ"
+    },
+    {
+      "root": "ቆመ",
+      "type": "type_b",
+      "meaning": "ቆመ"
+    },
+    {
+      "root": "ቀደመ",
+      "type": "type_a",
+      "meaning": "ቀደመ"
+    },
+    {
+      "root": "በለመ",
+      "type": "type_b",
+      "meaning": "ጻፈ"
+    },
+    {
+      "root": "ተለመ",
+      "type": "type_a",
+      "meaning": "ተለመ(የእርሻ)"
+    },
+    {
+      "root": "ተሳለመ",
+      "type": "type_a",
+      "meaning": "ተፈቃቀረ"
+    },
+    {
+      "root": "ተስዐመ",
+      "type": "type_a",
+      "meaning": "ተስማማ"
+    },
+    {
+      "root": "ተስጥመ",
+      "type": "type_a",
+      "meaning": "ተሰጠመ"
+    },
+    {
+      "root": "ተርጐመ",
+      "type": "type_a",
+      "meaning": "ተረጐመ"
+    },
+    {
+      "root": "ተቃወመ",
+      "type": "type_a",
+      "meaning": "ተከራከረ"
+    },
+    {
+      "root": "ተቀየመ",
+      "type": "type_b",
+      "meaning": "ቂምያዘ"
+    },
+    {
+      "root": "ደመ",
+      "type": "type_b",
+      "meaning": "ተደነቀ ተጸመ/ተጽመመቀተ/-ቸልቸል አለ --ተፍእመክህ-ጐረሰ"
+    },
+    {
+      "root": "ተድመመ",
+      "type": "type_b",
+      "meaning": "ተደነቀ ተጸመ/ተጽመመቀተ/-ቸልቸል አለ --ተፍእመክህ-ጐረሰ"
+    },
+    {
+      "root": "ተደመመ",
+      "type": "type_b",
+      "meaning": "ተደነቀ ተጸመ/ተጽመመቀተ/-ቸልቸል አለ --ተፍእመክህ-ጐረሰ"
+    },
+    {
+      "root": "ንዕመ",
+      "type": "type_d",
+      "meaning": "አክ አለ"
+    },
+    {
+      "root": "ኖመ",
+      "type": "type_b",
+      "meaning": "ተኛ"
+    },
+    {
+      "root": "ነወመ",
+      "type": "type_b",
+      "meaning": "ተኛ"
+    },
+    {
+      "root": "ዐለመ",
+      "type": "type_b",
+      "meaning": "ፈጠረ"
+    },
+    {
+      "root": "አስተሐመመ",
+      "type": "type_a",
+      "meaning": "አስተጋ፣ተጋ"
+    },
+    {
+      "root": "አስተቃሰመ",
+      "type": "type_a",
+      "meaning": "አሟረተ"
+    },
+    {
+      "root": "አረመ",
+      "type": "type_a",
+      "meaning": "ዝም አለ"
+    },
+    {
+      "root": "አርመመ",
+      "type": "type_a",
+      "meaning": "ዝም አለ"
+    },
+    {
+      "root": "አልኰመ",
+      "type": "type_a",
+      "meaning": "አስነካ(የነገር፣የከንፈር)"
+    },
+    {
+      "root": "ዐቀመ",
+      "type": "type_a",
+      "meaning": "ቆረጠ"
+    },
+    {
+      "root": "ዔመ",
+      "type": "type_b",
+      "meaning": "መሰገ/ሰበሰበ"
+    },
+    {
+      "root": "ዐየመ",
+      "type": "type_b",
+      "meaning": "መሰገ/ሰበሰበ"
+    },
+    {
+      "root": "ዐተመ",
+      "type": "type_b",
+      "meaning": "ተቆጣ"
+    },
+    {
+      "root": "አደመ",
+      "type": "type_b",
+      "meaning": "አማረ"
+    },
+    {
+      "root": "አነመ",
+      "type": "type_a",
+      "meaning": "ሠራ(የልብስ)"
+    },
+    {
+      "root": "ከመ",
+      "type": "type_b",
+      "meaning": "ቆረጠ"
+    },
+    {
+      "root": "ከመመ",
+      "type": "type_b",
+      "meaning": "ቆረጠ"
+    },
+    {
+      "root": "ከረመ",
+      "type": "type_a",
+      "meaning": "ከረመ"
+    },
+    {
+      "root": "ከተመ",
+      "type": "type_a",
+      "meaning": "ጫፍ ኾነ"
+    },
+    {
+      "root": "ወስከመ",
+      "type": "type_tanbala",
+      "meaning": "ሰነገ፣አሰረ፣ጠለፈ(የማነቂያ)"
+    },
+    {
+      "root": "ዝሕመ",
+      "type": "type_d",
+      "meaning": "ሞቀ"
+    },
+    {
+      "root": "ዘመ",
+      "type": "type_a",
+      "meaning": "አሰረ፣ለጐመ፣አፈነ"
+    },
+    {
+      "root": "ዘመመ",
+      "type": "type_a",
+      "meaning": "አሰረ፣ለጐመ፣አፈነ"
+    },
+    {
+      "root": "ዘንመ",
+      "type": "type_a",
+      "meaning": "ዘነመ"
+    },
+    {
+      "root": "ዳሕመመ",
+      "type": "type_mahräka",
+      "meaning": "አፈረሰ፣ናደ"
+    },
+    {
+      "root": "ደምደመ",
+      "type": "type_tanbala",
+      "meaning": "አጐተነ(አጎፈረ(የጸጉር)"
+    },
+    {
+      "root": "ደክተመ",
+      "type": "type_tanbala",
+      "meaning": "ደኸ አደግ ኾነ"
+    },
+    {
+      "root": "ሳርየመ",
+      "type": "type_a",
+      "meaning": "አገመ"
+    },
+    {
+      "root": "ሳርኤመ",
+      "type": "type_a",
+      "meaning": "አገመ"
+    },
+    {
+      "root": "ገዘመ",
+      "type": "type_a",
+      "meaning": "ቆረጠ"
+    },
+    {
+      "root": "ገደመ",
+      "type": "type_a",
+      "meaning": "አገደመ"
+    },
+    {
+      "root": "ጠለመ",
+      "type": "type_a",
+      "meaning": "ከዳ ሸፈተ"
+    },
+    {
+      "root": "ጠመ",
+      "type": "type_a",
+      "meaning": "ጠመመ"
+    },
+    {
+      "root": "ጠመመ",
+      "type": "type_a",
+      "meaning": "ጠመመ"
+    },
+    {
+      "root": "ጠቀመ",
+      "type": "type_a",
+      "meaning": "ሠራ፣አደሰ(የግንብ)"
+    },
+    {
+      "root": "ጥዕመ",
+      "type": "type_a",
+      "meaning": "ቀመሰ"
+    },
+    {
+      "root": "ጠዐመ",
+      "type": "type_a",
+      "meaning": "ቀመሰ"
+    },
+    {
+      "root": "ጦመ",
+      "type": "type_a",
+      "meaning": "ጠቀለለ"
+    },
+    {
+      "root": "ጠወመ",
+      "type": "type_a",
+      "meaning": "ጠቀለለ"
+    },
+    {
+      "root": "ጸተመ",
+      "type": "type_a",
+      "meaning": "-ደረሰ"
+    },
+    {
+      "root": "ጾትኤመ",
+      "type": "type_c_o",
+      "meaning": "የወይንጠጅ አደረገ"
+    },
+    {
+      "root": "ጸትየመ",
+      "type": "type_c_o",
+      "meaning": "የወይንጠጅ አደረገ"
+    },
+    {
+      "root": "ጸመ",
+      "type": "type_b",
+      "meaning": "ጾመ"
+    },
+    {
+      "root": "ጸወመ",
+      "type": "type_b",
+      "meaning": "ጾመ"
+    },
+    {
+      "root": "ጸገመ",
+      "type": "type_a",
+      "meaning": "ጠመመ"
+    },
+    {
+      "root": "ፍሕመ",
+      "type": "type_d",
+      "meaning": "ፋመ"
+    },
+    {
+      "root": "ፈለመ",
+      "type": "type_a",
+      "meaning": "ጀመረ"
+    },
+    {
+      "root": "ኀመሰ",
+      "type": "type_b",
+      "meaning": "አምስት አደረገ"
+    },
+    {
+      "root": "ኀሠ",
+      "type": "type_a",
+      "meaning": "ፈለገ"
+    },
+    {
+      "root": "ኀሠሠ",
+      "type": "type_a",
+      "meaning": "ፈለገ"
+    },
+    {
+      "root": "ሐረሰ",
+      "type": "type_a",
+      "meaning": "አረሰ"
+    },
+    {
+      "root": "ኀበሰ",
+      "type": "type_a",
+      "meaning": "ጋገረ"
+    },
+    {
+      "root": "ሐንከሳ",
+      "type": "type_tanbala",
+      "meaning": "አነከሰ"
+    },
+    {
+      "root": "ሖሰ",
+      "type": "type_b",
+      "meaning": "ቀላቀለ"
+    },
+    {
+      "root": "ሐወሰ",
+      "type": "type_b",
+      "meaning": "ቀላቀለ"
+    },
+    {
+      "root": "ሐሰ",
+      "type": "type_b",
+      "meaning": "ነቀነቀ"
+    },
+    {
+      "root": "ሐደሰ",
+      "type": "type_b",
+      "meaning": "አዲስ አደረገ"
+    },
+    {
+      "root": "ሐፈሠ",
+      "type": "type_a",
+      "meaning": "ዘገነ"
+    },
+    {
+      "root": "ለሐሰ",
+      "type": "type_a",
+      "meaning": "ላሰ"
+    },
+    {
+      "root": "ላቀሰ",
+      "type": "type_c",
+      "meaning": "አለቀሰ"
+    },
+    {
+      "root": "ለብሰ",
+      "type": "type_a",
+      "meaning": "ለበሰ"
+    },
+    {
+      "root": "ሎሰ",
+      "type": "type_b",
+      "meaning": "ለወሰ"
+    },
+    {
+      "root": "ለወሰ",
+      "type": "type_b",
+      "meaning": "ለወሰ"
+    },
+    {
+      "root": "መሐሰ",
+      "type": "type_a",
+      "meaning": "ቆፈረ፣ነቀለ፣አፈለሰ"
+    },
+    {
+      "root": "መለሰ",
+      "type": "type_a",
+      "meaning": "መለሰ"
+    },
+    {
+      "root": "መረሰ",
+      "type": "type_a",
+      "meaning": "ነገረ፣ዘፈቀ"
+    },
+    {
+      "root": "መንኰሰ",
+      "type": "type_tanbala",
+      "meaning": "መነኰሰ"
+    },
+    {
+      "root": "መርሰሰ",
+      "type": "type_tanbala",
+      "meaning": "ዳሰሰ፣ነካ"
+    },
+    {
+      "root": "መቈሰ",
+      "type": "type_b",
+      "meaning": "አጠፋ፣ለየ"
+    },
+    {
+      "root": "ሠለሰ",
+      "type": "type_b",
+      "meaning": "ሦስት አደረገ"
+    },
+    {
+      "root": "ሰንኰረሰ",
+      "type": "type_c_o",
+      "meaning": "አስተማረ"
+    },
+    {
+      "root": "ሰኰሰ",
+      "type": "type_b",
+      "meaning": "ጠረገ"
+    },
+    {
+      "root": "ሰደሰ",
+      "type": "type_b",
+      "meaning": "ስድስት አደረገ"
+    },
+    {
+      "root": "ርሕሰ",
+      "type": "type_d",
+      "meaning": "ራሰ፣ረጠበ"
+    },
+    {
+      "root": "ረሞሰ",
+      "type": "type_a",
+      "meaning": "ጋለ"
+    },
+    {
+      "root": "ረመሰ",
+      "type": "type_a",
+      "meaning": "ነከረ፣ዘፈቀ፣ዘፈዘፈ"
+    },
+    {
+      "root": "ቆመሰ",
+      "type": "type_c_o",
+      "meaning": "-ቆሞስ ኾነ"
+    },
+    {
+      "root": "ቀሰ",
+      "type": "type_a",
+      "meaning": "አገለገለ"
+    },
+    {
+      "root": "ቀሰሰ",
+      "type": "type_a",
+      "meaning": "አገለገለ"
+    },
+    {
+      "root": "በስበሰ",
+      "type": "type_tanbala",
+      "meaning": "አረጀ፣በሰበሰ"
+    },
+    {
+      "root": "ብእሰ",
+      "type": "type_d",
+      "meaning": "ባሰ፣ከፋ"
+    },
+    {
+      "root": "ተሞገሰ",
+      "type": "type_c_o",
+      "meaning": "ባለሟል ኾነ"
+    },
+    {
+      "root": "ተዐገሠ",
+      "type": "type_b",
+      "meaning": "ቻለ፣ታገሠ"
+    },
+    {
+      "root": "ተከነሰ",
+      "type": "type_b",
+      "meaning": "አነድ ኾነ"
+    },
+    {
+      "root": "ተውሕሰ",
+      "type": "type_a",
+      "meaning": "ዋስ"
+    },
+    {
+      "root": "ተወሐሰ",
+      "type": "type_a",
+      "meaning": "ዋስ"
+    },
+    {
+      "root": "ተወሕሠ",
+      "type": "type_d",
+      "meaning": "ወገደ፣ሸሸ"
+    },
+    {
+      "root": "ተፈርነሰ",
+      "type": "type_tanbala",
+      "meaning": "ተደሰተ"
+    },
+    {
+      "root": "ተጰጰሰ",
+      "type": "type_b",
+      "meaning": "ጳጳስ ኾነ፣ተሾመ"
+    },
+    {
+      "root": "ተጸነሰ",
+      "type": "type_b",
+      "meaning": "ተቸገረ"
+    },
+    {
+      "root": "ንእሰ",
+      "type": "type_d",
+      "meaning": "አነሰ"
+    },
+    {
+      "root": "ነግሠ",
+      "type": "type_a",
+      "meaning": "ነገሠ ነፍሰቀተ-ነፈሰ፣ተነፈሰ"
+    },
+    {
+      "root": "አልኆሰሰ",
+      "type": "type_c_o",
+      "meaning": "ሹክሹክ አለ"
+    },
+    {
+      "root": "አልኈሰሰ",
+      "type": "type_c_o",
+      "meaning": "ሹክሹክ አለ"
+    },
+    {
+      "root": "አምርሰሰ",
+      "type": "type_tanbala",
+      "meaning": "ጸጥ አደረገ"
+    },
+    {
+      "root": "አስተንፈሰ",
+      "type": "type_a",
+      "meaning": "አሻተተ"
+    },
+    {
+      "root": "አነሰ",
+      "type": "type_a",
+      "meaning": "አነሰ፣ሰው ኾነ"
+    },
+    {
+      "root": "አንበስበሰ",
+      "type": "type_tanbala",
+      "meaning": "ተገለባበጠ አገለባበጠ"
+    },
+    {
+      "root": "አክሞሰሰ",
+      "type": "type_c_o",
+      "meaning": "ፍግግ ፍግግ አደረገ ፍግግ ፍግግ አለ"
+    },
+    {
+      "root": "አኮሰ",
+      "type": "type_a",
+      "meaning": "አቅባባ ፣አዋሀደ፣አገናኘ፣አማሰለ"
+    },
+    {
+      "root": "ዔሰ",
+      "type": "type_b",
+      "meaning": "ዞረ፣ዛበረ"
+    },
+    {
+      "root": "ዐይሰ",
+      "type": "type_b",
+      "meaning": "ዞረ፣ዛበረ"
+    },
+    {
+      "root": "ዐየሰ",
+      "type": "type_b",
+      "meaning": "ዞረ፣ዛበረ"
+    },
+    {
+      "root": "አፅበሰ",
+      "type": "type_a",
+      "meaning": "ልምሾ አደረገ፣አደከመ"
+    },
+    {
+      "root": "ኵሕሰ",
+      "type": "type_d",
+      "meaning": "ተናጻ"
+    },
+    {
+      "root": "ከልሰሰ",
+      "type": "type_tanbala",
+      "meaning": "አሰረ(የነዶ)"
+    },
+    {
+      "root": "ኰሰኰሰ",
+      "type": "type_tanbala",
+      "meaning": "ተዝጎረጎረ"
+    },
+    {
+      "root": "ከርተሰ",
+      "type": "type_tanbala",
+      "meaning": "ጻፈ"
+    },
+    {
+      "root": "ከበሰ",
+      "type": "type_a",
+      "meaning": "ጠመጠመ"
+    },
+    {
+      "root": "ወረሰ",
+      "type": "type_a",
+      "meaning": "ወረሰ"
+    },
+    {
+      "root": "ወቀሰ",
+      "type": "type_a",
+      "meaning": "ወቀሰ"
+    },
+    {
+      "root": "ወደሰ",
+      "type": "type_b",
+      "meaning": "አመሰገነ"
+    },
+    {
+      "root": "ወጠሰ",
+      "type": "type_a",
+      "meaning": "አቃጠለ፣ተቃጠለ"
+    },
+    {
+      "root": "ዘልገሰ",
+      "type": "type_tanbala",
+      "meaning": "ታመመ፣ቆሰለ አበጠ"
+    },
+    {
+      "root": "የብሰ",
+      "type": "type_a",
+      "meaning": "ደረቀ"
+    },
+    {
+      "root": "አጽሐሰ",
+      "type": "type_a",
+      "meaning": "አሸበሸበ"
+    },
+    {
+      "root": "ደሐሰ",
+      "type": "type_a",
+      "meaning": "ሠራ(የዳስ)"
+    },
+    {
+      "root": "ደመሰ",
+      "type": "type_a",
+      "meaning": "ጨለመ፣ጠቆረ"
+    },
+    {
+      "root": "ደምሰሰ",
+      "type": "type_tanbala",
+      "meaning": "አጠፋ፣ደመሰሰ"
+    },
+    {
+      "root": "ደረሰ",
+      "type": "type_a",
+      "meaning": "ደረሰ(የድርሰት)"
+    },
+    {
+      "root": "ደጐሰ",
+      "type": "type_a",
+      "meaning": "ደጐሰ"
+    },
+    {
+      "root": "ደቀሰ",
+      "type": "type_b",
+      "meaning": "ተኛ፣አንቀላፋ"
+    },
+    {
+      "root": "ግሕሠክህ፣ገሐሠ",
+      "type": "type_a",
+      "meaning": "ወገደ"
+    },
+    {
+      "root": "ገመሰ",
+      "type": "type_a",
+      "meaning": "ገመሰ፡ቆረሰ፣ዘረዘረ፣መነዘረ(የገንዘብ)"
+    },
+    {
+      "root": "ገሰ",
+      "type": "type_a",
+      "meaning": "ዳሰሰ"
+    },
+    {
+      "root": "ገሰሰ",
+      "type": "type_a",
+      "meaning": "ዳሰሰ"
+    },
+    {
+      "root": "ገረሠ",
+      "type": "type_c_e",
+      "meaning": "ሠራ(የወርቅ ጌራ)"
+    },
+    {
+      "root": "ጌረሠ",
+      "type": "type_c_e",
+      "meaning": "ሠራ(የወርቅ ጌራ)"
+    },
+    {
+      "root": "ገብሰሰ",
+      "type": "type_tanbala",
+      "meaning": "አረጀ"
+    },
+    {
+      "root": "ጌሠ",
+      "type": "type_b",
+      "meaning": "ገሠገሠ"
+    },
+    {
+      "root": "ገይሠ",
+      "type": "type_b",
+      "meaning": "ገሠገሠ"
+    },
+    {
+      "root": "ገየሠ",
+      "type": "type_b",
+      "meaning": "ገሠገሠ"
+    },
+    {
+      "root": "ጠረሰ",
+      "type": "type_a",
+      "meaning": "አፋጨ(የጥርስ)"
+    },
+    {
+      "root": "ጠርሰ",
+      "type": "type_a",
+      "meaning": "አፋጨ(የጥርስ)"
+    },
+    {
+      "root": "ጠበሰ",
+      "type": "type_a",
+      "meaning": "ጠበሰ"
+    },
+    {
+      "root": "ጤሰ",
+      "type": "type_b",
+      "meaning": "-ጤሰ"
+    },
+    {
+      "root": "ጠይሰ",
+      "type": "type_b",
+      "meaning": "-ጤሰ"
+    },
+    {
+      "root": "ጠየሰ",
+      "type": "type_b",
+      "meaning": "-ጤሰ"
+    },
+    {
+      "root": "ፀረሰ",
+      "type": "type_a",
+      "meaning": "በለዘ"
+    },
+    {
+      "root": "ፀበሰ",
+      "type": "type_a",
+      "meaning": "ዛለ፣ፈራ፣ልምሾ ኾነ፣ደከመ"
+    },
+    {
+      "root": "ፀንሰ",
+      "type": "type_a",
+      "meaning": "ጸነሰ"
+    },
+    {
+      "root": "ፀወሰ",
+      "type": "type_a",
+      "meaning": "ሰለለ(የሕመም)"
+    },
+    {
+      "root": "ፈሐሰ",
+      "type": "type_a",
+      "meaning": "ፈተለ፣አበበ(የፈትል)(የአበባ)"
+    },
+    {
+      "root": "ፈለሰ",
+      "type": "type_a",
+      "meaning": "ተሰደደ"
+    },
+    {
+      "root": "ፈወሰ",
+      "type": "type_b",
+      "meaning": "አዳነ፣ፈወሰ"
+    },
+    {
+      "root": "ኀሰረ",
+      "type": "type_a",
+      "meaning": "ጐሰቆለ"
+    },
+    {
+      "root": "ሐረ",
+      "type": "type_a",
+      "meaning": "አረረ፣ተኮሰ፣ሞቀ፣ተቃጠለ፣ከሰለ"
+    },
+    {
+      "root": "ሐረረ",
+      "type": "type_a",
+      "meaning": "አረረ፣ተኮሰ፣ሞቀ፣ተቃጠለ፣ከሰለ"
+    },
+    {
+      "root": "ሓበረ",
+      "type": "type_a",
+      "meaning": "አንድ"
+    },
+    {
+      "root": "ሐበረ",
+      "type": "type_a",
+      "meaning": "አንድ"
+    },
+    {
+      "root": "ሐብረ",
+      "type": "type_a",
+      "meaning": "አንድ"
+    },
+    {
+      "root": "ንገረ",
+      "type": "type_tanbala",
+      "meaning": "እሽኰኰ አለ"
+    },
+    {
+      "root": "ኀደረ",
+      "type": "type_a",
+      "meaning": "አደረ"
+    },
+    {
+      "root": "ኀፈረ",
+      "type": "type_b",
+      "meaning": "ወደደ"
+    },
+    {
+      "root": "ሐጸረ",
+      "type": "type_a",
+      "meaning": "አጠረ፣ከበበ(የጥር)"
+    },
+    {
+      "root": "ኀፍረ",
+      "type": "type_a",
+      "meaning": "አፈረ"
+    },
+    {
+      "root": "መሐረ",
+      "type": "type_a",
+      "meaning": "አስተማረ"
+    },
+    {
+      "root": "መከረ",
+      "type": "type_a",
+      "meaning": "መከረ"
+    },
+    {
+      "root": "መደረ",
+      "type": "type_a",
+      "meaning": "ጸና"
+    },
+    {
+      "root": "ኀጽረ",
+      "type": "type_a",
+      "meaning": "የሚጠርሁሉ፣አጭርኾነ፣አጠረ(የጊዜ)(የቁመት)"
+    },
+    {
+      "root": "ሎረ",
+      "type": "type_a",
+      "meaning": "በሳ"
+    },
+    {
+      "root": "ለወረ",
+      "type": "type_a",
+      "meaning": "በሳ"
+    },
+    {
+      "root": "ለጠረ",
+      "type": "type_a",
+      "meaning": "መዘነ"
+    },
+    {
+      "root": "መረ",
+      "type": "type_a",
+      "meaning": "ምሩር፣መራር"
+    },
+    {
+      "root": "መረረ",
+      "type": "type_a",
+      "meaning": "ምሩር፣መራር"
+    },
+    {
+      "root": "መተረ",
+      "type": "type_a",
+      "meaning": "ቆረጠ"
+    },
+    {
+      "root": "መዝበረ",
+      "type": "type_tanbala",
+      "meaning": "ፈረሰ፣ተናደ፣ተበተነ"
+    },
+    {
+      "root": "መዘረ",
+      "type": "type_a",
+      "meaning": "ጠመቀ፣ዘለለ(የጠላ)"
+    },
+    {
+      "root": "መጸረ",
+      "type": "type_a",
+      "meaning": "አመሰኳ፣አመነዛ"
+    },
+    {
+      "root": "መቈረ",
+      "type": "type_b",
+      "meaning": "አጣፈጠ"
+    },
+    {
+      "root": "ሠምረ",
+      "type": "type_a",
+      "meaning": "ወደደ"
+    },
+    {
+      "root": "ሰረ",
+      "type": "type_a",
+      "meaning": "ወጣ"
+    },
+    {
+      "root": "ሰረረ",
+      "type": "type_a",
+      "meaning": "ወጣ"
+    },
+    {
+      "root": "ሰቈረ",
+      "type": "type_a",
+      "meaning": "በሳ ነደለ"
+    },
+    {
+      "root": "ሰበረ",
+      "type": "type_a",
+      "meaning": "ሰበረ"
+    },
+    {
+      "root": "ሰተረ",
+      "type": "type_a",
+      "meaning": "ቀደደ"
+    },
+    {
+      "root": "ሰክረ",
+      "type": "type_a",
+      "meaning": "ሰከረ"
+    },
+    {
+      "root": "ሰዐረ",
+      "type": "type_a",
+      "meaning": "ሻረ"
+    },
+    {
+      "root": "ሰወረ",
+      "type": "type_b",
+      "meaning": "ሸሸገ፣ሰወረ፣ደበቀ"
+    },
+    {
+      "root": "ሰዘረ",
+      "type": "type_a",
+      "meaning": "ሰነዘረ፣ለካ"
+    },
+    {
+      "root": "ሠግረ",
+      "type": "type_a",
+      "meaning": "ተራመደ"
+    },
+    {
+      "root": "ሠገረ",
+      "type": "type_a",
+      "meaning": "ተራመደ"
+    },
+    {
+      "root": "ሠጸረ",
+      "type": "type_a",
+      "meaning": "ሰነጠቀ፣ፈለጠ"
+    },
+    {
+      "root": "ሰፈረ",
+      "type": "type_a",
+      "meaning": "ለካ፣ሰፈረ"
+    },
+    {
+      "root": "ሣረረ",
+      "type": "type_c",
+      "meaning": ""
+    },
+    {
+      "root": "ቀሐረ",
+      "type": "type_b",
+      "meaning": "ተኰሰ(የሕመም)"
+    },
+    {
+      "root": "ቀመረ",
+      "type": "type_a",
+      "meaning": "ቆጠረ"
+    },
+    {
+      "root": "ቈረ",
+      "type": "type_a",
+      "meaning": "ቀዘቀዘ/በረደ"
+    },
+    {
+      "root": "ቈረረ",
+      "type": "type_a",
+      "meaning": "ቀዘቀዘ/በረደ"
+    },
+    {
+      "root": "ቀበረ",
+      "type": "type_a",
+      "meaning": "ቀበረ"
+    },
+    {
+      "root": "ቆበረ",
+      "type": "type_c_o",
+      "meaning": "ጭጋግ ኾነ"
+    },
+    {
+      "root": "ቈጰረ",
+      "type": "type_c_o",
+      "meaning": "ቆረጠመ"
+    },
+    {
+      "root": "ቆጰረ",
+      "type": "type_c_o",
+      "meaning": "ቆረጠመ"
+    },
+    {
+      "root": "ቀተረ",
+      "type": "type_b",
+      "meaning": "ሳበ"
+    },
+    {
+      "root": "ቀጸረ",
+      "type": "type_a",
+      "meaning": "ከበበ፣ቀጠረ፣አጠረ(የአጥር)"
+    },
+    {
+      "root": "ቈጸረ",
+      "type": "type_a",
+      "meaning": "ቋጠረ"
+    },
+    {
+      "root": "ቀፈረ",
+      "type": "type_b",
+      "meaning": "ለካ፣ሳበ፣ገተረ(የጦር)(የደጋን)"
+    },
+    {
+      "root": "ባሕረረ",
+      "type": "type_mahräka",
+      "meaning": "ብርር ብርር አለ፣ባከነ፣ደነገጠ፣ሰፋ"
+    },
+    {
+      "root": "በረ",
+      "type": "type_a",
+      "meaning": "በረረ፣ሮጠ"
+    },
+    {
+      "root": "በረረ",
+      "type": "type_a",
+      "meaning": "በረረ፣ሮጠ"
+    },
+    {
+      "root": "በኰረ",
+      "type": "type_a",
+      "meaning": "ታጐለ"
+    },
+    {
+      "root": "በደረ",
+      "type": "type_a",
+      "meaning": "ቀደመ"
+    },
+    {
+      "root": "ተበኵረ",
+      "type": "type_a",
+      "meaning": "አለቃ በኵርኾነ"
+    },
+    {
+      "root": "ተዐወረ",
+      "type": "type_a",
+      "meaning": "ቸልቸል አለ"
+    },
+    {
+      "root": "ተዐዝረ",
+      "type": "type_a",
+      "meaning": "ጭልጥ ብሎ ሄደ"
+    },
+    {
+      "root": "ተወዐረ",
+      "type": "type_a",
+      "meaning": "-አደነቀ"
+    },
+    {
+      "root": "ተድኅረ",
+      "type": "type_d",
+      "meaning": "ወደኋላ ሆነ"
+    },
+    {
+      "root": "ተዘከረ",
+      "type": "type_b",
+      "meaning": "አሰበ፣ላለፈ ነገረ"
+    },
+    {
+      "root": "ተደረ",
+      "type": "type_a",
+      "meaning": "በላ፣ተመገበ(የራት)"
+    },
+    {
+      "root": "ተዘኀረ",
+      "type": "type_d",
+      "meaning": "ኰራ፣ታጀረ፣ተጀነነ(ያካሄድ)"
+    },
+    {
+      "root": "ተዝኅረ",
+      "type": "type_d",
+      "meaning": "ኰራ፣ታጀረ፣ተጀነነ(ያካሄድ)"
+    },
+    {
+      "root": "ተደብተረ",
+      "type": "type_tanbala",
+      "meaning": "ሰፋ(የድንኳን)"
+    },
+    {
+      "root": "ተገብረ",
+      "type": "type_b",
+      "meaning": "አረሰ"
+    },
+    {
+      "root": "ተገረ",
+      "type": "type_a",
+      "meaning": "ተከለ(የካስማ)(የድንኳን)"
+    },
+    {
+      "root": "ተገየረ",
+      "type": "type_b",
+      "meaning": "መፃተኛ ኾነ(የስደት)"
+    },
+    {
+      "root": "ተጠየረ",
+      "type": "type_b",
+      "meaning": "አሟረተ፣ጠነቆለ"
+    },
+    {
+      "root": "ተፃረረ",
+      "type": "type_a",
+      "meaning": "ተጣላ"
+    },
+    {
+      "root": "ተጋወረ",
+      "type": "type_a",
+      "meaning": "ተጐራበተ፣ጐረቢትኾነ"
+    },
+    {
+      "root": "ተፃመረ",
+      "type": "type_a",
+      "meaning": "አንድ ኾነ"
+    },
+    {
+      "root": "ተጽዕረ",
+      "type": "type_d",
+      "meaning": "ተጨነቀ"
+    },
+    {
+      "root": "ንኅረ",
+      "type": "type_d",
+      "meaning": "አኮረፈ(የሰው)(የውኃ)"
+    },
+    {
+      "root": "ነሰረ",
+      "type": "type_a",
+      "meaning": "-በረረ፣ዱብዱብ አለ(የደም)(የአሞራ)"
+    },
+    {
+      "root": "ነቈረ",
+      "type": "type_a",
+      "meaning": "አንድ ዓይና ኾነ"
+    },
+    {
+      "root": "ነበረ",
+      "type": "type_a",
+      "meaning": "-ተቀመጠ"
+    },
+    {
+      "root": "ነከረ",
+      "type": "type_a",
+      "meaning": "ለየ"
+    },
+    {
+      "root": "ነዘረ",
+      "type": "type_a",
+      "meaning": "ወጋ፣ነከሰ(የአውሬ)"
+    },
+    {
+      "root": "ነጸረ",
+      "type": "type_a",
+      "meaning": "አየ፣ተመለከተ"
+    },
+    {
+      "root": "ነፀረ",
+      "type": "type_a",
+      "meaning": "ለየ፣ሰነጠቀ፣ከፈለ"
+    },
+    {
+      "root": "ነጽረረ",
+      "type": "type_tanbala",
+      "meaning": "ከበደ"
+    },
+    {
+      "root": "አኀረ",
+      "type": "type_a",
+      "meaning": "አንድ አደረገ"
+    },
+    {
+      "root": "አኅሰርሰረ",
+      "type": "type_tanbala",
+      "meaning": "አቅባባ፣ቀባ፣(የውርደት ስም)"
+    },
+    {
+      "root": "አመረ",
+      "type": "type_b",
+      "meaning": "አመለከተ፣ተመለከተ"
+    },
+    {
+      "root": "አምረረ",
+      "type": "type_a",
+      "meaning": "አሳዘነ"
+    },
+    {
+      "root": "አመንዘረ",
+      "type": "type_tanbala",
+      "meaning": "አመነዘረ"
+    },
+    {
+      "root": "አማዕረረ",
+      "type": "type_mahräka",
+      "meaning": "ማረረ"
+    },
+    {
+      "root": "አመዐረዐረ",
+      "type": "type_tanbala",
+      "meaning": "አጣፈጠ"
+    },
+    {
+      "root": "አመዐርዐረ",
+      "type": "type_tanbala",
+      "meaning": "አጣፈጠ"
+    },
+    {
+      "root": "አማዕዘረ",
+      "type": "type_mahräka",
+      "meaning": "አበራ፣አፍለቀለቀ፣አንጸባረቀ"
+    },
+    {
+      "root": "አምዘረ",
+      "type": "type_a",
+      "meaning": "ጠመቀ(የጠላ ብቻ)"
+    },
+    {
+      "root": "አምደረ",
+      "type": "type_a",
+      "meaning": "የጸና"
+    },
+    {
+      "root": "አሰረ",
+      "type": "type_a",
+      "meaning": "አሰረ"
+    },
+    {
+      "root": "ዐሠረ",
+      "type": "type_b",
+      "meaning": "አስር አደረገ"
+    },
+    {
+      "root": "አሥመረ",
+      "type": "type_a",
+      "meaning": "አገለገለ"
+    },
+    {
+      "root": "አስቈረረ",
+      "type": "type_c_o",
+      "meaning": "ተጸየፈ፣አጸየፈ"
+    },
+    {
+      "root": "አስቆረረ",
+      "type": "type_c_o",
+      "meaning": "ተጸየፈ፣አጸየፈ"
+    },
+    {
+      "root": "አስተሐቀረ",
+      "type": "type_a",
+      "meaning": "አቃለለ"
+    },
+    {
+      "root": "አስተመሐረ",
+      "type": "type_a",
+      "meaning": "አማለደ፣ማለደ፣ለመነ"
+    },
+    {
+      "root": "አስተናበረ",
+      "type": "type_a",
+      "meaning": "አዘጋጀ"
+    },
+    {
+      "root": "አስተዳኀረ",
+      "type": "type_a",
+      "meaning": "ወደኋላ አለ፣አከታተለ"
+    },
+    {
+      "root": "እስተፃመረ",
+      "type": "type_a",
+      "meaning": "አጣላ"
+    },
+    {
+      "root": "አስተፃረረ",
+      "type": "type_a",
+      "meaning": "አጣላ"
+    },
+    {
+      "root": "አሥገረ",
+      "type": "type_a",
+      "meaning": "አጠመደ"
+    },
+    {
+      "root": "አብደረ",
+      "type": "type_a",
+      "meaning": "መረጠ"
+    },
+    {
+      "root": "አንከረ",
+      "type": "type_a",
+      "meaning": "አደነቀ"
+    },
+    {
+      "root": "አንዶረረ",
+      "type": "type_c_o",
+      "meaning": "ተጨነቀ፣ጩርቅ ጩርቅ አለ"
+    },
+    {
+      "root": "አንፃረረ",
+      "type": "type_c_o",
+      "meaning": "ተጨነቀ፣ጩርቅ ጩርቅ አለ"
+    },
+    {
+      "root": "አንገርገረ",
+      "type": "type_tanbala",
+      "meaning": "ጣለ፣አፍገመገመ፣ተፍገመገመ(የጋኔን"
+    },
+    {
+      "root": "አንጐረጐረ",
+      "type": "type_tanbala",
+      "meaning": "አንጐራጐረ፣አጕረመረመ፣ተጕረመረመ አንጸረቀተ---ተመለከተ፣አመለከተ፣አሳየ"
+    },
+    {
+      "root": "አእመረ",
+      "type": "type_a",
+      "meaning": "አወቀ"
+    },
+    {
+      "root": "አግመረ",
+      "type": "type_a",
+      "meaning": "ቻለ"
+    },
+    {
+      "root": "አግረረ",
+      "type": "type_b",
+      "meaning": "ገዛ፣አስገዛ"
+    },
+    {
+      "root": "አግበረ",
+      "type": "type_b",
+      "meaning": "ግድ አለ"
+    },
+    {
+      "root": "አጥህረ",
+      "type": "type_a",
+      "meaning": "ጠመቀ፣አጠመቀ፣አጠራ፣አነጻ(የጠላ)"
+    },
+    {
+      "root": "ዐጸረ",
+      "type": "type_b",
+      "meaning": "ጠመቀ(የጠላ)"
+    },
+    {
+      "root": "አፅረረ",
+      "type": "type_a",
+      "meaning": "ሸፈተ"
+    },
+    {
+      "root": "አጽበረ",
+      "type": "type_a",
+      "meaning": "ጭቃ አደረገ፣አቦካ፣አላቆጠ(የጭቃ)"
+    },
+    {
+      "root": "ኰስተረ",
+      "type": "type_tanbala",
+      "meaning": "ጠረገ"
+    },
+    {
+      "root": "አፍቀረ",
+      "type": "type_a",
+      "meaning": "ወደደ"
+    },
+    {
+      "root": "ከብረ",
+      "type": "type_a",
+      "meaning": "ከበረ"
+    },
+    {
+      "root": "ከተረ",
+      "type": "type_a",
+      "meaning": "ከበበ፣ጋረደ፣ከተረ"
+    },
+    {
+      "root": "ወሠረ",
+      "type": "type_b",
+      "meaning": "ገዘገዘ፣ሰነጠቀ"
+    },
+    {
+      "root": "ወቀረ",
+      "type": "type_a",
+      "meaning": "ወቀረ፣አለዘበ(የድንጋይ) ወተረቀደ---ሳበ፣ገተረ፣ዘረጋ(የደጋን፣የመሰንቆ)"
+    },
+    {
+      "root": "ወዘረ",
+      "type": "type_a",
+      "meaning": "ሸለመ፣ለበጠ፣አስጌጠ(የሕንጻ) ወገረቀተ---መታ፣ደበደበ፣ወገረ"
+    },
+    {
+      "root": "ወፈረ",
+      "type": "type_a",
+      "meaning": "ተሰማራ"
+    },
+    {
+      "root": "ዘመረ",
+      "type": "type_b",
+      "meaning": "አመሰገነ፣ዘመረ(የጌታ)"
+    },
+    {
+      "root": "ዘርዘረ",
+      "type": "type_tanbala",
+      "meaning": "በተነ"
+    },
+    {
+      "root": "ዘከረ",
+      "type": "type_b",
+      "meaning": "ስም ጠራ"
+    },
+    {
+      "root": "ዘኮረ",
+      "type": "type_b",
+      "meaning": "ስም ጠራ"
+    },
+    {
+      "root": "ዞረ",
+      "type": "type_b",
+      "meaning": "ዞረ፣ከበበ"
+    },
+    {
+      "root": "ዘውረ",
+      "type": "type_b",
+      "meaning": "ዞረ፣ከበበ"
+    },
+    {
+      "root": "ዘወረ",
+      "type": "type_b",
+      "meaning": "ዞረ፣ከበበ"
+    },
+    {
+      "root": "ዘፈረ",
+      "type": "type_a",
+      "meaning": "ጫፍ ኾነ(የልብስ)"
+    },
+    {
+      "root": "ደኀረ",
+      "type": "type_a",
+      "meaning": "አጨ ደመረቀተ-ጨመረ ደበረቀተገዳምአደረገ ደጐረቀተ-በሳ፣ቀደደ"
+    },
+    {
+      "root": "ገረ",
+      "type": "type_a",
+      "meaning": "ተገዛ"
+    },
+    {
+      "root": "ገረረ",
+      "type": "type_a",
+      "meaning": "ተገዛ"
+    },
+    {
+      "root": "ገዐረ",
+      "type": "type_a",
+      "meaning": "ጮኸ፣ተጨነቀ"
+    },
+    {
+      "root": "ገዘረ",
+      "type": "type_a",
+      "meaning": "ገረዘ"
+    },
+    {
+      "root": "ገየረ",
+      "type": "type_b",
+      "meaning": "ቀባ፣ለሰነ፣ለቀለቀ"
+    },
+    {
+      "root": "ጐጽፈረ",
+      "type": "type_tanbala",
+      "meaning": "አከከ"
+    },
+    {
+      "root": "ጥሕረ",
+      "type": "type_d",
+      "meaning": "ጮኸ(የአንበሳ)"
+    },
+    {
+      "root": "ጠፈረ",
+      "type": "type_b",
+      "meaning": "ታታ(የባጥ)"
+    },
+    {
+      "root": "ፀምረ",
+      "type": "type_b",
+      "meaning": "አንድ አደረገ"
+    },
+    {
+      "root": "ጸበረ",
+      "type": "type_a",
+      "meaning": "ጭቃ አደረገ"
+    },
+    {
+      "root": "ጽዕረ",
+      "type": "type_d",
+      "meaning": "ተጨነቀ"
+    },
+    {
+      "root": "ፀፈረ",
+      "type": "type_b",
+      "meaning": "ታታ፣ጠለፈ(የባጥ)"
+    },
+    {
+      "root": "ጸፈረ",
+      "type": "type_b",
+      "meaning": "ታታ፣ጠለፈ(የባጥ)"
+    },
+    {
+      "root": "ፈከረ",
+      "type": "type_b",
+      "meaning": "ተረጐመ"
+    },
+    {
+      "root": "ፈኀረ",
+      "type": "type_a",
+      "meaning": "አጨ"
+    },
+    {
+      "root": "ፈርፈረ",
+      "type": "type_tanbala",
+      "meaning": "ቆረሰ የመቆራረ ስፍርፍረ"
+    },
+    {
+      "root": "ፈጠረ",
+      "type": "type_a",
+      "meaning": "ፈጠረ"
+    },
+    {
+      "root": "ኀልቀ",
+      "type": "type_a",
+      "meaning": "አለቀ"
+    },
+    {
+      "root": "ኀለቈ",
+      "type": "type_b",
+      "meaning": "ቆጠረ"
+    },
+    {
+      "root": "ሐመቀ",
+      "type": "type_a",
+      "meaning": "ብላሽ ኾነ"
+    },
+    {
+      "root": "ሐነቀ",
+      "type": "type_a",
+      "meaning": "አነቀ ሐንቀቀተን---ተደላ ደስታ አደረገ"
+    },
+    {
+      "root": "ልህቀ",
+      "type": "type_d",
+      "meaning": "አደገ"
+    },
+    {
+      "root": "ሌቀ",
+      "type": "type_b",
+      "meaning": "አለቃ ኾነ"
+    },
+    {
+      "root": "ለይቀ",
+      "type": "type_b",
+      "meaning": "አለቃ ኾነ"
+    },
+    {
+      "root": "ለየቀ",
+      "type": "type_b",
+      "meaning": "አለቃ ኾነ"
+    },
+    {
+      "root": "ለጸቀ",
+      "type": "type_a",
+      "meaning": "አንድ ኾነ፣ተጣበቀ"
+    },
+    {
+      "root": "ለፈቀ",
+      "type": "type_a",
+      "meaning": "አጥብቆ ያዘ"
+    },
+    {
+      "root": "መቀ",
+      "type": "type_a",
+      "meaning": "አንጣጣ"
+    },
+    {
+      "root": "መቀቀ",
+      "type": "type_a",
+      "meaning": "አንጣጣ"
+    },
+    {
+      "root": "መተቀ",
+      "type": "type_a",
+      "meaning": "ጣፈጠ፣ማርማር አ"
+    },
+    {
+      "root": "ሞቀ",
+      "type": "type_a",
+      "meaning": "ሞቀ"
+    },
+    {
+      "root": "መውቀ",
+      "type": "type_a",
+      "meaning": "ሞቀ"
+    },
+    {
+      "root": "መወቀ",
+      "type": "type_a",
+      "meaning": "ሞቀ"
+    },
+    {
+      "root": "መጠቀ",
+      "type": "type_a",
+      "meaning": "ረዘመ"
+    },
+    {
+      "root": "ሠሐቀ",
+      "type": "type_a",
+      "meaning": "ሣቀ"
+    },
+    {
+      "root": "ሰረቀ",
+      "type": "type_a",
+      "meaning": "ሰረቀ"
+    },
+    {
+      "root": "ሠቅሠቀ",
+      "type": "type_a",
+      "meaning": "ከፈለ፣ለየ፣ሠራ(የማቅ፣የመስኮት)"
+    },
+    {
+      "root": "ሰበቀ",
+      "type": "type_a",
+      "meaning": "መታ፣ሰበቀ(የማርሳ)"
+    },
+    {
+      "root": "ሠነቀ",
+      "type": "type_a",
+      "meaning": "ስንቅ ያዘ"
+    },
+    {
+      "root": "ሶቀ",
+      "type": "type_b",
+      "meaning": "ደገፈ(የሚያዝ ነገር)"
+    },
+    {
+      "root": "ሰወቀ",
+      "type": "type_b",
+      "meaning": "ደገፈ(የሚያዝ ነገር)"
+    },
+    {
+      "root": "ሰውቀ",
+      "type": "type_b",
+      "meaning": "ደገፈ(የሚያዝ ነገር)"
+    },
+    {
+      "root": "ርሕቀ",
+      "type": "type_d",
+      "meaning": "ራቀ"
+    },
+    {
+      "root": "ረቀ",
+      "type": "type_a",
+      "meaning": "ረቀቀ፣ቀጠነ"
+    },
+    {
+      "root": "ረቀቀ",
+      "type": "type_a",
+      "meaning": "ረቀቀ፣ቀጠነ"
+    },
+    {
+      "root": "ረፈቀ",
+      "type": "type_a",
+      "meaning": "ተቀመጠ(የድግስ)"
+    },
+    {
+      "root": "በረቀ",
+      "type": "type_a",
+      "meaning": "ብልጭ አለ"
+    },
+    {
+      "root": "ቤደቀ",
+      "type": "type_c_e",
+      "meaning": "ሠራ(የቤት)"
+    },
+    {
+      "root": "ተላጸቀ",
+      "type": "type_a",
+      "meaning": "አንድ ኾነ"
+    },
+    {
+      "root": "ተሰቈ",
+      "type": "type_a",
+      "meaning": "ሣሣ፣ናፈቀ"
+    },
+    {
+      "root": "ተሰቈቈ",
+      "type": "type_a",
+      "meaning": "ሣሣ፣ናፈቀ"
+    },
+    {
+      "root": "ተስቈቈ",
+      "type": "type_a",
+      "meaning": "ሣሣ፣ናፈቀ"
+    },
+    {
+      "root": "ተሣለቀ",
+      "type": "type_a",
+      "meaning": "ተዘባበተ፣ተሣለቀ፣ዘበተ"
+    },
+    {
+      "root": "ተዐርቀ",
+      "type": "type_a",
+      "meaning": "ተራረቀ፣ታረቀ"
+    },
+    {
+      "root": "ተዓርቀ",
+      "type": "type_a",
+      "meaning": "ተራረቀ፣ታረቀ"
+    },
+    {
+      "root": "ተጠወቀ",
+      "type": "type_b",
+      "meaning": "ተከፋ፣አስከፋ"
+    },
+    {
+      "root": "ተጠውቀ",
+      "type": "type_b",
+      "meaning": "ተከፋ፣አስከፋ"
+    },
+    {
+      "root": "ተጽዕቀ",
+      "type": "type_d",
+      "meaning": "ተጨነቀ"
+    },
+    {
+      "root": "ተዳደቀ",
+      "type": "type_a",
+      "meaning": "ተጣላ"
+    },
+    {
+      "root": "ተጸደቀ",
+      "type": "type_b",
+      "meaning": "ተመጻደቀ"
+    },
+    {
+      "root": "ነሰቀ",
+      "type": "type_a",
+      "meaning": "ሰደረ/ደረደረ(የደንጊያ)"
+    },
+    {
+      "root": "ነደቀ",
+      "type": "type_a",
+      "meaning": "ሠራ(የቤት)"
+    },
+    {
+      "root": "ነፈቀ",
+      "type": "type_a",
+      "meaning": "ከፈለ"
+    },
+    {
+      "root": "ናፈቀ",
+      "type": "type_c",
+      "meaning": "ተጠራጠረ"
+    },
+    {
+      "root": "አልጸቀ",
+      "type": "type_a",
+      "meaning": "ደረሰ"
+    },
+    {
+      "root": "ዐመቀ",
+      "type": "type_a",
+      "meaning": "ጥልቅ ኾነ፣ጐደጐደ"
+    },
+    {
+      "root": "ዐሰቀ",
+      "type": "type_b",
+      "meaning": "አሸበ፣ሠራ፣በልብስ ላይ ወርቅ የማፍሰስ"
+    },
+    {
+      "root": "ዐርቀ",
+      "type": "type_a",
+      "meaning": "ተራቆተ"
+    },
+    {
+      "root": "አበቀ",
+      "type": "type_a",
+      "meaning": "ታመመ"
+    },
+    {
+      "root": "ዐነቀ",
+      "type": "type_a",
+      "meaning": "አሰረ(የአንገት)"
+    },
+    {
+      "root": "አንጸብረቀ",
+      "type": "type_tanbala",
+      "meaning": "አንጸባረቀ፣አብረቀረቀ"
+    },
+    {
+      "root": "ዖቀ",
+      "type": "type_b",
+      "meaning": "አወቀ"
+    },
+    {
+      "root": "ዐወቀ",
+      "type": "type_b",
+      "meaning": "አወቀ"
+    },
+    {
+      "root": "ዐውቀ",
+      "type": "type_b",
+      "meaning": "አወቀ"
+    },
+    {
+      "root": "አጥመቀ",
+      "type": "type_a",
+      "meaning": "አጠመቀ"
+    },
+    {
+      "root": "አጥዐቀ",
+      "type": "type_a",
+      "meaning": "አጣበቀ"
+    },
+    {
+      "root": "ወሰቀ",
+      "type": "type_b",
+      "meaning": "ሳበ/ገተረ(የቀሰት)"
+    },
+    {
+      "root": "ወረቀ",
+      "type": "type_a",
+      "meaning": "ተፋ"
+    },
+    {
+      "root": "ወድቀ",
+      "type": "type_a",
+      "meaning": "ወደቀ"
+    },
+    {
+      "root": "ዘሐቀ",
+      "type": "type_a",
+      "meaning": "ገፈፈ(የቆዳ)"
+    },
+    {
+      "root": "ዘረቀ",
+      "type": "type_a",
+      "meaning": "አቧለተ(የዋዛ)"
+    },
+    {
+      "root": "ዘርዘቀ",
+      "type": "type_tanbala",
+      "meaning": "ነፋ(የወንፊት)"
+    },
+    {
+      "root": "ደመቀ",
+      "type": "type_a",
+      "meaning": "ወጋ"
+    },
+    {
+      "root": "ደቀ",
+      "type": "type_a",
+      "meaning": "ልጅ ኾነ"
+    },
+    {
+      "root": "ደቀቀ",
+      "type": "type_a",
+      "meaning": "ልጅ ኾነ"
+    },
+    {
+      "root": "ደደቀ",
+      "type": "type_a",
+      "meaning": "ተጣላ፣አደጋጣለ፣ከተፍ አለ"
+    },
+    {
+      "root": "ጉሕቀ",
+      "type": "type_d",
+      "meaning": "ጐበጠ፣አጐበጠ፣አጐነበሰ"
+    },
+    {
+      "root": "ጠለቀ",
+      "type": "type_a",
+      "meaning": "አደፈ፣ረከሰ"
+    },
+    {
+      "root": "ጠየቀ",
+      "type": "type_a",
+      "meaning": "ተረዳ፣ጠየቀ"
+    },
+    {
+      "root": "ጠበቀ",
+      "type": "type_a",
+      "meaning": "ያዘ"
+    },
+    {
+      "root": "ጠነቀቀ",
+      "type": "type_tanbala",
+      "meaning": "ጻፈ"
+    },
+    {
+      "root": "ጽሕቀ",
+      "type": "type_d",
+      "meaning": "ተጋ"
+    },
+    {
+      "root": "ጸፈቀ",
+      "type": "type_a",
+      "meaning": "ጀጐለ(የአጥር)"
+    },
+    {
+      "root": "ጸረቀ",
+      "type": "type_a",
+      "meaning": "ጋገረ"
+    },
+    {
+      "root": "ጸንቀቀ",
+      "type": "type_tanbala",
+      "meaning": "ነከረ፣ዘፈቀ፣ለወሰ"
+    },
+    {
+      "root": "ፈሐቀ",
+      "type": "type_a",
+      "meaning": "ፋቀ፣ሐቅሐቅ አለ፣ወደላይ መተንፈስ"
+    },
+    {
+      "root": "ጸድቀ",
+      "type": "type_a",
+      "meaning": "እውነተኛ ኾነ"
+    },
+    {
+      "root": "ፈረቀ",
+      "type": "type_a",
+      "meaning": "ከፈለ"
+    },
+    {
+      "root": "ሐለበ",
+      "type": "type_a",
+      "meaning": "አለበ"
+    },
+    {
+      "root": "ሐብሐበ",
+      "type": "type_tanbala",
+      "meaning": "ማለ"
+    },
+    {
+      "root": "ሐበሐበ",
+      "type": "type_tanbala",
+      "meaning": "ማለ"
+    },
+    {
+      "root": "ሐሰበ",
+      "type": "type_b",
+      "meaning": "አሰበ"
+    },
+    {
+      "root": "ሐበ",
+      "type": "type_a",
+      "meaning": "ሀብሀብ አለ ከዚያም ከዚያም ረገጠ፣ወዳጅ ኾነ"
+    },
+    {
+      "root": "ሐበበ",
+      "type": "type_a",
+      "meaning": "ሀብሀብ አለ ከዚያም ከዚያም ረገጠ፣ወዳጅ ኾነ"
+    },
+    {
+      "root": "ሐንበበ",
+      "type": "type_tanbala",
+      "meaning": "አፈረ"
+    },
+    {
+      "root": "ሐንከበ",
+      "type": "type_tanbala",
+      "meaning": "አሰፈረ"
+    },
+    {
+      "root": "ሔበ",
+      "type": "type_b",
+      "meaning": "ቀዳ፣ጠለቀ(የውኃ)"
+    },
+    {
+      "root": "ሐይበ",
+      "type": "type_b",
+      "meaning": "ቀዳ፣ጠለቀ(የውኃ)"
+    },
+    {
+      "root": "ሐየበ",
+      "type": "type_b",
+      "meaning": "ቀዳ፣ጠለቀ(የውኃ)"
+    },
+    {
+      "root": "ሐዘበ",
+      "type": "type_b",
+      "meaning": "ጠረጠረ"
+    },
+    {
+      "root": "ሐጠበ",
+      "type": "type_b",
+      "meaning": "ለቀመ(የእንጨት)"
+    },
+    {
+      "root": "ኀፀበ",
+      "type": "type_a",
+      "meaning": "አጠበ፣አጠረ፣አነጻ"
+    },
+    {
+      "root": "ልህበ",
+      "type": "type_d",
+      "meaning": "ወዛ፣ላበ፣ሞቀ፣ተኮሰ"
+    },
+    {
+      "root": "ለበ",
+      "type": "type_a",
+      "meaning": "ሸበበ"
+    },
+    {
+      "root": "ለበበ",
+      "type": "type_a",
+      "meaning": "ሸበበ"
+    },
+    {
+      "root": "ለገበ",
+      "type": "type_a",
+      "meaning": "ሰፋ(የአቅማዳ)"
+    },
+    {
+      "root": "መረበ",
+      "type": "type_a",
+      "meaning": "ጣለ(የዓሣ)"
+    },
+    {
+      "root": "ማዕሰበ",
+      "type": "type_mahräka",
+      "meaning": "ገለሞተ"
+    },
+    {
+      "root": "መገበ",
+      "type": "type_b",
+      "meaning": "ሾመ(የሹመት)"
+    },
+    {
+      "root": "ሰሐበ",
+      "type": "type_a",
+      "meaning": "ጐተተ፣ሳበ"
+    },
+    {
+      "root": "ሣህበበ",
+      "type": "type_mahräka",
+      "meaning": "ሻገተ፣ተበላሸ"
+    },
+    {
+      "root": "ሰለበ",
+      "type": "type_a",
+      "meaning": "ሰለበ"
+    },
+    {
+      "root": "ሠረበ",
+      "type": "type_a",
+      "meaning": "ማገ፣ጠጣ፣መጠጠ"
+    },
+    {
+      "root": "ሠአበ",
+      "type": "type_a",
+      "meaning": "ተከተለ ሥእበክህ---ተዳደፈ፣ረከሰ"
+    },
+    {
+      "root": "ሤበ",
+      "type": "type_b",
+      "meaning": "ሸበተ(የሰውብቻ)"
+    },
+    {
+      "root": "ሠይበ",
+      "type": "type_b",
+      "meaning": "ሸበተ(የሰውብቻ)"
+    },
+    {
+      "root": "ሠየበ",
+      "type": "type_b",
+      "meaning": "ሸበተ(የሰውብቻ)"
+    },
+    {
+      "root": "ረበ",
+      "type": "type_a",
+      "meaning": "ረበበ(የመልአክ) (የደመና)ክንፍያለው ነገር ሁሉ"
+    },
+    {
+      "root": "ረበበ",
+      "type": "type_a",
+      "meaning": "ረበበ(የመልአክ) (የደመና)ክንፍያለው ነገር ሁሉ"
+    },
+    {
+      "root": "ረከበ",
+      "type": "type_a",
+      "meaning": "አገኘ"
+    },
+    {
+      "root": "ረጥበ",
+      "type": "type_a",
+      "meaning": "ረጠበ"
+    },
+    {
+      "root": "ቀለበ",
+      "type": "type_a",
+      "meaning": "ዋጠ"
+    },
+    {
+      "root": "ቀረበ",
+      "type": "type_a",
+      "meaning": "ቆረበ"
+    },
+    {
+      "root": "ቄረበ",
+      "type": "type_c_o",
+      "meaning": "ቆረበ"
+    },
+    {
+      "root": "ቈረበ",
+      "type": "type_c_o",
+      "meaning": "ቆረበ"
+    },
+    {
+      "root": "ቆረበ",
+      "type": "type_c_o",
+      "meaning": "ቆረበ"
+    },
+    {
+      "root": "ቀርበ",
+      "type": "type_a",
+      "meaning": "ቀረበ"
+    },
+    {
+      "root": "ቀጸበ",
+      "type": "type_a",
+      "meaning": "ጠቀሰ(የጥቅሻ)"
+    },
+    {
+      "root": "ተሐዘበ",
+      "type": "type_b",
+      "meaning": "ታዘበ"
+    },
+    {
+      "root": "ተመንደበ",
+      "type": "type_tanbala",
+      "meaning": "ተቸገረ፣ተጨነቀ፣ተጠበበ"
+    },
+    {
+      "root": "ተማዕሰበ",
+      "type": "type_mahräka",
+      "meaning": "ገለሞተ"
+    },
+    {
+      "root": "ተመገበ",
+      "type": "type_b",
+      "meaning": "በላ፣ተመገበ"
+    },
+    {
+      "root": "ተዐጽበ",
+      "type": "type_a",
+      "meaning": "ተጨነቀ፣ተደነቀ"
+    },
+    {
+      "root": "ተጠበበ",
+      "type": "type_a",
+      "meaning": "ብልሃተኛ ኾነ፣ተተነኳኮለ"
+    },
+    {
+      "root": "ተጥበበ",
+      "type": "type_a",
+      "meaning": "ብልሃተኛ ኾነ፣ተተነኳኮለ"
+    },
+    {
+      "root": "ነሀበ",
+      "type": "type_a",
+      "meaning": "ሠራ፣አነበ(የብረታ ብረት)"
+    },
+    {
+      "root": "ነቀበ",
+      "type": "type_a",
+      "meaning": "ለየ"
+    },
+    {
+      "root": "ነበበ",
+      "type": "type_a",
+      "meaning": "ተናገረ፣ነገረ"
+    },
+    {
+      "root": "ነጥበ",
+      "type": "type_a",
+      "meaning": "ነጠበ"
+    },
+    {
+      "root": "ነጠበ",
+      "type": "type_a",
+      "meaning": "ነጠበ"
+    },
+    {
+      "root": "አማዕቀበ",
+      "type": "type_mahräka",
+      "meaning": "አደራ አለ"
+    },
+    {
+      "root": "አማዕተበ",
+      "type": "type_mahräka",
+      "meaning": "አመሳቀለ፣አማተበ"
+    },
+    {
+      "root": "አስተርከበ",
+      "type": "type_a",
+      "meaning": "አስተዋለ"
+    },
+    {
+      "root": "አስተአዘበ",
+      "type": "type_a",
+      "meaning": "ሸና፣አፈሰሰ"
+    },
+    {
+      "root": "አስተዐጸበ",
+      "type": "type_a",
+      "meaning": "አደነቀ፣አስጨነቀ"
+    },
+    {
+      "root": "ዐሰበ",
+      "type": "type_a",
+      "meaning": "ሠጠ(የደሞዝ)"
+    },
+    {
+      "root": "ዐቀበ",
+      "type": "type_a",
+      "meaning": "ጠረገ"
+    },
+    {
+      "root": "ዐተበ",
+      "type": "type_a",
+      "meaning": "ባረከ"
+    },
+    {
+      "root": "ዐንሰበ",
+      "type": "type_tanbala",
+      "meaning": "አሟረተ"
+    },
+    {
+      "root": "አንበበ",
+      "type": "type_a",
+      "meaning": "አነበበ"
+    },
+    {
+      "root": "አንጠብጠበ",
+      "type": "type_tanbala",
+      "meaning": "አንጠበጠበ፣ተንጠበጠበ"
+    },
+    {
+      "root": "አውሰበ",
+      "type": "type_a",
+      "meaning": "አገባ"
+    },
+    {
+      "root": "አውገበ",
+      "type": "type_a",
+      "meaning": "አኮረፈ(የእንቅልፍ)"
+    },
+    {
+      "root": "አውጸበ",
+      "type": "type_a",
+      "meaning": "ሠራ(የቀለበት)"
+    },
+    {
+      "root": "ዐዘበ",
+      "type": "type_b",
+      "meaning": "ቆነነ፣ሠራ(የጭራ)"
+    },
+    {
+      "root": "አጠበ",
+      "type": "type_a",
+      "meaning": "ለቀመ(የእንጨት)"
+    },
+    {
+      "root": "ዐጸበ",
+      "type": "type_a",
+      "meaning": "አስጨነቀ"
+    },
+    {
+      "root": "አጽሐበ",
+      "type": "type_a",
+      "meaning": "ዘበዘበ፣ነዘነዘ፣ጨቀጨቀ፣ነገር አበዛ"
+    },
+    {
+      "root": "አሰበ",
+      "type": "type_a",
+      "meaning": "ገረዘ፣ቆረጠ"
+    },
+    {
+      "root": "ከረበ",
+      "type": "type_a",
+      "meaning": "ለቀመ፣ሰበሰበ(የወይን)"
+    },
+    {
+      "root": "ኬረበ",
+      "type": "type_c_e",
+      "meaning": "፬ አይነትአድርጎ ጠረበ ኰረበ/ከረበ/ኮረበጦመ---ሰቀለ"
+    },
+    {
+      "root": "ከበ",
+      "type": "type_a",
+      "meaning": "ከበበ(የማጀብ) ከብከበተን---ሰርግ አደረገ"
+    },
+    {
+      "root": "ከበበ",
+      "type": "type_a",
+      "meaning": "ከበበ(የማጀብ) ከብከበተን---ሰርግ አደረገ"
+    },
+    {
+      "root": "ከተበ",
+      "type": "type_a",
+      "meaning": "ጻፈ፣ጠለሰመ፤"
+    },
+    {
+      "root": "ከዐበ",
+      "type": "type_a",
+      "meaning": "ሰደረ፣ካበ፣ደረደረ"
+    },
+    {
+      "root": "ወከበ",
+      "type": "type_a",
+      "meaning": "ቸኰለ፣ተጋ"
+    },
+    {
+      "root": "ወጸበ",
+      "type": "type_a",
+      "meaning": "ሠራ(የቀለበት)"
+    },
+    {
+      "root": "ዘረበ",
+      "type": "type_a",
+      "meaning": "መታ፣ቀጠቀጠ(የመዶሻ)"
+    },
+    {
+      "root": "ዘገበ",
+      "type": "type_a",
+      "meaning": "ሰበሰበ፣አከማቸ(የገንዘብ)"
+    },
+    {
+      "root": "የበበ",
+      "type": "type_b",
+      "meaning": "ዘፈነ፣እል እል አለ፣አመሰገነ፣ዘመረ"
+    },
+    {
+      "root": "ደበ",
+      "type": "type_a",
+      "meaning": "ዘረጋ(የጥላ)(የዝንቦ)"
+    },
+    {
+      "root": "ደበበ",
+      "type": "type_a",
+      "meaning": "ዘረጋ(የጥላ)(የዝንቦ)"
+    },
+    {
+      "root": "ደብደበ",
+      "type": "type_tanbala",
+      "meaning": "ነፋ(የሆድ)"
+    },
+    {
+      "root": "ደየበ",
+      "type": "type_b",
+      "meaning": "ወጣ(አረገ)"
+    },
+    {
+      "root": "ገለበ",
+      "type": "type_a",
+      "meaning": "ሸሸ፣ጋለበ፣ነዳ፣አጠመደ"
+    },
+    {
+      "root": "ገልበበ",
+      "type": "type_tanbala",
+      "meaning": "ሸፈነ፣ከደነ፣አለበሰ፣አከናነበ"
+    },
+    {
+      "root": "ጠቀበ",
+      "type": "type_a",
+      "meaning": "ሰፋ፣ጠቀመ፣(የልብስ)"
+    },
+    {
+      "root": "ጠበ",
+      "type": "type_a",
+      "meaning": "ብልሀተኛ ኾነ"
+    },
+    {
+      "root": "ጠበበ",
+      "type": "type_a",
+      "meaning": "ብልሀተኛ ኾነ"
+    },
+    {
+      "root": "ጠበጠበ",
+      "type": "type_tanbala",
+      "meaning": "ጻፈ"
+    },
+    {
+      "root": "ጠብጠበ",
+      "type": "type_tanbala",
+      "meaning": "ገረፈ"
+    },
+    {
+      "root": "ጤበ",
+      "type": "type_b",
+      "meaning": "ኮላ፣ኳለ፣ቀባ"
+    },
+    {
+      "root": "ጠይበ",
+      "type": "type_b",
+      "meaning": "ኮላ፣ኳለ፣ቀባ"
+    },
+    {
+      "root": "ጠየበ",
+      "type": "type_b",
+      "meaning": "ኮላ፣ኳለ፣ቀባ"
+    },
+    {
+      "root": "ጸለበ",
+      "type": "type_a",
+      "meaning": "ሰቀለ"
+    },
+    {
+      "root": "ጸረበ",
+      "type": "type_a",
+      "meaning": "ጠረበ"
+    },
+    {
+      "root": "ጸበ",
+      "type": "type_a",
+      "meaning": "ጠበበ(የቦታ)"
+    },
+    {
+      "root": "ጸበበ",
+      "type": "type_a",
+      "meaning": "ጠበበ(የቦታ)"
+    },
+    {
+      "root": "ጾበ",
+      "type": "type_b",
+      "meaning": "ጨለጠ፣ጠጣ"
+    },
+    {
+      "root": "ጾውበ",
+      "type": "type_b",
+      "meaning": "ጨለጠ፣ጠጣ"
+    },
+    {
+      "root": "ጸወበ",
+      "type": "type_b",
+      "meaning": "ጨለጠ፣ጠጣ"
+    },
+    {
+      "root": "ጸግበ",
+      "type": "type_a",
+      "meaning": "ጠገበ"
+    },
+    {
+      "root": "ሐለተ",
+      "type": "type_b",
+      "meaning": "መለመለ"
+    },
+    {
+      "root": "ሐመተ",
+      "type": "type_b",
+      "meaning": "አከሰለ(የከሰል)"
+    },
+    {
+      "root": "ሐርበተ",
+      "type": "type_tanbala",
+      "meaning": "ተስበደበደ/ተንበደበደ(የፍርሀት)"
+    },
+    {
+      "root": "ኀቤተ",
+      "type": "type_a",
+      "meaning": "አገለገለ"
+    },
+    {
+      "root": "ኀበተ",
+      "type": "type_a",
+      "meaning": "አገለገለ"
+    },
+    {
+      "root": "ሐተ",
+      "type": "type_a",
+      "meaning": "መረመረ፣ፈለገ"
+    },
+    {
+      "root": "ሐተተ",
+      "type": "type_a",
+      "meaning": "መረመረ፣ፈለገ"
+    },
+    {
+      "root": "ሐውከተ",
+      "type": "type_tanbala",
+      "meaning": "ግርግር አለ"
+    },
+    {
+      "root": "ሐዘተ",
+      "type": "type_b",
+      "meaning": "-መደበ(የመደብ)"
+    },
+    {
+      "root": "ለተ",
+      "type": "type_a",
+      "meaning": "ዲዳ ኾነ"
+    },
+    {
+      "root": "ለተተ",
+      "type": "type_a",
+      "meaning": "ዲዳ ኾነ"
+    },
+    {
+      "root": "ለግነተ",
+      "type": "type_tanbala",
+      "meaning": "አገነፋ"
+    },
+    {
+      "root": "መመተ",
+      "type": "type_b",
+      "meaning": "አፈገፈገ፣ፈርቶ ሸሸ፤"
+    },
+    {
+      "root": "መሥረተ",
+      "type": "type_tanbala",
+      "meaning": "ጀመረ ሞተ/መውተ/መወተቀተ/ቀደ-ሞተ መጽወተተን-መጸወተ፣ሰጠ"
+    },
+    {
+      "root": "ስሕተ",
+      "type": "type_d",
+      "meaning": "ሳተ"
+    },
+    {
+      "root": "ሰለተ",
+      "type": "type_b",
+      "meaning": "ዘበተ"
+    },
+    {
+      "root": "ሴረተ",
+      "type": "type_c_e",
+      "meaning": "ሸመተ"
+    },
+    {
+      "root": "ሰንኆተ",
+      "type": "type_tanbala",
+      "meaning": "በጣ(የሰውነት)"
+    },
+    {
+      "root": "ተንኀተ",
+      "type": "type_tanbala",
+      "meaning": "በጣ(የሰውነት)"
+    },
+    {
+      "root": "ሰንበተ",
+      "type": "type_tanbala",
+      "meaning": "አከበረ(የሰንበት)"
+    },
+    {
+      "root": "ሰንከተ",
+      "type": "type_tanbala",
+      "meaning": "ጋገረ"
+    },
+    {
+      "root": "ሠከተ",
+      "type": "type_a",
+      "meaning": "ወጋ"
+    },
+    {
+      "root": "ሰኰተ",
+      "type": "type_b",
+      "meaning": "ወለወለ፣ሰራ(የመንገድ)"
+    },
+    {
+      "root": "ሰኮተ",
+      "type": "type_b",
+      "meaning": "ወለወለ፣ሰራ(የመንገድ)"
+    },
+    {
+      "root": "ሰከተ",
+      "type": "type_b",
+      "meaning": "ወለወለ፣ሰራ(የመንገድ)"
+    },
+    {
+      "root": "ሰክተተ",
+      "type": "type_tanbala",
+      "meaning": "ጣደ"
+    },
+    {
+      "root": "ረአተ",
+      "type": "type_a",
+      "meaning": "ጋገረ(የራት)"
+    },
+    {
+      "root": "ረወተ",
+      "type": "type_a",
+      "meaning": "ወለወለ፣አሸ"
+    },
+    {
+      "root": "ረውተ",
+      "type": "type_a",
+      "meaning": "ወለወለ፣አሸ"
+    },
+    {
+      "root": "ቀብተተ",
+      "type": "type_tanbala",
+      "meaning": "ነፋ"
+    },
+    {
+      "root": "ቀተ",
+      "type": "type_a",
+      "meaning": "ቅትት አለ(የመቃሰት)"
+    },
+    {
+      "root": "ቀተተ",
+      "type": "type_a",
+      "meaning": "ቅትት አለ(የመቃሰት)"
+    },
+    {
+      "root": "ቀነተ",
+      "type": "type_a",
+      "meaning": "ታጠቀ"
+    },
+    {
+      "root": "ቀፈተ",
+      "type": "type_a",
+      "meaning": "ደነደነ"
+    },
+    {
+      "root": "ብሕተ",
+      "type": "type_d",
+      "meaning": "ሰለጠነ"
+    },
+    {
+      "root": "በነተ",
+      "type": "type_b",
+      "meaning": "ገበረ"
+    },
+    {
+      "root": "በዐተ",
+      "type": "type_a",
+      "meaning": "ገባ"
+    },
+    {
+      "root": "በዘተ",
+      "type": "type_b",
+      "meaning": "አባዘተ"
+    },
+    {
+      "root": "ቤተ",
+      "type": "type_b",
+      "meaning": "አደረ"
+    },
+    {
+      "root": "በይተ",
+      "type": "type_b",
+      "meaning": "አደረ"
+    },
+    {
+      "root": "በየተ",
+      "type": "type_b",
+      "meaning": "አደረ"
+    },
+    {
+      "root": "ተሠይመተ",
+      "type": "type_tanbala",
+      "meaning": "ሥልጣን ተቀበለ፣ተሾመ"
+    },
+    {
+      "root": "ተትሕተ",
+      "type": "type_d",
+      "meaning": "ተዋረደ፣ትሑት ኾነ"
+    },
+    {
+      "root": "ተአተተ",
+      "type": "type_b",
+      "meaning": "ወገደ፣ራቀ"
+    },
+    {
+      "root": "ተጋህረተ",
+      "type": "type_mahräka",
+      "meaning": "ተጨናነቀ(የቦታ ጥበት)"
+    },
+    {
+      "root": "ነሠተ",
+      "type": "type_a",
+      "meaning": "አፈረሰ፣ፈነቀለ፣ነቀለ"
+    },
+    {
+      "root": "ነቈተ",
+      "type": "type_a",
+      "meaning": "ሠራ(የቤት)"
+    },
+    {
+      "root": "ነአተ",
+      "type": "type_a",
+      "meaning": "ጋገረ"
+    },
+    {
+      "root": "ዐመተ",
+      "type": "type_b",
+      "meaning": "ከነዳ፣ለካ(የክንድ)"
+    },
+    {
+      "root": "አመርቈተ",
+      "type": "type_tanbala",
+      "meaning": "አጐተነ(የጎፈሬ)"
+    },
+    {
+      "root": "አመአተ",
+      "type": "type_a",
+      "meaning": "መቶ"
+    },
+    {
+      "root": "አምአተ",
+      "type": "type_a",
+      "meaning": "መቶ"
+    },
+    {
+      "root": "አስተተ",
+      "type": "type_a",
+      "meaning": "አቃለለ፣ናቀ"
+    },
+    {
+      "root": "አክሞተተ",
+      "type": "type_c_o",
+      "meaning": "አሳጠረ"
+    },
+    {
+      "root": "ዐገተ",
+      "type": "type_a",
+      "meaning": "ከበበ"
+    },
+    {
+      "root": "አእተተ",
+      "type": "type_a",
+      "meaning": "አስወገደ"
+    },
+    {
+      "root": "አካዕበተ",
+      "type": "type_mahräka",
+      "meaning": "እጽፍ ድርብ አደረገ"
+    },
+    {
+      "root": "አእኰተ",
+      "type": "type_a",
+      "meaning": "አመሰገነ"
+    },
+    {
+      "root": "አውከተ",
+      "type": "type_a",
+      "meaning": "ግር ግር አለ"
+    },
+    {
+      "root": "አጻመተ",
+      "type": "type_c",
+      "meaning": "ጨረሰ፣አጠፋ፣ፈጀ"
+    },
+    {
+      "root": "ከሠተ",
+      "type": "type_a",
+      "meaning": "ገለጠ"
+    },
+    {
+      "root": "ከበተ",
+      "type": "type_a",
+      "meaning": "ሸሸገ"
+    },
+    {
+      "root": "ከንተተ",
+      "type": "type_tanbala",
+      "meaning": "አሳጠረ"
+    },
+    {
+      "root": "ዝህተ",
+      "type": "type_d",
+      "meaning": "ፈላ"
+    },
+    {
+      "root": "ዘመተ",
+      "type": "type_tanbala",
+      "meaning": "ጐዝጐዘ፣አነጠፈ"
+    },
+    {
+      "root": "ዘወተ",
+      "type": "type_tanbala",
+      "meaning": "ጐዝጐዘ፣አነጠፈ"
+    },
+    {
+      "root": "ዘርበተ",
+      "type": "type_tanbala",
+      "meaning": "ጐዝጐዘ፣አነጠፈ"
+    },
+    {
+      "root": "ዘፈተ",
+      "type": "type_a",
+      "meaning": "ደፈደፈ"
+    },
+    {
+      "root": "ደበተ",
+      "type": "type_b",
+      "meaning": "አጐንብሶ ሄደ"
+    },
+    {
+      "root": "ገብተተ",
+      "type": "type_tanbala",
+      "meaning": "አረጀ"
+    },
+    {
+      "root": "ገብነተ",
+      "type": "type_tanbala",
+      "meaning": "አሞቀ(የዓይብ)"
+    },
+    {
+      "root": "ገዐተ",
+      "type": "type_a",
+      "meaning": "አገነፋ(የገንፎ)"
+    },
+    {
+      "root": "ጸለተ",
+      "type": "type_b",
+      "meaning": "ጋገረ"
+    },
+    {
+      "root": "ጸበተ",
+      "type": "type_b",
+      "meaning": "ዋኘ"
+    },
+    {
+      "root": "ፈተተ",
+      "type": "type_a",
+      "meaning": "ቆረሰ፣ፈተተ"
+    },
+    {
+      "root": "ፈየተ",
+      "type": "type_b",
+      "meaning": "ቀማ"
+    },
+    {
+      "root": "ሐልየነ",
+      "type": "type_tanbala",
+      "meaning": "መማለጃ ሰጠ"
+    },
+    {
+      "root": "ኀበነ",
+      "type": "type_b",
+      "meaning": "ጠመጠመ"
+    },
+    {
+      "root": "ሐዘነ",
+      "type": "type_a",
+      "meaning": "አዘነ"
+    },
+    {
+      "root": "ሀይመነ",
+      "type": "type_tanbala",
+      "meaning": "አመነ፣አሳመነ"
+    },
+    {
+      "root": "ሐይደነ",
+      "type": "type_tanbala",
+      "meaning": "አበደ"
+    },
+    {
+      "root": "ሐፀነ",
+      "type": "type_a",
+      "meaning": "አሳደገ"
+    },
+    {
+      "root": "ሐፈነ",
+      "type": "type_a",
+      "meaning": "ዘገነ፣አፈሰ"
+    },
+    {
+      "root": "ለሰነ",
+      "type": "type_b",
+      "meaning": "ተናገረ(የልሳን)"
+    },
+    {
+      "root": "ለጠነ",
+      "type": "type_a",
+      "meaning": "አመሰገነ"
+    },
+    {
+      "root": "መሐነ",
+      "type": "type_a",
+      "meaning": "እጅነሳ"
+    },
+    {
+      "root": "ማሰነ",
+      "type": "type_c",
+      "meaning": "ጠፋ"
+    },
+    {
+      "root": "መክነ",
+      "type": "type_a",
+      "meaning": "መካን ኾነ"
+    },
+    {
+      "root": "መዝገነ",
+      "type": "type_tanbala",
+      "meaning": "አመሰገነ"
+    },
+    {
+      "root": "መጠነ",
+      "type": "type_b",
+      "meaning": "ለካ፣ሰፈረ"
+    },
+    {
+      "root": "ስኅነ",
+      "type": "type_d",
+      "meaning": "ሞቀ፣ተኰሰ"
+    },
+    {
+      "root": "ሰሙነ",
+      "type": "type_b",
+      "meaning": "ስምንት አደረገ"
+    },
+    {
+      "root": "ሰሰነ",
+      "type": "type_b",
+      "meaning": "ትርፍርፍ አለ፣ሴሰኛ ኾነ"
+    },
+    {
+      "root": "ሰበነ",
+      "type": "type_a",
+      "meaning": "ጠመጠመ"
+    },
+    {
+      "root": "ሤነ",
+      "type": "type_b",
+      "meaning": "ሸና"
+    },
+    {
+      "root": "ሠይነ",
+      "type": "type_b",
+      "meaning": "ሸና"
+    },
+    {
+      "root": "ሠየነ",
+      "type": "type_b",
+      "meaning": "ሸና"
+    },
+    {
+      "root": "ረሐነ",
+      "type": "type_a",
+      "meaning": "ጫነ"
+    },
+    {
+      "root": "ስእነ",
+      "type": "type_d",
+      "meaning": "ደከመ"
+    },
+    {
+      "root": "ሦነ",
+      "type": "type_b",
+      "meaning": "አለገገ"
+    },
+    {
+      "root": "ሠውነ",
+      "type": "type_b",
+      "meaning": "አለገገ"
+    },
+    {
+      "root": "ሠወነ",
+      "type": "type_b",
+      "meaning": "አለገገ"
+    },
+    {
+      "root": "ሰፈነ",
+      "type": "type_a",
+      "meaning": "ገዛ(የሰው)"
+    },
+    {
+      "root": "ረስነ",
+      "type": "type_a",
+      "meaning": "ጋለ"
+    },
+    {
+      "root": "ረበነ",
+      "type": "type_b",
+      "meaning": "አስተማረ"
+    },
+    {
+      "root": "ረገነ",
+      "type": "type_a",
+      "meaning": "ቀዘፈ(የመርከብ)"
+    },
+    {
+      "root": "ረጠነ",
+      "type": "type_a",
+      "meaning": "መድኃኒት አደረገ(የከብት፣የበግ)"
+    },
+    {
+      "root": "ረጥነ",
+      "type": "type_a",
+      "meaning": "መድኃኒት አደረገ(የከብት፣የበግ)"
+    },
+    {
+      "root": "ቀነ",
+      "type": "type_b",
+      "meaning": "ቀኖናያዘ/ሰጠ፣ሕግ ሠራ"
+    },
+    {
+      "root": "ቀነነ",
+      "type": "type_b",
+      "meaning": "ቀኖናያዘ/ሰጠ፣ሕግ ሠራ"
+    },
+    {
+      "root": "ቈንቈነ",
+      "type": "type_tanbala",
+      "meaning": "ነቀዘ"
+    },
+    {
+      "root": "ቀዐነ",
+      "type": "type_a",
+      "meaning": "ጠመመ፣ጠበበ፣ጨነቀ"
+    },
+    {
+      "root": "፤በነ",
+      "type": "type_a",
+      "meaning": "በነነ"
+    },
+    {
+      "root": "በነነ",
+      "type": "type_a",
+      "meaning": "በነነ"
+    },
+    {
+      "root": "በየነ",
+      "type": "type_b",
+      "meaning": "ፈረደ"
+    },
+    {
+      "root": "በደነ",
+      "type": "type_a",
+      "meaning": "ወደቀ፣በድን ኾነ(የሥጋ)"
+    },
+    {
+      "root": "ተመስከነ",
+      "type": "type_tanbala",
+      "meaning": "ተቸገረ"
+    },
+    {
+      "root": "ተመየነ",
+      "type": "type_a",
+      "meaning": "ተንኰለኛ ኾነ፣ተተነኳኰለ"
+    },
+    {
+      "root": "ተመንገነ",
+      "type": "type_a",
+      "meaning": "ተንኰለኛ ኾነ፣ተተነኳኰለ"
+    },
+    {
+      "root": "ተስእነ",
+      "type": "type_a",
+      "meaning": "ተጫማ"
+    },
+    {
+      "root": "ተሠአነ",
+      "type": "type_a",
+      "meaning": "ተጫማ"
+    },
+    {
+      "root": "ተነ",
+      "type": "type_a",
+      "meaning": "ወጣ፣ተነነ፣ተበተነ፣በነነ(የጉም)"
+    },
+    {
+      "root": "ተነነ",
+      "type": "type_a",
+      "meaning": "ወጣ፣ተነነ፣ተበተነ፣በነነ(የጉም)"
+    },
+    {
+      "root": "ተንተነ",
+      "type": "type_tanbala",
+      "meaning": "ፍግምግም አለ(የመውደቅ)"
+    },
+    {
+      "root": "ተዐየነ",
+      "type": "type_a",
+      "meaning": "ተከታተመ"
+    },
+    {
+      "root": "ተዐይነ",
+      "type": "type_a",
+      "meaning": "ተከታተመ"
+    },
+    {
+      "root": "ተኳነነ",
+      "type": "type_a",
+      "meaning": "ተፈራረደ፣ተዋቀሰ"
+    },
+    {
+      "root": "ቶነ",
+      "type": "type_b",
+      "meaning": "ዘመነ በልግ ኾነ"
+    },
+    {
+      "root": "ተውነ",
+      "type": "type_b",
+      "meaning": "ዘመነ በልግ ኾነ"
+    },
+    {
+      "root": "ተወነ",
+      "type": "type_b",
+      "meaning": "ዘመነ በልግ ኾነ"
+    },
+    {
+      "root": "ቴገነ",
+      "type": "type_c_e",
+      "meaning": "ጐለተ(የጉልቻ)"
+    },
+    {
+      "root": "ተክህነ",
+      "type": "type_d",
+      "meaning": "አገለገለ(የቤተክርስቲያን)"
+    },
+    {
+      "root": "ተደየነ",
+      "type": "type_b",
+      "meaning": "ሞተ(የነፍስ ሞት)"
+    },
+    {
+      "root": "ተደይነ",
+      "type": "type_b",
+      "meaning": "ሞተ(የነፍስ ሞት)"
+    },
+    {
+      "root": "ተጽዕነ",
+      "type": "type_d",
+      "meaning": "ተጫነ"
+    },
+    {
+      "root": "ተጸወነ",
+      "type": "type_b",
+      "meaning": "ተጠጋ፣አስጠጋ"
+    },
+    {
+      "root": "ቴፈነ",
+      "type": "type_c_e",
+      "meaning": "ገረፈ(የወይን)"
+    },
+    {
+      "root": "አማሕፀነ",
+      "type": "type_mahräka",
+      "meaning": "አደራ አለ፣አማጠነ"
+    },
+    {
+      "root": "አምነ",
+      "type": "type_a",
+      "meaning": "አመነ"
+    },
+    {
+      "root": "አመስፈነ",
+      "type": "type_tanbala",
+      "meaning": "ገዛ፣አስገዛ፣ሾመ"
+    },
+    {
+      "root": "አማእዘነ",
+      "type": "type_mahräka",
+      "meaning": "ከበበ(ክብ ኾኖ ለማሰራ ሁሉ)"
+    },
+    {
+      "root": "አስተንተነ",
+      "type": "type_a",
+      "meaning": "አሰበ፣አሳሰበ፣አገለገለ፣አተጋ"
+    },
+    {
+      "root": "አዕበነ",
+      "type": "type_a",
+      "meaning": "ደንጊያ አደረገ"
+    },
+    {
+      "root": "አውየነ",
+      "type": "type_a",
+      "meaning": "የወይን ጠጅ አደረገ"
+    },
+    {
+      "root": "ዔነ",
+      "type": "type_b",
+      "meaning": "ገመገመ"
+    },
+    {
+      "root": "ዐይነ",
+      "type": "type_b",
+      "meaning": "ገመገመ"
+    },
+    {
+      "root": "ዐየነ",
+      "type": "type_b",
+      "meaning": "ገመገመ"
+    },
+    {
+      "root": "አድነነ",
+      "type": "type_a",
+      "meaning": "አዘነበለ፣ተዘነበለ፣ደፋ፣ተደፋ"
+    },
+    {
+      "root": "አጽነነ",
+      "type": "type_a",
+      "meaning": "አዘነበለ፣ተዘነበለ፣ደፋ፣ተደፋ"
+    },
+    {
+      "root": "ዐጠነ",
+      "type": "type_a",
+      "meaning": "አጠነ፣አጤሰ"
+    },
+    {
+      "root": "ኰርጐነ",
+      "type": "type_tanbala",
+      "meaning": "አከማቸ፣ሰበሰበ"
+    },
+    {
+      "root": "ኰነነ",
+      "type": "type_b",
+      "meaning": "ገዛ(የሀገር፣የሰው)"
+    },
+    {
+      "root": "ወሰነ",
+      "type": "type_b",
+      "meaning": "ደነገገ፣ወሰነ፣በቀተ"
+    },
+    {
+      "root": "ወጠነ",
+      "type": "type_a",
+      "meaning": "ጀመረ"
+    },
+    {
+      "root": "ዝኅነ",
+      "type": "type_d",
+      "meaning": "ጸጥ አለ(የማበል ብቻ)"
+    },
+    {
+      "root": "ዘመነ",
+      "type": "type_a",
+      "meaning": "ወረተኛ ኾነ፣ከዚያምከዚያምወዳጅ ኾነ"
+    },
+    {
+      "root": "ዘገነ",
+      "type": "type_a",
+      "meaning": "አፈሰ፣ዘገነ"
+    },
+    {
+      "root": "ዘፈነ",
+      "type": "type_a",
+      "meaning": "ዘፈነ"
+    },
+    {
+      "root": "የመነ",
+      "type": "type_a",
+      "meaning": "ቀና"
+    },
+    {
+      "root": "ድኅነ",
+      "type": "type_d",
+      "meaning": "ዳነ"
+    },
+    {
+      "root": "ደመነ",
+      "type": "type_b",
+      "meaning": "ጋረደ(የደመና)"
+    },
+    {
+      "root": "ደነነ",
+      "type": "type_a",
+      "meaning": "አዘነበለ፣ተዘነበለ"
+    },
+    {
+      "root": "ደየነ",
+      "type": "type_b",
+      "meaning": "ፈረደ፣ዳኘ፡ቀጣ"
+    },
+    {
+      "root": "ዴገነ",
+      "type": "type_c_e",
+      "meaning": "ተከተለ"
+    },
+    {
+      "root": "ደፈነ",
+      "type": "type_a",
+      "meaning": "ደፈነ፣ዘጋ"
+    },
+    {
+      "root": "ጐሀነ",
+      "type": "type_a",
+      "meaning": "ጐረና፣ጮኸ፣አዜመ(የድምጽ)"
+    },
+    {
+      "root": "ገመነ",
+      "type": "type_b",
+      "meaning": "ኃጢአት ሰራ፣በደለ"
+    },
+    {
+      "root": "ጠሐነ",
+      "type": "type_a",
+      "meaning": "ፈጨ"
+    },
+    {
+      "root": "ጤገነ",
+      "type": "type_c_e",
+      "meaning": "ጣደ፣አበሰለ፣ጠበሰ፣ጋገረ፣ቆላ"
+    },
+    {
+      "root": "ጠነ",
+      "type": "type_a",
+      "meaning": "በረታ"
+    },
+    {
+      "root": "ጠነነ",
+      "type": "type_a",
+      "meaning": "በረታ"
+    },
+    {
+      "root": "ጸቈሰ",
+      "type": "type_a",
+      "meaning": "ጀጐለአጠረ(የአጥር)"
+    },
+    {
+      "root": "ጸነ",
+      "type": "type_a",
+      "meaning": "ጸነነ፣አዘነበለ(የክፋት)"
+    },
+    {
+      "root": "ጸነነ",
+      "type": "type_a",
+      "meaning": "ጸነነ፣አዘነበለ(የክፋት)"
+    },
+    {
+      "root": "ጸንጸነ",
+      "type": "type_tanbala",
+      "meaning": "ነቀዘ፣ተበላሸ፣ጠነጠነ፣አረጀ"
+    },
+    {
+      "root": "ጸዐነቀተ----ጫነጸወነ",
+      "type": "type_b",
+      "meaning": "አስጠጋ"
+    },
+    {
+      "root": "ጸፈነ",
+      "type": "type_a",
+      "meaning": "ገፈፈ(የቆርበት)"
+    },
+    {
+      "root": "ፈፀነ",
+      "type": "type_a",
+      "meaning": "ወደታች አለ(የተቅማጥ)"
+    },
+    {
+      "root": "ኀሥዐ",
+      "type": "type_a",
+      "meaning": "በረደ፣ቀዘቀዘ፣ጸጥ አለ(የቁጣ፣የጠብ)"
+    },
+    {
+      "root": "ሀድአ",
+      "type": "type_a",
+      "meaning": "ጸጥ አለ"
+    },
+    {
+      "root": "ኀጥአ",
+      "type": "type_a",
+      "meaning": "አጣ"
+    },
+    {
+      "root": "ኀብአ",
+      "type": "type_a",
+      "meaning": "ሸሸገ"
+    },
+    {
+      "root": "ሐዝአ",
+      "type": "type_a",
+      "meaning": "ከለከለ(የክልልብቻ)"
+    },
+    {
+      "root": "ለምአ",
+      "type": "type_a",
+      "meaning": "ለማ፣ቦገ አለ፣በራ"
+    },
+    {
+      "root": "ላዕልዐ",
+      "type": "type_mahräka",
+      "meaning": "ለንባዳ ኾነ(የልሳ"
+    },
+    {
+      "root": "ለክአ",
+      "type": "type_a",
+      "meaning": "ጻፈ"
+    },
+    {
+      "root": "መልአ",
+      "type": "type_a",
+      "meaning": "መላ"
+    },
+    {
+      "root": "መልዐ",
+      "type": "type_b",
+      "meaning": "እግር መንገድ ኼደ"
+    },
+    {
+      "root": "መሞዐ",
+      "type": "type_b",
+      "meaning": "አፈገፈገ"
+    },
+    {
+      "root": "መጽአ",
+      "type": "type_a",
+      "meaning": "መጣ"
+    },
+    {
+      "root": "ሰምዐ",
+      "type": "type_a",
+      "meaning": "ሰማ"
+    },
+    {
+      "root": "ሠሥዐ",
+      "type": "type_b",
+      "meaning": "ሣሣ"
+    },
+    {
+      "root": "ሠርዐ",
+      "type": "type_a",
+      "meaning": "ሠራ አዘጋጀ(የማዕድ)"
+    },
+    {
+      "root": "ሰብዐ",
+      "type": "type_b",
+      "meaning": "ሰባት አደረገ"
+    },
+    {
+      "root": "ሰንአ",
+      "type": "type_a",
+      "meaning": "ተስማማ"
+    },
+    {
+      "root": "ሣዕሥዐ",
+      "type": "type_mahräka",
+      "meaning": "ቅልጥፍጥፍ አለ(ለመናገረ)"
+    },
+    {
+      "root": "ሰክአ",
+      "type": "type_a",
+      "meaning": "ደረደረ(የማርዳ፣የጥርስ)"
+    },
+    {
+      "root": "ሰኵዐ",
+      "type": "type_a",
+      "meaning": "አጓዘ(የጉንዳን)"
+    },
+    {
+      "root": "ሦዐ",
+      "type": "type_a",
+      "meaning": "ሠዋ፣አረደ"
+    },
+    {
+      "root": "ሠውዐ",
+      "type": "type_a",
+      "meaning": "ሠዋ፣አረደ"
+    },
+    {
+      "root": "ሰጕዐ",
+      "type": "type_a",
+      "meaning": "ነደለ፣በሳ"
+    },
+    {
+      "root": "ረሥአ",
+      "type": "type_a",
+      "meaning": "ረሳ፣ዘነጋ"
+    },
+    {
+      "root": "ረብዐ",
+      "type": "type_b",
+      "meaning": "አራት አደረገ"
+    },
+    {
+      "root": "ረትዐ",
+      "type": "type_a",
+      "meaning": "ቀና(የቅንነት)"
+    },
+    {
+      "root": "ረድአ",
+      "type": "type_a",
+      "meaning": "ረዳ"
+    },
+    {
+      "root": "ቀርዐ",
+      "type": "type_a",
+      "meaning": "መታ፣ደበደበ(የዱላ)"
+    },
+    {
+      "root": "ቈቁዐ",
+      "type": "type_b",
+      "meaning": "አጐበጐበ፣አጐረበ፣ቀለጠ"
+    },
+    {
+      "root": "ቀብዐ",
+      "type": "type_a",
+      "meaning": "ቀባ"
+    },
+    {
+      "root": "ቀንአ",
+      "type": "type_a",
+      "meaning": "ቀና(የቅናት)"
+    },
+    {
+      "root": "ቆዐ",
+      "type": "type_a",
+      "meaning": "ጨረቋ፣በለገ"
+    },
+    {
+      "root": "ቀውዐ",
+      "type": "type_a",
+      "meaning": "ጨረቋ፣በለገ"
+    },
+    {
+      "root": "ቄዐ",
+      "type": "type_a",
+      "meaning": "ተፋ፣መለሰ(የሁከት)"
+    },
+    {
+      "root": "ቀይዐ",
+      "type": "type_a",
+      "meaning": "ተፋ፣መለሰ(የሁከት)"
+    },
+    {
+      "root": "ቀጽዐ",
+      "type": "type_a",
+      "meaning": "ቀጣ"
+    },
+    {
+      "root": "በልዐ",
+      "type": "type_a",
+      "meaning": "በላ"
+    },
+    {
+      "root": "በቁዐ",
+      "type": "type_a",
+      "meaning": "ጠቀመ"
+    },
+    {
+      "root": "ቦአ",
+      "type": "type_a",
+      "meaning": "ገባ"
+    },
+    {
+      "root": "በውአ",
+      "type": "type_a",
+      "meaning": "ገባ"
+    },
+    {
+      "root": "በፅዐ",
+      "type": "type_a",
+      "meaning": "ተሳለ(የስለት)"
+    },
+    {
+      "root": "ተማልዐ",
+      "type": "type_a",
+      "meaning": "እግር መንገድ ኼደ፣አናደ፣ወሰደ"
+    },
+    {
+      "root": "ተምዐ",
+      "type": "type_b",
+      "meaning": "ተቆጣ"
+    },
+    {
+      "root": "ተመዕዐ",
+      "type": "type_d",
+      "meaning": "ተበሳጨ"
+    },
+    {
+      "root": "ተሞዕዐ",
+      "type": "type_d",
+      "meaning": "ተበሳጨ"
+    },
+    {
+      "root": "ተስዐ",
+      "type": "type_b",
+      "meaning": "ዘጠኝ አደረገ"
+    },
+    {
+      "root": "ተሰብአ",
+      "type": "type_a",
+      "meaning": "ሰውኾነ"
+    },
+    {
+      "root": "ተሠዕበ",
+      "type": "type_d",
+      "meaning": "ተገፈፈ፣ገፈፈ፣በነነ፣ተበተነ"
+    },
+    {
+      "root": "ተሥዕዐ",
+      "type": "type_d",
+      "meaning": "ተገፈፈ፣ገፈፈ፣በነነ፣ተበተነ"
+    },
+    {
+      "root": "ተቈጥዐ",
+      "type": "type_b",
+      "meaning": "ተቈጣ"
+    },
+    {
+      "root": "ተብዐ",
+      "type": "type_b",
+      "meaning": "ጨከነ በረታ"
+    },
+    {
+      "root": "ተታብዐ",
+      "type": "type_a",
+      "meaning": "ወንዳወንድኾነ፣በረታ፣ጀገነ"
+    },
+    {
+      "root": "ተወድአ",
+      "type": "type_b",
+      "meaning": "ድልተነሳ፣ተሸነፈ"
+    },
+    {
+      "root": "ተዛውዐ",
+      "type": "type_a",
+      "meaning": "ተጫወተ"
+    },
+    {
+      "root": "ተጻብአ",
+      "type": "type_a",
+      "meaning": "ተጣላ"
+    },
+    {
+      "root": "ተንሥአ",
+      "type": "type_a",
+      "meaning": "ተነሳ"
+    },
+    {
+      "root": "ተጋብአ",
+      "type": "type_c",
+      "meaning": "ተሰበሰበ"
+    },
+    {
+      "root": "ተፈግዐ",
+      "type": "type_b",
+      "meaning": "ደስ ተሰኘ"
+    },
+    {
+      "root": "ነሥአ",
+      "type": "type_a",
+      "meaning": "ያዘ"
+    },
+    {
+      "root": "ነቅዐ",
+      "type": "type_a",
+      "meaning": "መነጨ"
+    },
+    {
+      "root": "ነትዐ",
+      "type": "type_a",
+      "meaning": "ሸሸ፣ኰበለለ፣ሮጠ"
+    },
+    {
+      "root": "አመልዐ",
+      "type": "type_b",
+      "meaning": "ጭልጥ ብሎኼደ"
+    },
+    {
+      "root": "አመስብዐ",
+      "type": "type_tanbala",
+      "meaning": "ሰባት አደረገ"
+    },
+    {
+      "root": "አመስኵዐ",
+      "type": "type_tanbala",
+      "meaning": "አመሰኳ፣አመነዛ"
+    },
+    {
+      "root": "አመግዝአ",
+      "type": "type_tanbala",
+      "meaning": "ገዛ፣ፍሪዳ አረደ"
+    },
+    {
+      "root": "አመፅጕዐ",
+      "type": "type_tanbala",
+      "meaning": "ታመመ፣አሳመመ"
+    },
+    {
+      "root": "አስምዐ",
+      "type": "type_a",
+      "meaning": "አዳኘ፣አሰማ"
+    },
+    {
+      "root": "አስተጋብአ",
+      "type": "type_c",
+      "meaning": "ሰበሰበ"
+    },
+    {
+      "root": "አስተዐ",
+      "type": "type_a",
+      "meaning": "እጅ መንሻሰጠ፣ገበረ"
+    },
+    {
+      "root": "አቅየዐይዐ",
+      "type": "type_tanbala",
+      "meaning": "ተፋ፣ተፋፋ"
+    },
+    {
+      "root": "አቅያዕይዐ",
+      "type": "type_tanbala",
+      "meaning": "ተፋ፣ተፋፋ"
+    },
+    {
+      "root": "አብሕአ",
+      "type": "type_d",
+      "meaning": "አቦካ፣አኮመጠጠ"
+    },
+    {
+      "root": "አንብዐ",
+      "type": "type_a",
+      "meaning": "አለቀሰ"
+    },
+    {
+      "root": "አንጕዐ",
+      "type": "type_a",
+      "meaning": "ቀለጠመ፣ሰበረ(የአጥንት ብቻ)"
+    },
+    {
+      "root": "አንጦልዐ",
+      "type": "type_c_o",
+      "meaning": "ጋረደ፣ሸፈነ፣ዘረጋ፣ተጋረደ፣ተሸፈነ"
+    },
+    {
+      "root": "አውሥአ",
+      "type": "type_a",
+      "meaning": "መለሰ"
+    },
+    {
+      "root": "አውክዐ",
+      "type": "type_a",
+      "meaning": "አስቸገረ፣አደከመ፣አሰለቸ፣አታከተ"
+    },
+    {
+      "root": "አይኅአ",
+      "type": "type_a",
+      "meaning": "ወረደ"
+    },
+    {
+      "root": "አይድዐ",
+      "type": "type_a",
+      "meaning": "ነገረ"
+    },
+    {
+      "root": "አድምዐ",
+      "type": "type_a",
+      "meaning": "አገኘ(የክብር፣የተስፋ)"
+    },
+    {
+      "root": "አጣእጥአ",
+      "type": "type_mahräka",
+      "meaning": "አስጌጠ፣አከናወነ፣አበጀ፣አሳመረ"
+    },
+    {
+      "root": "ከልአ",
+      "type": "type_a",
+      "meaning": "ከለከለ"
+    },
+    {
+      "root": "አጥብዐ",
+      "type": "type_a",
+      "meaning": "ወደደ"
+    },
+    {
+      "root": "አፀንግዐ",
+      "type": "type_a",
+      "meaning": "በረት ሠራ"
+    },
+    {
+      "root": "አጽምዐ",
+      "type": "type_a",
+      "meaning": "አደመጠ"
+    },
+    {
+      "root": "ከልኦ",
+      "type": "type_b",
+      "meaning": "ሁለት አደረገ"
+    },
+    {
+      "root": "ኰርዐ",
+      "type": "type_a",
+      "meaning": "መታ(የዱላ)"
+    },
+    {
+      "root": "ከፍአ",
+      "type": "type_a",
+      "meaning": "ከፋ"
+    },
+    {
+      "root": "ወርአ",
+      "type": "type_a",
+      "meaning": "ጋረደ፣ሸፈነ፣(የልብስ)"
+    },
+    {
+      "root": "ወቅዐ",
+      "type": "type_a",
+      "meaning": "ወቃ፣ደበደበ"
+    },
+    {
+      "root": "ውውዐ",
+      "type": "type_b",
+      "meaning": "ተደነፋ፣ጮኸ ; ወድአቀደ---ጨረሰ፣ፈጀ ወግአቀተ--ወጋ"
+    },
+    {
+      "root": "ወጽአ",
+      "type": "type_b",
+      "meaning": "ድል ነሣ፣አሸነፈ"
+    },
+    {
+      "root": "ዘግዐ",
+      "type": "type_a",
+      "meaning": "ዘጋ"
+    },
+    {
+      "root": "ደርዐ",
+      "type": "type_b",
+      "meaning": "ቻለ፣ታገሠ፣ጨከነ"
+    },
+    {
+      "root": "ደርፍዐ",
+      "type": "type_tanbala",
+      "meaning": "ደረተ፣ሰፋ"
+    },
+    {
+      "root": "ደፍዐ",
+      "type": "type_a",
+      "meaning": "ደፋ"
+    },
+    {
+      "root": "ገሞዐ",
+      "type": "type_a",
+      "meaning": "ላጨ፣መለጠ፣ነጨ፣ሸለተ፣ቆረጠ(የጸጉር)"
+    },
+    {
+      "root": "ጐሥዐ",
+      "type": "type_a",
+      "meaning": "ገሣ(የትኩሳት፣የሰው፣የከብት)"
+    },
+    {
+      "root": "ገብአ",
+      "type": "type_a",
+      "meaning": "ገባ"
+    },
+    {
+      "root": "ገዝአ",
+      "type": "type_a",
+      "meaning": "ገዛ"
+    },
+    {
+      "root": "ጐድዐ",
+      "type": "type_a",
+      "meaning": "መታ የደረት ብቻ"
+    },
+    {
+      "root": "ጐጕአ",
+      "type": "type_a",
+      "meaning": "ቸኰለ"
+    },
+    {
+      "root": "ገፍትዐ",
+      "type": "type_tanbala",
+      "meaning": "ገለበጠ"
+    },
+    {
+      "root": "ጠልዐ",
+      "type": "type_a",
+      "meaning": "ወጣ፣በቀለ፣አደገ፣ረዘመ"
+    },
+    {
+      "root": "ጠቅዐ",
+      "type": "type_a",
+      "meaning": "መታ(የመጥቅዕ)"
+    },
+    {
+      "root": "ጤዐ",
+      "type": "type_a",
+      "meaning": "አነሰ"
+    },
+    {
+      "root": "ጠይዐ",
+      "type": "type_a",
+      "meaning": "አነሰ"
+    },
+    {
+      "root": "ጸልአ",
+      "type": "type_a",
+      "meaning": "ጠላ"
+    },
+    {
+      "root": "ገፍዐ",
+      "type": "type_a",
+      "meaning": "ገፋ"
+    },
+    {
+      "root": "ጠሞዐ",
+      "type": "type_a",
+      "meaning": "ነከረ፣ዘፈቀ"
+    },
+    {
+      "root": "ጠብዐ",
+      "type": "type_a",
+      "meaning": "ጨከነ፣ደፈረ"
+    },
+    {
+      "root": "ጠግዐ",
+      "type": "type_a",
+      "meaning": "ተጠጋ፣ተገደፈ፣ተጠበቀ"
+    },
+    {
+      "root": "ጸምአ",
+      "type": "type_a",
+      "meaning": "ተጠማ"
+    },
+    {
+      "root": "ፀርዐ",
+      "type": "type_a",
+      "meaning": "ታጐለ፣ጠፋ"
+    },
+    {
+      "root": "ጠርዐ",
+      "type": "type_a",
+      "meaning": "ጮኸ፣ተማጠነ፣ይግባኝ አለ"
+    },
+    {
+      "root": "ጦዐ",
+      "type": "type_a",
+      "meaning": "ሸሸ"
+    },
+    {
+      "root": "ጠውዐ",
+      "type": "type_a",
+      "meaning": "ሸሸ"
+    },
+    {
+      "root": "ጠፍአ",
+      "type": "type_a",
+      "meaning": "ጠፋ"
+    },
+    {
+      "root": "ጸንዐ",
+      "type": "type_a",
+      "meaning": "ጸና፣በረታ"
+    },
+    {
+      "root": "ፃእፅአ",
+      "type": "type_mahräka",
+      "meaning": "ጭንጋፍ ኾነ"
+    },
+    {
+      "root": "ጸውዐ",
+      "type": "type_b",
+      "meaning": "ጠራ"
+    },
+    {
+      "root": "ጼአ",
+      "type": "type_a",
+      "meaning": "ተላ፣ዛገ"
+    },
+    {
+      "root": "ጸይአ",
+      "type": "type_a",
+      "meaning": "ተላ፣ዛገ"
+    },
+    {
+      "root": "ፀግዐ",
+      "type": "type_a",
+      "meaning": "ተጠጋ"
+    },
+    {
+      "root": "ጸፍዐ",
+      "type": "type_a",
+      "meaning": "መታ(የጥፋት ብቻ)፣አዘዘ"
+    },
+    {
+      "root": "ፈቅዐ",
+      "type": "type_a",
+      "meaning": "ገመሰ፣ሰነጠቀ"
+    },
+    {
+      "root": "ፈግዐ",
+      "type": "type_b",
+      "meaning": "ተደሰተ"
+    },
+    {
+      "root": "ሐነከ",
+      "type": "type_a",
+      "meaning": "ሰጠ፣አደቀቀ፣ፈጨ"
+    },
+    {
+      "root": "ሐከ",
+      "type": "type_a",
+      "meaning": "ተከራከረ"
+    },
+    {
+      "root": "ሐከከ",
+      "type": "type_a",
+      "meaning": "ተከራከረ"
+    },
+    {
+      "root": "ሆከ",
+      "type": "type_a",
+      "meaning": "አወከ"
+    },
+    {
+      "root": "ሀውከ",
+      "type": "type_a",
+      "meaning": "አወከ"
+    },
+    {
+      "root": "ሀወከ",
+      "type": "type_a",
+      "meaning": "አወከ"
+    },
+    {
+      "root": "ሔከ",
+      "type": "type_a",
+      "meaning": "አላመጠ"
+    },
+    {
+      "root": "ሐይከ",
+      "type": "type_a",
+      "meaning": "አላመጠ"
+    },
+    {
+      "root": "ሐየከ",
+      "type": "type_a",
+      "meaning": "አላመጠ"
+    },
+    {
+      "root": "ለሐኰ",
+      "type": "type_a",
+      "meaning": "ሠራ(የሸክላ)"
+    },
+    {
+      "root": "ለአከ",
+      "type": "type_a",
+      "meaning": "ላከ፣ሰደደ"
+    },
+    {
+      "root": "ለከ",
+      "type": "type_a",
+      "meaning": "ጻፈ"
+    },
+    {
+      "root": "ለከከ",
+      "type": "type_a",
+      "meaning": "ጻፈ"
+    },
+    {
+      "root": "መሐከ",
+      "type": "type_d",
+      "meaning": "ራራ"
+    },
+    {
+      "root": "ምሕከ",
+      "type": "type_d",
+      "meaning": "ራራ"
+    },
+    {
+      "root": "መለከ",
+      "type": "type_a",
+      "meaning": "ገዛ"
+    },
+    {
+      "root": "መሰከ",
+      "type": "type_a",
+      "meaning": "አቀጠነ"
+    },
+    {
+      "root": "ምዕከ",
+      "type": "type_a",
+      "meaning": "ከፋ"
+    },
+    {
+      "root": "ስሕከ",
+      "type": "type_d",
+      "meaning": "ሻከረ"
+    },
+    {
+      "root": "ሠረከ",
+      "type": "type_a",
+      "meaning": "መሸ"
+    },
+    {
+      "root": "ሠርከ",
+      "type": "type_a",
+      "meaning": "መሸ"
+    },
+    {
+      "root": "ሤረከ",
+      "type": "type_c_e",
+      "meaning": "ብልኸተኛ ኾነ"
+    },
+    {
+      "root": "ሰበከ",
+      "type": "type_a",
+      "meaning": "አስተማረ"
+    },
+    {
+      "root": "ሮከ",
+      "type": "type_a",
+      "meaning": "ሾመ(የሰው)"
+    },
+    {
+      "root": "ረውከ",
+      "type": "type_a",
+      "meaning": "ሾመ(የሰው)"
+    },
+    {
+      "root": "ረወከ",
+      "type": "type_a",
+      "meaning": "ሾመ(የሰው)"
+    },
+    {
+      "root": "ረጕነኰ",
+      "type": "type_a",
+      "meaning": "-ጐዘጐዘ(የምንጣፍ)"
+    },
+    {
+      "root": "በረከ",
+      "type": "type_a",
+      "meaning": "ተንበረከከ"
+    },
+    {
+      "root": "በተከ",
+      "type": "type_a",
+      "meaning": "ቆረጠ(የገመድ)"
+    },
+    {
+      "root": "በከ",
+      "type": "type_a",
+      "meaning": "ብላሽ ኾነ"
+    },
+    {
+      "root": "በከከ",
+      "type": "type_a",
+      "meaning": "ብላሽ ኾነ"
+    },
+    {
+      "root": "ንህከ",
+      "type": "type_d",
+      "meaning": "አዘነ፣ተወዘወዘ፣ተከዘ፣አሰበ"
+    },
+    {
+      "root": "ነሀከ",
+      "type": "type_d",
+      "meaning": "አዘነ፣ተወዘወዘ፣ተከዘ፣አሰበ"
+    },
+    {
+      "root": "ነሰከ",
+      "type": "type_a",
+      "meaning": "ነከሰ"
+    },
+    {
+      "root": "ንእከ",
+      "type": "type_d",
+      "meaning": "ቀላቀለ"
+    },
+    {
+      "root": "ተክነከ",
+      "type": "type_a",
+      "meaning": "ወዘወዘ፣ነቀነቀ"
+    },
+    {
+      "root": "አምለከ",
+      "type": "type_a",
+      "meaning": "አመለከ"
+    },
+    {
+      "root": "አስመከ",
+      "type": "type_a",
+      "meaning": "ተጠጋ፣አስጠጋ"
+    },
+    {
+      "root": "አስተብረከ",
+      "type": "type_a",
+      "meaning": "ሰገደ፣አሰገደ"
+    },
+    {
+      "root": "አውከከ",
+      "type": "type_a",
+      "meaning": "አጐደለ"
+    },
+    {
+      "root": "ወሐከ",
+      "type": "type_a",
+      "meaning": "አነሳሳ"
+    },
+    {
+      "root": "ወሰከ",
+      "type": "type_b",
+      "meaning": "ጨመረ"
+    },
+    {
+      "root": "ዘረከ",
+      "type": "type_a",
+      "meaning": "ሰደበ"
+    },
+    {
+      "root": "ደሐከ",
+      "type": "type_d",
+      "meaning": "ተንቧቸ"
+    },
+    {
+      "root": "ድሕከ",
+      "type": "type_d",
+      "meaning": "ተንቧቸ"
+    },
+    {
+      "root": "ደረከ",
+      "type": "type_a",
+      "meaning": "ጸና"
+    },
+    {
+      "root": "ጐነኰ",
+      "type": "type_b",
+      "meaning": "ከመረ"
+    },
+    {
+      "root": "ጽሕከ",
+      "type": "type_d",
+      "meaning": "ጨኸነ"
+    },
+    {
+      "root": "ጸኰ",
+      "type": "type_a",
+      "meaning": "ሹልዳ አወጣ(የሥጋ)"
+    },
+    {
+      "root": "ጸኰኰ",
+      "type": "type_a",
+      "meaning": "ሹልዳ አወጣ(የሥጋ)"
+    },
+    {
+      "root": "ፈለከ",
+      "type": "type_a",
+      "meaning": "ፈጠረ፣ከፈለ"
+    },
+    {
+      "root": "ሀለወ",
+      "type": "type_a",
+      "meaning": "ኖረ"
+    },
+    {
+      "root": "ኀለወ",
+      "type": "type_a",
+      "meaning": "ቀራ፣ጠበቀ"
+    },
+    {
+      "root": "ሐሰወ",
+      "type": "type_b",
+      "meaning": "ዋሸ፣አበለ"
+    },
+    {
+      "root": "ኀረወ",
+      "type": "type_a",
+      "meaning": "በሳ፣ነደለ፣ቆፈረ"
+    },
+    {
+      "root": "ሎለወ",
+      "type": "type_a",
+      "meaning": "ጠበሰ፣አቃጠለ፣ለበለበ"
+    },
+    {
+      "root": "ለቀወ",
+      "type": "type_c_o",
+      "meaning": "ከፈተ፣አላቀቀ"
+    },
+    {
+      "root": "ለበወ",
+      "type": "type_b",
+      "meaning": "ልብ አደረገ፣አስተዋለ"
+    },
+    {
+      "root": "ሌወወ",
+      "type": "type_c_e",
+      "meaning": "ጠመጠመ"
+    },
+    {
+      "root": "ለወ",
+      "type": "type_a",
+      "meaning": "ተኮረ፣ደፈረ(የማየት)"
+    },
+    {
+      "root": "ለወወ",
+      "type": "type_a",
+      "meaning": "ተኮረ፣ደፈረ(የማየት)"
+    },
+    {
+      "root": "ለውለወ",
+      "type": "type_a",
+      "meaning": "ተውለበለበ፣አውለበለበ(የሚላስ)"
+    },
+    {
+      "root": "መሐወ",
+      "type": "type_a",
+      "meaning": "አሸ(የሸት)"
+    },
+    {
+      "root": "መጠወ",
+      "type": "type_b",
+      "meaning": "ሰጠ"
+    },
+    {
+      "root": "ለከወ",
+      "type": "type_a",
+      "meaning": "ፈዘዘ፣በዛ፣ደነገዘ"
+    },
+    {
+      "root": "ምህወ",
+      "type": "type_d",
+      "meaning": "ቀለጠ፣ሟሟ፣ውኃአደረገ"
+    },
+    {
+      "root": "መረወ",
+      "type": "type_tanbala",
+      "meaning": "መንታ አደረገ፣መንታ ወለደ"
+    },
+    {
+      "root": "መንተወ",
+      "type": "type_tanbala",
+      "meaning": "መንታ አደረገ፣መንታ ወለደ"
+    },
+    {
+      "root": "መጽለወ",
+      "type": "type_tanbala",
+      "meaning": "ጠወለገ"
+    },
+    {
+      "root": "ስሕወ",
+      "type": "type_d",
+      "meaning": "ተሳበ፣ተጐተተ"
+    },
+    {
+      "root": "ሰንቀወ",
+      "type": "type_tanbala",
+      "meaning": "መታ(የመሰንቆ፣የበገና)"
+    },
+    {
+      "root": "መጽወ",
+      "type": "type_a",
+      "meaning": "ዘመነ በልግኾነ"
+    },
+    {
+      "root": "ሰለወ",
+      "type": "type_a",
+      "meaning": "ሰላ"
+    },
+    {
+      "root": "ሠረወ",
+      "type": "type_a",
+      "meaning": "ነቀለ"
+    },
+    {
+      "root": "ሰንተወ",
+      "type": "type_tanbala",
+      "meaning": "ገበረ"
+    },
+    {
+      "root": "ሰከዐለወ",
+      "type": "type_mahräka",
+      "meaning": "ቆጠቆጠ፣መነጠረ"
+    },
+    {
+      "root": "ሰካዕለወ",
+      "type": "type_mahräka",
+      "meaning": "ቆጠቆጠ፣መነጠረ"
+    },
+    {
+      "root": "ረሰወ",
+      "type": "type_a",
+      "meaning": "መልሕቅ ጣለ፣ገታ፣አቆመ"
+    },
+    {
+      "root": "ረበወ",
+      "type": "type_b",
+      "meaning": "አሰተማረ"
+    },
+    {
+      "root": "ቀልጰወ",
+      "type": "type_tanbala",
+      "meaning": "ዋጠ"
+    },
+    {
+      "root": "ቀስተወ",
+      "type": "type_tanbala",
+      "meaning": "ሳበ፣ገተረ፣ለጠጠ"
+    },
+    {
+      "root": "ቀነወ",
+      "type": "type_b",
+      "meaning": "ቸነከረ"
+    },
+    {
+      "root": "ቈለወ",
+      "type": "type_a",
+      "meaning": "ቆላ"
+    },
+    {
+      "root": "ቀለወ",
+      "type": "type_a",
+      "meaning": "ቆላ"
+    },
+    {
+      "root": "ቆለወ",
+      "type": "type_a",
+      "meaning": "ቆላ"
+    },
+    {
+      "root": "ቀበወ",
+      "type": "type_a",
+      "meaning": "ታመመ፣ሆድን ነፋ"
+    },
+    {
+      "root": "ቀንተወ",
+      "type": "type_tanbala",
+      "meaning": "ገበረ"
+    },
+    {
+      "root": "ቀንጸወ",
+      "type": "type_tanbala",
+      "meaning": "ቀነጠ"
+    },
+    {
+      "root": "ቀተወ",
+      "type": "type_a",
+      "meaning": "ተወራረደ"
+    },
+    {
+      "root": "ቀደወ",
+      "type": "type_a",
+      "meaning": "አማረ፣አሸበረቀ፣ጠራ"
+    },
+    {
+      "root": "ባረወ",
+      "type": "type_c",
+      "meaning": "ቆፈረ"
+    },
+    {
+      "root": "ባሕተወ",
+      "type": "type_mahräka",
+      "meaning": "ብቸኛ ኾነ"
+    },
+    {
+      "root": "ቤዘወ",
+      "type": "type_c_e",
+      "meaning": "አዳነ፣ተቤዠ"
+    },
+    {
+      "root": "በድወ",
+      "type": "type_a",
+      "meaning": "ምድረ በዳ ኾነ"
+    },
+    {
+      "root": "በፀወ",
+      "type": "type_a",
+      "meaning": "አንቀላፈ፣አነጐላቸ"
+    },
+    {
+      "root": "በፅወ",
+      "type": "type_a",
+      "meaning": "አንቀላፈ፣አነጐላቸ"
+    },
+    {
+      "root": "ተሐመወ",
+      "type": "type_a",
+      "meaning": "አማች ኾነ"
+    },
+    {
+      "root": "ተኄረወ",
+      "type": "type_c_e",
+      "meaning": "ቸር ኾነ"
+    },
+    {
+      "root": "ተለወ",
+      "type": "type_a",
+      "meaning": "ተከተለ"
+    },
+    {
+      "root": "ተመርዐወ",
+      "type": "type_tanbala",
+      "meaning": "ተሞሸረ፣ተዳረ"
+    },
+    {
+      "root": "ተሰርገወ",
+      "type": "type_a",
+      "meaning": "ተሸለመ፣ተቀበለ"
+    },
+    {
+      "root": "ተሰነአወ",
+      "type": "type_a",
+      "meaning": "ተስማማ"
+    },
+    {
+      "root": "ተሰንአወ",
+      "type": "type_a",
+      "meaning": "ተስማማ"
+    },
+    {
+      "root": "ተሰናአወ",
+      "type": "type_a",
+      "meaning": "ተስማማ"
+    },
+    {
+      "root": "ተሠገወ",
+      "type": "type_b",
+      "meaning": "ሰው ኾነ"
+    },
+    {
+      "root": "ተሰጠወ",
+      "type": "type_b",
+      "meaning": "ተቀበለ፣መለሰ"
+    },
+    {
+      "root": "ተሰጥወ",
+      "type": "type_b",
+      "meaning": "ተቀበለ፣መለሰ"
+    },
+    {
+      "root": "ተሰፈወ",
+      "type": "type_b",
+      "meaning": "ታመነ፣አመነ፣ተስፋ አደረገ"
+    },
+    {
+      "root": "ተቀሐወ",
+      "type": "type_a",
+      "meaning": "ተከራከረ፣ተሟዝ፣ተፈካከረ"
+    },
+    {
+      "root": "ተቃሐወ",
+      "type": "type_a",
+      "meaning": "ተከራከረ፣ተሟዝ፣ተፈካከረ"
+    },
+    {
+      "root": "ተባሕተወ",
+      "type": "type_mahräka",
+      "meaning": "ብቸኛ ኾነ"
+    },
+    {
+      "root": "ተአበወ",
+      "type": "type_a",
+      "meaning": "አባትኾነ"
+    },
+    {
+      "root": "ተአደወ",
+      "type": "type_b",
+      "meaning": "ተደፋፈረ"
+    },
+    {
+      "root": "ተዐፀወ",
+      "type": "type_a",
+      "meaning": "ዕፃ ተጣጣለ"
+    },
+    {
+      "root": "ተኬነወ",
+      "type": "type_c_e",
+      "meaning": "ብልኸተኛ ኾነ"
+    },
+    {
+      "root": "ተደለወ",
+      "type": "type_a",
+      "meaning": "ተዘጋጀ፣ተሰናዳ"
+    },
+    {
+      "root": "ኖለወ",
+      "type": "type_c_o",
+      "meaning": "ጠበቀ(የእንስሳት)"
+    },
+    {
+      "root": "ነቀወ",
+      "type": "type_a",
+      "meaning": "ጮኸ(የአራዊት፣የአዕዋፍ)"
+    },
+    {
+      "root": "ነበወ",
+      "type": "type_a",
+      "meaning": "ተናገረ"
+    },
+    {
+      "root": "ኖተወ",
+      "type": "type_c_o",
+      "meaning": "ዋጠ"
+    },
+    {
+      "root": "ነዐወ",
+      "type": "type_c",
+      "meaning": "አዳነ"
+    },
+    {
+      "root": "ናዐወ",
+      "type": "type_c",
+      "meaning": "አዳነ"
+    },
+    {
+      "root": "ዐለወ",
+      "type": "type_a",
+      "meaning": "ወነጀለ"
+    },
+    {
+      "root": "አመርዐወ",
+      "type": "type_tanbala",
+      "meaning": "ሞሸረ"
+    },
+    {
+      "root": "አመንሰወ",
+      "type": "type_tanbala",
+      "meaning": "አጠፋ"
+    },
+    {
+      "root": "አመንተወ",
+      "type": "type_tanbala",
+      "meaning": "መንታ አደረገ"
+    },
+    {
+      "root": "አመድለወ",
+      "type": "type_tanbala",
+      "meaning": "ግብዣ አደረገ"
+    },
+    {
+      "root": "አስሐወ",
+      "type": "type_a",
+      "meaning": "አወለቀ"
+    },
+    {
+      "root": "አስቆቀወ",
+      "type": "type_c_o",
+      "meaning": "አለቀሰ፣አስለቀሰ"
+    },
+    {
+      "root": "አስተነአወ",
+      "type": "type_a",
+      "meaning": "አስማማ"
+    },
+    {
+      "root": "አስተናአወ",
+      "type": "type_a",
+      "meaning": "አስማማ"
+    },
+    {
+      "root": "አሰውሰጠ",
+      "type": "type_tanbala",
+      "meaning": "ሠራ(የመሰላል)"
+    },
+    {
+      "root": "አስተዳለወ",
+      "type": "type_b",
+      "meaning": "አዘጋጀ"
+    },
+    {
+      "root": "አስደለወ",
+      "type": "type_b",
+      "meaning": "አዘጋጀ"
+    },
+    {
+      "root": "አስፈድለወ",
+      "type": "type_tanbala",
+      "meaning": "መነጠረ፣ቆጠቆጠ"
+    },
+    {
+      "root": "አስፌድለወ",
+      "type": "type_tanbala",
+      "meaning": "መነጠረ፣ቆጠቆጠ"
+    },
+    {
+      "root": "አርኀወ",
+      "type": "type_a",
+      "meaning": "ከፈተ፣አስከፈተ"
+    },
+    {
+      "root": "አቀምጠወ",
+      "type": "type_tanbala",
+      "meaning": "ተለመ/የእርሻ"
+    },
+    {
+      "root": "አብቀወ",
+      "type": "type_a",
+      "meaning": "ከፈተ(የአፍ)"
+    },
+    {
+      "root": "አተወ",
+      "type": "type_a",
+      "meaning": "ገባ"
+    },
+    {
+      "root": "አንሐሰወ",
+      "type": "type_c_o",
+      "meaning": "ተመላለሰ፣አመላለሰ"
+    },
+    {
+      "root": "አንቃዕደወ",
+      "type": "type_mahräka",
+      "meaning": "አንጋጠጠ፣ተንጋጠጠ"
+    },
+    {
+      "root": "አንባሕቀወ",
+      "type": "type_mahräka",
+      "meaning": "አፋሸከ፣አዛጋ፣አላቀቀ"
+    },
+    {
+      "root": "አንጎገወ",
+      "type": "type_c_o",
+      "meaning": "ተቅበዘበዘ፣አቅበዘበዘ፣ባከነ፣አባከነ"
+    },
+    {
+      "root": "አንዐወ",
+      "type": "type_a",
+      "meaning": "ደረቀ"
+    },
+    {
+      "root": "አንጾጸወ",
+      "type": "type_c_o",
+      "meaning": "አረጋገፈ"
+    },
+    {
+      "root": "ዐውየወ",
+      "type": "type_a",
+      "meaning": "ተፍጃጀ፣ጮኸ"
+    },
+    {
+      "root": "ዐደወ",
+      "type": "type_a",
+      "meaning": "ተሻገረ፣አለፈ"
+    },
+    {
+      "root": "አድለወ",
+      "type": "type_a",
+      "meaning": "አደላ"
+    },
+    {
+      "root": "አጥዐወ",
+      "type": "type_c",
+      "meaning": "አመለከ(የጣዖት)"
+    },
+    {
+      "root": "አጸንጸወ",
+      "type": "type_tanbala",
+      "meaning": "ጠመዘዘ፣የሚጥመዘመዝ ነገር"
+    },
+    {
+      "root": "ከዐወ",
+      "type": "type_a",
+      "meaning": "አፈሰሰ"
+    },
+    {
+      "root": "ኮወ",
+      "type": "type_a",
+      "meaning": "ቅልጥፍጥፍ አለ"
+    },
+    {
+      "root": "ከወወ",
+      "type": "type_a",
+      "meaning": "ቅልጥፍጥፍ አለ"
+    },
+    {
+      "root": "ወልተወ",
+      "type": "type_tanbala",
+      "meaning": "መከተ(የጋሻ)"
+    },
+    {
+      "root": "ወረወ",
+      "type": "type_a",
+      "meaning": "ወረወረ"
+    },
+    {
+      "root": "ወርዘወ",
+      "type": "type_tanbala",
+      "meaning": "ጎለመሰ"
+    },
+    {
+      "root": "ወይለወ",
+      "type": "type_tanbala",
+      "meaning": "አለቀሰ"
+    },
+    {
+      "root": "ዘመወ",
+      "type": "type_tanbala",
+      "meaning": "በደለ፣ሴሰኛ ኾነ"
+    },
+    {
+      "root": "ዘረወ",
+      "type": "type_a",
+      "meaning": "በተነ"
+    },
+    {
+      "root": "ዜነወ",
+      "type": "type_c_e",
+      "meaning": "ነገረ፣አወራ"
+    },
+    {
+      "root": "ደለወ",
+      "type": "type_a",
+      "meaning": "ተገባ"
+    },
+    {
+      "root": "ደመወ",
+      "type": "type_b",
+      "meaning": "ደምኾነ"
+    },
+    {
+      "root": "ደንቀወ",
+      "type": "type_tanbala",
+      "meaning": "ደነቆረ"
+    },
+    {
+      "root": "ደንጸወ",
+      "type": "type_tanbala",
+      "meaning": "ነፈገ"
+    },
+    {
+      "root": "ጓሕለወ",
+      "type": "type_b",
+      "meaning": "ሸነገለ"
+    },
+    {
+      "root": "ጓህነወ",
+      "type": "type_mahräka",
+      "meaning": "ጮኸ አመሰገነ(የዜማ ምስጋና)"
+    },
+    {
+      "root": "ገለወ",
+      "type": "type_a",
+      "meaning": "ሸፈነ"
+    },
+    {
+      "root": "ገነወ",
+      "type": "type_a",
+      "meaning": "አመለከ"
+    },
+    {
+      "root": "ገጸወ",
+      "type": "type_b",
+      "meaning": "ለየ፣ገለጠ"
+    },
+    {
+      "root": "ጠወ",
+      "type": "type_a",
+      "meaning": "አጣመመ"
+    },
+    {
+      "root": "ጠወወ",
+      "type": "type_a",
+      "meaning": "አጣመመ"
+    },
+    {
+      "root": "ጠበወ",
+      "type": "type_a",
+      "meaning": "ጠባ(የጡት ሕፃናት)"
+    },
+    {
+      "root": "ጽሕወ",
+      "type": "type_d",
+      "meaning": "ተግ አለ፣በራ፣(የዝናም)"
+    },
+    {
+      "root": "ጸለወ",
+      "type": "type_a",
+      "meaning": "ቀቀረ(የማድመጥ)"
+    },
+    {
+      "root": "ጸልሐወ",
+      "type": "type_tanbala",
+      "meaning": "ሸነገለ፣አሞኘ"
+    },
+    {
+      "root": "ጸለሐወ",
+      "type": "type_tanbala",
+      "meaning": "ሸነገለ፣አሞኘ"
+    },
+    {
+      "root": "ጸመወ",
+      "type": "type_b",
+      "meaning": "ጨመተ፣ደነቆረ"
+    },
+    {
+      "root": "ጻመወ",
+      "type": "type_c",
+      "meaning": "ደከመ"
+    },
+    {
+      "root": "ጸቀወ",
+      "type": "type_a",
+      "meaning": "ወጋ(የካስማ)"
+    },
+    {
+      "root": "ፆተወ",
+      "type": "type_c_o",
+      "meaning": "ወገን ኾነ"
+    },
+    {
+      "root": "ጼነወ",
+      "type": "type_c_e",
+      "meaning": "ሸተተ"
+    },
+    {
+      "root": "ጻዕደወ",
+      "type": "type_mahräka",
+      "meaning": "ነጭኾነ"
+    },
+    {
+      "root": "ፄወወ",
+      "type": "type_c_e",
+      "meaning": "ማረከ፣ቀማ"
+    },
+    {
+      "root": "ጸገወ",
+      "type": "type_b",
+      "meaning": "ሰጠ"
+    },
+    {
+      "root": "ፈተወ",
+      "type": "type_a",
+      "meaning": "ወደደ"
+    },
+    {
+      "root": "ፈነወ",
+      "type": "type_b",
+      "meaning": "ላከ"
+    },
+    {
+      "root": "ሐልዘዘ",
+      "type": "type_tanbala",
+      "meaning": "አፈራ(የዛጎል)"
+    },
+    {
+      "root": "ሐመዘ",
+      "type": "type_a",
+      "meaning": "መርዝ አደረገ"
+    },
+    {
+      "root": "ኀበዘ",
+      "type": "type_a",
+      "meaning": "ጋገረ"
+    },
+    {
+      "root": "ሐንዘዘ",
+      "type": "type_tanbala",
+      "meaning": "አናዘዘ"
+    },
+    {
+      "root": "ሐዘ",
+      "type": "type_a",
+      "meaning": "አማረ"
+    },
+    {
+      "root": "ሐወዘ",
+      "type": "type_a",
+      "meaning": "አማረ"
+    },
+    {
+      "root": "ሐውዘ",
+      "type": "type_a",
+      "meaning": "አማረ"
+    },
+    {
+      "root": "ሎዘ",
+      "type": "type_a",
+      "meaning": "ጠመዘዘ"
+    },
+    {
+      "root": "ለውዘ",
+      "type": "type_a",
+      "meaning": "ጠመዘዘ"
+    },
+    {
+      "root": "ለወዘ",
+      "type": "type_a",
+      "meaning": "ጠመዘዘ"
+    },
+    {
+      "root": "ለዝለዘ",
+      "type": "type_tanbala",
+      "meaning": "ታመመ"
+    },
+    {
+      "root": "መሐዘ",
+      "type": "type_a",
+      "meaning": "ጎለመሰ"
+    },
+    {
+      "root": "ምዕዘ",
+      "type": "type_d",
+      "meaning": "ሸተተ(የጥሩ ጽጌ)"
+    },
+    {
+      "root": "መዝመዘ",
+      "type": "type_tanbala",
+      "meaning": "አሸ፣ወለወለ"
+    },
+    {
+      "root": "ሰመዘ",
+      "type": "type_b",
+      "meaning": "ነቀለ(የሚነቀል፣የተክል አይነት)"
+    },
+    {
+      "root": "ሰረዘ",
+      "type": "type_a",
+      "meaning": "ለየ፣ተከፈለ፣ሰረዘ"
+    },
+    {
+      "root": "ሰኰዘ",
+      "type": "type_b",
+      "meaning": "ወጋ"
+    },
+    {
+      "root": "ሰከዘ",
+      "type": "type_b",
+      "meaning": "ወጋ"
+    },
+    {
+      "root": "ርዘ",
+      "type": "type_a",
+      "meaning": "ወለወለ"
+    },
+    {
+      "root": "ረውዘ",
+      "type": "type_a",
+      "meaning": "ወለወለ"
+    },
+    {
+      "root": "ረወዘ",
+      "type": "type_a",
+      "meaning": "ወለወለ"
+    },
+    {
+      "root": "ረዘ",
+      "type": "type_a",
+      "meaning": "አፈረ"
+    },
+    {
+      "root": "ረዘዘ",
+      "type": "type_a",
+      "meaning": "አፈረ"
+    },
+    {
+      "root": "ረገዘ",
+      "type": "type_a",
+      "meaning": "ወጋ"
+    },
+    {
+      "root": "ቈለዘ",
+      "type": "type_b",
+      "meaning": "ቈጥቈጠ(የምንጣሮ)"
+    },
+    {
+      "root": "ቀንፈዘ",
+      "type": "type_tanbala",
+      "meaning": "ደነበ፣ጨመረ"
+    },
+    {
+      "root": "ቀዘ",
+      "type": "type_a",
+      "meaning": "ቅዝዝ ቅዝዝ አለ"
+    },
+    {
+      "root": "ቀዘዘ",
+      "type": "type_a",
+      "meaning": "ቅዝዝ ቅዝዝ አለ"
+    },
+    {
+      "root": "ቀፈዘ",
+      "type": "type_b",
+      "meaning": "አሰረ"
+    },
+    {
+      "root": "በለዘ",
+      "type": "type_a",
+      "meaning": "ደገፈ"
+    },
+    {
+      "root": "ብዕዘ",
+      "type": "type_d",
+      "meaning": "ነፋ(የዋሽንት)"
+    },
+    {
+      "root": "በዝበዘ",
+      "type": "type_a",
+      "meaning": "አማ፣ነቀፈ"
+    },
+    {
+      "root": "ቤዘ",
+      "type": "type_a",
+      "meaning": "በራ፣አበራ"
+    },
+    {
+      "root": "በይዘ",
+      "type": "type_a",
+      "meaning": "በራ፣አበራ"
+    },
+    {
+      "root": "በየዘ",
+      "type": "type_a",
+      "meaning": "በራ፣አበራ"
+    },
+    {
+      "root": "ተሐገዘ",
+      "type": "type_a",
+      "meaning": "ተጋገዘ፣ተረዳዳ"
+    },
+    {
+      "root": "ተመርጐዘ",
+      "type": "type_tanbala",
+      "meaning": "ተመረኮዘ፣ተደገፈ"
+    },
+    {
+      "root": "ተዐርዘ",
+      "type": "type_a",
+      "meaning": "ተራቆተ፣ታረዘ"
+    },
+    {
+      "root": "ተዐረዘ",
+      "type": "type_a",
+      "meaning": "ለበሰ"
+    },
+    {
+      "root": "ተከዘ",
+      "type": "type_b",
+      "meaning": "አዘነ፣ወዘወዘ"
+    },
+    {
+      "root": "ተገአዘ",
+      "type": "type_a",
+      "meaning": "ተከራከረ"
+    },
+    {
+      "root": "ተጋአዘ",
+      "type": "type_a",
+      "meaning": "ተከራከረ"
+    },
+    {
+      "root": "ተፋወዘ",
+      "type": "type_a",
+      "meaning": "ተጫወተ"
+    },
+    {
+      "root": "ነቅዘ",
+      "type": "type_a",
+      "meaning": "ነቀዘ"
+    },
+    {
+      "root": "ነዝነዘ",
+      "type": "type_tanbala",
+      "meaning": "ነዘነዘ"
+    },
+    {
+      "root": "ናዘዘ",
+      "type": "type_c",
+      "meaning": "አረጋጋ"
+    },
+    {
+      "root": "አኀዘ",
+      "type": "type_a",
+      "meaning": "ያዘ"
+    },
+    {
+      "root": "አሕዘዘ",
+      "type": "type_mahräka",
+      "meaning": "ሰርግ አደረገ፣ዋጠ"
+    },
+    {
+      "root": "አመንዘዘ",
+      "type": "type_tanbala",
+      "meaning": "አጽንቶ ያዘ፣አመነቸከ፣አስጨነቀ"
+    },
+    {
+      "root": "አስዖዘዘ",
+      "type": "type_c_o",
+      "meaning": "ስቅጥጥ ስቅጥጥ አለ/አደረገ"
+    },
+    {
+      "root": "ዐረዘ",
+      "type": "type_a",
+      "meaning": "አለበሰ"
+    },
+    {
+      "root": "አንበዘ",
+      "type": "type_tanbala",
+      "meaning": "ልብ አሳጣ"
+    },
+    {
+      "root": "አውገዘ",
+      "type": "type_a",
+      "meaning": "ለየ"
+    },
+    {
+      "root": "አዘዘ",
+      "type": "type_b",
+      "meaning": "አዘዘ"
+    },
+    {
+      "root": "አግዐዘ",
+      "type": "type_a",
+      "meaning": "ነጻአወጣ፣ፈቀደ"
+    },
+    {
+      "root": "አግዘዘ",
+      "type": "type_a",
+      "meaning": "ጀጎለ፣አጠረ"
+    },
+    {
+      "root": "አፈርዘዘ",
+      "type": "type_tanbala",
+      "meaning": "በተነ፣አጠፋ፣አበነነ"
+    },
+    {
+      "root": "ከረዘ",
+      "type": "type_a",
+      "meaning": "ሰቀለ"
+    },
+    {
+      "root": "ኰበዘ",
+      "type": "type_a",
+      "meaning": "ጋገረ"
+    },
+    {
+      "root": "ከበዘ",
+      "type": "type_a",
+      "meaning": "ጋገረ"
+    },
+    {
+      "root": "ውሕዘ",
+      "type": "type_d",
+      "meaning": "ፈሰሰ፣አሳረፈ"
+    },
+    {
+      "root": "ደረዘ",
+      "type": "type_a",
+      "meaning": "ወጋ"
+    },
+    {
+      "root": "ደንበዘ",
+      "type": "type_tanbala",
+      "meaning": "ደገፈ"
+    },
+    {
+      "root": "ደንዘዘ",
+      "type": "type_tanbala",
+      "meaning": "ደነዘዘ፣ፈዘዘ"
+    },
+    {
+      "root": "ደንገዘ",
+      "type": "type_tanbala",
+      "meaning": "ደነገዘ(የመደነቅ)"
+    },
+    {
+      "root": "ደንጐዘ",
+      "type": "type_tanbala",
+      "meaning": "ሠራ(የጭራ፣የጸጉር)"
+    },
+    {
+      "root": "ገበዘ",
+      "type": "type_a",
+      "meaning": "ሾመ"
+    },
+    {
+      "root": "ገነዘ",
+      "type": "type_a",
+      "meaning": "አሰረ፣ገነዘ"
+    },
+    {
+      "root": "ገዕዘ",
+      "type": "type_a",
+      "meaning": "ነቀፈ"
+    },
+    {
+      "root": "ጠረዘ",
+      "type": "type_a",
+      "meaning": "ጠረዘ"
+    },
+    {
+      "root": "ፎዘ",
+      "type": "type_a",
+      "meaning": "ወለወለ"
+    },
+    {
+      "root": "ፈውዘ",
+      "type": "type_a",
+      "meaning": "ወለወለ"
+    },
+    {
+      "root": "ፈወዘ",
+      "type": "type_a",
+      "meaning": "ወለወለ"
+    },
+    {
+      "root": "ኀለየ",
+      "type": "type_b",
+      "meaning": "አሰበ፣አወጣ፣አወረደ"
+    },
+    {
+      "root": "ሐለየ",
+      "type": "type_a",
+      "meaning": "ዘፈነ፣ዘመረ፣አመሰገነ"
+    },
+    {
+      "root": "ሐመየ",
+      "type": "type_a",
+      "meaning": "አማ"
+    },
+    {
+      "root": "ኀመየ",
+      "type": "type_b",
+      "meaning": "አሰረ፣ቀፈደ፣አዘዘ"
+    },
+    {
+      "root": "ሐሰየ",
+      "type": "type_a",
+      "meaning": "አሸ፣አበራየ"
+    },
+    {
+      "root": "ኀረየ",
+      "type": "type_a",
+      "meaning": "መረጠ"
+    },
+    {
+      "root": "ኀርየ",
+      "type": "type_a",
+      "meaning": "መረጠ"
+    },
+    {
+      "root": "ሐቀየ",
+      "type": "type_a",
+      "meaning": "አፋጨ"
+    },
+    {
+      "root": "ሐብለየ",
+      "type": "type_tanbala",
+      "meaning": "በዘበዘ"
+    },
+    {
+      "root": "ሀከየ",
+      "type": "type_a",
+      "meaning": "ሰነፈ"
+    },
+    {
+      "root": "ሀውለየ",
+      "type": "type_tanbala",
+      "meaning": "አላገጠ፣አፌዘ"
+    },
+    {
+      "root": "ሐወየ",
+      "type": "type_a",
+      "meaning": "ድንግዝግዝ አለ፣መሸ፣ጨለመ"
+    },
+    {
+      "root": "ሖየ",
+      "type": "type_a",
+      "meaning": "ድንግዝግዝ አለ፣መሸ፣ጨለመ"
+    },
+    {
+      "root": "ሐይደነየ",
+      "type": "type_tanbala",
+      "meaning": "አበደ"
+    },
+    {
+      "root": "ሀደየ",
+      "type": "type_a",
+      "meaning": "አበሰለ፣አሞከከ"
+    },
+    {
+      "root": "ሐገየ",
+      "type": "type_a",
+      "meaning": "ባጀ"
+    },
+    {
+      "root": "ሐፀየ",
+      "type": "type_a",
+      "meaning": "አጨ"
+    },
+    {
+      "root": "ልሕየ",
+      "type": "type_c",
+      "meaning": "ወዛ፣ተቅለጠለጠ"
+    },
+    {
+      "root": "ላህየ",
+      "type": "type_c",
+      "meaning": "ወዛ፣ተቅለጠለጠ"
+    },
+    {
+      "root": "ሌለየ",
+      "type": "type_c_e",
+      "meaning": "ለየ"
+    },
+    {
+      "root": "ለቀየ",
+      "type": "type_a",
+      "meaning": "ከፈተ(የቤተ)"
+    },
+    {
+      "root": "ላኰየ",
+      "type": "type_c",
+      "meaning": "ተጣላ፣ተከራከረ፣ተሟገተ"
+    },
+    {
+      "root": "ሎየ",
+      "type": "type_a",
+      "meaning": "ጠመጠመ፣ጠቀለለ"
+    },
+    {
+      "root": "ለውየ",
+      "type": "type_a",
+      "meaning": "ጠመጠመ፣ጠቀለለ"
+    },
+    {
+      "root": "ለወየ",
+      "type": "type_a",
+      "meaning": "ጠመጠመ፣ጠቀለለ"
+    },
+    {
+      "root": "ለጸየ",
+      "type": "type_c",
+      "meaning": "ላጨ"
+    },
+    {
+      "root": "ለፈየ",
+      "type": "type_a",
+      "meaning": "ለየ፣ከፈለ፣ሁለት አደረገ"
+    },
+    {
+      "root": "መለየ",
+      "type": "type_a",
+      "meaning": "አቀለጠ"
+    },
+    {
+      "root": "ሜመየ",
+      "type": "type_c_e",
+      "meaning": "ለየ"
+    },
+    {
+      "root": "መስየ",
+      "type": "type_a",
+      "meaning": "መሸ"
+    },
+    {
+      "root": "መሰየ",
+      "type": "type_a",
+      "meaning": "መሸ"
+    },
+    {
+      "root": "መረየ",
+      "type": "type_a",
+      "meaning": "ጠነቆለ"
+    },
+    {
+      "root": "ማረየ",
+      "type": "type_c",
+      "meaning": "ጠነቆለ"
+    },
+    {
+      "root": "መኰየ",
+      "type": "type_b",
+      "meaning": "ተወራረደ፣ተከራከረ"
+    },
+    {
+      "root": "ሰሐየ",
+      "type": "type_a",
+      "meaning": "አጠፋ"
+    },
+    {
+      "root": "ሰረየ",
+      "type": "type_a",
+      "meaning": "አቃለለ(የኃጢያት)"
+    },
+    {
+      "root": "ሠረየ",
+      "type": "type_b",
+      "meaning": "መድኃኒት አደረገ(የክፉ፣የበጎ)"
+    },
+    {
+      "root": "ሤረየ",
+      "type": "type_c_e",
+      "meaning": "በደምአለለ"
+    },
+    {
+      "root": "ሰቀየ",
+      "type": "type_a",
+      "meaning": "አጠጣ(የተክል ብቻ)"
+    },
+    {
+      "root": "ሣቀየ",
+      "type": "type_c",
+      "meaning": "ሥቃይ አሳየ፣አሰቃየ፣አስጨነቀ"
+    },
+    {
+      "root": "ሰትየ",
+      "type": "type_a",
+      "meaning": "ጠጣ"
+    },
+    {
+      "root": "ሠነየ",
+      "type": "type_a",
+      "meaning": "አማረ"
+    },
+    {
+      "root": "ሰነየ",
+      "type": "type_a",
+      "meaning": "ሁለት አደረገ"
+    },
+    {
+      "root": "ሥዕየ",
+      "type": "type_d",
+      "meaning": "መነሸ፣በተነ፣አዘራ"
+    },
+    {
+      "root": "ሰከየ",
+      "type": "type_a",
+      "meaning": "አሰሰ"
+    },
+    {
+      "root": "ሳኰየ",
+      "type": "type_c",
+      "meaning": "ተቅበዘበዘ፣ዞረ፣ባከነ፣ተንከራተተ"
+    },
+    {
+      "root": "ሦየ",
+      "type": "type_a",
+      "meaning": "ሸተ፣በሰለ"
+    },
+    {
+      "root": "ሠወየ",
+      "type": "type_a",
+      "meaning": "ሸተ፣በሰለ"
+    },
+    {
+      "root": "ሤዘየ",
+      "type": "type_c_e",
+      "meaning": "ለየ፣ነጠለ"
+    },
+    {
+      "root": "ሰደየ",
+      "type": "type_a",
+      "meaning": "አማረ"
+    },
+    {
+      "root": "ሰድየ",
+      "type": "type_a",
+      "meaning": "አማረ"
+    },
+    {
+      "root": "ሰፈየ",
+      "type": "type_a",
+      "meaning": "ሰፋ፣ጠቀመ፣ሸለለ"
+    },
+    {
+      "root": "ርሕየ",
+      "type": "type_d",
+      "meaning": "ሸተተ"
+    },
+    {
+      "root": "ረመየ",
+      "type": "type_a",
+      "meaning": "ወጋ"
+    },
+    {
+      "root": "ረሰየ",
+      "type": "type_b",
+      "meaning": "አደረገ"
+    },
+    {
+      "root": "ረቀየ",
+      "type": "type_a",
+      "meaning": "ረጨ፣አሞቀ"
+    },
+    {
+      "root": "ርእየ",
+      "type": "type_d",
+      "meaning": "አየ፣ተመለከተ"
+    },
+    {
+      "root": "ረዐየ",
+      "type": "type_a",
+      "meaning": "ጠበቀ"
+    },
+    {
+      "root": "ሮየ",
+      "type": "type_a",
+      "meaning": "ረካ"
+    },
+    {
+      "root": "ረውየ",
+      "type": "type_a",
+      "meaning": "ረካ"
+    },
+    {
+      "root": "ረወየ",
+      "type": "type_a",
+      "meaning": "ረካ"
+    },
+    {
+      "root": "ረድየ",
+      "type": "type_a",
+      "meaning": "ከፈለ፣አበደረ(የአራጣ)"
+    },
+    {
+      "root": "ቀረየ",
+      "type": "type_a",
+      "meaning": "አሟረተ"
+    },
+    {
+      "root": "ቀልየ",
+      "type": "type_a",
+      "meaning": "ጥልቅ ኾነ"
+    },
+    {
+      "root": "ቄቀየ",
+      "type": "type_c_e",
+      "meaning": "ነፈገ"
+    },
+    {
+      "root": "ቀበየ",
+      "type": "type_a",
+      "meaning": "-አዘጋጀ"
+    },
+    {
+      "root": "ቀነየ",
+      "type": "type_a",
+      "meaning": "ገዛ(የሰው)"
+    },
+    {
+      "root": "ቃነየ",
+      "type": "type_c",
+      "meaning": "ቃኘ፣ደረደረ"
+    },
+    {
+      "root": "በልየ",
+      "type": "type_a",
+      "meaning": "አረጀ"
+    },
+    {
+      "root": "ቤበየ",
+      "type": "type_c_e",
+      "meaning": "ለየ"
+    },
+    {
+      "root": "በከየ",
+      "type": "type_a",
+      "meaning": "አለቀሰ"
+    },
+    {
+      "root": "በድየ",
+      "type": "type_a",
+      "meaning": "ምድረ በዳ ኾነ"
+    },
+    {
+      "root": "ተሐሥየ",
+      "type": "type_a",
+      "meaning": "ተደሰተ"
+    },
+    {
+      "root": "ተሐሠየ",
+      "type": "type_a",
+      "meaning": "ተደሰተ"
+    },
+    {
+      "root": "ተሐበየ",
+      "type": "type_a",
+      "meaning": "ዋስ ኾነ"
+    },
+    {
+      "root": "ተሀየየ",
+      "type": "type_a",
+      "meaning": "ቸልቸል አለ"
+    },
+    {
+      "root": "ተለሀየ",
+      "type": "type_a",
+      "meaning": "ተጫወተ"
+    },
+    {
+      "root": "ተላሀየ",
+      "type": "type_a",
+      "meaning": "ተጫወተ"
+    },
+    {
+      "root": "ተመነየ",
+      "type": "type_b",
+      "meaning": "ተመኘ"
+    },
+    {
+      "root": "ተመኵሰየ",
+      "type": "type_tanbala",
+      "meaning": "ሞክሼኾነ፣በስም ተባበረ"
+    },
+    {
+      "root": "ተሰካተየ",
+      "type": "type_tanbala",
+      "meaning": "ተማማለ"
+    },
+    {
+      "root": "ተሰጥየ",
+      "type": "type_a",
+      "meaning": "ተሰጣ፣ተዘረጋ"
+    },
+    {
+      "root": "ተረሰየ",
+      "type": "type_b",
+      "meaning": "ተሸለመ፣አጌጠ"
+    },
+    {
+      "root": "ተርዕየ",
+      "type": "type_a",
+      "meaning": "ተሰማራ"
+    },
+    {
+      "root": "ተረዐየ",
+      "type": "type_a",
+      "meaning": "ተሰማራ"
+    },
+    {
+      "root": "ተራዐየ",
+      "type": "type_a",
+      "meaning": "ተሰማራ"
+    },
+    {
+      "root": "ተቈናደየ",
+      "type": "type_tanbala",
+      "meaning": "ተኳደደ፣ተጓደደ"
+    },
+    {
+      "root": "ተነሀየ",
+      "type": "type_a",
+      "meaning": "አቃለለ(የኃጢያት)"
+    },
+    {
+      "root": "ተነበየ",
+      "type": "type_b",
+      "meaning": "ተናገረ(የትንቢት)"
+    },
+    {
+      "root": "ተዐበየ",
+      "type": "type_b",
+      "meaning": "ኰራ(የልብ ትዕቢት)"
+    },
+    {
+      "root": "ተአርወየ",
+      "type": "type_tanbala",
+      "meaning": "አውሬ ኾነ"
+    },
+    {
+      "root": "ተዋንየ",
+      "type": "type_a",
+      "meaning": "ተጫወተ"
+    },
+    {
+      "root": "ተዘጋደየ",
+      "type": "type_tanbala",
+      "meaning": "ተዘጋጀ"
+    },
+    {
+      "root": "ተጋነየ",
+      "type": "type_a",
+      "meaning": "እጅ ተነሳሳ"
+    },
+    {
+      "root": "ተፈየ",
+      "type": "type_a",
+      "meaning": "ገረፈ"
+    },
+    {
+      "root": "ተፋጸየ",
+      "type": "type_c",
+      "meaning": "አደነቀ"
+    },
+    {
+      "root": "ንህየ",
+      "type": "type_a",
+      "meaning": "አረፈ"
+    },
+    {
+      "root": "ናህየ",
+      "type": "type_a",
+      "meaning": "አረፈ"
+    },
+    {
+      "root": "ነሀየ",
+      "type": "type_a",
+      "meaning": "አረፈ"
+    },
+    {
+      "root": "ነሰየ",
+      "type": "type_a",
+      "meaning": "ረሳ፣ዘነጋ"
+    },
+    {
+      "root": "ነከየ",
+      "type": "type_a",
+      "meaning": "ነካ"
+    },
+    {
+      "root": "ነድየ",
+      "type": "type_a",
+      "meaning": "ተቸገረ፣ደኸየ"
+    },
+    {
+      "root": "ነጸየ",
+      "type": "type_a",
+      "meaning": "ነጨ፣ነቀለ፣መለጠ"
+    },
+    {
+      "root": "ነፈየ",
+      "type": "type_a",
+      "meaning": "ነፋ(የወንፊት)"
+    },
+    {
+      "root": "ዐለየ",
+      "type": "type_a",
+      "meaning": "መለሰ፣ቀለሰ፣ለገመ፣ከፋ"
+    },
+    {
+      "root": "አሌለየ",
+      "type": "type_c_e",
+      "meaning": "ማለደ(የመገሥገሥ)"
+    },
+    {
+      "root": "አመስከየ",
+      "type": "type_tanbala",
+      "meaning": "ተጠጋ፣አስጠጋ"
+    },
+    {
+      "root": "አመክነየ",
+      "type": "type_tanbala",
+      "meaning": "አመካኘ"
+    },
+    {
+      "root": "አማዕለየ",
+      "type": "type_mahräka",
+      "meaning": "ወነጀለ"
+    },
+    {
+      "root": "አማዕረየ",
+      "type": "type_mahräka",
+      "meaning": "አበጀ፣አዘጋጀ፣አስተካከለ"
+    },
+    {
+      "root": "አሜረየ",
+      "type": "type_c_e",
+      "meaning": "አሠገረ"
+    },
+    {
+      "root": "ዐሰየ",
+      "type": "type_a",
+      "meaning": "ሰጠ"
+    },
+    {
+      "root": "አስተርአየ",
+      "type": "type_a",
+      "meaning": "አየ፣አሳየ"
+    },
+    {
+      "root": "አስተባረየ",
+      "type": "type_a",
+      "meaning": "አፈራረቀ፣አስተጋገዘ"
+    },
+    {
+      "root": "አስተዋደየ",
+      "type": "type_a",
+      "meaning": "አጣ፣አካሰሰ፣አሳጣ"
+    },
+    {
+      "root": "ዐረየ",
+      "type": "type_a",
+      "meaning": "ተካከለ"
+    },
+    {
+      "root": "አርሰየ",
+      "type": "type_a",
+      "meaning": "አስጠጋ"
+    },
+    {
+      "root": "አቃረየ",
+      "type": "type_c",
+      "meaning": "ሰዋ"
+    },
+    {
+      "root": "አቅሌለየ",
+      "type": "type_c_e",
+      "meaning": "አቅላላ"
+    },
+    {
+      "root": "አቅዜዘየ",
+      "type": "type_c_e",
+      "meaning": "ቅዝዝ ቅዝዝ አለ"
+    },
+    {
+      "root": "አበየ",
+      "type": "type_a",
+      "meaning": "እንቢ አለ"
+    },
+    {
+      "root": "ዐብየ",
+      "type": "type_a",
+      "meaning": "ከፍከፍ አለ"
+    },
+    {
+      "root": "አናሕሰየ",
+      "type": "type_mahräka",
+      "meaning": "አቃለለ፣ይቅር አለ"
+    },
+    {
+      "root": "አንቤበየ",
+      "type": "type_c_e",
+      "meaning": "ለየ"
+    },
+    {
+      "root": "አንከየ",
+      "type": "type_a",
+      "meaning": "ሰጠ"
+    },
+    {
+      "root": "አንጌገየ",
+      "type": "type_c_e",
+      "meaning": "ተቅበዘበዘ፣አቅበዘበዘ፣ዞረ፣ባከነ"
+    },
+    {
+      "root": "አንጠየ",
+      "type": "type_a",
+      "meaning": "ዘበዘበ፣ጨቀጨቀ፣ነዘነዘ"
+    },
+    {
+      "root": "አአየ",
+      "type": "type_c",
+      "meaning": "ዞረ፣ተመለሰ"
+    },
+    {
+      "root": "ኣአየ",
+      "type": "type_c",
+      "meaning": "ዞረ፣ተመለሰ"
+    },
+    {
+      "root": "አከየ",
+      "type": "type_a",
+      "meaning": "ከፋ"
+    },
+    {
+      "root": "አውቀየ",
+      "type": "type_a",
+      "meaning": "ቆረጠ"
+    },
+    {
+      "root": "አውፈየ",
+      "type": "type_b",
+      "meaning": "ሰጠ"
+    },
+    {
+      "root": "አወፈየ",
+      "type": "type_b",
+      "meaning": "ሰጠ"
+    },
+    {
+      "root": "ዐየ",
+      "type": "type_a",
+      "meaning": "ዞረ/ባከነ"
+    },
+    {
+      "root": "ዐየየ",
+      "type": "type_a",
+      "meaning": "ዞረ/ባከነ"
+    },
+    {
+      "root": "ዐደየ",
+      "type": "type_a",
+      "meaning": "ከፈለ፣ብድር መለሰ"
+    },
+    {
+      "root": "አጥረየ",
+      "type": "type_a",
+      "meaning": "ገዛ"
+    },
+    {
+      "root": "ዐፀየ",
+      "type": "type_a",
+      "meaning": "ተላ"
+    },
+    {
+      "root": "አፈየ",
+      "type": "type_a",
+      "meaning": "ጋገረ፣አበሰለ"
+    },
+    {
+      "root": "ኰሰየ",
+      "type": "type_a",
+      "meaning": "ለየ፣ከፈለ፣ነጠለ"
+    },
+    {
+      "root": "ከረየ",
+      "type": "type_a",
+      "meaning": "ቆፈረ፣ማሰ"
+    },
+    {
+      "root": "ወሐየ",
+      "type": "type_c",
+      "meaning": "ጐበኘ"
+    },
+    {
+      "root": "ዋሐየ",
+      "type": "type_c",
+      "meaning": "ጐበኘ"
+    },
+    {
+      "root": "ወቀየ",
+      "type": "type_b",
+      "meaning": "ጠበቀ፣ተጠባበቀ"
+    },
+    {
+      "root": "ውዕየ",
+      "type": "type_d",
+      "meaning": "ተቃጠለ"
+    },
+    {
+      "root": "ዋከየ",
+      "type": "type_c",
+      "meaning": "በራ"
+    },
+    {
+      "root": "ወደየ",
+      "type": "type_a",
+      "meaning": "ጨመረ፣ዶለ"
+    },
+    {
+      "root": "ዘረየ",
+      "type": "type_a",
+      "meaning": "በተነ፣ለየ"
+    },
+    {
+      "root": "ዘርከየ",
+      "type": "type_tanbala",
+      "meaning": "ሰደበ፣አዋረደ"
+    },
+    {
+      "root": "ዘበየ",
+      "type": "type_a",
+      "meaning": "ገዛ"
+    },
+    {
+      "root": "ዘነየ",
+      "type": "type_a",
+      "meaning": "ሳተ(የፍትፍት)"
+    },
+    {
+      "root": "ደኀየ",
+      "type": "type_a",
+      "meaning": "ቆፈረ"
+    },
+    {
+      "root": "ደርበየ",
+      "type": "type_tanbala",
+      "meaning": "መታ፣ወጋ"
+    },
+    {
+      "root": "ደበየ",
+      "type": "type_a",
+      "meaning": "ጐተተ"
+    },
+    {
+      "root": "ደነየ",
+      "type": "type_c",
+      "meaning": "ዳኘ፣ፈረደ"
+    },
+    {
+      "root": "ዶየ",
+      "type": "type_a",
+      "meaning": "ታመመ"
+    },
+    {
+      "root": "ደወየ",
+      "type": "type_a",
+      "meaning": "ታመመ"
+    },
+    {
+      "root": "ጐሐየ",
+      "type": "type_a",
+      "meaning": "አረመ"
+    },
+    {
+      "root": "ገለየ",
+      "type": "type_a",
+      "meaning": "ለየ፣ቆጠቆጠ፣ቆረጠ"
+    },
+    {
+      "root": "ጐርዐየ",
+      "type": "type_tanbala",
+      "meaning": "አነቀ፣ፈጠረቀ"
+    },
+    {
+      "root": "ጐረዐየ",
+      "type": "type_tanbala",
+      "meaning": "አነቀ፣ፈጠረቀ"
+    },
+    {
+      "root": "ገነየ",
+      "type": "type_a",
+      "meaning": "ተገዛ"
+    },
+    {
+      "root": "ጐንደየ",
+      "type": "type_tanbala",
+      "meaning": "ዘገየ፣ቆየ"
+    },
+    {
+      "root": "ጐዕተየ",
+      "type": "type_tanbala",
+      "meaning": "ጣረ፣ጋረ፣ለፋ"
+    },
+    {
+      "root": "ጐየ",
+      "type": "type_a",
+      "meaning": "ሸሸ"
+    },
+    {
+      "root": "ጐየየ",
+      "type": "type_a",
+      "meaning": "ሸሸ"
+    },
+    {
+      "root": "ጌገየ",
+      "type": "type_c_e",
+      "meaning": "በደለ"
+    },
+    {
+      "root": "ጐጠየ",
+      "type": "type_a",
+      "meaning": "ቸነከረ"
+    },
+    {
+      "root": "ጠለየ",
+      "type": "type_a",
+      "meaning": "ለመለመ"
+    },
+    {
+      "root": "ጠሰየ",
+      "type": "type_b",
+      "meaning": "አጠፋ፣ደመሰሰ"
+    },
+    {
+      "root": "ጠነየ",
+      "type": "type_a",
+      "meaning": "ፈለገ"
+    },
+    {
+      "root": "ጥዕየ",
+      "type": "type_d",
+      "meaning": "ዳነ"
+    },
+    {
+      "root": "ጦየ",
+      "type": "type_a",
+      "meaning": "ጠመመ"
+    },
+    {
+      "root": "ጠወየ",
+      "type": "type_a",
+      "meaning": "ጠመመ"
+    },
+    {
+      "root": "ጻሕየየ",
+      "type": "type_mahräka",
+      "meaning": "አረመ"
+    },
+    {
+      "root": "ጸለየ",
+      "type": "type_b",
+      "meaning": "ለመነ፣ጸለየ"
+    },
+    {
+      "root": "ጸምሐየ",
+      "type": "type_tanbala",
+      "meaning": "ጠወለገ"
+    },
+    {
+      "root": "ጸመሐየ",
+      "type": "type_tanbala",
+      "meaning": "ጠወለገ"
+    },
+    {
+      "root": "ጸማሕየየ",
+      "type": "type_mahräka",
+      "meaning": "ጠወለገ፣ደረቀ"
+    },
+    {
+      "root": "ጸረየ",
+      "type": "type_a",
+      "meaning": "ጦረ፣ነጻ"
+    },
+    {
+      "root": "ጸበየ",
+      "type": "type_a",
+      "meaning": "ወረደ፣ፈሰሰ"
+    },
+    {
+      "root": "ተብለየ",
+      "type": "type_tanbala",
+      "meaning": "ትቢያኾነ"
+    },
+    {
+      "root": "ጸደየ",
+      "type": "type_a",
+      "meaning": "ዘመነ በልግ ኾነ"
+    },
+    {
+      "root": "ጸገየ",
+      "type": "type_a",
+      "meaning": "አበበ"
+    },
+    {
+      "root": "ፈለየ",
+      "type": "type_a",
+      "meaning": "ለየ፣መረጠ"
+    },
+    {
+      "root": "ፈረየ",
+      "type": "type_a",
+      "meaning": "አፈራ"
+    },
+    {
+      "root": "ፈርየ",
+      "type": "type_a",
+      "meaning": "አፈራ"
+    },
+    {
+      "root": "ፈደየ",
+      "type": "type_a",
+      "meaning": "ከፈለ"
+    },
+    {
+      "root": "ፋጸየ",
+      "type": "type_c",
+      "meaning": "አፏጨ"
+    },
+    {
+      "root": "ኀለደ",
+      "type": "type_b",
+      "meaning": "ጨረሰ፣ፈጀ፣ከተተ"
+    },
+    {
+      "root": "ሐመደ",
+      "type": "type_b",
+      "meaning": "አከሰለ፣አመድ አደረገ"
+    },
+    {
+      "root": "ሐረደ",
+      "type": "type_a",
+      "meaning": "አረደ"
+    },
+    {
+      "root": "ሐርበደ",
+      "type": "type_tanbala",
+      "meaning": "ተስበደበደ፣ተንበደበደ(የፍርሀት)"
+    },
+    {
+      "root": "ሄደ",
+      "type": "type_a",
+      "meaning": "ቀማ፣ነጠቀ"
+    },
+    {
+      "root": "ሀየደ",
+      "type": "type_a",
+      "meaning": "ቀማ፣ነጠቀ"
+    },
+    {
+      "root": "ሐደደ",
+      "type": "type_a",
+      "meaning": "ፈጨ"
+    },
+    {
+      "root": "ልሕደ",
+      "type": "type_d",
+      "meaning": "ተደላደለ፣ተቀማጠለ"
+    },
+    {
+      "root": "ለመደ",
+      "type": "type_a",
+      "meaning": "ለመደ"
+    },
+    {
+      "root": "መለደ",
+      "type": "type_b",
+      "meaning": "ሰበሰበ"
+    },
+    {
+      "root": "መሰደ",
+      "type": "type_b",
+      "meaning": "ሸመተ"
+    },
+    {
+      "root": "መረደ",
+      "type": "type_b",
+      "meaning": "ጠበጠበ፣ተራመደ"
+    },
+    {
+      "root": "መርደደ",
+      "type": "type_tanbala",
+      "meaning": "ጨከነ፣ደፈረ፣ተጋ፣ፈጠነ"
+    },
+    {
+      "root": "ምዕደ",
+      "type": "type_a",
+      "meaning": "መከረ"
+    },
+    {
+      "root": "መዐደ",
+      "type": "type_a",
+      "meaning": "መከረ"
+    },
+    {
+      "root": "መደ",
+      "type": "type_a",
+      "meaning": "ቆረጠ"
+    },
+    {
+      "root": "መደደ",
+      "type": "type_a",
+      "meaning": "ቆረጠ"
+    },
+    {
+      "root": "ሞገደ",
+      "type": "type_c_o",
+      "meaning": "-ማዕበል አደረገ፣አነሳሳ፣አወከ"
+    },
+    {
+      "root": "ሞፈደ",
+      "type": "type_c_o",
+      "meaning": "ጫረ"
+    },
+    {
+      "root": "ሰደ",
+      "type": "type_a",
+      "meaning": "ጫረ"
+    },
+    {
+      "root": "ሰውደ",
+      "type": "type_a",
+      "meaning": "ጫረ"
+    },
+    {
+      "root": "ሰወደ",
+      "type": "type_a",
+      "meaning": "ጫረ"
+    },
+    {
+      "root": "ሰደደ",
+      "type": "type_a",
+      "meaning": "አባረረ፣አሳደደ"
+    },
+    {
+      "root": "ሰገደ",
+      "type": "type_a",
+      "meaning": "ሰገደ"
+    },
+    {
+      "root": "ርዕደ",
+      "type": "type_d",
+      "meaning": "ተንቀጠቀጠ፣ራደ፣ተንበደበደ"
+    },
+    {
+      "root": "ረደ",
+      "type": "type_a",
+      "meaning": "ከበበ(የክፉ)"
+    },
+    {
+      "root": "ረውደ",
+      "type": "type_a",
+      "meaning": "ከበበ(የክፉ)"
+    },
+    {
+      "root": "ረወደ",
+      "type": "type_a",
+      "meaning": "ከበበ(የክፉ)"
+    },
+    {
+      "root": "ረፈደ",
+      "type": "type_a",
+      "meaning": "ረፈደ"
+    },
+    {
+      "root": "ቀለደ",
+      "type": "type_a",
+      "meaning": "ቀዳ"
+    },
+    {
+      "root": "ቀልደደ",
+      "type": "type_tanbala",
+      "meaning": "ቀነደበ"
+    },
+    {
+      "root": "ቀፈደ",
+      "type": "type_b",
+      "meaning": "አሠረ"
+    },
+    {
+      "root": "በረደ",
+      "type": "type_a",
+      "meaning": "በረደ፣ቀዘቀዘ"
+    },
+    {
+      "root": "በርደደ",
+      "type": "type_tanbala",
+      "meaning": "ደበደበ፣ቀጠቀጠ፣ሞረደ"
+    },
+    {
+      "root": "በዐደ",
+      "type": "type_a",
+      "meaning": "ለየ፣ነጠለ"
+    },
+    {
+      "root": "በየደ",
+      "type": "type_b",
+      "meaning": "ረጋ"
+    },
+    {
+      "root": "በድበደ",
+      "type": "type_tanbala",
+      "meaning": "ታመመ"
+    },
+    {
+      "root": "ተማኅፈደ",
+      "type": "type_mahräka",
+      "meaning": "ሠራ"
+    },
+    {
+      "root": "ተአንገደ",
+      "type": "type_tanbala",
+      "meaning": "እንግዳኾነ"
+    },
+    {
+      "root": "ተካየደ",
+      "type": "type_a",
+      "meaning": "ተማማለ፣ቃል ኪዳን ገባ"
+    },
+    {
+      "root": "ተውሐደ",
+      "type": "type_a",
+      "meaning": "አንድኾነ"
+    },
+    {
+      "root": "ተዋሐደ",
+      "type": "type_a",
+      "meaning": "አንድኾነ"
+    },
+    {
+      "root": "ተዋረደ",
+      "type": "type_a",
+      "meaning": "ተዋረደ"
+    },
+    {
+      "root": "ተዘምደ",
+      "type": "type_a",
+      "meaning": "ዘመድኾነ"
+    },
+    {
+      "root": "ተይህደ",
+      "type": "type_d",
+      "meaning": "አመነ"
+    },
+    {
+      "root": "ተጋየደ",
+      "type": "type_a",
+      "meaning": "ተቀዳደመ፣ተፘፘጠ"
+    },
+    {
+      "root": "ተፀምደ",
+      "type": "type_a",
+      "meaning": "አገለገለ"
+    },
+    {
+      "root": "ንእደ",
+      "type": "type_d",
+      "meaning": "አማረ"
+    },
+    {
+      "root": "ነደ",
+      "type": "type_a",
+      "meaning": "ተቃጠለ"
+    },
+    {
+      "root": "ነደደ",
+      "type": "type_a",
+      "meaning": "ተቃጠለ"
+    },
+    {
+      "root": "ነገደ",
+      "type": "type_a",
+      "meaning": "ኼደ"
+    },
+    {
+      "root": "አሐደ",
+      "type": "type_a",
+      "meaning": "አንድ አደረገ"
+    },
+    {
+      "root": "አለደ",
+      "type": "type_b",
+      "meaning": "ሰበሰበ፣ለቀመ፣ከመረ፣አከማቸ"
+    },
+    {
+      "root": "ዐመደ",
+      "type": "type_b",
+      "meaning": "ቈረጠ"
+    },
+    {
+      "root": "አስተወደደ",
+      "type": "type_a",
+      "meaning": "አጓደደ፣አስማማ"
+    },
+    {
+      "root": "አስተጋየደ",
+      "type": "type_a",
+      "meaning": "አቀዳደመ"
+    },
+    {
+      "root": "አብደ",
+      "type": "type_a",
+      "meaning": "ሰነፈ"
+    },
+    {
+      "root": "አብረደ",
+      "type": "type_a",
+      "meaning": "አበረደ፣አቀዘቀዘ"
+    },
+    {
+      "root": "አንጐድጐደ",
+      "type": "type_tanbala",
+      "meaning": "ተነዋወጠ፣አነዋወጠ"
+    },
+    {
+      "root": "አኬደ",
+      "type": "type_a",
+      "meaning": "አበራየ"
+    },
+    {
+      "root": "አውደደ",
+      "type": "type_a",
+      "meaning": "አስማማ፣አዋደደ፣አንድ አደረገ"
+    },
+    {
+      "root": "ዖደ",
+      "type": "type_a",
+      "meaning": "ዞረ"
+    },
+    {
+      "root": "ዐውደ",
+      "type": "type_a",
+      "meaning": "ዞረ"
+    },
+    {
+      "root": "ዐወደ",
+      "type": "type_a",
+      "meaning": "ዞረ"
+    },
+    {
+      "root": "ዐደ",
+      "type": "type_a",
+      "meaning": "አባረረ"
+    },
+    {
+      "root": "ዐደደ",
+      "type": "type_a",
+      "meaning": "አባረረ"
+    },
+    {
+      "root": "ዐጸደ",
+      "type": "type_b",
+      "meaning": "ቦታ አደረገ"
+    },
+    {
+      "root": "አጸዐድዐደ",
+      "type": "type_tanbala",
+      "meaning": "ነጭ አደረገ፣አነጣ"
+    },
+    {
+      "root": "ክሕደ",
+      "type": "type_d",
+      "meaning": "ካደ"
+    },
+    {
+      "root": "ከብደ",
+      "type": "type_a",
+      "meaning": "ከበደ"
+    },
+    {
+      "root": "ኬደ",
+      "type": "type_a",
+      "meaning": "ረገጠ"
+    },
+    {
+      "root": "ከይደ",
+      "type": "type_a",
+      "meaning": "ረገጠ"
+    },
+    {
+      "root": "ከየደ",
+      "type": "type_a",
+      "meaning": "ረገጠ"
+    },
+    {
+      "root": "ውኅደ",
+      "type": "type_d",
+      "meaning": "ጐደለ"
+    },
+    {
+      "root": "ወለደ",
+      "type": "type_a",
+      "meaning": "ወለደ"
+    },
+    {
+      "root": "ወሰደ",
+      "type": "type_a",
+      "meaning": "ወሰደ"
+    },
+    {
+      "root": "ግህደ",
+      "type": "type_a",
+      "meaning": "ገለጠ"
+    },
+    {
+      "root": "ገሀደ",
+      "type": "type_a",
+      "meaning": "ገለጠ"
+    },
+    {
+      "root": "ገመደ",
+      "type": "type_b",
+      "meaning": "ቆረጠ፣አጨደ"
+    },
+    {
+      "root": "ጐነደ",
+      "type": "type_a",
+      "meaning": "ደነደነ፣ወፈረ"
+    },
+    {
+      "root": "ገደ",
+      "type": "type_a",
+      "meaning": "አስገደደ"
+    },
+    {
+      "root": "ገደደ",
+      "type": "type_a",
+      "meaning": "አስገደደ"
+    },
+    {
+      "root": "ገድገደ",
+      "type": "type_tanbala",
+      "meaning": "ገደገደ"
+    },
+    {
+      "root": "ጐድጐደ",
+      "type": "type_tanbala",
+      "meaning": "መታ፣ቀፈቀፈ፣እጁን ጸፋ"
+    },
+    {
+      "root": "ጰሰደ",
+      "type": "type_b",
+      "meaning": "ጠነሰሰ(ጠጅ)"
+    },
+    {
+      "root": "ጽሕደ",
+      "type": "type_d",
+      "meaning": "ለዘበ፣ለሰለሰ"
+    },
+    {
+      "root": "ፀመደ",
+      "type": "type_a",
+      "meaning": "ጠመደ"
+    },
+    {
+      "root": "ፈረደ",
+      "type": "type_a",
+      "meaning": "ፈረደ"
+    },
+    {
+      "root": "ፈ",
+      "type": "type_a",
+      "meaning": "ወደደ"
+    },
+    {
+      "root": "ፈድፈደ",
+      "type": "type_tanbala",
+      "meaning": "በዛ"
+    },
+    {
+      "root": "ሐመገ",
+      "type": "type_a",
+      "meaning": "አደፈረሰ"
+    },
+    {
+      "root": "ኀደገ",
+      "type": "type_a",
+      "meaning": "ተወ"
+    },
+    {
+      "root": "ሐገገ",
+      "type": "type_b",
+      "meaning": "ሕግ ሠራ፣ወሰነ፣ደነገገ"
+    },
+    {
+      "root": "ሎገ",
+      "type": "type_a",
+      "meaning": "ጠመዘዘ፣ሠራ"
+    },
+    {
+      "root": "ለውገ",
+      "type": "type_a",
+      "meaning": "ጠመዘዘ፣ሠራ"
+    },
+    {
+      "root": "ለወገ",
+      "type": "type_a",
+      "meaning": "ጠመዘዘ፣ሠራ"
+    },
+    {
+      "root": "ለግለገ",
+      "type": "type_tanbala",
+      "meaning": "ታመመ"
+    },
+    {
+      "root": "መለገ",
+      "type": "type_a",
+      "meaning": "ቻለ፣ታገሠ"
+    },
+    {
+      "root": "መረገ",
+      "type": "type_a",
+      "meaning": "መረገ"
+    },
+    {
+      "root": "መዘገ",
+      "type": "type_a",
+      "meaning": "ነጠቀ፣አወጣ"
+    },
+    {
+      "root": "ሰረገ",
+      "type": "type_a",
+      "meaning": "ሰርግ አደረገ"
+    },
+    {
+      "root": "ሰነገ",
+      "type": "type_a",
+      "meaning": "አሰረ፣ሰነገ፣አነቀ"
+    },
+    {
+      "root": "ሰንጐገ",
+      "type": "type_tanbala",
+      "meaning": "አጠረ፣ሠራ(የብረት)"
+    },
+    {
+      "root": "ሰፍነገ",
+      "type": "type_tanbala",
+      "meaning": "አጠጣ"
+    },
+    {
+      "root": "በግበገ",
+      "type": "type_a",
+      "meaning": "ታመመ"
+    },
+    {
+      "root": "ተንተገ",
+      "type": "type_a",
+      "meaning": "ተነተገ"
+    },
+    {
+      "root": "ተዛወገ",
+      "type": "type_a",
+      "meaning": "ጐረቢት ኾነ"
+    },
+    {
+      "root": "ተደረገ",
+      "type": "type_a",
+      "meaning": "አንድኾነ"
+    },
+    {
+      "root": "ተፀወገ",
+      "type": "type_b",
+      "meaning": "ተከፋ፣አስከፋ"
+    },
+    {
+      "root": "ነሠገ",
+      "type": "type_a",
+      "meaning": "ቆለፈ፣ዘጋ"
+    },
+    {
+      "root": "ነትገ",
+      "type": "type_a",
+      "meaning": "ጐደለ"
+    },
+    {
+      "root": "ዐለገ",
+      "type": "type_b",
+      "meaning": "ሰለበ"
+    },
+    {
+      "root": "አረገ",
+      "type": "type_a",
+      "meaning": "ሸመገለ፣አረጀ"
+    },
+    {
+      "root": "ዐርገ",
+      "type": "type_a",
+      "meaning": "ወጣ"
+    },
+    {
+      "root": "ዐነገ",
+      "type": "type_a",
+      "meaning": "አሰረ(የጉትቻ)"
+    },
+    {
+      "root": "አንገለገ",
+      "type": "type_b",
+      "meaning": "አከማቸ፣ሰበሰበ"
+    },
+    {
+      "root": "ዖገ",
+      "type": "type_a",
+      "meaning": "አላገጠ"
+    },
+    {
+      "root": "ዐውገ",
+      "type": "type_a",
+      "meaning": "አላገጠ"
+    },
+    {
+      "root": "ዐወገ",
+      "type": "type_a",
+      "meaning": "አላገጠ"
+    },
+    {
+      "root": "ዔገ",
+      "type": "type_b",
+      "meaning": "መነጨ"
+    },
+    {
+      "root": "ዐየገ",
+      "type": "type_b",
+      "meaning": "መነጨ"
+    },
+    {
+      "root": "ዐይገ",
+      "type": "type_b",
+      "meaning": "መነጨ"
+    },
+    {
+      "root": "ወተገ",
+      "type": "type_b",
+      "meaning": "ሳበ፣ቀማ"
+    },
+    {
+      "root": "ዘንጐገ",
+      "type": "type_tanbala",
+      "meaning": "አሽሟጠጠ"
+    },
+    {
+      "root": "ደለገ",
+      "type": "type_b",
+      "meaning": "ከረፋ"
+    },
+    {
+      "root": "ደረገ",
+      "type": "type_a",
+      "meaning": "ሰጠ"
+    },
+    {
+      "root": "ደንገገ",
+      "type": "type_tanbala",
+      "meaning": "ወሰነ፣ደነገገ(የድንበር፣የሰው)"
+    },
+    {
+      "root": "ደግደገ",
+      "type": "type_tanbala",
+      "meaning": "ከሳ፣ቀጠነ"
+    },
+    {
+      "root": "ጸጐ",
+      "type": "type_a",
+      "meaning": "ዳር ድንበር አወጣ"
+    },
+    {
+      "root": "ጸጐጐ",
+      "type": "type_a",
+      "meaning": "ዳር ድንበር አወጣ"
+    },
+    {
+      "root": "ፈለገ",
+      "type": "type_a",
+      "meaning": "መነጨ"
+    },
+    {
+      "root": "ፈርገገ",
+      "type": "type_b",
+      "meaning": "ሻረ፣ደረቀ፣አተረ"
+    },
+    {
+      "root": "ፈገ",
+      "type": "type_a",
+      "meaning": "ፍግ ፍግ አለ"
+    },
+    {
+      "root": "ፈገገ",
+      "type": "type_a",
+      "meaning": "ፍግ ፍግ አለ"
+    },
+    {
+      "root": "ሐብጠ",
+      "type": "type_a",
+      "meaning": "አበጠ፣ተነፋ፣ተፀምደ"
+    },
+    {
+      "root": "ሐበጠ",
+      "type": "type_a",
+      "meaning": "አበጠ፣ተነፋ፣ተፀምደ"
+    },
+    {
+      "root": "ሐንፈጠ",
+      "type": "type_tanbala",
+      "meaning": "አጓለበ፣ጠረጠረ"
+    },
+    {
+      "root": "ኄጠ",
+      "type": "type_a",
+      "meaning": "ሸነገለ፣አታለለ፣ደለለ"
+    },
+    {
+      "root": "ኀይጠ",
+      "type": "type_a",
+      "meaning": "ሸነገለ፣አታለለ፣ደለለ"
+    },
+    {
+      "root": "ኀየጠ",
+      "type": "type_a",
+      "meaning": "ሸነገለ፣አታለለ፣ደለለ"
+    },
+    {
+      "root": "ኀፈጠ",
+      "type": "type_a",
+      "meaning": "መታ፣ደሰቀ፣ደበደበ"
+    },
+    {
+      "root": "ለበጠ",
+      "type": "type_a",
+      "meaning": "ለበጠ፣ሸለመ"
+    },
+    {
+      "root": "ሎጠ",
+      "type": "type_a",
+      "meaning": "ለወጠ፣ልውጥ"
+    },
+    {
+      "root": "ለውጠ",
+      "type": "type_a",
+      "meaning": "ለወጠ፣ልውጥ"
+    },
+    {
+      "root": "ለወጠ",
+      "type": "type_a",
+      "meaning": "ለወጠ፣ልውጥ"
+    },
+    {
+      "root": "ለጥለጠ",
+      "type": "type_tanbala",
+      "meaning": "መዘነ"
+    },
+    {
+      "root": "መለጠ",
+      "type": "type_a",
+      "meaning": "መለጠ፣ላጠ"
+    },
+    {
+      "root": "መሠጠ",
+      "type": "type_a",
+      "meaning": "ነጠቀ፣ቀማ"
+    },
+    {
+      "root": "ሜጠ",
+      "type": "type_a",
+      "meaning": "መለሰ፣ቀለሰ"
+    },
+    {
+      "root": "መይጠ",
+      "type": "type_a",
+      "meaning": "መለሰ፣ቀለሰ"
+    },
+    {
+      "root": "መየጠ",
+      "type": "type_a",
+      "meaning": "መለሰ፣ቀለሰ"
+    },
+    {
+      "root": "ሰሐጠ",
+      "type": "type_a",
+      "meaning": "ነካ፣ቆነጠጠ"
+    },
+    {
+      "root": "ሰለጠ",
+      "type": "type_b",
+      "meaning": "ጨረሰ፣ፈጸመ"
+    },
+    {
+      "root": "ሠበጠ",
+      "type": "type_a",
+      "meaning": "አደረጐተ"
+    },
+    {
+      "root": "ሶጠ",
+      "type": "type_a",
+      "meaning": "ጨመረ፣ደባለቀ"
+    },
+    {
+      "root": "ሰውጠ",
+      "type": "type_a",
+      "meaning": "ጨመረ፣ደባለቀ"
+    },
+    {
+      "root": "ሰወጠ",
+      "type": "type_a",
+      "meaning": "ጨመረ፣ደባለቀ"
+    },
+    {
+      "root": "ሦጠ",
+      "type": "type_a",
+      "meaning": "ገረፈ"
+    },
+    {
+      "root": "ሠውጠ",
+      "type": "type_a",
+      "meaning": "ገረፈ"
+    },
+    {
+      "root": "ሠወጠ",
+      "type": "type_a",
+      "meaning": "ገረፈ"
+    },
+    {
+      "root": "ሤጠ",
+      "type": "type_a",
+      "meaning": "ሸጠ"
+    },
+    {
+      "root": "ሠየጠ",
+      "type": "type_a",
+      "meaning": "ሸጠ"
+    },
+    {
+      "root": "ሠይጠ",
+      "type": "type_a",
+      "meaning": "ሸጠ"
+    },
+    {
+      "root": "ሠጠ",
+      "type": "type_a",
+      "meaning": "ቀደደ"
+    },
+    {
+      "root": "ሠጠጠ",
+      "type": "type_a",
+      "meaning": "ቀደደ"
+    },
+    {
+      "root": "ቀሠጠ",
+      "type": "type_a",
+      "meaning": "ቀሰጠ"
+    },
+    {
+      "root": "ቀብያውበጠ",
+      "type": "type_tanbala",
+      "meaning": "ቀላወጠ"
+    },
+    {
+      "root": "ቀንጦሰጠ",
+      "type": "type_tanbala",
+      "meaning": "ተሰለፈ፣አሰለፈ"
+    },
+    {
+      "root": "ቀጥቀጠ",
+      "type": "type_tanbala",
+      "meaning": "መታ፣ቀጠቀጠ"
+    },
+    {
+      "root": "ተሠልጠ",
+      "type": "type_b",
+      "meaning": "ሰለጠነ"
+    },
+    {
+      "root": "ተሠለጠ",
+      "type": "type_b",
+      "meaning": "ሰለጠነ"
+    },
+    {
+      "root": "ተሣየጠ",
+      "type": "type_a",
+      "meaning": "ተወዳጀ"
+    },
+    {
+      "root": "ነሐጠ",
+      "type": "type_a",
+      "meaning": "ሠራ(የቤት)"
+    },
+    {
+      "root": "ነቈጠ",
+      "type": "type_a",
+      "meaning": "ጫረ(የነቊጥ)"
+    },
+    {
+      "root": "አምሠጠ",
+      "type": "type_a",
+      "meaning": "አመለጠ"
+    },
+    {
+      "root": "አስዖጠጠ",
+      "type": "type_c_o",
+      "meaning": "ስቅጥጥ ስቅጥጥ አለ/አደረገ"
+    },
+    {
+      "root": "አስፈጠ",
+      "type": "type_a",
+      "meaning": "አሳተ፣አታለለ"
+    },
+    {
+      "root": "አቊጠጠ",
+      "type": "type_a",
+      "meaning": "አቀጠነ፣አመነመነ"
+    },
+    {
+      "root": "ዐበጠ",
+      "type": "type_a",
+      "meaning": "መለሰ"
+    },
+    {
+      "root": "አንሦጠጠ",
+      "type": "type_c_o",
+      "meaning": "ስቅጥጥ ስቅጥጥ አለ/አደረገ"
+    },
+    {
+      "root": "አከጠ",
+      "type": "type_a",
+      "meaning": "መገበ"
+    },
+    {
+      "root": "አጸዐጠዐጠ",
+      "type": "type_tanbala",
+      "meaning": "አጣፈጠ፣ጣፈጠ"
+    },
+    {
+      "root": "ወለጠ",
+      "type": "type_b",
+      "meaning": "ለወጠ"
+    },
+    {
+      "root": "ወፈወ",
+      "type": "type_a",
+      "meaning": "ተኰሰ(የሸክላ፣የብረት፣የልብስ)"
+    },
+    {
+      "root": "ዘበጠ",
+      "type": "type_a",
+      "meaning": "መታ"
+    },
+    {
+      "root": "ፀበጠ",
+      "type": "type_a",
+      "meaning": "ያዘ፣ጨበጠ"
+    },
+    {
+      "root": "ጽዕጠ",
+      "type": "type_a",
+      "meaning": "ጣፈጠ"
+    },
+    {
+      "root": "ጸዐጠ",
+      "type": "type_a",
+      "meaning": "ጣፈጠ"
+    },
+    {
+      "root": "ፈለጠ",
+      "type": "type_a",
+      "meaning": "ለየ፣ነጠለ"
+    },
+    {
+      "root": "ሐርጰጰ",
+      "type": "type_a",
+      "meaning": "ፈጨ"
+    },
+    {
+      "root": "ሀንጰጰ",
+      "type": "type_tanbala",
+      "meaning": "ታመመ"
+    },
+    {
+      "root": "ሄጰ",
+      "type": "type_a",
+      "meaning": "ነደፈ"
+    },
+    {
+      "root": "ሀይጰ",
+      "type": "type_a",
+      "meaning": "ነደፈ"
+    },
+    {
+      "root": "ሀየጰ",
+      "type": "type_a",
+      "meaning": "ነደፈ"
+    },
+    {
+      "root": "ሰሐጰ",
+      "type": "type_a",
+      "meaning": "ነካ"
+    },
+    {
+      "root": "ሰለጰ",
+      "type": "type_a",
+      "meaning": "ዋጠ"
+    },
+    {
+      "root": "ሠረጰ",
+      "type": "type_a",
+      "meaning": "ቀደሰ"
+    },
+    {
+      "root": "ቈርጰጰ",
+      "type": "type_tanbala",
+      "meaning": "ቈረጠመ"
+    },
+    {
+      "root": "ዐንጰጰ",
+      "type": "type_tanbala",
+      "meaning": "-ታመመ"
+    },
+    {
+      "root": "ዘረጰ",
+      "type": "type_a",
+      "meaning": "ሰደበ"
+    },
+    {
+      "root": "ጐሐጰ",
+      "type": "type_a",
+      "meaning": "--ጐሸመጠ"
+    },
+    {
+      "root": "ገነጰ",
+      "type": "type_a",
+      "meaning": "ሰገበ፣ሰፋ፣ሠራ"
+    },
+    {
+      "root": "ጐጰ",
+      "type": "type_a",
+      "meaning": "በረረ"
+    },
+    {
+      "root": "ገይጰ",
+      "type": "type_a",
+      "meaning": "በረረ"
+    },
+    {
+      "root": "ገየጰ",
+      "type": "type_a",
+      "meaning": "በረረ"
+    },
+    {
+      "root": "ሐረጸ",
+      "type": "type_a",
+      "meaning": "ፈጨ"
+    },
+    {
+      "root": "ሐነጸ",
+      "type": "type_a",
+      "meaning": "ሠራ/የቤት/"
+    },
+    {
+      "root": "ኀንጸጸ",
+      "type": "type_tanbala",
+      "meaning": "ጠረጠረ"
+    },
+    {
+      "root": "ሐንፈጸ",
+      "type": "type_tanbala",
+      "meaning": "አንጓለበ"
+    },
+    {
+      "root": "ሐወጸ",
+      "type": "type_b",
+      "meaning": "ጐበኘ፣ሰለለ"
+    },
+    {
+      "root": "ሐጸ",
+      "type": "type_a",
+      "meaning": "ጐደለ"
+    },
+    {
+      "root": "ሐጸጸ",
+      "type": "type_a",
+      "meaning": "ጐደለ"
+    },
+    {
+      "root": "ለሐጸ",
+      "type": "type_d",
+      "meaning": "ላጠ፣መለጠ"
+    },
+    {
+      "root": "ልሕጸ",
+      "type": "type_d",
+      "meaning": "ላጠ፣መለጠ"
+    },
+    {
+      "root": "ለምጸ",
+      "type": "type_a",
+      "meaning": "ታመመ"
+    },
+    {
+      "root": "ለመጸ",
+      "type": "type_a",
+      "meaning": "ታመመ"
+    },
+    {
+      "root": "ለጽለጸ",
+      "type": "type_tanbala",
+      "meaning": "መዘነ"
+    },
+    {
+      "root": "ለፈጸ",
+      "type": "type_a",
+      "meaning": "ለወሰ፣አሸ"
+    },
+    {
+      "root": "መሐጸ",
+      "type": "type_a",
+      "meaning": "ቆረጠ"
+    },
+    {
+      "root": "ምኅጸ",
+      "type": "type_d",
+      "meaning": "አማጠ፣ተጨነቀ"
+    },
+    {
+      "root": "ሞርየጸ",
+      "type": "type_c_o",
+      "meaning": "አሟጨ"
+    },
+    {
+      "root": "መፀ",
+      "type": "type_a",
+      "meaning": "ቦካ፣ኾመጠጠ"
+    },
+    {
+      "root": "መፀፀ",
+      "type": "type_a",
+      "meaning": "ቦካ፣ኾመጠጠ"
+    },
+    {
+      "root": "ሥሕጸ",
+      "type": "type_d",
+      "meaning": "ጥልቅ፣ጥልቅ አለ(የነገር)"
+    },
+    {
+      "root": "ሠረጸ",
+      "type": "type_a",
+      "meaning": "በቀለ"
+    },
+    {
+      "root": "ሰርወጸ",
+      "type": "type_tanbala",
+      "meaning": "ጋረጠ"
+    },
+    {
+      "root": "ሰነጸ",
+      "type": "type_a",
+      "meaning": "አለዘበ፣ሠራ፣አስጌጠ"
+    },
+    {
+      "root": "ርሕፀ",
+      "type": "type_d",
+      "meaning": "ወዛ"
+    },
+    {
+      "root": "ረመፀ",
+      "type": "type_a",
+      "meaning": "ጋለ"
+    },
+    {
+      "root": "ረሞፀ",
+      "type": "type_a",
+      "meaning": "ጋለ"
+    },
+    {
+      "root": "ሮጸ",
+      "type": "type_a",
+      "meaning": "ሮጠ"
+    },
+    {
+      "root": "ረውጸ",
+      "type": "type_a",
+      "meaning": "ሮጠ"
+    },
+    {
+      "root": "ረወጸ",
+      "type": "type_a",
+      "meaning": "ሮጠ"
+    },
+    {
+      "root": "ረየፀ",
+      "type": "type_b",
+      "meaning": "ገራ"
+    },
+    {
+      "root": "ረገፀ",
+      "type": "type_a",
+      "meaning": "ረገጠ"
+    },
+    {
+      "root": "ቀረጸ",
+      "type": "type_a",
+      "meaning": "ሸለጠ፣ቆረጠ፣ላጨ"
+    },
+    {
+      "root": "ቀብጸ",
+      "type": "type_a",
+      "meaning": "ተስፋ አጣ"
+    },
+    {
+      "root": "ቀነጸ",
+      "type": "type_b",
+      "meaning": "ዘለለ"
+    },
+    {
+      "root": "ቀፈጸ",
+      "type": "type_a",
+      "meaning": "ገለጠ፣ገፈፈ"
+    },
+    {
+      "root": "በረጸ",
+      "type": "type_a",
+      "meaning": "ብልጭ አለ"
+    },
+    {
+      "root": "በቈጸ",
+      "type": "type_a",
+      "meaning": "ጫረ፣ተረኮሰ"
+    },
+    {
+      "root": "ቤጸ",
+      "type": "type_a",
+      "meaning": "ለየ"
+    },
+    {
+      "root": "ተማወጸ",
+      "type": "type_a",
+      "meaning": "ተካካሰ"
+    },
+    {
+      "root": "ተባየጸ",
+      "type": "type_a",
+      "meaning": "ባለ እንጀራ ኾነ"
+    },
+    {
+      "root": "ተጋህረጸ",
+      "type": "type_mahräka",
+      "meaning": "ተጣላ"
+    },
+    {
+      "root": "ተጋየጸ",
+      "type": "type_a",
+      "meaning": "ተጌጊያጠ"
+    },
+    {
+      "root": "ንሕጸ",
+      "type": "type_d",
+      "meaning": "አረፈ"
+    },
+    {
+      "root": "ነቅጸ",
+      "type": "type_a",
+      "meaning": "ደረቀ"
+    },
+    {
+      "root": "ነፍጸ",
+      "type": "type_a",
+      "meaning": "ሸሸ፣ኮበለለ"
+    },
+    {
+      "root": "ዐመፀ",
+      "type": "type_b",
+      "meaning": "በደለ"
+    },
+    {
+      "root": "አመጐጸ",
+      "type": "type_b",
+      "meaning": "አጣላ"
+    },
+    {
+      "root": "አስሐየጸ",
+      "type": "type_a",
+      "meaning": "ተመለከተ፣አመለከተ"
+    },
+    {
+      "root": "አንፈረዐጸ",
+      "type": "type_tanbala",
+      "meaning": "ዘለለ"
+    },
+    {
+      "root": "አንፈጸ",
+      "type": "type_a",
+      "meaning": "አዘራ፣አነፈሰ"
+    },
+    {
+      "root": "አዕቀጸ",
+      "type": "type_a",
+      "meaning": "አሰነካከለ"
+    },
+    {
+      "root": "ዐፀ",
+      "type": "type_a",
+      "meaning": "ዱርኾነ"
+    },
+    {
+      "root": "ዐፀፀ",
+      "type": "type_a",
+      "meaning": "ዱርኾነ"
+    },
+    {
+      "root": "ድኅፀ",
+      "type": "type_d",
+      "meaning": "ዳጥኾነ"
+    },
+    {
+      "root": "ደምፀ",
+      "type": "type_a",
+      "meaning": "ተሰማ"
+    },
+    {
+      "root": "ደረጸ",
+      "type": "type_a",
+      "meaning": "ወጋ"
+    },
+    {
+      "root": "ደነጸ",
+      "type": "type_a",
+      "meaning": "ነፈገ"
+    },
+    {
+      "root": "ደንገጸ",
+      "type": "type_tanbala",
+      "meaning": "ደነገጠ"
+    },
+    {
+      "root": "ደጐጸ",
+      "type": "type_a",
+      "meaning": "መታ፣ደሰቀ"
+    },
+    {
+      "root": "ገመጸ",
+      "type": "type_b",
+      "meaning": "በደለ"
+    },
+    {
+      "root": "ገለጸ",
+      "type": "type_a",
+      "meaning": "ገለጠ"
+    },
+    {
+      "root": "ገሠጸ",
+      "type": "type_b",
+      "meaning": "ተቆጣ"
+    },
+    {
+      "root": "ገገጸ",
+      "type": "type_b",
+      "meaning": "አፈገፈገ፣ወደኋላ አለ"
+    },
+    {
+      "root": "ጐየጸ",
+      "type": "type_b",
+      "meaning": "ተናጻ"
+    },
+    {
+      "root": "ፈለጸ",
+      "type": "type_a",
+      "meaning": "ፈለጠ፣ሠነጠቀ"
+    },
+    {
+      "root": "ኀለፈ",
+      "type": "type_a",
+      "meaning": "ሄደ"
+    },
+    {
+      "root": "ኀሠፈ",
+      "type": "type_a",
+      "meaning": "አከከ፣አቆሰለ"
+    },
+    {
+      "root": "ሐቀፈ",
+      "type": "type_a",
+      "meaning": "አቀፈ"
+    },
+    {
+      "root": "ኀደፈ",
+      "type": "type_b",
+      "meaning": "አስተማረ"
+    },
+    {
+      "root": "ሐፈ",
+      "type": "type_a",
+      "meaning": "ወዛ፣ደከመ"
+    },
+    {
+      "root": "ሐፈፈ",
+      "type": "type_a",
+      "meaning": "ወዛ፣ደከመ"
+    },
+    {
+      "root": "ለአፈ",
+      "type": "type_a",
+      "meaning": "ጐረሰ"
+    },
+    {
+      "root": "ለከፈ",
+      "type": "type_a",
+      "meaning": "ነካ"
+    },
+    {
+      "root": "ለፈ",
+      "type": "type_a",
+      "meaning": "ጻፈ"
+    },
+    {
+      "root": "ለፈፈ",
+      "type": "type_a",
+      "meaning": "ጻፈ"
+    },
+    {
+      "root": "መንተፈ",
+      "type": "type_tanbala",
+      "meaning": "አባዘተ"
+    },
+    {
+      "root": "ሰረፈ",
+      "type": "type_a",
+      "meaning": "አጠነ፣አጤሰ"
+    },
+    {
+      "root": "ሰየፈ",
+      "type": "type_b",
+      "meaning": "ቆረጠ"
+    },
+    {
+      "root": "ሰደፈ",
+      "type": "type_a",
+      "meaning": "መታ"
+    },
+    {
+      "root": "ሰፈ",
+      "type": "type_a",
+      "meaning": "ተንኳፈፈ፣ሰፈፈ"
+    },
+    {
+      "root": "ሰፈፈ",
+      "type": "type_a",
+      "meaning": "ተንኳፈፈ፣ሰፈፈ"
+    },
+    {
+      "root": "ረጕነፈ",
+      "type": "type_tanbala",
+      "meaning": "ጐዘጐዘ"
+    },
+    {
+      "root": "ቈለፈ",
+      "type": "type_b",
+      "meaning": "ቆላፍ ኾነ፣ቆለፈ"
+    },
+    {
+      "root": "ቀሠፈ",
+      "type": "type_a",
+      "meaning": "ገረፈ"
+    },
+    {
+      "root": "ቀረፈ",
+      "type": "type_a",
+      "meaning": "ላጠ፣ቀረፈ"
+    },
+    {
+      "root": "ቀደፈ",
+      "type": "type_a",
+      "meaning": "ቀዘፈ(የታንኳ)"
+    },
+    {
+      "root": "ቀጠፈ",
+      "type": "type_a",
+      "meaning": "ቀጠፈ፣ሰረቀ"
+    },
+    {
+      "root": "ተኀለፈ",
+      "type": "type_a",
+      "meaning": "ተናገረ"
+    },
+    {
+      "root": "ተልሕፈ",
+      "type": "type_d",
+      "meaning": "ተጫወተ"
+    },
+    {
+      "root": "ተለሐፈ",
+      "type": "type_d",
+      "meaning": "ተጫወተ"
+    },
+    {
+      "root": "ተሳተፈ",
+      "type": "type_c",
+      "meaning": "አንድኾነ፣ተሳተፈ"
+    },
+    {
+      "root": "ተርፈ",
+      "type": "type_a",
+      "meaning": "ቀረ"
+    },
+    {
+      "root": "ተረፈ",
+      "type": "type_a",
+      "meaning": "ቀረ"
+    },
+    {
+      "root": "ተዐጽፈ",
+      "type": "type_c",
+      "meaning": "ለበሰ"
+    },
+    {
+      "root": "ተዓጸፈ",
+      "type": "type_c",
+      "meaning": "ለበሰ"
+    },
+    {
+      "root": "ተወክፈ",
+      "type": "type_a",
+      "meaning": "ተቀበለ"
+    },
+    {
+      "root": "ተወዝፈ",
+      "type": "type_a",
+      "meaning": "አጌጠ"
+    },
+    {
+      "root": "ተዛፈወ",
+      "type": "type_a",
+      "meaning": "ተጫወተ"
+    },
+    {
+      "root": "ነተፈ",
+      "type": "type_a",
+      "meaning": "ቆረጠ፣በጨቀ፣በጠሰ"
+    },
+    {
+      "root": "ነዘፈ",
+      "type": "type_a",
+      "meaning": "ለበሰ"
+    },
+    {
+      "root": "ነደፈ",
+      "type": "type_a",
+      "meaning": "ወጋ"
+    },
+    {
+      "root": "ነገፈ",
+      "type": "type_a",
+      "meaning": "አራገፈ"
+    },
+    {
+      "root": "ነጠፈ",
+      "type": "type_a",
+      "meaning": "ኮላ፣አጠራ፣አቀለጠ፣አነጠረ"
+    },
+    {
+      "root": "ነጸፈ",
+      "type": "type_a",
+      "meaning": "አነጠፈ"
+    },
+    {
+      "root": "ነፅፈ",
+      "type": "type_a",
+      "meaning": "ደረቀ፣ነጠፈ"
+    },
+    {
+      "root": "ነፍነፈ",
+      "type": "type_tanbala",
+      "meaning": "አካፋ(የዝናም)"
+    },
+    {
+      "root": "አለፈ",
+      "type": "type_b",
+      "meaning": "ቆጠረ"
+    },
+    {
+      "root": "አስተኀለፈ",
+      "type": "type_a",
+      "meaning": "አዋጅ ነገረ"
+    },
+    {
+      "root": "አስተናደፈ",
+      "type": "type_a",
+      "meaning": "በገረ፣አስበገረ፣ሠራ(የቤት)"
+    },
+    {
+      "root": "አንዘፍዘፈ",
+      "type": "type_tanbala",
+      "meaning": "አንዘፈዘፈ፣ተንዘፈዘፈ"
+    },
+    {
+      "root": "አንገፈ",
+      "type": "type_a",
+      "meaning": "አዳነ"
+    },
+    {
+      "root": "አንጸፍጸፈ",
+      "type": "type_tanbala",
+      "meaning": "አንጠፈጠፈ፣ተንጠፈጠፈ"
+    },
+    {
+      "root": "አዕረፈ",
+      "type": "type_a",
+      "meaning": "አረፈ፣አሳረፈ"
+    },
+    {
+      "root": "አዕቀፈ",
+      "type": "type_a",
+      "meaning": "አሰነካከለ፣አናቀፈ"
+    },
+    {
+      "root": "አኮፈ",
+      "type": "type_a",
+      "meaning": "አቋተ፣አቆመ"
+    },
+    {
+      "root": "አኰፈ",
+      "type": "type_a",
+      "meaning": "አቋተ፣አቆመ"
+    },
+    {
+      "root": "አከፈ",
+      "type": "type_a",
+      "meaning": "አቋተ፣አቆመ"
+    },
+    {
+      "root": "አዝለፈ",
+      "type": "type_a",
+      "meaning": "አዝወተረ"
+    },
+    {
+      "root": "አጥነፈ",
+      "type": "type_a",
+      "meaning": "አያያዘ፣አዋደደ"
+    },
+    {
+      "root": "ዐጠፈ",
+      "type": "type_b",
+      "meaning": "ሠራ፣ጠቀለለ፣አከረረ"
+    },
+    {
+      "root": "ዐጸፈ",
+      "type": "type_a",
+      "meaning": "ለበሰ፣ተጐናጸፈ"
+    },
+    {
+      "root": "ከልተፈ",
+      "type": "type_tanbala",
+      "meaning": "አሰረ(የሰው)"
+    },
+    {
+      "root": "ከነፈ",
+      "type": "type_a",
+      "meaning": "በረረ"
+    },
+    {
+      "root": "ወፀፈ",
+      "type": "type_a",
+      "meaning": "ወነጨፈ"
+    },
+    {
+      "root": "ዘለፈ",
+      "type": "type_a",
+      "meaning": "ሰደበ"
+    },
+    {
+      "root": "ደሐፈ",
+      "type": "type_a",
+      "meaning": "ደፋ፣ገፋ"
+    },
+    {
+      "root": "ገሐፈ",
+      "type": "type_a",
+      "meaning": "ጠረገ፣ጋፈ"
+    },
+    {
+      "root": "ገለፈ",
+      "type": "type_a",
+      "meaning": "ጣዖት ሠራ"
+    },
+    {
+      "root": "ገረፈ",
+      "type": "type_a",
+      "meaning": "አጠመደ"
+    },
+    {
+      "root": "ጐረፈ",
+      "type": "type_a",
+      "meaning": "ኃጢያት ሠራ"
+    },
+    {
+      "root": "ገዝፈ",
+      "type": "type_a",
+      "meaning": "ደነደነ"
+    },
+    {
+      "root": "ገደፈ",
+      "type": "type_a",
+      "meaning": "-ጣለ"
+    },
+    {
+      "root": "ጸሐፈ",
+      "type": "type_a",
+      "meaning": "ጻፈ"
+    },
+    {
+      "root": "ፀረፈ",
+      "type": "type_a",
+      "meaning": "ሰደበ"
+    },
+    {
+      "root": "ጸነፈ",
+      "type": "type_a",
+      "meaning": "ዳርቻ ኾነ"
+    },
+    {
+      "root": "ጸንገፈ",
+      "type": "type_tanbala",
+      "meaning": "ከበደ(የሸክም)"
+    },
+    {
+      "root": "ጸየፈ",
+      "type": "type_b",
+      "meaning": "ጸያፍኾነ"
+    },
+    {
+      "root": "ጸድፈ",
+      "type": "type_a",
+      "meaning": "ወደቀ"
+    },
+    {
+      "root": "ጸፍጸፈ",
+      "type": "type_tanbala",
+      "meaning": "ሠራ"
+    },
+    {
+      "root": "ፈልሰፈ",
+      "type": "type_tanbala",
+      "meaning": "ብልኻተኛ ኾነ"
+    },
+    {
+      "root": "ሐሰቀፐ",
+      "type": "type_tanbala",
+      "meaning": "አረሰ፣አለሰለሰ"
+    },
+    {
+      "root": "ሰለፐ",
+      "type": "type_a",
+      "meaning": "ሠራ፣ቀባ"
+    },
+    {
+      "root": "ሴለፐ",
+      "type": "type_c_e",
+      "meaning": "ወገንኾነ"
+    },
+    {
+      "root": "ሰረፐ",
+      "type": "type_a",
+      "meaning": "ቀደሰ"
+    },
+    {
+      "root": "ሮፐ",
+      "type": "type_b",
+      "meaning": "ጸና"
+    },
+    {
+      "root": "ረውፐ",
+      "type": "type_b",
+      "meaning": "ጸና"
+    },
+    {
+      "root": "ረወፐ",
+      "type": "type_b",
+      "meaning": "ጸና"
+    },
+    {
+      "root": "ተረፐ",
+      "type": "type_a",
+      "meaning": "አጠመደ"
+    },
+    {
+      "root": "ቴረፐ",
+      "type": "type_c_e",
+      "meaning": "በዛ፣በረከተ"
+    },
+    {
+      "root": "ቴፐ",
+      "type": "type_b",
+      "meaning": "ደበበ፣ሠራ"
+    },
+    {
+      "root": "ተይፐ",
+      "type": "type_b",
+      "meaning": "ደበበ፣ሠራ"
+    },
+    {
+      "root": "ተየፐ",
+      "type": "type_b",
+      "meaning": "ደበበ፣ሠራ"
+    },
+    {
+      "root": "አስኮተፐ",
+      "type": "type_c_o",
+      "meaning": "አረሰ"
+    },
+    {
+      "root": "ኤፐፐ",
+      "type": "type_c_e",
+      "meaning": "ወደደ"
+    },
+    {
+      "root": "ከተፐ",
+      "type": "type_a",
+      "meaning": "ጻፈ"
+    },
+    {
+      "root": "ዴፐ",
+      "type": "type_b",
+      "meaning": "ሸመቀ፣አደባ"
+    },
+    {
+      "root": "ደይፐ",
+      "type": "type_b",
+      "meaning": "ሸመቀ፣አደባ"
+    },
+    {
+      "root": "ደየፐ",
+      "type": "type_b",
+      "meaning": "ሸመቀ፣አደባ"
+    }
+  ],
+  "nouns": [
+    {
+      "word": "መላእክት",
+      "meaning": "angels",
+      "root": "ለአከ"
+    },
+    {
+      "word": "መንፈስ",
+      "meaning": "spirit",
+      "root": "ነፈሰ"
+    },
+    {
+      "word": "መጽሐፍ",
+      "meaning": "book",
+      "root": "ጸሐፈ"
+    },
+    {
+      "word": "መንበር",
+      "meaning": "seat/throne",
+      "root": "ነበረ"
+    },
+    {
+      "word": "መቅደስ",
+      "meaning": "temple/sanctuary",
+      "root": "ቀደሰ"
+    }
+  ]
+}

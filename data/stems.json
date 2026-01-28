@@ -1,0 +1,53 @@
+{
+  "_meta": {
+    "description": "Ge'ez Derived Stems (Ar'est) - The 'Multiplier' Patterns",
+    "notation": "Prefix + Root Pattern (C1-Order, C2-Order, C3-Order)"
+  },
+  "stems": {
+    "G": {
+      "code": "G",
+      "name": "Qal (Basic)",
+      "geez_name": "ቀለል",
+      "meaning": "Basic action",
+      "prefix": "",
+      "vowel_map": {"C1": 1, "C2": 1, "C3": 1},
+      "example": {"root": "ነጸረ", "word": "ነጸረ"}
+    },
+    "C": {
+      "code": "C",
+      "name": "Causative",
+      "geez_name": "አግብር",
+      "meaning": "Cause to do",
+      "prefix": "አ",
+      "vowel_map": {"C1": 1, "C2": 1, "C3": 1},
+      "example": {"root": "ነጸረ", "word": "አነጸረ"}
+    },
+    "T": {
+      "code": "T",
+      "name": "Passive/Reflexive",
+      "geez_name": "ተገብረ",
+      "meaning": "To be done / Do to oneself",
+      "prefix": "ተ",
+      "vowel_map": {"C1": 1, "C2": 1, "C3": 1},
+      "example": {"root": "ነጸረ", "word": "ተነጸረ"}
+    },
+    "Recip": {
+      "code": "Recip",
+      "name": "Reciprocal",
+      "geez_name": "ተጋብረ",
+      "meaning": "Do to each other",
+      "prefix": "ተ",
+      "vowel_map": {"C1": 4, "C2": 1, "C3": 1},
+      "example": {"root": "ነጸረ", "word": "ተናጸረ"}
+    },
+    "CausRecip": {
+      "code": "CausRecip",
+      "name": "Astangagari",
+      "geez_name": "አስተጋብረ",
+      "meaning": "Cause to do to each other",
+      "prefix": "አስተ",
+      "vowel_map": {"C1": 4, "C2": 1, "C3": 1},
+      "example": {"root": "ነጸረ", "word": "አስተናጸረ"}
+    }
+  }
+}

@@ -1,0 +1,6716 @@
+{
+  "_meta": {
+    "version": "3.0",
+    "framework": "EthioMorph Research Framework",
+    "description": "Multi-Class Ge'ez Verb Morphology",
+    "vowel_orders": {
+      "1": "ä (Geez)",
+      "2": "u",
+      "3": "i",
+      "4": "a",
+      "5": "e",
+      "6": "ə",
+      "7": "o"
+    }
+  },
+  "type_a": {
+    "perfective": {
+      "template_name": "Qätälä",
+      "base_pattern": {
+        "C1": 1,
+        "C2": 1,
+        "C3": 1
+      },
+      "subjects": {
+        "3sm": {
+          "suffix": "",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 1,
+            "C3": 1
+          }
+        },
+        "3sf": {
+          "suffix": "ት",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 1,
+            "C3": 1
+          }
+        },
+        "2sm": {
+          "suffix": "ከ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 1,
+            "C3": 6
+          }
+        },
+        "2sf": {
+          "suffix": "ኪ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 1,
+            "C3": 6
+          }
+        },
+        "1s": {
+          "suffix": "ኩ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 1,
+            "C3": 6
+          }
+        },
+        "1p": {
+          "suffix": "ነ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 1,
+            "C3": 6
+          }
+        },
+        "3pm": {
+          "suffix": "ኡ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 1,
+            "C3": 6
+          }
+        },
+        "3pf": {
+          "suffix": "ኣ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 1,
+            "C3": 6
+          }
+        },
+        "2pm": {
+          "suffix": "ክሙ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 1,
+            "C3": 6
+          }
+        },
+        "2pf": {
+          "suffix": "ክን",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 1,
+            "C3": 6
+          }
+        }
+      }
+    },
+    "imperfective": {
+      "template_name": "Yəqättəl",
+      "base_pattern": {
+        "C1": 1,
+        "C2": 6,
+        "C3": 6
+      },
+      "gemination": "C2",
+      "subjects": {
+        "3sm": {
+          "prefix": "ይ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 6,
+            "C3": 6
+          }
+        },
+        "3sf": {
+          "prefix": "ት",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 6,
+            "C3": 6
+          }
+        },
+        "2sm": {
+          "prefix": "ት",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 6,
+            "C3": 6
+          }
+        },
+        "2sf": {
+          "prefix": "ት",
+          "suffix": "ኢ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 6,
+            "C3": 6
+          }
+        },
+        "1s": {
+          "prefix": "እ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 6,
+            "C3": 6
+          }
+        },
+        "1p": {
+          "prefix": "ን",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 6,
+            "C3": 6
+          }
+        },
+        "3pm": {
+          "prefix": "ይ",
+          "suffix": "ኡ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 6,
+            "C3": 6
+          }
+        },
+        "3pf": {
+          "prefix": "ይ",
+          "suffix": "ኣ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 6,
+            "C3": 6
+          }
+        },
+        "2pm": {
+          "prefix": "ት",
+          "suffix": "ኡ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 6,
+            "C3": 6
+          }
+        },
+        "2pf": {
+          "prefix": "ት",
+          "suffix": "ኣ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 6,
+            "C3": 6
+          }
+        }
+      }
+    },
+    "jussive": {
+      "template_name": "Yəqtəl",
+      "base_pattern": {
+        "C1": 6,
+        "C2": 6,
+        "C3": 6
+      },
+      "subjects": {
+        "3sm": {
+          "prefix": "ይ",
+          "vowel_map": {
+            "C1": 6,
+            "C2": 6,
+            "C3": 6
+          }
+        },
+        "3sf": {
+          "prefix": "ት",
+          "vowel_map": {
+            "C1": 6,
+            "C2": 6,
+            "C3": 6
+          }
+        },
+        "2sm": {
+          "prefix": "ት",
+          "vowel_map": {
+            "C1": 6,
+            "C2": 6,
+            "C3": 6
+          }
+        },
+        "2sf": {
+          "prefix": "ት",
+          "suffix": "ኢ",
+          "vowel_map": {
+            "C1": 6,
+            "C2": 6,
+            "C3": 6
+          }
+        },
+        "1s": {
+          "prefix": "እ",
+          "vowel_map": {
+            "C1": 6,
+            "C2": 6,
+            "C3": 6
+          }
+        },
+        "1p": {
+          "prefix": "ን",
+          "vowel_map": {
+            "C1": 6,
+            "C2": 6,
+            "C3": 6
+          }
+        },
+        "3pm": {
+          "prefix": "ይ",
+          "suffix": "ኡ",
+          "vowel_map": {
+            "C1": 6,
+            "C2": 6,
+            "C3": 6
+          }
+        },
+        "3pf": {
+          "prefix": "ይ",
+          "suffix": "ኣ",
+          "vowel_map": {
+            "C1": 6,
+            "C2": 6,
+            "C3": 6
+          }
+        },
+        "2pm": {
+          "prefix": "ት",
+          "suffix": "ኡ",
+          "vowel_map": {
+            "C1": 6,
+            "C2": 6,
+            "C3": 6
+          }
+        },
+        "2pf": {
+          "prefix": "ት",
+          "suffix": "ኣ",
+          "vowel_map": {
+            "C1": 6,
+            "C2": 6,
+            "C3": 6
+          }
+        }
+      }
+    },
+    "imperative": {
+      "template_name": "Qtäl",
+      "base_pattern": {
+        "C1": 6,
+        "C2": 6,
+        "C3": 6
+      },
+      "subjects": {
+        "2sm": {
+          "vowel_map": {
+            "C1": 6,
+            "C2": 6,
+            "C3": 6
+          }
+        },
+        "2sf": {
+          "suffix": "ኢ",
+          "vowel_map": {
+            "C1": 6,
+            "C2": 6,
+            "C3": 6
+          }
+        },
+        "2pm": {
+          "suffix": "ኡ",
+          "vowel_map": {
+            "C1": 6,
+            "C2": 6,
+            "C3": 6
+          }
+        },
+        "2pf": {
+          "suffix": "ኣ",
+          "vowel_map": {
+            "C1": 6,
+            "C2": 6,
+            "C3": 6
+          }
+        }
+      }
+    },
+    "derived": {
+      "infinitive": {
+        "template": "Qätilo",
+        "geez_note": "ቀቲሎ (ንኡስ አንቀጽ)",
+        "pattern": {
+          "C1": 1,
+          "C2": 3,
+          "C3": 7
+        }
+      },
+      "active_participle": {
+        "template": "Qätali",
+        "geez_note": "ቀታሊ (አድራጊ)",
+        "pattern": {
+          "C1": 1,
+          "C2": 4,
+          "C3": 3
+        }
+      },
+      "passive_participle": {
+        "template": "Qətul",
+        "geez_note": "ቅቱል (ተደራጊ)",
+        "pattern": {
+          "C1": 6,
+          "C2": 2,
+          "C3": 6
+        }
+      },
+      "verbal_noun": {
+        "template": "Qətlät",
+        "geez_note": "ቅትለት (ዘር/ቃል)",
+        "pattern": {
+          "C1": 6,
+          "C2": 6,
+          "C3": 1
+        },
+        "suffix": "ት"
+      },
+      "instrumental": {
+        "template": "Mäqtäl",
+        "geez_note": "መቅተል (መሳሪያ)",
+        "prefix": "መ",
+        "pattern": {
+          "C1": 6,
+          "C2": 1,
+          "C3": 6
+        }
+      },
+      "abstract_noun": {
+        "template": "Qətlot",
+        "geez_note": "ቅትሎት (ማንነት)",
+        "pattern": {
+          "C1": 6,
+          "C2": 6,
+          "C3": 7
+        },
+        "suffix": "ት"
+      },
+      "causative_agent": {
+        "template": "Aqtali",
+        "geez_note": "አቅታሊ (አሳሳቢ አድራጊ)",
+        "prefix": "አ",
+        "pattern": {
+          "C1": 6,
+          "C2": 4,
+          "C3": 3
+        }
+      },
+      "place_noun": {
+        "template": "Mäqtal",
+        "geez_note": "መቅታል (ቦታ)",
+        "prefix": "መ",
+        "pattern": {
+          "C1": 6,
+          "C2": 4,
+          "C3": 6
+        }
+      }
+    }
+  },
+  "type_b": {
+    "perfective": {
+      "template_name": "Qäddäsä",
+      "base_pattern": {
+        "C1": 1,
+        "C2": 1,
+        "C3": 1
+      },
+      "gemination": "C2",
+      "subjects": {
+        "3sm": {
+          "suffix": "",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 1,
+            "C3": 1
+          }
+        },
+        "3sf": {
+          "suffix": "ት",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 1,
+            "C3": 1
+          }
+        },
+        "2sm": {
+          "suffix": "ከ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 1,
+            "C3": 6
+          }
+        },
+        "2sf": {
+          "suffix": "ኪ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 1,
+            "C3": 6
+          }
+        },
+        "1s": {
+          "suffix": "ኩ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 1,
+            "C3": 6
+          }
+        },
+        "1p": {
+          "suffix": "ነ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 1,
+            "C3": 6
+          }
+        },
+        "3pm": {
+          "suffix": "ኡ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 1,
+            "C3": 6
+          }
+        },
+        "3pf": {
+          "suffix": "ኣ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 1,
+            "C3": 6
+          }
+        },
+        "2pm": {
+          "suffix": "ክሙ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 1,
+            "C3": 6
+          }
+        },
+        "2pf": {
+          "suffix": "ክን",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 1,
+            "C3": 6
+          }
+        }
+      }
+    },
+    "imperfective": {
+      "template_name": "Yəqeddəs",
+      "geez_note": "ካልአይ - C1 shifts to 5th order (ፌ/ቄ)",
+      "base_pattern": {
+        "C1": 5,
+        "C2": 6,
+        "C3": 6
+      },
+      "gemination": "C2",
+      "subjects": {
+        "3sm": {
+          "prefix": "ይ",
+          "vowel_map": {
+            "C1": 5,
+            "C2": 6,
+            "C3": 6
+          }
+        },
+        "3sf": {
+          "prefix": "ት",
+          "vowel_map": {
+            "C1": 5,
+            "C2": 6,
+            "C3": 6
+          }
+        },
+        "2sm": {
+          "prefix": "ት",
+          "vowel_map": {
+            "C1": 5,
+            "C2": 6,
+            "C3": 6
+          }
+        },
+        "2sf": {
+          "prefix": "ት",
+          "suffix": "ኢ",
+          "vowel_map": {
+            "C1": 5,
+            "C2": 6,
+            "C3": 6
+          }
+        },
+        "1s": {
+          "prefix": "እ",
+          "vowel_map": {
+            "C1": 5,
+            "C2": 6,
+            "C3": 6
+          }
+        },
+        "1p": {
+          "prefix": "ን",
+          "vowel_map": {
+            "C1": 5,
+            "C2": 6,
+            "C3": 6
+          }
+        },
+        "3pm": {
+          "prefix": "ይ",
+          "suffix": "ኡ",
+          "vowel_map": {
+            "C1": 5,
+            "C2": 6,
+            "C3": 6
+          }
+        },
+        "3pf": {
+          "prefix": "ይ",
+          "suffix": "ኣ",
+          "vowel_map": {
+            "C1": 5,
+            "C2": 6,
+            "C3": 6
+          }
+        },
+        "2pm": {
+          "prefix": "ት",
+          "suffix": "ኡ",
+          "vowel_map": {
+            "C1": 5,
+            "C2": 6,
+            "C3": 6
+          }
+        },
+        "2pf": {
+          "prefix": "ት",
+          "suffix": "ኣ",
+          "vowel_map": {
+            "C1": 5,
+            "C2": 6,
+            "C3": 6
+          }
+        }
+      }
+    },
+    "jussive": {
+      "template_name": "Yəqäddəs",
+      "base_pattern": {
+        "C1": 1,
+        "C2": 6,
+        "C3": 6
+      },
+      "gemination": "C2",
+      "subjects": {
+        "3sm": {
+          "prefix": "ይ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 6,
+            "C3": 6
+          }
+        },
+        "3sf": {
+          "prefix": "ት",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 6,
+            "C3": 6
+          }
+        },
+        "2sm": {
+          "prefix": "ት",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 6,
+            "C3": 6
+          }
+        },
+        "2sf": {
+          "prefix": "ት",
+          "suffix": "ኢ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 6,
+            "C3": 6
+          }
+        },
+        "1s": {
+          "prefix": "እ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 6,
+            "C3": 6
+          }
+        },
+        "1p": {
+          "prefix": "ን",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 6,
+            "C3": 6
+          }
+        },
+        "3pm": {
+          "prefix": "ይ",
+          "suffix": "ኡ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 6,
+            "C3": 6
+          }
+        },
+        "3pf": {
+          "prefix": "ይ",
+          "suffix": "ኣ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 6,
+            "C3": 6
+          }
+        },
+        "2pm": {
+          "prefix": "ት",
+          "suffix": "ኡ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 6,
+            "C3": 6
+          }
+        },
+        "2pf": {
+          "prefix": "ት",
+          "suffix": "ኣ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 6,
+            "C3": 6
+          }
+        }
+      }
+    },
+    "imperative": {
+      "template_name": "Qäddəs",
+      "base_pattern": {
+        "C1": 1,
+        "C2": 6,
+        "C3": 6
+      },
+      "gemination": "C2",
+      "subjects": {
+        "2sm": {
+          "vowel_map": {
+            "C1": 1,
+            "C2": 6,
+            "C3": 6
+          }
+        },
+        "2sf": {
+          "suffix": "ኢ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 6,
+            "C3": 6
+          }
+        },
+        "2pm": {
+          "suffix": "ኡ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 6,
+            "C3": 6
+          }
+        },
+        "2pf": {
+          "suffix": "ኣ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 6,
+            "C3": 6
+          }
+        }
+      }
+    },
+    "derived": {
+      "infinitive": {
+        "template": "Qädiso",
+        "geez_note": "ቀዲሶ (ንኡስ አንቀጽ)",
+        "pattern": {
+          "C1": 1,
+          "C2": 3,
+          "C3": 7
+        }
+      },
+      "active_participle": {
+        "template": "Qädasi",
+        "geez_note": "ቀዳሲ (አድራጊ)",
+        "pattern": {
+          "C1": 1,
+          "C2": 4,
+          "C3": 3
+        }
+      },
+      "passive_participle": {
+        "template": "Qəddus",
+        "geez_note": "ቅዱስ (ተደራጊ/ቅዱስ)",
+        "pattern": {
+          "C1": 6,
+          "C2": 2,
+          "C3": 6
+        }
+      },
+      "verbal_noun": {
+        "template": "Qədase",
+        "geez_note": "ቅዳሴ (ዘር/ቃል)",
+        "pattern": {
+          "C1": 6,
+          "C2": 4,
+          "C3": 5
+        }
+      },
+      "instrumental": {
+        "template": "Mäqdäs",
+        "geez_note": "መቅደስ (መሳሪያ/ቦታ)",
+        "prefix": "መ",
+        "pattern": {
+          "C1": 6,
+          "C2": 1,
+          "C3": 6
+        }
+      },
+      "abstract_noun": {
+        "template": "Qəddəse",
+        "geez_note": "ቅድሴ (ማንነት)",
+        "pattern": {
+          "C1": 6,
+          "C2": 6,
+          "C3": 5
+        }
+      },
+      "causative_agent": {
+        "template": "Aqəddash",
+        "geez_note": "አቀዳሽ (አሳሳቢ አድራጊ)",
+        "prefix": "አ",
+        "pattern": {
+          "C1": 1,
+          "C2": 4
+        },
+        "suffix": "ሽ"
+      },
+      "place_noun": {
+        "template": "Mäqdäs",
+        "geez_note": "መቅደስ (ቦታ)",
+        "prefix": "መ",
+        "pattern": {
+          "C1": 6,
+          "C2": 1,
+          "C3": 6
+        }
+      }
+    }
+  },
+  "type_c": {
+    "perfective": {
+      "template_name": "Baräkä",
+      "base_pattern": {
+        "C1": 4,
+        "C2": 1,
+        "C3": 1
+      },
+      "subjects": {
+        "3sm": {
+          "vowel_map": {
+            "C1": 4,
+            "C2": 1,
+            "C3": 1
+          }
+        },
+        "3sf": {
+          "suffix": "ት",
+          "vowel_map": {
+            "C1": 4,
+            "C2": 1,
+            "C3": 1
+          }
+        },
+        "2sm": {
+          "suffix": "ከ",
+          "vowel_map": {
+            "C1": 4,
+            "C2": 1,
+            "C3": 6
+          }
+        },
+        "2sf": {
+          "suffix": "ኪ",
+          "vowel_map": {
+            "C1": 4,
+            "C2": 1,
+            "C3": 6
+          }
+        },
+        "1s": {
+          "suffix": "ኩ",
+          "vowel_map": {
+            "C1": 4,
+            "C2": 1,
+            "C3": 6
+          }
+        },
+        "1p": {
+          "suffix": "ነ",
+          "vowel_map": {
+            "C1": 4,
+            "C2": 1,
+            "C3": 6
+          }
+        },
+        "3pm": {
+          "suffix": "ኡ",
+          "vowel_map": {
+            "C1": 4,
+            "C2": 1,
+            "C3": 6
+          }
+        },
+        "3pf": {
+          "suffix": "ኣ",
+          "vowel_map": {
+            "C1": 4,
+            "C2": 1,
+            "C3": 6
+          }
+        },
+        "2pm": {
+          "suffix": "ክሙ",
+          "vowel_map": {
+            "C1": 4,
+            "C2": 1,
+            "C3": 6
+          }
+        },
+        "2pf": {
+          "suffix": "ክን",
+          "vowel_map": {
+            "C1": 4,
+            "C2": 1,
+            "C3": 6
+          }
+        }
+      }
+    },
+    "imperfective": {
+      "template_name": "Yəbarək",
+      "base_pattern": {
+        "C1": 4,
+        "C2": 6,
+        "C3": 6
+      },
+      "gemination": "C2",
+      "subjects": {
+        "3sm": {
+          "prefix": "ይ",
+          "vowel_map": {
+            "C1": 4,
+            "C2": 6,
+            "C3": 6
+          }
+        },
+        "3sf": {
+          "prefix": "ት",
+          "vowel_map": {
+            "C1": 4,
+            "C2": 6,
+            "C3": 6
+          }
+        },
+        "2sm": {
+          "prefix": "ት",
+          "vowel_map": {
+            "C1": 4,
+            "C2": 6,
+            "C3": 6
+          }
+        },
+        "2sf": {
+          "prefix": "ት",
+          "suffix": "ኢ",
+          "vowel_map": {
+            "C1": 4,
+            "C2": 6,
+            "C3": 6
+          }
+        },
+        "1s": {
+          "prefix": "እ",
+          "vowel_map": {
+            "C1": 4,
+            "C2": 6,
+            "C3": 6
+          }
+        },
+        "1p": {
+          "prefix": "ን",
+          "vowel_map": {
+            "C1": 4,
+            "C2": 6,
+            "C3": 6
+          }
+        },
+        "3pm": {
+          "prefix": "ይ",
+          "suffix": "ኡ",
+          "vowel_map": {
+            "C1": 4,
+            "C2": 6,
+            "C3": 6
+          }
+        },
+        "3pf": {
+          "prefix": "ይ",
+          "suffix": "ኣ",
+          "vowel_map": {
+            "C1": 4,
+            "C2": 6,
+            "C3": 6
+          }
+        },
+        "2pm": {
+          "prefix": "ት",
+          "suffix": "ኡ",
+          "vowel_map": {
+            "C1": 4,
+            "C2": 6,
+            "C3": 6
+          }
+        },
+        "2pf": {
+          "prefix": "ት",
+          "suffix": "ኣ",
+          "vowel_map": {
+            "C1": 4,
+            "C2": 6,
+            "C3": 6
+          }
+        }
+      }
+    },
+    "jussive": {
+      "template_name": "Yəbarək",
+      "base_pattern": {
+        "C1": 4,
+        "C2": 6,
+        "C3": 6
+      },
+      "subjects": {
+        "3sm": {
+          "prefix": "ይ",
+          "vowel_map": {
+            "C1": 4,
+            "C2": 6,
+            "C3": 6
+          }
+        },
+        "3sf": {
+          "prefix": "ት",
+          "vowel_map": {
+            "C1": 4,
+            "C2": 6,
+            "C3": 6
+          }
+        },
+        "2sm": {
+          "prefix": "ት",
+          "vowel_map": {
+            "C1": 4,
+            "C2": 6,
+            "C3": 6
+          }
+        },
+        "2sf": {
+          "prefix": "ት",
+          "suffix": "ኢ",
+          "vowel_map": {
+            "C1": 4,
+            "C2": 6,
+            "C3": 6
+          }
+        },
+        "1s": {
+          "prefix": "እ",
+          "vowel_map": {
+            "C1": 4,
+            "C2": 6,
+            "C3": 6
+          }
+        },
+        "1p": {
+          "prefix": "ን",
+          "vowel_map": {
+            "C1": 4,
+            "C2": 6,
+            "C3": 6
+          }
+        },
+        "3pm": {
+          "prefix": "ይ",
+          "suffix": "ኡ",
+          "vowel_map": {
+            "C1": 4,
+            "C2": 6,
+            "C3": 6
+          }
+        },
+        "3pf": {
+          "prefix": "ይ",
+          "suffix": "ኣ",
+          "vowel_map": {
+            "C1": 4,
+            "C2": 6,
+            "C3": 6
+          }
+        },
+        "2pm": {
+          "prefix": "ት",
+          "suffix": "ኡ",
+          "vowel_map": {
+            "C1": 4,
+            "C2": 6,
+            "C3": 6
+          }
+        },
+        "2pf": {
+          "prefix": "ት",
+          "suffix": "ኣ",
+          "vowel_map": {
+            "C1": 4,
+            "C2": 6,
+            "C3": 6
+          }
+        }
+      }
+    },
+    "imperative": {
+      "template_name": "Barək",
+      "base_pattern": {
+        "C1": 4,
+        "C2": 6,
+        "C3": 6
+      },
+      "subjects": {
+        "2sm": {
+          "vowel_map": {
+            "C1": 4,
+            "C2": 6,
+            "C3": 6
+          }
+        },
+        "2sf": {
+          "suffix": "ኢ",
+          "vowel_map": {
+            "C1": 4,
+            "C2": 6,
+            "C3": 6
+          }
+        },
+        "2pm": {
+          "suffix": "ኡ",
+          "vowel_map": {
+            "C1": 4,
+            "C2": 6,
+            "C3": 6
+          }
+        },
+        "2pf": {
+          "suffix": "ኣ",
+          "vowel_map": {
+            "C1": 4,
+            "C2": 6,
+            "C3": 6
+          }
+        }
+      }
+    },
+    "derived": {
+      "infinitive": {
+        "template": "Bariko",
+        "geez_note": "ባሪኮ (ንኡስ አንቀጽ)",
+        "pattern": {
+          "C1": 4,
+          "C2": 3,
+          "C3": 7
+        }
+      },
+      "active_participle": {
+        "template": "Baraki",
+        "geez_note": "ባራኪ (አድራጊ)",
+        "pattern": {
+          "C1": 4,
+          "C2": 4,
+          "C3": 3
+        }
+      },
+      "passive_participle": {
+        "template": "Bəruk",
+        "geez_note": "ብሩክ (ተደራጊ/የተባረከ)",
+        "pattern": {
+          "C1": 6,
+          "C2": 2,
+          "C3": 6
+        }
+      },
+      "verbal_noun": {
+        "template": "Barkot",
+        "geez_note": "ባርኮት (ዘር/ቃል)",
+        "pattern": {
+          "C1": 4,
+          "C2": 6,
+          "C3": 7
+        },
+        "suffix": "ት"
+      },
+      "instrumental": {
+        "template": "Mäbräk",
+        "geez_note": "መብረክ (መሳሪያ)",
+        "prefix": "መ",
+        "pattern": {
+          "C1": 6,
+          "C2": 1,
+          "C3": 6
+        }
+      },
+      "abstract_noun": {
+        "template": "Bərkät",
+        "geez_note": "ብርከት (ማንነት/በረከት)",
+        "pattern": {
+          "C1": 6,
+          "C2": 6,
+          "C3": 1
+        },
+        "suffix": "ት"
+      },
+      "causative_agent": {
+        "template": "Abaraki",
+        "geez_note": "አባራኪ (አሳሳቢ አድራጊ)",
+        "prefix": "አ",
+        "pattern": {
+          "C1": 4,
+          "C2": 4,
+          "C3": 3
+        }
+      },
+      "place_noun": {
+        "template": "Mäbrak",
+        "geez_note": "መብራክ (ቦታ)",
+        "prefix": "መ",
+        "pattern": {
+          "C1": 6,
+          "C2": 4,
+          "C3": 6
+        }
+      }
+    }
+  },
+  "type_c_o": {
+    "perfective": {
+      "template_name": "Tomärä",
+      "base_pattern": {
+        "C1": 7,
+        "C2": 1,
+        "C3": 1
+      },
+      "subjects": {
+        "3sm": {
+          "vowel_map": {
+            "C1": 7,
+            "C2": 1,
+            "C3": 1
+          }
+        },
+        "3sf": {
+          "suffix": "ት",
+          "vowel_map": {
+            "C1": 7,
+            "C2": 1,
+            "C3": 1
+          }
+        },
+        "2sm": {
+          "suffix": "ከ",
+          "vowel_map": {
+            "C1": 7,
+            "C2": 1,
+            "C3": 6
+          }
+        },
+        "2sf": {
+          "suffix": "ኪ",
+          "vowel_map": {
+            "C1": 7,
+            "C2": 1,
+            "C3": 6
+          }
+        },
+        "1s": {
+          "suffix": "ኩ",
+          "vowel_map": {
+            "C1": 7,
+            "C2": 1,
+            "C3": 6
+          }
+        },
+        "1p": {
+          "suffix": "ነ",
+          "vowel_map": {
+            "C1": 7,
+            "C2": 1,
+            "C3": 6
+          }
+        },
+        "3pm": {
+          "suffix": "ኡ",
+          "vowel_map": {
+            "C1": 7,
+            "C2": 1,
+            "C3": 6
+          }
+        },
+        "3pf": {
+          "suffix": "ኣ",
+          "vowel_map": {
+            "C1": 7,
+            "C2": 1,
+            "C3": 6
+          }
+        },
+        "2pm": {
+          "suffix": "ክሙ",
+          "vowel_map": {
+            "C1": 7,
+            "C2": 1,
+            "C3": 6
+          }
+        },
+        "2pf": {
+          "suffix": "ክን",
+          "vowel_map": {
+            "C1": 7,
+            "C2": 1,
+            "C3": 6
+          }
+        }
+      }
+    },
+    "imperfective": {
+      "template_name": "Yətomər",
+      "base_pattern": {
+        "C1": 7,
+        "C2": 6,
+        "C3": 6
+      },
+      "gemination": "C2",
+      "subjects": {
+        "3sm": {
+          "prefix": "ይ",
+          "vowel_map": {
+            "C1": 7,
+            "C2": 6,
+            "C3": 6
+          }
+        },
+        "3sf": {
+          "prefix": "ት",
+          "vowel_map": {
+            "C1": 7,
+            "C2": 6,
+            "C3": 6
+          }
+        },
+        "2sm": {
+          "prefix": "ት",
+          "vowel_map": {
+            "C1": 7,
+            "C2": 6,
+            "C3": 6
+          }
+        },
+        "2sf": {
+          "prefix": "ት",
+          "suffix": "ኢ",
+          "vowel_map": {
+            "C1": 7,
+            "C2": 6,
+            "C3": 6
+          }
+        },
+        "1s": {
+          "prefix": "እ",
+          "vowel_map": {
+            "C1": 7,
+            "C2": 6,
+            "C3": 6
+          }
+        },
+        "1p": {
+          "prefix": "ን",
+          "vowel_map": {
+            "C1": 7,
+            "C2": 6,
+            "C3": 6
+          }
+        },
+        "3pm": {
+          "prefix": "ይ",
+          "suffix": "ኡ",
+          "vowel_map": {
+            "C1": 7,
+            "C2": 6,
+            "C3": 6
+          }
+        },
+        "3pf": {
+          "prefix": "ይ",
+          "suffix": "ኣ",
+          "vowel_map": {
+            "C1": 7,
+            "C2": 6,
+            "C3": 6
+          }
+        },
+        "2pm": {
+          "prefix": "ት",
+          "suffix": "ኡ",
+          "vowel_map": {
+            "C1": 7,
+            "C2": 6,
+            "C3": 6
+          }
+        },
+        "2pf": {
+          "prefix": "ት",
+          "suffix": "ኣ",
+          "vowel_map": {
+            "C1": 7,
+            "C2": 6,
+            "C3": 6
+          }
+        }
+      }
+    },
+    "jussive": {
+      "template_name": "Yətomər",
+      "base_pattern": {
+        "C1": 7,
+        "C2": 6,
+        "C3": 6
+      },
+      "subjects": {
+        "3sm": {
+          "prefix": "ይ",
+          "vowel_map": {
+            "C1": 7,
+            "C2": 6,
+            "C3": 6
+          }
+        },
+        "3sf": {
+          "prefix": "ት",
+          "vowel_map": {
+            "C1": 7,
+            "C2": 6,
+            "C3": 6
+          }
+        },
+        "2sm": {
+          "prefix": "ት",
+          "vowel_map": {
+            "C1": 7,
+            "C2": 6,
+            "C3": 6
+          }
+        },
+        "2sf": {
+          "prefix": "ት",
+          "suffix": "ኢ",
+          "vowel_map": {
+            "C1": 7,
+            "C2": 6,
+            "C3": 6
+          }
+        },
+        "1s": {
+          "prefix": "እ",
+          "vowel_map": {
+            "C1": 7,
+            "C2": 6,
+            "C3": 6
+          }
+        },
+        "1p": {
+          "prefix": "ን",
+          "vowel_map": {
+            "C1": 7,
+            "C2": 6,
+            "C3": 6
+          }
+        },
+        "3pm": {
+          "prefix": "ይ",
+          "suffix": "ኡ",
+          "vowel_map": {
+            "C1": 7,
+            "C2": 6,
+            "C3": 6
+          }
+        },
+        "3pf": {
+          "prefix": "ይ",
+          "suffix": "ኣ",
+          "vowel_map": {
+            "C1": 7,
+            "C2": 6,
+            "C3": 6
+          }
+        },
+        "2pm": {
+          "prefix": "ት",
+          "suffix": "ኡ",
+          "vowel_map": {
+            "C1": 7,
+            "C2": 6,
+            "C3": 6
+          }
+        },
+        "2pf": {
+          "prefix": "ት",
+          "suffix": "ኣ",
+          "vowel_map": {
+            "C1": 7,
+            "C2": 6,
+            "C3": 6
+          }
+        }
+      }
+    },
+    "imperative": {
+      "template_name": "Tomər",
+      "base_pattern": {
+        "C1": 7,
+        "C2": 6,
+        "C3": 6
+      },
+      "subjects": {
+        "2sm": {
+          "vowel_map": {
+            "C1": 7,
+            "C2": 6,
+            "C3": 6
+          }
+        },
+        "2sf": {
+          "suffix": "ኢ",
+          "vowel_map": {
+            "C1": 7,
+            "C2": 6,
+            "C3": 6
+          }
+        },
+        "2pm": {
+          "suffix": "ኡ",
+          "vowel_map": {
+            "C1": 7,
+            "C2": 6,
+            "C3": 6
+          }
+        },
+        "2pf": {
+          "suffix": "ኣ",
+          "vowel_map": {
+            "C1": 7,
+            "C2": 6,
+            "C3": 6
+          }
+        }
+      }
+    },
+    "derived": {
+      "infinitive": {
+        "template": "Tomiro",
+        "geez_note": "ጦሚሮ (ንኡስ አንቀጽ)",
+        "pattern": {
+          "C1": 7,
+          "C2": 3,
+          "C3": 7
+        }
+      },
+      "active_participle": {
+        "template": "Tomari",
+        "geez_note": "ጦማሪ (አድራጊ)",
+        "pattern": {
+          "C1": 7,
+          "C2": 4,
+          "C3": 3
+        }
+      },
+      "passive_participle": {
+        "template": "Təmur",
+        "geez_note": "ጥሙር (ተደራጊ)",
+        "pattern": {
+          "C1": 6,
+          "C2": 2,
+          "C3": 6
+        }
+      },
+      "verbal_noun": {
+        "template": "Təmrat",
+        "geez_note": "ጥምረት (ዘር/ቃል)",
+        "pattern": {
+          "C1": 6,
+          "C2": 6,
+          "C3": 1
+        },
+        "suffix": "ት"
+      },
+      "instrumental": {
+        "template": "Mätmär",
+        "geez_note": "መጥመር (መሳሪያ)",
+        "prefix": "መ",
+        "pattern": {
+          "C1": 6,
+          "C2": 1,
+          "C3": 6
+        }
+      }
+    }
+  },
+  "type_c_e": {
+    "perfective": {
+      "template_name": "Sesäyä",
+      "base_pattern": {
+        "C1": 5,
+        "C2": 1,
+        "C3": 1
+      },
+      "subjects": {
+        "3sm": {
+          "vowel_map": {
+            "C1": 5,
+            "C2": 1,
+            "C3": 1
+          }
+        },
+        "3sf": {
+          "suffix": "ት",
+          "vowel_map": {
+            "C1": 5,
+            "C2": 1,
+            "C3": 1
+          }
+        },
+        "2sm": {
+          "suffix": "ከ",
+          "vowel_map": {
+            "C1": 5,
+            "C2": 1,
+            "C3": 6
+          }
+        },
+        "2sf": {
+          "suffix": "ኪ",
+          "vowel_map": {
+            "C1": 5,
+            "C2": 1,
+            "C3": 6
+          }
+        },
+        "1s": {
+          "suffix": "ኩ",
+          "vowel_map": {
+            "C1": 5,
+            "C2": 1,
+            "C3": 6
+          }
+        },
+        "1p": {
+          "suffix": "ነ",
+          "vowel_map": {
+            "C1": 5,
+            "C2": 1,
+            "C3": 6
+          }
+        },
+        "3pm": {
+          "suffix": "ኡ",
+          "vowel_map": {
+            "C1": 5,
+            "C2": 1,
+            "C3": 6
+          }
+        },
+        "3pf": {
+          "suffix": "ኣ",
+          "vowel_map": {
+            "C1": 5,
+            "C2": 1,
+            "C3": 6
+          }
+        },
+        "2pm": {
+          "suffix": "ክሙ",
+          "vowel_map": {
+            "C1": 5,
+            "C2": 1,
+            "C3": 6
+          }
+        },
+        "2pf": {
+          "suffix": "ክን",
+          "vowel_map": {
+            "C1": 5,
+            "C2": 1,
+            "C3": 6
+          }
+        }
+      }
+    },
+    "imperfective": {
+      "template_name": "Yəsesəy",
+      "base_pattern": {
+        "C1": 5,
+        "C2": 6,
+        "C3": 6
+      },
+      "gemination": "C2",
+      "subjects": {
+        "3sm": {
+          "prefix": "ይ",
+          "vowel_map": {
+            "C1": 5,
+            "C2": 6,
+            "C3": 6
+          }
+        },
+        "3sf": {
+          "prefix": "ት",
+          "vowel_map": {
+            "C1": 5,
+            "C2": 6,
+            "C3": 6
+          }
+        },
+        "2sm": {
+          "prefix": "ት",
+          "vowel_map": {
+            "C1": 5,
+            "C2": 6,
+            "C3": 6
+          }
+        },
+        "2sf": {
+          "prefix": "ት",
+          "suffix": "ኢ",
+          "vowel_map": {
+            "C1": 5,
+            "C2": 6,
+            "C3": 6
+          }
+        },
+        "1s": {
+          "prefix": "እ",
+          "vowel_map": {
+            "C1": 5,
+            "C2": 6,
+            "C3": 6
+          }
+        },
+        "1p": {
+          "prefix": "ን",
+          "vowel_map": {
+            "C1": 5,
+            "C2": 6,
+            "C3": 6
+          }
+        },
+        "3pm": {
+          "prefix": "ይ",
+          "suffix": "ኡ",
+          "vowel_map": {
+            "C1": 5,
+            "C2": 6,
+            "C3": 6
+          }
+        },
+        "3pf": {
+          "prefix": "ይ",
+          "suffix": "ኣ",
+          "vowel_map": {
+            "C1": 5,
+            "C2": 6,
+            "C3": 6
+          }
+        },
+        "2pm": {
+          "prefix": "ት",
+          "suffix": "ኡ",
+          "vowel_map": {
+            "C1": 5,
+            "C2": 6,
+            "C3": 6
+          }
+        },
+        "2pf": {
+          "prefix": "ት",
+          "suffix": "ኣ",
+          "vowel_map": {
+            "C1": 5,
+            "C2": 6,
+            "C3": 6
+          }
+        }
+      }
+    },
+    "jussive": {
+      "template_name": "Yəsesəy",
+      "base_pattern": {
+        "C1": 5,
+        "C2": 6,
+        "C3": 6
+      },
+      "subjects": {
+        "3sm": {
+          "prefix": "ይ",
+          "vowel_map": {
+            "C1": 5,
+            "C2": 6,
+            "C3": 6
+          }
+        },
+        "3sf": {
+          "prefix": "ት",
+          "vowel_map": {
+            "C1": 5,
+            "C2": 6,
+            "C3": 6
+          }
+        },
+        "2sm": {
+          "prefix": "ት",
+          "vowel_map": {
+            "C1": 5,
+            "C2": 6,
+            "C3": 6
+          }
+        },
+        "2sf": {
+          "prefix": "ት",
+          "suffix": "ኢ",
+          "vowel_map": {
+            "C1": 5,
+            "C2": 6,
+            "C3": 6
+          }
+        },
+        "1s": {
+          "prefix": "እ",
+          "vowel_map": {
+            "C1": 5,
+            "C2": 6,
+            "C3": 6
+          }
+        },
+        "1p": {
+          "prefix": "ን",
+          "vowel_map": {
+            "C1": 5,
+            "C2": 6,
+            "C3": 6
+          }
+        },
+        "3pm": {
+          "prefix": "ይ",
+          "suffix": "ኡ",
+          "vowel_map": {
+            "C1": 5,
+            "C2": 6,
+            "C3": 6
+          }
+        },
+        "3pf": {
+          "prefix": "ይ",
+          "suffix": "ኣ",
+          "vowel_map": {
+            "C1": 5,
+            "C2": 6,
+            "C3": 6
+          }
+        },
+        "2pm": {
+          "prefix": "ት",
+          "suffix": "ኡ",
+          "vowel_map": {
+            "C1": 5,
+            "C2": 6,
+            "C3": 6
+          }
+        },
+        "2pf": {
+          "prefix": "ት",
+          "suffix": "ኣ",
+          "vowel_map": {
+            "C1": 5,
+            "C2": 6,
+            "C3": 6
+          }
+        }
+      }
+    },
+    "imperative": {
+      "template_name": "Sesəy",
+      "base_pattern": {
+        "C1": 5,
+        "C2": 6,
+        "C3": 6
+      },
+      "subjects": {
+        "2sm": {
+          "vowel_map": {
+            "C1": 5,
+            "C2": 6,
+            "C3": 6
+          }
+        },
+        "2sf": {
+          "suffix": "ኢ",
+          "vowel_map": {
+            "C1": 5,
+            "C2": 6,
+            "C3": 6
+          }
+        },
+        "2pm": {
+          "suffix": "ኡ",
+          "vowel_map": {
+            "C1": 5,
+            "C2": 6,
+            "C3": 6
+          }
+        },
+        "2pf": {
+          "suffix": "ኣ",
+          "vowel_map": {
+            "C1": 5,
+            "C2": 6,
+            "C3": 6
+          }
+        }
+      }
+    },
+    "derived": {
+      "infinitive": {
+        "template": "Sesyo",
+        "pattern": {
+          "C1": 5,
+          "C2": 6,
+          "C3": 7
+        }
+      },
+      "active_participle": {
+        "template": "Sesayi",
+        "pattern": {
+          "C1": 5,
+          "C2": 4,
+          "C3": 3
+        }
+      },
+      "passive_participle": {
+        "template": "Susuy",
+        "pattern": {
+          "C1": 2,
+          "C2": 2,
+          "C3": 6
+        }
+      },
+      "instrumental": {
+        "template": "Mäsesəy",
+        "prefix": "መ",
+        "pattern": {
+          "C1": 5,
+          "C2": 6,
+          "C3": 6
+        }
+      },
+      "abstract_noun": {
+        "template": "Sesay",
+        "pattern": {
+          "C1": 5,
+          "C2": 4,
+          "C3": 6
+        }
+      }
+    }
+  },
+  "type_mahräka": {
+    "perfective": {
+      "template_name": "Mahräkä",
+      "base_pattern": {
+        "C1": 4,
+        "C2": 6,
+        "C3": 1,
+        "C4": 1
+      },
+      "subjects": {
+        "3sm": {
+          "vowel_map": {
+            "C1": 4,
+            "C2": 6,
+            "C3": 1,
+            "C4": 1
+          }
+        },
+        "3sf": {
+          "suffix": "ት",
+          "vowel_map": {
+            "C1": 4,
+            "C2": 6,
+            "C3": 1,
+            "C4": 1
+          }
+        },
+        "2sm": {
+          "suffix": "ከ",
+          "vowel_map": {
+            "C1": 4,
+            "C2": 6,
+            "C3": 1,
+            "C4": 6
+          }
+        },
+        "2sf": {
+          "suffix": "ኪ",
+          "vowel_map": {
+            "C1": 4,
+            "C2": 6,
+            "C3": 1,
+            "C4": 6
+          }
+        },
+        "1s": {
+          "suffix": "ኩ",
+          "vowel_map": {
+            "C1": 4,
+            "C2": 6,
+            "C3": 1,
+            "C4": 6
+          }
+        },
+        "1p": {
+          "suffix": "ነ",
+          "vowel_map": {
+            "C1": 4,
+            "C2": 6,
+            "C3": 1,
+            "C4": 6
+          }
+        },
+        "3pm": {
+          "suffix": "ኡ",
+          "vowel_map": {
+            "C1": 4,
+            "C2": 6,
+            "C3": 1,
+            "C4": 6
+          }
+        },
+        "3pf": {
+          "suffix": "ኣ",
+          "vowel_map": {
+            "C1": 4,
+            "C2": 6,
+            "C3": 1,
+            "C4": 6
+          }
+        },
+        "2pm": {
+          "suffix": "ክሙ",
+          "vowel_map": {
+            "C1": 4,
+            "C2": 6,
+            "C3": 1,
+            "C4": 6
+          }
+        },
+        "2pf": {
+          "suffix": "ክን",
+          "vowel_map": {
+            "C1": 4,
+            "C2": 6,
+            "C3": 1,
+            "C4": 6
+          }
+        }
+      }
+    },
+    "imperfective": {
+      "template_name": "Yəmahrək",
+      "base_pattern": {
+        "C1": 4,
+        "C2": 6,
+        "C3": 6,
+        "C4": 6
+      },
+      "subjects": {
+        "3sm": {
+          "prefix": "ይ",
+          "vowel_map": {
+            "C1": 4,
+            "C2": 6,
+            "C3": 6,
+            "C4": 6
+          }
+        },
+        "3sf": {
+          "prefix": "ት",
+          "vowel_map": {
+            "C1": 4,
+            "C2": 6,
+            "C3": 6,
+            "C4": 6
+          }
+        },
+        "2sm": {
+          "prefix": "ት",
+          "vowel_map": {
+            "C1": 4,
+            "C2": 6,
+            "C3": 6,
+            "C4": 6
+          }
+        },
+        "2sf": {
+          "prefix": "ት",
+          "suffix": "ኢ",
+          "vowel_map": {
+            "C1": 4,
+            "C2": 6,
+            "C3": 6,
+            "C4": 6
+          }
+        },
+        "1s": {
+          "prefix": "እ",
+          "vowel_map": {
+            "C1": 4,
+            "C2": 6,
+            "C3": 6,
+            "C4": 6
+          }
+        },
+        "1p": {
+          "prefix": "ን",
+          "vowel_map": {
+            "C1": 4,
+            "C2": 6,
+            "C3": 6,
+            "C4": 6
+          }
+        },
+        "3pm": {
+          "prefix": "ይ",
+          "suffix": "ኡ",
+          "vowel_map": {
+            "C1": 4,
+            "C2": 6,
+            "C3": 6,
+            "C4": 6
+          }
+        },
+        "3pf": {
+          "prefix": "ይ",
+          "suffix": "ኣ",
+          "vowel_map": {
+            "C1": 4,
+            "C2": 6,
+            "C3": 6,
+            "C4": 6
+          }
+        },
+        "2pm": {
+          "prefix": "ት",
+          "suffix": "ኡ",
+          "vowel_map": {
+            "C1": 4,
+            "C2": 6,
+            "C3": 6,
+            "C4": 6
+          }
+        },
+        "2pf": {
+          "prefix": "ት",
+          "suffix": "ኣ",
+          "vowel_map": {
+            "C1": 4,
+            "C2": 6,
+            "C3": 6,
+            "C4": 6
+          }
+        }
+      }
+    },
+    "jussive": {
+      "template_name": "Yəmahrək",
+      "base_pattern": {
+        "C1": 4,
+        "C2": 6,
+        "C3": 6,
+        "C4": 6
+      },
+      "subjects": {
+        "3sm": {
+          "prefix": "ይ",
+          "vowel_map": {
+            "C1": 4,
+            "C2": 6,
+            "C3": 6,
+            "C4": 6
+          }
+        },
+        "3sf": {
+          "prefix": "ት",
+          "vowel_map": {
+            "C1": 4,
+            "C2": 6,
+            "C3": 6,
+            "C4": 6
+          }
+        },
+        "2sm": {
+          "prefix": "ት",
+          "vowel_map": {
+            "C1": 4,
+            "C2": 6,
+            "C3": 6,
+            "C4": 6
+          }
+        },
+        "2sf": {
+          "prefix": "ት",
+          "suffix": "ኢ",
+          "vowel_map": {
+            "C1": 4,
+            "C2": 6,
+            "C3": 6,
+            "C4": 6
+          }
+        },
+        "1s": {
+          "prefix": "እ",
+          "vowel_map": {
+            "C1": 4,
+            "C2": 6,
+            "C3": 6,
+            "C4": 6
+          }
+        },
+        "1p": {
+          "prefix": "ን",
+          "vowel_map": {
+            "C1": 4,
+            "C2": 6,
+            "C3": 6,
+            "C4": 6
+          }
+        },
+        "3pm": {
+          "prefix": "ይ",
+          "suffix": "ኡ",
+          "vowel_map": {
+            "C1": 4,
+            "C2": 6,
+            "C3": 6,
+            "C4": 6
+          }
+        },
+        "3pf": {
+          "prefix": "ይ",
+          "suffix": "ኣ",
+          "vowel_map": {
+            "C1": 4,
+            "C2": 6,
+            "C3": 6,
+            "C4": 6
+          }
+        },
+        "2pm": {
+          "prefix": "ት",
+          "suffix": "ኡ",
+          "vowel_map": {
+            "C1": 4,
+            "C2": 6,
+            "C3": 6,
+            "C4": 6
+          }
+        },
+        "2pf": {
+          "prefix": "ት",
+          "suffix": "ኣ",
+          "vowel_map": {
+            "C1": 4,
+            "C2": 6,
+            "C3": 6,
+            "C4": 6
+          }
+        }
+      }
+    },
+    "imperative": {
+      "template_name": "Mahrək",
+      "base_pattern": {
+        "C1": 4,
+        "C2": 6,
+        "C3": 6,
+        "C4": 6
+      },
+      "subjects": {
+        "2sm": {
+          "vowel_map": {
+            "C1": 4,
+            "C2": 6,
+            "C3": 6,
+            "C4": 6
+          }
+        },
+        "2sf": {
+          "suffix": "ኢ",
+          "vowel_map": {
+            "C1": 4,
+            "C2": 6,
+            "C3": 6,
+            "C4": 6
+          }
+        },
+        "2pm": {
+          "suffix": "ኡ",
+          "vowel_map": {
+            "C1": 4,
+            "C2": 6,
+            "C3": 6,
+            "C4": 6
+          }
+        },
+        "2pf": {
+          "suffix": "ኣ",
+          "vowel_map": {
+            "C1": 4,
+            "C2": 6,
+            "C3": 6,
+            "C4": 6
+          }
+        }
+      }
+    },
+    "derived": {
+      "infinitive": {
+        "template": "Mahriko",
+        "geez_note": "ማሕሪኮ (ንኡስ አንቀጽ)",
+        "pattern": {
+          "C1": 4,
+          "C2": 6,
+          "C3": 3,
+          "C4": 7
+        }
+      },
+      "active_participle": {
+        "template": "Mahraki",
+        "geez_note": "ማሕራኪ (አድራጊ)",
+        "pattern": {
+          "C1": 4,
+          "C2": 6,
+          "C3": 4,
+          "C4": 3
+        }
+      },
+      "verbal_noun": {
+        "template": "Məhrakot",
+        "geez_note": "ምሕራኮት (ዘር)",
+        "pattern": {
+          "C1": 6,
+          "C2": 6,
+          "C3": 4,
+          "C4": 7
+        },
+        "suffix": "ት"
+      }
+    }
+  },
+  "type_tanbala": {
+    "perfective": {
+      "template_name": "Tänbälä",
+      "base_pattern": {
+        "C1": 1,
+        "C2": 6,
+        "C3": 1,
+        "C4": 1
+      },
+      "subjects": {
+        "3sm": {
+          "vowel_map": {
+            "C1": 1,
+            "C2": 6,
+            "C3": 1,
+            "C4": 1
+          }
+        },
+        "3sf": {
+          "suffix": "ት",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 6,
+            "C3": 1,
+            "C4": 1
+          }
+        },
+        "2sm": {
+          "suffix": "ከ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 6,
+            "C3": 1,
+            "C4": 6
+          }
+        },
+        "2sf": {
+          "suffix": "ኪ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 6,
+            "C3": 1,
+            "C4": 6
+          }
+        },
+        "1s": {
+          "suffix": "ኩ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 6,
+            "C3": 1,
+            "C4": 6
+          }
+        },
+        "1p": {
+          "suffix": "ነ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 6,
+            "C3": 1,
+            "C4": 6
+          }
+        },
+        "3pm": {
+          "suffix": "ኡ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 6,
+            "C3": 1,
+            "C4": 6
+          }
+        },
+        "3pf": {
+          "suffix": "ኣ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 6,
+            "C3": 1,
+            "C4": 6
+          }
+        },
+        "2pm": {
+          "suffix": "ክሙ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 6,
+            "C3": 1,
+            "C4": 6
+          }
+        },
+        "2pf": {
+          "suffix": "ክን",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 6,
+            "C3": 1,
+            "C4": 6
+          }
+        }
+      }
+    },
+    "imperfective": {
+      "template_name": "Yətänäbəl",
+      "geez_note": "ካልአይ - C2 is 1st order (ነ not ን)",
+      "base_pattern": {
+        "C1": 1,
+        "C2": 1,
+        "C3": 6,
+        "C4": 6
+      },
+      "subjects": {
+        "3sm": {
+          "prefix": "ይ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 1,
+            "C3": 6,
+            "C4": 6
+          }
+        },
+        "3sf": {
+          "prefix": "ት",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 1,
+            "C3": 6,
+            "C4": 6
+          }
+        },
+        "2sm": {
+          "prefix": "ት",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 1,
+            "C3": 6,
+            "C4": 6
+          }
+        },
+        "2sf": {
+          "prefix": "ት",
+          "suffix": "ኢ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 1,
+            "C3": 6,
+            "C4": 6
+          }
+        },
+        "1s": {
+          "prefix": "እ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 1,
+            "C3": 6,
+            "C4": 6
+          }
+        },
+        "1p": {
+          "prefix": "ን",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 1,
+            "C3": 6,
+            "C4": 6
+          }
+        },
+        "3pm": {
+          "prefix": "ይ",
+          "suffix": "ኡ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 1,
+            "C3": 6,
+            "C4": 6
+          }
+        },
+        "3pf": {
+          "prefix": "ይ",
+          "suffix": "ኣ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 1,
+            "C3": 6,
+            "C4": 6
+          }
+        },
+        "2pm": {
+          "prefix": "ት",
+          "suffix": "ኡ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 1,
+            "C3": 6,
+            "C4": 6
+          }
+        },
+        "2pf": {
+          "prefix": "ት",
+          "suffix": "ኣ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 1,
+            "C3": 6,
+            "C4": 6
+          }
+        }
+      }
+    },
+    "jussive": {
+      "template_name": "Yətänbəl",
+      "base_pattern": {
+        "C1": 1,
+        "C2": 6,
+        "C3": 6,
+        "C4": 6
+      },
+      "subjects": {
+        "3sm": {
+          "prefix": "ይ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 6,
+            "C3": 6,
+            "C4": 6
+          }
+        },
+        "3sf": {
+          "prefix": "ት",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 6,
+            "C3": 6,
+            "C4": 6
+          }
+        },
+        "2sm": {
+          "prefix": "ት",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 6,
+            "C3": 6,
+            "C4": 6
+          }
+        },
+        "2sf": {
+          "prefix": "ት",
+          "suffix": "ኢ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 6,
+            "C3": 6,
+            "C4": 6
+          }
+        },
+        "1s": {
+          "prefix": "እ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 6,
+            "C3": 6,
+            "C4": 6
+          }
+        },
+        "1p": {
+          "prefix": "ን",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 6,
+            "C3": 6,
+            "C4": 6
+          }
+        },
+        "3pm": {
+          "prefix": "ይ",
+          "suffix": "ኡ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 6,
+            "C3": 6,
+            "C4": 6
+          }
+        },
+        "3pf": {
+          "prefix": "ይ",
+          "suffix": "ኣ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 6,
+            "C3": 6,
+            "C4": 6
+          }
+        },
+        "2pm": {
+          "prefix": "ት",
+          "suffix": "ኡ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 6,
+            "C3": 6,
+            "C4": 6
+          }
+        },
+        "2pf": {
+          "prefix": "ት",
+          "suffix": "ኣ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 6,
+            "C3": 6,
+            "C4": 6
+          }
+        }
+      }
+    },
+    "imperative": {
+      "template_name": "Tänbəl",
+      "base_pattern": {
+        "C1": 1,
+        "C2": 6,
+        "C3": 6,
+        "C4": 6
+      },
+      "subjects": {
+        "2sm": {
+          "vowel_map": {
+            "C1": 1,
+            "C2": 6,
+            "C3": 6,
+            "C4": 6
+          }
+        },
+        "2sf": {
+          "suffix": "ኢ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 6,
+            "C3": 6,
+            "C4": 6
+          }
+        },
+        "2pm": {
+          "suffix": "ኡ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 6,
+            "C3": 6,
+            "C4": 6
+          }
+        },
+        "2pf": {
+          "suffix": "ኣ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 6,
+            "C3": 6,
+            "C4": 6
+          }
+        }
+      }
+    },
+    "derived": {
+      "infinitive": {
+        "template": "Tänbilo",
+        "geez_note": "ተንቢሎ (ንኡስ አንቀጽ)",
+        "pattern": {
+          "C1": 1,
+          "C2": 6,
+          "C3": 3,
+          "C4": 7
+        }
+      },
+      "active_participle": {
+        "template": "Tänbali",
+        "geez_note": "ተንባሊ (አድራጊ)",
+        "pattern": {
+          "C1": 1,
+          "C2": 6,
+          "C3": 4,
+          "C4": 3
+        }
+      },
+      "verbal_noun": {
+        "template": "Tənbalot",
+        "geez_note": "ትንባሎት (ዘር)",
+        "pattern": {
+          "C1": 6,
+          "C2": 6,
+          "C3": 4,
+          "C4": 7
+        },
+        "suffix": "ት"
+      }
+    }
+  },
+  "quad_a": {
+    "perfective": {
+      "template_name": "Dänägäṣä",
+      "base_pattern": {
+        "C1": 1,
+        "C2": 1,
+        "C3": 1,
+        "C4": 1
+      },
+      "subjects": {
+        "3sm": {
+          "vowel_map": {
+            "C1": 1,
+            "C2": 1,
+            "C3": 1,
+            "C4": 1
+          }
+        },
+        "3sf": {
+          "suffix": "ት",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 1,
+            "C3": 1,
+            "C4": 1
+          }
+        },
+        "2sm": {
+          "suffix": "ከ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 1,
+            "C3": 1,
+            "C4": 6
+          }
+        },
+        "2sf": {
+          "suffix": "ኪ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 1,
+            "C3": 1,
+            "C4": 6
+          }
+        },
+        "1s": {
+          "suffix": "ኩ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 1,
+            "C3": 1,
+            "C4": 6
+          }
+        },
+        "1p": {
+          "suffix": "ነ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 1,
+            "C3": 1,
+            "C4": 6
+          }
+        },
+        "3pm": {
+          "suffix": "ኡ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 1,
+            "C3": 1,
+            "C4": 6
+          }
+        },
+        "3pf": {
+          "suffix": "ኣ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 1,
+            "C3": 1,
+            "C4": 6
+          }
+        },
+        "2pm": {
+          "suffix": "ክሙ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 1,
+            "C3": 1,
+            "C4": 6
+          }
+        },
+        "2pf": {
+          "suffix": "ክን",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 1,
+            "C3": 1,
+            "C4": 6
+          }
+        }
+      }
+    },
+    "imperfective": {
+      "template_name": "Yədänaggəṣ",
+      "base_pattern": {
+        "C1": 1,
+        "C2": 1,
+        "C3": 6,
+        "C4": 6
+      },
+      "gemination": "C2",
+      "subjects": {
+        "3sm": {
+          "prefix": "ይ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 1,
+            "C3": 6,
+            "C4": 6
+          }
+        },
+        "3sf": {
+          "prefix": "ት",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 1,
+            "C3": 6,
+            "C4": 6
+          }
+        },
+        "2sm": {
+          "prefix": "ት",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 1,
+            "C3": 6,
+            "C4": 6
+          }
+        },
+        "2sf": {
+          "prefix": "ት",
+          "suffix": "ኢ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 1,
+            "C3": 6,
+            "C4": 6
+          }
+        },
+        "1s": {
+          "prefix": "እ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 1,
+            "C3": 6,
+            "C4": 6
+          }
+        },
+        "1p": {
+          "prefix": "ን",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 1,
+            "C3": 6,
+            "C4": 6
+          }
+        },
+        "3pm": {
+          "prefix": "ይ",
+          "suffix": "ኡ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 1,
+            "C3": 6,
+            "C4": 6
+          }
+        },
+        "3pf": {
+          "prefix": "ይ",
+          "suffix": "ኣ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 1,
+            "C3": 6,
+            "C4": 6
+          }
+        },
+        "2pm": {
+          "prefix": "ት",
+          "suffix": "ኡ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 1,
+            "C3": 6,
+            "C4": 6
+          }
+        },
+        "2pf": {
+          "prefix": "ት",
+          "suffix": "ኣ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 1,
+            "C3": 6,
+            "C4": 6
+          }
+        }
+      }
+    },
+    "jussive": {
+      "template_name": "Yədängəṣ",
+      "base_pattern": {
+        "C1": 1,
+        "C2": 6,
+        "C3": 6,
+        "C4": 6
+      },
+      "subjects": {
+        "3sm": {
+          "prefix": "ይ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 6,
+            "C3": 6,
+            "C4": 6
+          }
+        },
+        "3sf": {
+          "prefix": "ት",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 6,
+            "C3": 6,
+            "C4": 6
+          }
+        },
+        "2sm": {
+          "prefix": "ት",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 6,
+            "C3": 6,
+            "C4": 6
+          }
+        },
+        "2sf": {
+          "prefix": "ት",
+          "suffix": "ኢ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 6,
+            "C3": 6,
+            "C4": 6
+          }
+        },
+        "1s": {
+          "prefix": "እ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 6,
+            "C3": 6,
+            "C4": 6
+          }
+        },
+        "1p": {
+          "prefix": "ን",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 6,
+            "C3": 6,
+            "C4": 6
+          }
+        },
+        "3pm": {
+          "prefix": "ይ",
+          "suffix": "ኡ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 6,
+            "C3": 6,
+            "C4": 6
+          }
+        },
+        "3pf": {
+          "prefix": "ይ",
+          "suffix": "ኣ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 6,
+            "C3": 6,
+            "C4": 6
+          }
+        },
+        "2pm": {
+          "prefix": "ት",
+          "suffix": "ኡ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 6,
+            "C3": 6,
+            "C4": 6
+          }
+        },
+        "2pf": {
+          "prefix": "ት",
+          "suffix": "ኣ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 6,
+            "C3": 6,
+            "C4": 6
+          }
+        }
+      }
+    },
+    "imperative": {
+      "template_name": "Dängəṣ",
+      "base_pattern": {
+        "C1": 1,
+        "C2": 6,
+        "C3": 6,
+        "C4": 6
+      },
+      "subjects": {
+        "2sm": {
+          "vowel_map": {
+            "C1": 1,
+            "C2": 6,
+            "C3": 6,
+            "C4": 6
+          }
+        },
+        "2sf": {
+          "suffix": "ኢ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 6,
+            "C3": 6,
+            "C4": 6
+          }
+        },
+        "2pm": {
+          "suffix": "ኡ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 6,
+            "C3": 6,
+            "C4": 6
+          }
+        },
+        "2pf": {
+          "suffix": "ኣ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 6,
+            "C3": 6,
+            "C4": 6
+          }
+        }
+      }
+    },
+    "derived": {
+      "infinitive": {
+        "template": "Tänbəlo",
+        "pattern": {
+          "C1": 1,
+          "C2": 6,
+          "C3": 6,
+          "C4": 7
+        }
+      },
+      "active_participle": {
+        "template": "Tänbali",
+        "pattern": {
+          "C1": 1,
+          "C2": 6,
+          "C3": 4,
+          "C4": 3
+        }
+      },
+      "passive_participle": {
+        "template": "Tənbul",
+        "pattern": {
+          "C1": 6,
+          "C2": 6,
+          "C3": 2,
+          "C4": 6
+        }
+      },
+      "instrumental": {
+        "template": "Mätänbəl",
+        "prefix": "መ",
+        "pattern": {
+          "C1": 1,
+          "C2": 6,
+          "C3": 6,
+          "C4": 6
+        }
+      },
+      "abstract_noun": {
+        "template": "Tənbale",
+        "pattern": {
+          "C1": 6,
+          "C2": 6,
+          "C3": 4,
+          "C4": 5
+        }
+      }
+    }
+  },
+  "type_d": {
+    "perfective": {
+      "template_name": "Kəhlä",
+      "base_pattern": {
+        "C1": 6,
+        "C2": 1,
+        "C3": 1
+      },
+      "subjects": {
+        "3sm": {
+          "vowel_map": {
+            "C1": 6,
+            "C2": 1,
+            "C3": 1
+          }
+        },
+        "3sf": {
+          "suffix": "ት",
+          "vowel_map": {
+            "C1": 6,
+            "C2": 1,
+            "C3": 1
+          }
+        },
+        "2sm": {
+          "suffix": "ከ",
+          "vowel_map": {
+            "C1": 6,
+            "C2": 1,
+            "C3": 6
+          }
+        },
+        "2sf": {
+          "suffix": "ኪ",
+          "vowel_map": {
+            "C1": 6,
+            "C2": 1,
+            "C3": 6
+          }
+        },
+        "1s": {
+          "suffix": "ኩ",
+          "vowel_map": {
+            "C1": 6,
+            "C2": 1,
+            "C3": 6
+          }
+        },
+        "1p": {
+          "suffix": "ነ",
+          "vowel_map": {
+            "C1": 6,
+            "C2": 1,
+            "C3": 6
+          }
+        },
+        "3pm": {
+          "suffix": "ኡ",
+          "vowel_map": {
+            "C1": 6,
+            "C2": 1,
+            "C3": 6
+          }
+        },
+        "3pf": {
+          "suffix": "ኣ",
+          "vowel_map": {
+            "C1": 6,
+            "C2": 1,
+            "C3": 6
+          }
+        },
+        "2pm": {
+          "suffix": "ክሙ",
+          "vowel_map": {
+            "C1": 6,
+            "C2": 1,
+            "C3": 6
+          }
+        },
+        "2pf": {
+          "suffix": "ክን",
+          "vowel_map": {
+            "C1": 6,
+            "C2": 1,
+            "C3": 6
+          }
+        }
+      }
+    },
+    "imperfective": {
+      "template_name": "Yəkəl",
+      "base_pattern": {
+        "C1": 6,
+        "C2": 6
+      },
+      "note": "Irregular - C2 drops?",
+      "subjects": {
+        "3sm": {
+          "prefix": "ይ",
+          "vowel_map": {
+            "C1": 6,
+            "C2": 6,
+            "C3": 6
+          }
+        },
+        "3sf": {
+          "prefix": "ት",
+          "vowel_map": {
+            "C1": 6,
+            "C2": 6,
+            "C3": 6
+          }
+        },
+        "2sm": {
+          "prefix": "ት",
+          "vowel_map": {
+            "C1": 6,
+            "C2": 6,
+            "C3": 6
+          }
+        },
+        "2sf": {
+          "prefix": "ት",
+          "suffix": "ኢ",
+          "vowel_map": {
+            "C1": 6,
+            "C2": 6,
+            "C3": 6
+          }
+        },
+        "1s": {
+          "prefix": "እ",
+          "vowel_map": {
+            "C1": 6,
+            "C2": 6,
+            "C3": 6
+          }
+        },
+        "1p": {
+          "prefix": "ን",
+          "vowel_map": {
+            "C1": 6,
+            "C2": 6,
+            "C3": 6
+          }
+        },
+        "3pm": {
+          "prefix": "ይ",
+          "suffix": "ኡ",
+          "vowel_map": {
+            "C1": 6,
+            "C2": 6,
+            "C3": 6
+          }
+        },
+        "3pf": {
+          "prefix": "ይ",
+          "suffix": "ኣ",
+          "vowel_map": {
+            "C1": 6,
+            "C2": 6,
+            "C3": 6
+          }
+        },
+        "2pm": {
+          "prefix": "ት",
+          "suffix": "ኡ",
+          "vowel_map": {
+            "C1": 6,
+            "C2": 6,
+            "C3": 6
+          }
+        },
+        "2pf": {
+          "prefix": "ት",
+          "suffix": "ኣ",
+          "vowel_map": {
+            "C1": 6,
+            "C2": 6,
+            "C3": 6
+          }
+        }
+      }
+    },
+    "jussive": {
+      "template_name": "Yəkhäl",
+      "base_pattern": {
+        "C1": 6,
+        "C2": 1,
+        "C3": 6
+      },
+      "subjects": {
+        "3sm": {
+          "prefix": "ይ",
+          "vowel_map": {
+            "C1": 6,
+            "C2": 1,
+            "C3": 6
+          }
+        },
+        "3sf": {
+          "prefix": "ት",
+          "vowel_map": {
+            "C1": 6,
+            "C2": 1,
+            "C3": 6
+          }
+        },
+        "2sm": {
+          "prefix": "ት",
+          "vowel_map": {
+            "C1": 6,
+            "C2": 1,
+            "C3": 6
+          }
+        },
+        "2sf": {
+          "prefix": "ት",
+          "suffix": "ኢ",
+          "vowel_map": {
+            "C1": 6,
+            "C2": 1,
+            "C3": 6
+          }
+        },
+        "1s": {
+          "prefix": "እ",
+          "vowel_map": {
+            "C1": 6,
+            "C2": 1,
+            "C3": 6
+          }
+        },
+        "1p": {
+          "prefix": "ን",
+          "vowel_map": {
+            "C1": 6,
+            "C2": 1,
+            "C3": 6
+          }
+        },
+        "3pm": {
+          "prefix": "ይ",
+          "suffix": "ኡ",
+          "vowel_map": {
+            "C1": 6,
+            "C2": 1,
+            "C3": 6
+          }
+        },
+        "3pf": {
+          "prefix": "ይ",
+          "suffix": "ኣ",
+          "vowel_map": {
+            "C1": 6,
+            "C2": 1,
+            "C3": 6
+          }
+        },
+        "2pm": {
+          "prefix": "ት",
+          "suffix": "ኡ",
+          "vowel_map": {
+            "C1": 6,
+            "C2": 1,
+            "C3": 6
+          }
+        },
+        "2pf": {
+          "prefix": "ት",
+          "suffix": "ኣ",
+          "vowel_map": {
+            "C1": 6,
+            "C2": 1,
+            "C3": 6
+          }
+        }
+      }
+    },
+    "imperative": {
+      "template_name": "Kəhäl",
+      "base_pattern": {
+        "C1": 6,
+        "C2": 1,
+        "C3": 6
+      },
+      "subjects": {
+        "2sm": {
+          "vowel_map": {
+            "C1": 6,
+            "C2": 1,
+            "C3": 6
+          }
+        },
+        "2sf": {
+          "suffix": "ኢ",
+          "vowel_map": {
+            "C1": 6,
+            "C2": 1,
+            "C3": 6
+          }
+        },
+        "2pm": {
+          "suffix": "ኡ",
+          "vowel_map": {
+            "C1": 6,
+            "C2": 1,
+            "C3": 6
+          }
+        },
+        "2pf": {
+          "suffix": "ኣ",
+          "vowel_map": {
+            "C1": 6,
+            "C2": 1,
+            "C3": 6
+          }
+        }
+      }
+    },
+    "derived": {
+      "infinitive": {
+        "template": "Gäbir",
+        "pattern": {
+          "C1": 1,
+          "C2": 3,
+          "C3": 6
+        }
+      },
+      "active_participle": {
+        "template": "Gäbari",
+        "pattern": {
+          "C1": 1,
+          "C2": 4,
+          "C3": 3
+        }
+      },
+      "passive_participle": {
+        "template": "Gəbur",
+        "pattern": {
+          "C1": 6,
+          "C2": 2,
+          "C3": 6
+        }
+      },
+      "instrumental": {
+        "template": "Mägbər",
+        "prefix": "መ",
+        "pattern": {
+          "C1": 6,
+          "C2": 6,
+          "C3": 6
+        }
+      },
+      "verbal_noun": {
+        "template": "Gəbr",
+        "pattern": {
+          "C1": 6,
+          "C2": 6,
+          "C3": 6
+        }
+      }
+    }
+  },
+  "quadriliteral": {
+    "perfective": {
+      "template_name": "Dänägäṣä",
+      "base_pattern": {
+        "C1": 1,
+        "C2": 1,
+        "C3": 1,
+        "C4": 1
+      },
+      "subjects": {
+        "3sm": {
+          "vowel_map": {
+            "C1": 1,
+            "C2": 1,
+            "C3": 1,
+            "C4": 1
+          }
+        },
+        "3sf": {
+          "suffix": "ት",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 1,
+            "C3": 1,
+            "C4": 1
+          }
+        },
+        "2sm": {
+          "suffix": "ከ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 1,
+            "C3": 1,
+            "C4": 6
+          }
+        },
+        "2sf": {
+          "suffix": "ኪ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 1,
+            "C3": 1,
+            "C4": 6
+          }
+        },
+        "1s": {
+          "suffix": "ኩ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 1,
+            "C3": 1,
+            "C4": 6
+          }
+        },
+        "1p": {
+          "suffix": "ነ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 1,
+            "C3": 1,
+            "C4": 6
+          }
+        },
+        "3pm": {
+          "suffix": "ኡ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 1,
+            "C3": 1,
+            "C4": 6
+          }
+        },
+        "3pf": {
+          "suffix": "ኣ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 1,
+            "C3": 1,
+            "C4": 6
+          }
+        },
+        "2pm": {
+          "suffix": "ክሙ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 1,
+            "C3": 1,
+            "C4": 6
+          }
+        },
+        "2pf": {
+          "suffix": "ክን",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 1,
+            "C3": 1,
+            "C4": 6
+          }
+        }
+      }
+    },
+    "imperfective": {
+      "template_name": "Yədänaggəṣ",
+      "base_pattern": {
+        "C1": 1,
+        "C2": 1,
+        "C3": 6,
+        "C4": 6
+      },
+      "gemination": "C2",
+      "subjects": {
+        "3sm": {
+          "prefix": "ይ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 1,
+            "C3": 6,
+            "C4": 6
+          }
+        },
+        "3sf": {
+          "prefix": "ት",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 1,
+            "C3": 6,
+            "C4": 6
+          }
+        },
+        "2sm": {
+          "prefix": "ት",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 1,
+            "C3": 6,
+            "C4": 6
+          }
+        },
+        "2sf": {
+          "prefix": "ት",
+          "suffix": "ኢ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 1,
+            "C3": 6,
+            "C4": 6
+          }
+        },
+        "1s": {
+          "prefix": "እ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 1,
+            "C3": 6,
+            "C4": 6
+          }
+        },
+        "1p": {
+          "prefix": "ን",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 1,
+            "C3": 6,
+            "C4": 6
+          }
+        },
+        "3pm": {
+          "prefix": "ይ",
+          "suffix": "ኡ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 1,
+            "C3": 6,
+            "C4": 6
+          }
+        },
+        "3pf": {
+          "prefix": "ይ",
+          "suffix": "ኣ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 1,
+            "C3": 6,
+            "C4": 6
+          }
+        },
+        "2pm": {
+          "prefix": "ት",
+          "suffix": "ኡ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 1,
+            "C3": 6,
+            "C4": 6
+          }
+        },
+        "2pf": {
+          "prefix": "ት",
+          "suffix": "ኣ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 1,
+            "C3": 6,
+            "C4": 6
+          }
+        }
+      }
+    },
+    "jussive": {
+      "template_name": "Yədängəṣ",
+      "base_pattern": {
+        "C1": 1,
+        "C2": 6,
+        "C3": 6,
+        "C4": 6
+      },
+      "subjects": {
+        "3sm": {
+          "prefix": "ይ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 6,
+            "C3": 6,
+            "C4": 6
+          }
+        },
+        "3sf": {
+          "prefix": "ት",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 6,
+            "C3": 6,
+            "C4": 6
+          }
+        },
+        "2sm": {
+          "prefix": "ት",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 6,
+            "C3": 6,
+            "C4": 6
+          }
+        },
+        "2sf": {
+          "prefix": "ት",
+          "suffix": "ኢ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 6,
+            "C3": 6,
+            "C4": 6
+          }
+        },
+        "1s": {
+          "prefix": "እ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 6,
+            "C3": 6,
+            "C4": 6
+          }
+        },
+        "1p": {
+          "prefix": "ን",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 6,
+            "C3": 6,
+            "C4": 6
+          }
+        },
+        "3pm": {
+          "prefix": "ይ",
+          "suffix": "ኡ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 6,
+            "C3": 6,
+            "C4": 6
+          }
+        },
+        "3pf": {
+          "prefix": "ይ",
+          "suffix": "ኣ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 6,
+            "C3": 6,
+            "C4": 6
+          }
+        },
+        "2pm": {
+          "prefix": "ት",
+          "suffix": "ኡ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 6,
+            "C3": 6,
+            "C4": 6
+          }
+        },
+        "2pf": {
+          "prefix": "ት",
+          "suffix": "ኣ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 6,
+            "C3": 6,
+            "C4": 6
+          }
+        }
+      }
+    },
+    "imperative": {
+      "template_name": "Dängəṣ",
+      "base_pattern": {
+        "C1": 1,
+        "C2": 6,
+        "C3": 6,
+        "C4": 6
+      },
+      "subjects": {
+        "2sm": {
+          "vowel_map": {
+            "C1": 1,
+            "C2": 6,
+            "C3": 6,
+            "C4": 6
+          }
+        },
+        "2sf": {
+          "suffix": "ኢ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 6,
+            "C3": 6,
+            "C4": 6
+          }
+        },
+        "2pm": {
+          "suffix": "ኡ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 6,
+            "C3": 6,
+            "C4": 6
+          }
+        },
+        "2pf": {
+          "suffix": "ኣ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 6,
+            "C3": 6,
+            "C4": 6
+          }
+        }
+      }
+    },
+    "derived": {
+      "infinitive": {
+        "template": "Tänbəlo",
+        "pattern": {
+          "C1": 1,
+          "C2": 6,
+          "C3": 6,
+          "C4": 7
+        }
+      },
+      "active_participle": {
+        "template": "Tänbali",
+        "pattern": {
+          "C1": 1,
+          "C2": 6,
+          "C3": 4,
+          "C4": 3
+        }
+      },
+      "passive_participle": {
+        "template": "Tənbul",
+        "pattern": {
+          "C1": 6,
+          "C2": 6,
+          "C3": 2,
+          "C4": 6
+        }
+      },
+      "instrumental": {
+        "template": "Mätänbəl",
+        "prefix": "መ",
+        "pattern": {
+          "C1": 1,
+          "C2": 6,
+          "C3": 6,
+          "C4": 6
+        }
+      },
+      "abstract_noun": {
+        "template": "Tənbale",
+        "pattern": {
+          "C1": 6,
+          "C2": 6,
+          "C3": 4,
+          "C4": 5
+        }
+      }
+    }
+  },
+  "hollow_w": {
+    "perfective": {
+      "template_name": "Qätälä",
+      "base_pattern": {
+        "C1": 1,
+        "C2": 1,
+        "C3": 1
+      },
+      "subjects": {
+        "3sm": {
+          "suffix": "",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 1,
+            "C3": 1
+          }
+        },
+        "3sf": {
+          "suffix": "ት",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 1,
+            "C3": 1
+          }
+        },
+        "2sm": {
+          "suffix": "ከ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 1,
+            "C3": 6
+          }
+        },
+        "2sf": {
+          "suffix": "ኪ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 1,
+            "C3": 6
+          }
+        },
+        "1s": {
+          "suffix": "ኩ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 1,
+            "C3": 6
+          }
+        },
+        "1p": {
+          "suffix": "ነ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 1,
+            "C3": 6
+          }
+        },
+        "3pm": {
+          "suffix": "ኡ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 1,
+            "C3": 6
+          }
+        },
+        "3pf": {
+          "suffix": "ኣ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 1,
+            "C3": 6
+          }
+        },
+        "2pm": {
+          "suffix": "ክሙ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 1,
+            "C3": 6
+          }
+        },
+        "2pf": {
+          "suffix": "ክን",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 1,
+            "C3": 6
+          }
+        }
+      }
+    },
+    "imperfective": {
+      "template_name": "Yəqättəl",
+      "base_pattern": {
+        "C1": 1,
+        "C2": 6,
+        "C3": 6
+      },
+      "gemination": "C2",
+      "subjects": {
+        "3sm": {
+          "prefix": "ይ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 6,
+            "C3": 6
+          }
+        },
+        "3sf": {
+          "prefix": "ት",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 6,
+            "C3": 6
+          }
+        },
+        "2sm": {
+          "prefix": "ት",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 6,
+            "C3": 6
+          }
+        },
+        "2sf": {
+          "prefix": "ት",
+          "suffix": "ኢ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 6,
+            "C3": 6
+          }
+        },
+        "1s": {
+          "prefix": "እ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 6,
+            "C3": 6
+          }
+        },
+        "1p": {
+          "prefix": "ን",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 6,
+            "C3": 6
+          }
+        },
+        "3pm": {
+          "prefix": "ይ",
+          "suffix": "ኡ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 6,
+            "C3": 6
+          }
+        },
+        "3pf": {
+          "prefix": "ይ",
+          "suffix": "ኣ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 6,
+            "C3": 6
+          }
+        },
+        "2pm": {
+          "prefix": "ት",
+          "suffix": "ኡ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 6,
+            "C3": 6
+          }
+        },
+        "2pf": {
+          "prefix": "ት",
+          "suffix": "ኣ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 6,
+            "C3": 6
+          }
+        }
+      }
+    },
+    "jussive": {
+      "template_name": "Yəqtäl",
+      "base_pattern": {
+        "C1": 6,
+        "C2": 1,
+        "C3": 6
+      },
+      "subjects": {
+        "3sm": {
+          "prefix": "ይ",
+          "vowel_map": {
+            "C1": 6,
+            "C2": 1,
+            "C3": 6
+          }
+        },
+        "3sf": {
+          "prefix": "ት",
+          "vowel_map": {
+            "C1": 6,
+            "C2": 1,
+            "C3": 6
+          }
+        },
+        "2sm": {
+          "prefix": "ት",
+          "vowel_map": {
+            "C1": 6,
+            "C2": 1,
+            "C3": 6
+          }
+        },
+        "2sf": {
+          "prefix": "ት",
+          "suffix": "ኢ",
+          "vowel_map": {
+            "C1": 6,
+            "C2": 1,
+            "C3": 6
+          }
+        },
+        "1s": {
+          "prefix": "እ",
+          "vowel_map": {
+            "C1": 6,
+            "C2": 1,
+            "C3": 6
+          }
+        },
+        "1p": {
+          "prefix": "ን",
+          "vowel_map": {
+            "C1": 6,
+            "C2": 1,
+            "C3": 6
+          }
+        },
+        "3pm": {
+          "prefix": "ይ",
+          "suffix": "ኡ",
+          "vowel_map": {
+            "C1": 6,
+            "C2": 1,
+            "C3": 6
+          }
+        },
+        "3pf": {
+          "prefix": "ይ",
+          "suffix": "ኣ",
+          "vowel_map": {
+            "C1": 6,
+            "C2": 1,
+            "C3": 6
+          }
+        },
+        "2pm": {
+          "prefix": "ት",
+          "suffix": "ኡ",
+          "vowel_map": {
+            "C1": 6,
+            "C2": 1,
+            "C3": 6
+          }
+        },
+        "2pf": {
+          "prefix": "ት",
+          "suffix": "ኣ",
+          "vowel_map": {
+            "C1": 6,
+            "C2": 1,
+            "C3": 6
+          }
+        }
+      }
+    },
+    "imperative": {
+      "template_name": "Qtäl",
+      "base_pattern": {
+        "C1": 6,
+        "C2": 1,
+        "C3": 6
+      },
+      "subjects": {
+        "2sm": {
+          "vowel_map": {
+            "C1": 6,
+            "C2": 1,
+            "C3": 6
+          }
+        },
+        "2sf": {
+          "suffix": "ኢ",
+          "vowel_map": {
+            "C1": 6,
+            "C2": 1,
+            "C3": 6
+          }
+        },
+        "2pm": {
+          "suffix": "ኡ",
+          "vowel_map": {
+            "C1": 6,
+            "C2": 1,
+            "C3": 6
+          }
+        },
+        "2pf": {
+          "suffix": "ኣ",
+          "vowel_map": {
+            "C1": 6,
+            "C2": 1,
+            "C3": 6
+          }
+        }
+      }
+    },
+    "derived": {
+      "infinitive": {
+        "template": "Gäbir",
+        "pattern": {
+          "C1": 1,
+          "C2": 3,
+          "C3": 6
+        }
+      },
+      "active_participle": {
+        "template": "Gäbari",
+        "pattern": {
+          "C1": 1,
+          "C2": 4,
+          "C3": 3
+        }
+      },
+      "passive_participle": {
+        "template": "Gəbur",
+        "pattern": {
+          "C1": 6,
+          "C2": 2,
+          "C3": 6
+        }
+      },
+      "instrumental": {
+        "template": "Mägbər",
+        "prefix": "መ",
+        "pattern": {
+          "C1": 6,
+          "C2": 6,
+          "C3": 6
+        }
+      },
+      "verbal_noun": {
+        "template": "Gəbr",
+        "pattern": {
+          "C1": 6,
+          "C2": 6,
+          "C3": 6
+        }
+      }
+    }
+  },
+  "hollow_y": {
+    "perfective": {
+      "template_name": "Qätälä",
+      "base_pattern": {
+        "C1": 1,
+        "C2": 1,
+        "C3": 1
+      },
+      "subjects": {
+        "3sm": {
+          "suffix": "",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 1,
+            "C3": 1
+          }
+        },
+        "3sf": {
+          "suffix": "ት",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 1,
+            "C3": 1
+          }
+        },
+        "2sm": {
+          "suffix": "ከ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 1,
+            "C3": 6
+          }
+        },
+        "2sf": {
+          "suffix": "ኪ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 1,
+            "C3": 6
+          }
+        },
+        "1s": {
+          "suffix": "ኩ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 1,
+            "C3": 6
+          }
+        },
+        "1p": {
+          "suffix": "ነ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 1,
+            "C3": 6
+          }
+        },
+        "3pm": {
+          "suffix": "ኡ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 1,
+            "C3": 6
+          }
+        },
+        "3pf": {
+          "suffix": "ኣ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 1,
+            "C3": 6
+          }
+        },
+        "2pm": {
+          "suffix": "ክሙ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 1,
+            "C3": 6
+          }
+        },
+        "2pf": {
+          "suffix": "ክን",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 1,
+            "C3": 6
+          }
+        }
+      }
+    },
+    "imperfective": {
+      "template_name": "Yəqättəl",
+      "base_pattern": {
+        "C1": 1,
+        "C2": 6,
+        "C3": 6
+      },
+      "gemination": "C2",
+      "subjects": {
+        "3sm": {
+          "prefix": "ይ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 6,
+            "C3": 6
+          }
+        },
+        "3sf": {
+          "prefix": "ት",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 6,
+            "C3": 6
+          }
+        },
+        "2sm": {
+          "prefix": "ት",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 6,
+            "C3": 6
+          }
+        },
+        "2sf": {
+          "prefix": "ት",
+          "suffix": "ኢ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 6,
+            "C3": 6
+          }
+        },
+        "1s": {
+          "prefix": "እ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 6,
+            "C3": 6
+          }
+        },
+        "1p": {
+          "prefix": "ን",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 6,
+            "C3": 6
+          }
+        },
+        "3pm": {
+          "prefix": "ይ",
+          "suffix": "ኡ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 6,
+            "C3": 6
+          }
+        },
+        "3pf": {
+          "prefix": "ይ",
+          "suffix": "ኣ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 6,
+            "C3": 6
+          }
+        },
+        "2pm": {
+          "prefix": "ት",
+          "suffix": "ኡ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 6,
+            "C3": 6
+          }
+        },
+        "2pf": {
+          "prefix": "ት",
+          "suffix": "ኣ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 6,
+            "C3": 6
+          }
+        }
+      }
+    },
+    "jussive": {
+      "template_name": "Yəqtäl",
+      "base_pattern": {
+        "C1": 6,
+        "C2": 1,
+        "C3": 6
+      },
+      "subjects": {
+        "3sm": {
+          "prefix": "ይ",
+          "vowel_map": {
+            "C1": 6,
+            "C2": 1,
+            "C3": 6
+          }
+        },
+        "3sf": {
+          "prefix": "ት",
+          "vowel_map": {
+            "C1": 6,
+            "C2": 1,
+            "C3": 6
+          }
+        },
+        "2sm": {
+          "prefix": "ት",
+          "vowel_map": {
+            "C1": 6,
+            "C2": 1,
+            "C3": 6
+          }
+        },
+        "2sf": {
+          "prefix": "ት",
+          "suffix": "ኢ",
+          "vowel_map": {
+            "C1": 6,
+            "C2": 1,
+            "C3": 6
+          }
+        },
+        "1s": {
+          "prefix": "እ",
+          "vowel_map": {
+            "C1": 6,
+            "C2": 1,
+            "C3": 6
+          }
+        },
+        "1p": {
+          "prefix": "ን",
+          "vowel_map": {
+            "C1": 6,
+            "C2": 1,
+            "C3": 6
+          }
+        },
+        "3pm": {
+          "prefix": "ይ",
+          "suffix": "ኡ",
+          "vowel_map": {
+            "C1": 6,
+            "C2": 1,
+            "C3": 6
+          }
+        },
+        "3pf": {
+          "prefix": "ይ",
+          "suffix": "ኣ",
+          "vowel_map": {
+            "C1": 6,
+            "C2": 1,
+            "C3": 6
+          }
+        },
+        "2pm": {
+          "prefix": "ት",
+          "suffix": "ኡ",
+          "vowel_map": {
+            "C1": 6,
+            "C2": 1,
+            "C3": 6
+          }
+        },
+        "2pf": {
+          "prefix": "ት",
+          "suffix": "ኣ",
+          "vowel_map": {
+            "C1": 6,
+            "C2": 1,
+            "C3": 6
+          }
+        }
+      }
+    },
+    "imperative": {
+      "template_name": "Qtäl",
+      "base_pattern": {
+        "C1": 6,
+        "C2": 1,
+        "C3": 6
+      },
+      "subjects": {
+        "2sm": {
+          "vowel_map": {
+            "C1": 6,
+            "C2": 1,
+            "C3": 6
+          }
+        },
+        "2sf": {
+          "suffix": "ኢ",
+          "vowel_map": {
+            "C1": 6,
+            "C2": 1,
+            "C3": 6
+          }
+        },
+        "2pm": {
+          "suffix": "ኡ",
+          "vowel_map": {
+            "C1": 6,
+            "C2": 1,
+            "C3": 6
+          }
+        },
+        "2pf": {
+          "suffix": "ኣ",
+          "vowel_map": {
+            "C1": 6,
+            "C2": 1,
+            "C3": 6
+          }
+        }
+      }
+    },
+    "derived": {
+      "infinitive": {
+        "template": "Gäbir",
+        "pattern": {
+          "C1": 1,
+          "C2": 3,
+          "C3": 6
+        }
+      },
+      "active_participle": {
+        "template": "Gäbari",
+        "pattern": {
+          "C1": 1,
+          "C2": 4,
+          "C3": 3
+        }
+      },
+      "passive_participle": {
+        "template": "Gəbur",
+        "pattern": {
+          "C1": 6,
+          "C2": 2,
+          "C3": 6
+        }
+      },
+      "instrumental": {
+        "template": "Mägbər",
+        "prefix": "መ",
+        "pattern": {
+          "C1": 6,
+          "C2": 6,
+          "C3": 6
+        }
+      },
+      "verbal_noun": {
+        "template": "Gəbr",
+        "pattern": {
+          "C1": 6,
+          "C2": 6,
+          "C3": 6
+        }
+      }
+    }
+  },
+  "weak_initial": {
+    "perfective": {
+      "template_name": "Qätälä",
+      "base_pattern": {
+        "C1": 1,
+        "C2": 1,
+        "C3": 1
+      },
+      "subjects": {
+        "3sm": {
+          "suffix": "",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 1,
+            "C3": 1
+          }
+        },
+        "3sf": {
+          "suffix": "ት",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 1,
+            "C3": 1
+          }
+        },
+        "2sm": {
+          "suffix": "ከ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 1,
+            "C3": 6
+          }
+        },
+        "2sf": {
+          "suffix": "ኪ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 1,
+            "C3": 6
+          }
+        },
+        "1s": {
+          "suffix": "ኩ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 1,
+            "C3": 6
+          }
+        },
+        "1p": {
+          "suffix": "ነ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 1,
+            "C3": 6
+          }
+        },
+        "3pm": {
+          "suffix": "ኡ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 1,
+            "C3": 6
+          }
+        },
+        "3pf": {
+          "suffix": "ኣ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 1,
+            "C3": 6
+          }
+        },
+        "2pm": {
+          "suffix": "ክሙ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 1,
+            "C3": 6
+          }
+        },
+        "2pf": {
+          "suffix": "ክን",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 1,
+            "C3": 6
+          }
+        }
+      }
+    },
+    "imperfective": {
+      "template_name": "Yəqättəl",
+      "base_pattern": {
+        "C1": 1,
+        "C2": 6,
+        "C3": 6
+      },
+      "gemination": "C2",
+      "subjects": {
+        "3sm": {
+          "prefix": "ይ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 6,
+            "C3": 6
+          }
+        },
+        "3sf": {
+          "prefix": "ት",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 6,
+            "C3": 6
+          }
+        },
+        "2sm": {
+          "prefix": "ት",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 6,
+            "C3": 6
+          }
+        },
+        "2sf": {
+          "prefix": "ት",
+          "suffix": "ኢ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 6,
+            "C3": 6
+          }
+        },
+        "1s": {
+          "prefix": "እ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 6,
+            "C3": 6
+          }
+        },
+        "1p": {
+          "prefix": "ን",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 6,
+            "C3": 6
+          }
+        },
+        "3pm": {
+          "prefix": "ይ",
+          "suffix": "ኡ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 6,
+            "C3": 6
+          }
+        },
+        "3pf": {
+          "prefix": "ይ",
+          "suffix": "ኣ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 6,
+            "C3": 6
+          }
+        },
+        "2pm": {
+          "prefix": "ት",
+          "suffix": "ኡ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 6,
+            "C3": 6
+          }
+        },
+        "2pf": {
+          "prefix": "ት",
+          "suffix": "ኣ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 6,
+            "C3": 6
+          }
+        }
+      }
+    },
+    "jussive": {
+      "template_name": "Yəqtäl",
+      "base_pattern": {
+        "C1": 6,
+        "C2": 1,
+        "C3": 6
+      },
+      "subjects": {
+        "3sm": {
+          "prefix": "ይ",
+          "vowel_map": {
+            "C1": 6,
+            "C2": 1,
+            "C3": 6
+          }
+        },
+        "3sf": {
+          "prefix": "ት",
+          "vowel_map": {
+            "C1": 6,
+            "C2": 1,
+            "C3": 6
+          }
+        },
+        "2sm": {
+          "prefix": "ት",
+          "vowel_map": {
+            "C1": 6,
+            "C2": 1,
+            "C3": 6
+          }
+        },
+        "2sf": {
+          "prefix": "ት",
+          "suffix": "ኢ",
+          "vowel_map": {
+            "C1": 6,
+            "C2": 1,
+            "C3": 6
+          }
+        },
+        "1s": {
+          "prefix": "እ",
+          "vowel_map": {
+            "C1": 6,
+            "C2": 1,
+            "C3": 6
+          }
+        },
+        "1p": {
+          "prefix": "ን",
+          "vowel_map": {
+            "C1": 6,
+            "C2": 1,
+            "C3": 6
+          }
+        },
+        "3pm": {
+          "prefix": "ይ",
+          "suffix": "ኡ",
+          "vowel_map": {
+            "C1": 6,
+            "C2": 1,
+            "C3": 6
+          }
+        },
+        "3pf": {
+          "prefix": "ይ",
+          "suffix": "ኣ",
+          "vowel_map": {
+            "C1": 6,
+            "C2": 1,
+            "C3": 6
+          }
+        },
+        "2pm": {
+          "prefix": "ት",
+          "suffix": "ኡ",
+          "vowel_map": {
+            "C1": 6,
+            "C2": 1,
+            "C3": 6
+          }
+        },
+        "2pf": {
+          "prefix": "ት",
+          "suffix": "ኣ",
+          "vowel_map": {
+            "C1": 6,
+            "C2": 1,
+            "C3": 6
+          }
+        }
+      }
+    },
+    "imperative": {
+      "template_name": "Qtäl",
+      "base_pattern": {
+        "C1": 6,
+        "C2": 1,
+        "C3": 6
+      },
+      "subjects": {
+        "2sm": {
+          "vowel_map": {
+            "C1": 6,
+            "C2": 1,
+            "C3": 6
+          }
+        },
+        "2sf": {
+          "suffix": "ኢ",
+          "vowel_map": {
+            "C1": 6,
+            "C2": 1,
+            "C3": 6
+          }
+        },
+        "2pm": {
+          "suffix": "ኡ",
+          "vowel_map": {
+            "C1": 6,
+            "C2": 1,
+            "C3": 6
+          }
+        },
+        "2pf": {
+          "suffix": "ኣ",
+          "vowel_map": {
+            "C1": 6,
+            "C2": 1,
+            "C3": 6
+          }
+        }
+      }
+    },
+    "derived": {
+      "infinitive": {
+        "template": "Gäbir",
+        "pattern": {
+          "C1": 1,
+          "C2": 3,
+          "C3": 6
+        }
+      },
+      "active_participle": {
+        "template": "Gäbari",
+        "pattern": {
+          "C1": 1,
+          "C2": 4,
+          "C3": 3
+        }
+      },
+      "passive_participle": {
+        "template": "Gəbur",
+        "pattern": {
+          "C1": 6,
+          "C2": 2,
+          "C3": 6
+        }
+      },
+      "instrumental": {
+        "template": "Mägbər",
+        "prefix": "መ",
+        "pattern": {
+          "C1": 6,
+          "C2": 6,
+          "C3": 6
+        }
+      },
+      "verbal_noun": {
+        "template": "Gəbr",
+        "pattern": {
+          "C1": 6,
+          "C2": 6,
+          "C3": 6
+        }
+      }
+    }
+  },
+  "strong": {
+    "perfective": {
+      "template_name": "Qätälä",
+      "base_pattern": {
+        "C1": 1,
+        "C2": 1,
+        "C3": 1
+      },
+      "subjects": {
+        "3sm": {
+          "suffix": "",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 1,
+            "C3": 1
+          }
+        },
+        "3sf": {
+          "suffix": "ት",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 1,
+            "C3": 1
+          }
+        },
+        "2sm": {
+          "suffix": "ከ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 1,
+            "C3": 6
+          }
+        },
+        "2sf": {
+          "suffix": "ኪ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 1,
+            "C3": 6
+          }
+        },
+        "1s": {
+          "suffix": "ኩ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 1,
+            "C3": 6
+          }
+        },
+        "1p": {
+          "suffix": "ነ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 1,
+            "C3": 6
+          }
+        },
+        "3pm": {
+          "suffix": "ኡ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 1,
+            "C3": 6
+          }
+        },
+        "3pf": {
+          "suffix": "ኣ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 1,
+            "C3": 6
+          }
+        },
+        "2pm": {
+          "suffix": "ክሙ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 1,
+            "C3": 6
+          }
+        },
+        "2pf": {
+          "suffix": "ክን",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 1,
+            "C3": 6
+          }
+        }
+      }
+    },
+    "imperfective": {
+      "template_name": "Yəqättəl",
+      "base_pattern": {
+        "C1": 1,
+        "C2": 6,
+        "C3": 6
+      },
+      "gemination": "C2",
+      "subjects": {
+        "3sm": {
+          "prefix": "ይ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 6,
+            "C3": 6
+          }
+        },
+        "3sf": {
+          "prefix": "ት",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 6,
+            "C3": 6
+          }
+        },
+        "2sm": {
+          "prefix": "ት",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 6,
+            "C3": 6
+          }
+        },
+        "2sf": {
+          "prefix": "ት",
+          "suffix": "ኢ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 6,
+            "C3": 6
+          }
+        },
+        "1s": {
+          "prefix": "እ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 6,
+            "C3": 6
+          }
+        },
+        "1p": {
+          "prefix": "ን",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 6,
+            "C3": 6
+          }
+        },
+        "3pm": {
+          "prefix": "ይ",
+          "suffix": "ኡ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 6,
+            "C3": 6
+          }
+        },
+        "3pf": {
+          "prefix": "ይ",
+          "suffix": "ኣ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 6,
+            "C3": 6
+          }
+        },
+        "2pm": {
+          "prefix": "ት",
+          "suffix": "ኡ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 6,
+            "C3": 6
+          }
+        },
+        "2pf": {
+          "prefix": "ት",
+          "suffix": "ኣ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 6,
+            "C3": 6
+          }
+        }
+      }
+    },
+    "jussive": {
+      "template_name": "Yəqtäl",
+      "base_pattern": {
+        "C1": 6,
+        "C2": 1,
+        "C3": 6
+      },
+      "subjects": {
+        "3sm": {
+          "prefix": "ይ",
+          "vowel_map": {
+            "C1": 6,
+            "C2": 1,
+            "C3": 6
+          }
+        },
+        "3sf": {
+          "prefix": "ት",
+          "vowel_map": {
+            "C1": 6,
+            "C2": 1,
+            "C3": 6
+          }
+        },
+        "2sm": {
+          "prefix": "ት",
+          "vowel_map": {
+            "C1": 6,
+            "C2": 1,
+            "C3": 6
+          }
+        },
+        "2sf": {
+          "prefix": "ት",
+          "suffix": "ኢ",
+          "vowel_map": {
+            "C1": 6,
+            "C2": 1,
+            "C3": 6
+          }
+        },
+        "1s": {
+          "prefix": "እ",
+          "vowel_map": {
+            "C1": 6,
+            "C2": 1,
+            "C3": 6
+          }
+        },
+        "1p": {
+          "prefix": "ን",
+          "vowel_map": {
+            "C1": 6,
+            "C2": 1,
+            "C3": 6
+          }
+        },
+        "3pm": {
+          "prefix": "ይ",
+          "suffix": "ኡ",
+          "vowel_map": {
+            "C1": 6,
+            "C2": 1,
+            "C3": 6
+          }
+        },
+        "3pf": {
+          "prefix": "ይ",
+          "suffix": "ኣ",
+          "vowel_map": {
+            "C1": 6,
+            "C2": 1,
+            "C3": 6
+          }
+        },
+        "2pm": {
+          "prefix": "ት",
+          "suffix": "ኡ",
+          "vowel_map": {
+            "C1": 6,
+            "C2": 1,
+            "C3": 6
+          }
+        },
+        "2pf": {
+          "prefix": "ት",
+          "suffix": "ኣ",
+          "vowel_map": {
+            "C1": 6,
+            "C2": 1,
+            "C3": 6
+          }
+        }
+      }
+    },
+    "imperative": {
+      "template_name": "Qtäl",
+      "base_pattern": {
+        "C1": 6,
+        "C2": 1,
+        "C3": 6
+      },
+      "subjects": {
+        "2sm": {
+          "vowel_map": {
+            "C1": 6,
+            "C2": 1,
+            "C3": 6
+          }
+        },
+        "2sf": {
+          "suffix": "ኢ",
+          "vowel_map": {
+            "C1": 6,
+            "C2": 1,
+            "C3": 6
+          }
+        },
+        "2pm": {
+          "suffix": "ኡ",
+          "vowel_map": {
+            "C1": 6,
+            "C2": 1,
+            "C3": 6
+          }
+        },
+        "2pf": {
+          "suffix": "ኣ",
+          "vowel_map": {
+            "C1": 6,
+            "C2": 1,
+            "C3": 6
+          }
+        }
+      }
+    },
+    "derived": {
+      "infinitive": {
+        "template": "Gäbir",
+        "pattern": {
+          "C1": 1,
+          "C2": 3,
+          "C3": 6
+        }
+      },
+      "active_participle": {
+        "template": "Gäbari",
+        "pattern": {
+          "C1": 1,
+          "C2": 4,
+          "C3": 3
+        }
+      },
+      "passive_participle": {
+        "template": "Gəbur",
+        "pattern": {
+          "C1": 6,
+          "C2": 2,
+          "C3": 6
+        }
+      },
+      "instrumental": {
+        "template": "Mägbər",
+        "prefix": "መ",
+        "pattern": {
+          "C1": 6,
+          "C2": 6,
+          "C3": 6
+        }
+      },
+      "verbal_noun": {
+        "template": "Gəbr",
+        "pattern": {
+          "C1": 6,
+          "C2": 6,
+          "C3": 6
+        }
+      }
+    }
+  },
+  "type_a_passive": {
+    "perfective": {
+      "template_name": "Passive Perfective",
+      "geez_name": "ተገብሮ ቀዳማይ",
+      "cv_template": "ተ-C1äC2äC3ä",
+      "subjects": {
+        "3sm": {
+          "prefix": "ተ",
+          "suffix": "",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 1,
+            "C3": 1
+          },
+          "label": {
+            "geez": "ውእቱ",
+            "english": "he"
+          }
+        },
+        "3sf": {
+          "prefix": "ተ",
+          "suffix": "ት",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 1,
+            "C3": 1
+          },
+          "label": {
+            "geez": "ይእቲ",
+            "english": "she"
+          }
+        },
+        "2sm": {
+          "prefix": "ተ",
+          "suffix": "ከ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 1,
+            "C3": 6
+          },
+          "label": {
+            "geez": "አንተ",
+            "english": "you (m)"
+          }
+        },
+        "2sf": {
+          "prefix": "ተ",
+          "suffix": "ኪ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 1,
+            "C3": 6
+          },
+          "label": {
+            "geez": "አንቲ",
+            "english": "you (f)"
+          }
+        },
+        "1s": {
+          "prefix": "ተ",
+          "suffix": "ኩ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 1,
+            "C3": 6
+          },
+          "label": {
+            "geez": "አነ",
+            "english": "I"
+          }
+        },
+        "1p": {
+          "prefix": "ተ",
+          "suffix": "ነ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 1,
+            "C3": 6
+          },
+          "label": {
+            "geez": "ንሕነ",
+            "english": "we"
+          }
+        },
+        "3pm": {
+          "prefix": "ተ",
+          "suffix": "ኡ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 1,
+            "C3": 6
+          },
+          "label": {
+            "geez": "ውእቶሙ",
+            "english": "they (m)"
+          }
+        },
+        "3pf": {
+          "prefix": "ተ",
+          "suffix": "ኣ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 1,
+            "C3": 6
+          },
+          "label": {
+            "geez": "ውእቶን",
+            "english": "they (f)"
+          }
+        },
+        "2pm": {
+          "prefix": "ተ",
+          "suffix": "ክሙ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 1,
+            "C3": 6
+          },
+          "label": {
+            "geez": "አንትሙ",
+            "english": "you (pl.m)"
+          }
+        },
+        "2pf": {
+          "prefix": "ተ",
+          "suffix": "ክን",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 1,
+            "C3": 6
+          },
+          "label": {
+            "geez": "አንትን",
+            "english": "you (pl.f)"
+          }
+        }
+      }
+    },
+    "imperfective": {
+      "template_name": "Passive Imperfective",
+      "geez_name": "ተገብሮ ካልኣይ",
+      "cv_template": "yət-C1äC2äC3",
+      "subjects": {
+        "3sm": {
+          "prefix": "ይት",
+          "suffix": "",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 1,
+            "C3": 6
+          },
+          "label": {
+            "geez": "ውእቱ",
+            "english": "he"
+          }
+        },
+        "3sf": {
+          "prefix": "ትት",
+          "suffix": "",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 1,
+            "C3": 6
+          },
+          "label": {
+            "geez": "ይእቲ",
+            "english": "she"
+          }
+        },
+        "2sm": {
+          "prefix": "ትት",
+          "suffix": "",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 1,
+            "C3": 6
+          },
+          "label": {
+            "geez": "አንተ",
+            "english": "you (m)"
+          }
+        },
+        "2sf": {
+          "prefix": "ትት",
+          "suffix": "ኢ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 1,
+            "C3": 6
+          },
+          "label": {
+            "geez": "አንቲ",
+            "english": "you (f)"
+          }
+        },
+        "1s": {
+          "prefix": "እት",
+          "suffix": "",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 1,
+            "C3": 6
+          },
+          "label": {
+            "geez": "አነ",
+            "english": "I"
+          }
+        },
+        "1p": {
+          "prefix": "ንት",
+          "suffix": "",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 1,
+            "C3": 6
+          },
+          "label": {
+            "geez": "ንሕነ",
+            "english": "we"
+          }
+        },
+        "3pm": {
+          "prefix": "ይት",
+          "suffix": "ኡ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 1,
+            "C3": 6
+          },
+          "label": {
+            "geez": "ውእቶሙ",
+            "english": "they (m)"
+          }
+        },
+        "3pf": {
+          "prefix": "ይት",
+          "suffix": "ኣ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 1,
+            "C3": 6
+          },
+          "label": {
+            "geez": "ውእቶን",
+            "english": "they (f)"
+          }
+        },
+        "2pm": {
+          "prefix": "ትት",
+          "suffix": "ኡ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 1,
+            "C3": 6
+          },
+          "label": {
+            "geez": "አንትሙ",
+            "english": "you (pl.m)"
+          }
+        },
+        "2pf": {
+          "prefix": "ትት",
+          "suffix": "ኣ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 1,
+            "C3": 6
+          },
+          "label": {
+            "geez": "አንትን",
+            "english": "you (pl.f)"
+          }
+        }
+      }
+    },
+    "derived": {
+      "passive_infinitive": {
+        "template": "Təqätilo",
+        "geez_note": "ተቀቲሎ (ተገብሮ ንኡስ)",
+        "prefix": "ተ",
+        "pattern": {
+          "C1": 1,
+          "C2": 3,
+          "C3": 7
+        }
+      },
+      "passive_participle": {
+        "template": "Təqätul",
+        "geez_note": "ተቀቱል (ተገብሮ ዘመድ)",
+        "prefix": "ተ",
+        "pattern": {
+          "C1": 1,
+          "C2": 2,
+          "C3": 6
+        }
+      }
+    }
+  },
+  "type_a_causative": {
+    "perfective": {
+      "template_name": "Causative Perfective",
+      "geez_name": "አሳሳቢ ቀዳማይ",
+      "cv_template": "ʾa-C1äC2äC3ä",
+      "subjects": {
+        "3sm": {
+          "prefix": "አ",
+          "suffix": "",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 1,
+            "C3": 1
+          },
+          "label": {
+            "geez": "ውእቱ",
+            "english": "he"
+          }
+        },
+        "3sf": {
+          "prefix": "አ",
+          "suffix": "ት",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 1,
+            "C3": 1
+          },
+          "label": {
+            "geez": "ይእቲ",
+            "english": "she"
+          }
+        },
+        "2sm": {
+          "prefix": "አ",
+          "suffix": "ከ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 6,
+            "C3": 6
+          },
+          "label": {
+            "geez": "አንተ",
+            "english": "you (m)"
+          }
+        },
+        "2sf": {
+          "prefix": "አ",
+          "suffix": "ኪ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 6,
+            "C3": 6
+          },
+          "label": {
+            "geez": "አንቲ",
+            "english": "you (f)"
+          }
+        },
+        "1s": {
+          "prefix": "አ",
+          "suffix": "ኩ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 6,
+            "C3": 6
+          },
+          "label": {
+            "geez": "አነ",
+            "english": "I"
+          }
+        },
+        "1p": {
+          "prefix": "አ",
+          "suffix": "ነ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 6,
+            "C3": 6
+          },
+          "label": {
+            "geez": "ንሕነ",
+            "english": "we"
+          }
+        },
+        "3pm": {
+          "prefix": "አ",
+          "suffix": "ኡ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 6,
+            "C3": 6
+          },
+          "label": {
+            "geez": "ውእቶሙ",
+            "english": "they (m)"
+          }
+        },
+        "3pf": {
+          "prefix": "አ",
+          "suffix": "ኣ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 6,
+            "C3": 6
+          },
+          "label": {
+            "geez": "ውእቶን",
+            "english": "they (f)"
+          }
+        },
+        "2pm": {
+          "prefix": "አ",
+          "suffix": "ክሙ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 6,
+            "C3": 6
+          },
+          "label": {
+            "geez": "አንትሙ",
+            "english": "you (pl.m)"
+          }
+        },
+        "2pf": {
+          "prefix": "አ",
+          "suffix": "ክን",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 6,
+            "C3": 6
+          },
+          "label": {
+            "geez": "አንትን",
+            "english": "you (pl.f)"
+          }
+        }
+      }
+    },
+    "imperfective": {
+      "template_name": "Causative Imperfective",
+      "geez_name": "አሳሳቢ ካልኣይ",
+      "cv_template": "ya-C1äC2C3",
+      "subjects": {
+        "3sm": {
+          "prefix": "ያ",
+          "suffix": "",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 6,
+            "C3": 6
+          },
+          "label": {
+            "geez": "ውእቱ",
+            "english": "he"
+          }
+        },
+        "3sf": {
+          "prefix": "ታ",
+          "suffix": "",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 6,
+            "C3": 6
+          },
+          "label": {
+            "geez": "ይእቲ",
+            "english": "she"
+          }
+        },
+        "2sm": {
+          "prefix": "ታ",
+          "suffix": "",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 6,
+            "C3": 6
+          },
+          "label": {
+            "geez": "አንተ",
+            "english": "you (m)"
+          }
+        },
+        "2sf": {
+          "prefix": "ታ",
+          "suffix": "ኢ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 6,
+            "C3": 6
+          },
+          "label": {
+            "geez": "አንቲ",
+            "english": "you (f)"
+          }
+        },
+        "1s": {
+          "prefix": "አ",
+          "suffix": "",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 6,
+            "C3": 6
+          },
+          "label": {
+            "geez": "አነ",
+            "english": "I"
+          }
+        },
+        "1p": {
+          "prefix": "ና",
+          "suffix": "",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 6,
+            "C3": 6
+          },
+          "label": {
+            "geez": "ንሕነ",
+            "english": "we"
+          }
+        },
+        "3pm": {
+          "prefix": "ያ",
+          "suffix": "ኡ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 6,
+            "C3": 6
+          },
+          "label": {
+            "geez": "ውእቶሙ",
+            "english": "they (m)"
+          }
+        },
+        "3pf": {
+          "prefix": "ያ",
+          "suffix": "ኣ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 6,
+            "C3": 6
+          },
+          "label": {
+            "geez": "ውእቶን",
+            "english": "they (f)"
+          }
+        },
+        "2pm": {
+          "prefix": "ታ",
+          "suffix": "ኡ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 6,
+            "C3": 6
+          },
+          "label": {
+            "geez": "አንትሙ",
+            "english": "you (pl.m)"
+          }
+        },
+        "2pf": {
+          "prefix": "ታ",
+          "suffix": "ኣ",
+          "vowel_map": {
+            "C1": 1,
+            "C2": 6,
+            "C3": 6
+          },
+          "label": {
+            "geez": "አንትን",
+            "english": "you (pl.f)"
+          }
+        }
+      }
+    },
+    "jussive": {
+      "template_name": "Causative Jussive",
+      "geez_name": "አሳሳቢ ሣልሳይ",
+      "cv_template": "ya-C1C2C3",
+      "subjects": {
+        "3sm": {
+          "prefix": "ያ",
+          "suffix": "",
+          "vowel_map": {
+            "C1": 6,
+            "C2": 6,
+            "C3": 6
+          },
+          "label": {
+            "geez": "ውእቱ",
+            "english": "he"
+          }
+        },
+        "3sf": {
+          "prefix": "ታ",
+          "suffix": "",
+          "vowel_map": {
+            "C1": 6,
+            "C2": 6,
+            "C3": 6
+          },
+          "label": {
+            "geez": "ይእቲ",
+            "english": "she"
+          }
+        },
+        "1s": {
+          "prefix": "ል",
+          "suffix": "",
+          "vowel_map": {
+            "C1": 6,
+            "C2": 6,
+            "C3": 6
+          },
+          "label": {
+            "geez": "አነ",
+            "english": "I"
+          }
+        },
+        "1p": {
+          "prefix": "ንአ",
+          "suffix": "",
+          "vowel_map": {
+            "C1": 6,
+            "C2": 6,
+            "C3": 6
+          },
+          "label": {
+            "geez": "ንሕነ",
+            "english": "we"
+          }
+        },
+        "3pm": {
+          "prefix": "ያ",
+          "suffix": "ኡ",
+          "vowel_map": {
+            "C1": 6,
+            "C2": 6,
+            "C3": 6
+          },
+          "label": {
+            "geez": "ውእቶሙ",
+            "english": "they (m)"
+          }
+        },
+        "3pf": {
+          "prefix": "ያ",
+          "suffix": "ኣ",
+          "vowel_map": {
+            "C1": 6,
+            "C2": 6,
+            "C3": 6
+          },
+          "label": {
+            "geez": "ውእቶን",
+            "english": "they (f)"
+          }
+        }
+      }
+    },
+    "derived": {
+      "causative_infinitive": {
+        "prefix": "አ",
+        "pattern": {
+          "C1": 1,
+          "C2": 3,
+          "C3": 7
+        }
+      },
+      "causative_agent": {
+        "prefix": "አ",
+        "pattern": {
+          "C1": 1,
+          "C2": 4,
+          "C3": 3
+        }
+      }
+    }
+  },
+  "type_a_aste": {
+    "perfective": {
+      "template_name": "Causative-Passive Perfective",
+      "geez_name": "አስተሳሳቢ ቀዳማይ",
+      "cv_template": "ʾastä-C1äC2äC3ä",
+      "subjects": {
+        "3sm": {
+          "prefix": "አስተ",
+          "suffix": "",
+          "vowel_map": {
+            "C1": 4,
+            "C2": 1,
+            "C3": 1
+          },
+          "label": {
+            "geez": "ውእቱ",
+            "english": "he"
+          }
+        },
+        "3sf": {
+          "prefix": "አስተ",
+          "suffix": "ት",
+          "vowel_map": {
+            "C1": 4,
+            "C2": 1,
+            "C3": 1
+          },
+          "label": {
+            "geez": "ይእቲ",
+            "english": "she"
+          }
+        },
+        "2sm": {
+          "prefix": "አስተ",
+          "suffix": "ከ",
+          "vowel_map": {
+            "C1": 4,
+            "C2": 6,
+            "C3": 6
+          },
+          "label": {
+            "geez": "አንተ",
+            "english": "you (m)"
+          }
+        },
+        "2sf": {
+          "prefix": "አስተ",
+          "suffix": "ኪ",
+          "vowel_map": {
+            "C1": 4,
+            "C2": 6,
+            "C3": 6
+          },
+          "label": {
+            "geez": "አንቲ",
+            "english": "you (f)"
+          }
+        },
+        "1s": {
+          "prefix": "አስተ",
+          "suffix": "ኩ",
+          "vowel_map": {
+            "C1": 4,
+            "C2": 6,
+            "C3": 6
+          },
+          "label": {
+            "geez": "አነ",
+            "english": "I"
+          }
+        },
+        "1p": {
+          "prefix": "አስተ",
+          "suffix": "ነ",
+          "vowel_map": {
+            "C1": 4,
+            "C2": 6,
+            "C3": 6
+          },
+          "label": {
+            "geez": "ንሕነ",
+            "english": "we"
+          }
+        },
+        "3pm": {
+          "prefix": "አስተ",
+          "suffix": "ኡ",
+          "vowel_map": {
+            "C1": 4,
+            "C2": 6,
+            "C3": 6
+          },
+          "label": {
+            "geez": "ውእቶሙ",
+            "english": "they (m)"
+          }
+        },
+        "3pf": {
+          "prefix": "አስተ",
+          "suffix": "ኣ",
+          "vowel_map": {
+            "C1": 4,
+            "C2": 6,
+            "C3": 6
+          },
+          "label": {
+            "geez": "ውእቶን",
+            "english": "they (f)"
+          }
+        },
+        "2pm": {
+          "prefix": "አስተ",
+          "suffix": "ክሙ",
+          "vowel_map": {
+            "C1": 4,
+            "C2": 6,
+            "C3": 6
+          },
+          "label": {
+            "geez": "አንትሙ",
+            "english": "you (pl.m)"
+          }
+        },
+        "2pf": {
+          "prefix": "አስተ",
+          "suffix": "ክን",
+          "vowel_map": {
+            "C1": 4,
+            "C2": 6,
+            "C3": 6
+          },
+          "label": {
+            "geez": "አንትን",
+            "english": "you (pl.f)"
+          }
+        }
+      }
+    },
+    "imperfective": {
+      "template_name": "Causative-Passive Imperfective",
+      "geez_name": "አስተሳሳቢ ካልኣይ",
+      "cv_template": "yastä-C1äC2C3",
+      "subjects": {
+        "3sm": {
+          "prefix": "ያስተ",
+          "suffix": "",
+          "vowel_map": {
+            "C1": 4,
+            "C2": 6,
+            "C3": 6
+          },
+          "label": {
+            "geez": "ውእቱ",
+            "english": "he"
+          }
+        },
+        "3sf": {
+          "prefix": "ታስተ",
+          "suffix": "",
+          "vowel_map": {
+            "C1": 4,
+            "C2": 6,
+            "C3": 6
+          },
+          "label": {
+            "geez": "ይእቲ",
+            "english": "she"
+          }
+        },
+        "2sm": {
+          "prefix": "ታስተ",
+          "suffix": "",
+          "vowel_map": {
+            "C1": 4,
+            "C2": 6,
+            "C3": 6
+          },
+          "label": {
+            "geez": "አንተ",
+            "english": "you (m)"
+          }
+        },
+        "2sf": {
+          "prefix": "ታስተ",
+          "suffix": "ኢ",
+          "vowel_map": {
+            "C1": 4,
+            "C2": 6,
+            "C3": 6
+          },
+          "label": {
+            "geez": "አንቲ",
+            "english": "you (f)"
+          }
+        },
+        "1s": {
+          "prefix": "አስተ",
+          "suffix": "",
+          "vowel_map": {
+            "C1": 4,
+            "C2": 6,
+            "C3": 6
+          },
+          "label": {
+            "geez": "አነ",
+            "english": "I"
+          }
+        },
+        "1p": {
+          "prefix": "ናስተ",
+          "suffix": "",
+          "vowel_map": {
+            "C1": 4,
+            "C2": 6,
+            "C3": 6
+          },
+          "label": {
+            "geez": "ንሕነ",
+            "english": "we"
+          }
+        },
+        "3pm": {
+          "prefix": "ያስተ",
+          "suffix": "ኡ",
+          "vowel_map": {
+            "C1": 4,
+            "C2": 6,
+            "C3": 6
+          },
+          "label": {
+            "geez": "ውእቶሙ",
+            "english": "they (m)"
+          }
+        },
+        "3pf": {
+          "prefix": "ያስተ",
+          "suffix": "ኣ",
+          "vowel_map": {
+            "C1": 4,
+            "C2": 6,
+            "C3": 6
+          },
+          "label": {
+            "geez": "ውእቶን",
+            "english": "they (f)"
+          }
+        },
+        "2pm": {
+          "prefix": "ታስተ",
+          "suffix": "ኡ",
+          "vowel_map": {
+            "C1": 4,
+            "C2": 6,
+            "C3": 6
+          },
+          "label": {
+            "geez": "አንትሙ",
+            "english": "you (pl.m)"
+          }
+        },
+        "2pf": {
+          "prefix": "ታስተ",
+          "suffix": "ኣ",
+          "vowel_map": {
+            "C1": 4,
+            "C2": 6,
+            "C3": 6
+          },
+          "label": {
+            "geez": "አንትን",
+            "english": "you (pl.f)"
+          }
+        }
+      }
+    },
+    "jussive": {
+      "template_name": "Causative-Passive Jussive",
+      "geez_name": "አስተሳሳቢ ሣልሳይ",
+      "cv_template": "yastä-C1C2C3",
+      "subjects": {
+        "3sm": {
+          "prefix": "ያስተ",
+          "suffix": "",
+          "vowel_map": {
+            "C1": 4,
+            "C2": 6,
+            "C3": 6
+          },
+          "label": {
+            "geez": "ውእቱ",
+            "english": "he"
+          }
+        },
+        "3sf": {
+          "prefix": "ታስተ",
+          "suffix": "",
+          "vowel_map": {
+            "C1": 4,
+            "C2": 6,
+            "C3": 6
+          },
+          "label": {
+            "geez": "ይእቲ",
+            "english": "she"
+          }
+        },
+        "1s": {
+          "prefix": "ላስተ",
+          "suffix": "",
+          "vowel_map": {
+            "C1": 4,
+            "C2": 6,
+            "C3": 6
+          },
+          "label": {
+            "geez": "አነ",
+            "english": "I"
+          }
+        },
+        "1p": {
+          "prefix": "ናስተ",
+          "suffix": "",
+          "vowel_map": {
+            "C1": 4,
+            "C2": 6,
+            "C3": 6
+          },
+          "label": {
+            "geez": "ንሕነ",
+            "english": "we"
+          }
+        },
+        "3pm": {
+          "prefix": "ያስተ",
+          "suffix": "ኡ",
+          "vowel_map": {
+            "C1": 4,
+            "C2": 6,
+            "C3": 6
+          },
+          "label": {
+            "geez": "ውእቶሙ",
+            "english": "they (m)"
+          }
+        },
+        "3pf": {
+          "prefix": "ያስተ",
+          "suffix": "ኣ",
+          "vowel_map": {
+            "C1": 4,
+            "C2": 6,
+            "C3": 6
+          },
+          "label": {
+            "geez": "ውእቶን",
+            "english": "they (f)"
+          }
+        }
+      }
+    }
+  },
+  "type_a_reciprocal": {
+    "perfective": {
+      "template_name": "Reciprocal Perfective",
+      "geez_name": "ተሣሣቢ ቀዳማይ",
+      "cv_template": "tä-C1āC2äC3ä",
+      "subjects": {
+        "3sm": {
+          "prefix": "ተ",
+          "suffix": "",
+          "vowel_map": {
+            "C1": 4,
+            "C2": 1,
+            "C3": 1
+          },
+          "label": {
+            "geez": "ውእቱ",
+            "english": "he"
+          }
+        },
+        "3sf": {
+          "prefix": "ተ",
+          "suffix": "ት",
+          "vowel_map": {
+            "C1": 4,
+            "C2": 1,
+            "C3": 1
+          },
+          "label": {
+            "geez": "ይእቲ",
+            "english": "she"
+          }
+        },
+        "2sm": {
+          "prefix": "ተ",
+          "suffix": "ከ",
+          "vowel_map": {
+            "C1": 4,
+            "C2": 6,
+            "C3": 6
+          },
+          "label": {
+            "geez": "አንተ",
+            "english": "you (m)"
+          }
+        },
+        "2sf": {
+          "prefix": "ተ",
+          "suffix": "ኪ",
+          "vowel_map": {
+            "C1": 4,
+            "C2": 6,
+            "C3": 6
+          },
+          "label": {
+            "geez": "አንቲ",
+            "english": "you (f)"
+          }
+        },
+        "1s": {
+          "prefix": "ተ",
+          "suffix": "ኩ",
+          "vowel_map": {
+            "C1": 4,
+            "C2": 6,
+            "C3": 6
+          },
+          "label": {
+            "geez": "አነ",
+            "english": "I"
+          }
+        },
+        "1p": {
+          "prefix": "ተ",
+          "suffix": "ነ",
+          "vowel_map": {
+            "C1": 4,
+            "C2": 6,
+            "C3": 6
+          },
+          "label": {
+            "geez": "ንሕነ",
+            "english": "we"
+          }
+        },
+        "3pm": {
+          "prefix": "ተ",
+          "suffix": "ኡ",
+          "vowel_map": {
+            "C1": 4,
+            "C2": 6,
+            "C3": 6
+          },
+          "label": {
+            "geez": "ውእቶሙ",
+            "english": "they (m)"
+          }
+        },
+        "3pf": {
+          "prefix": "ተ",
+          "suffix": "ኣ",
+          "vowel_map": {
+            "C1": 4,
+            "C2": 6,
+            "C3": 6
+          },
+          "label": {
+            "geez": "ውእቶን",
+            "english": "they (f)"
+          }
+        },
+        "2pm": {
+          "prefix": "ተ",
+          "suffix": "ክሙ",
+          "vowel_map": {
+            "C1": 4,
+            "C2": 6,
+            "C3": 6
+          },
+          "label": {
+            "geez": "አንትሙ",
+            "english": "you (pl.m)"
+          }
+        },
+        "2pf": {
+          "prefix": "ተ",
+          "suffix": "ክን",
+          "vowel_map": {
+            "C1": 4,
+            "C2": 6,
+            "C3": 6
+          },
+          "label": {
+            "geez": "አንትን",
+            "english": "you (pl.f)"
+          }
+        }
+      }
+    },
+    "imperfective": {
+      "template_name": "Reciprocal Imperfective",
+      "geez_name": "ተሣሣቢ ካልኣይ",
+      "cv_template": "yət-C1āC2äC3",
+      "subjects": {
+        "3sm": {
+          "prefix": "ይት",
+          "suffix": "",
+          "vowel_map": {
+            "C1": 4,
+            "C2": 1,
+            "C3": 6
+          },
+          "label": {
+            "geez": "ውእቱ",
+            "english": "he"
+          }
+        },
+        "3sf": {
+          "prefix": "ትት",
+          "suffix": "",
+          "vowel_map": {
+            "C1": 4,
+            "C2": 1,
+            "C3": 6
+          },
+          "label": {
+            "geez": "ይእቲ",
+            "english": "she"
+          }
+        },
+        "2sm": {
+          "prefix": "ትት",
+          "suffix": "",
+          "vowel_map": {
+            "C1": 4,
+            "C2": 1,
+            "C3": 6
+          },
+          "label": {
+            "geez": "አንተ",
+            "english": "you (m)"
+          }
+        },
+        "2sf": {
+          "prefix": "ትት",
+          "suffix": "ኢ",
+          "vowel_map": {
+            "C1": 4,
+            "C2": 1,
+            "C3": 6
+          },
+          "label": {
+            "geez": "አንቲ",
+            "english": "you (f)"
+          }
+        },
+        "1s": {
+          "prefix": "እት",
+          "suffix": "",
+          "vowel_map": {
+            "C1": 4,
+            "C2": 1,
+            "C3": 6
+          },
+          "label": {
+            "geez": "አነ",
+            "english": "I"
+          }
+        },
+        "1p": {
+          "prefix": "ንት",
+          "suffix": "",
+          "vowel_map": {
+            "C1": 4,
+            "C2": 1,
+            "C3": 6
+          },
+          "label": {
+            "geez": "ንሕነ",
+            "english": "we"
+          }
+        },
+        "3pm": {
+          "prefix": "ይት",
+          "suffix": "ኡ",
+          "vowel_map": {
+            "C1": 4,
+            "C2": 1,
+            "C3": 6
+          },
+          "label": {
+            "geez": "ውእቶሙ",
+            "english": "they (m)"
+          }
+        },
+        "3pf": {
+          "prefix": "ይት",
+          "suffix": "ኣ",
+          "vowel_map": {
+            "C1": 4,
+            "C2": 1,
+            "C3": 6
+          },
+          "label": {
+            "geez": "ውእቶን",
+            "english": "they (f)"
+          }
+        },
+        "2pm": {
+          "prefix": "ትት",
+          "suffix": "ኡ",
+          "vowel_map": {
+            "C1": 4,
+            "C2": 1,
+            "C3": 6
+          },
+          "label": {
+            "geez": "አንትሙ",
+            "english": "you (pl.m)"
+          }
+        },
+        "2pf": {
+          "prefix": "ትት",
+          "suffix": "ኣ",
+          "vowel_map": {
+            "C1": 4,
+            "C2": 1,
+            "C3": 6
+          },
+          "label": {
+            "geez": "አንትን",
+            "english": "you (pl.f)"
+          }
+        }
+      }
+    }
+  }
+}

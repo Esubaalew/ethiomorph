@@ -1,0 +1,627 @@
+\documentclass[conference]{IEEEtran}
+\IEEEoverridecommandlockouts
+
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{algorithmic}
+\usepackage{algorithm}
+\usepackage{graphicx}
+\usepackage{textcomp}
+\usepackage{xcolor}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{listings}
+\usepackage{fontspec}
+
+% Font configuration for Ethiopic support
+\setmainfont{Times New Roman}[Ligatures=TeX]
+\newfontfamily\ethiopicfont[
+  Path=/Users/esubalew/Library/Fonts/,
+  Script=Ethiopic
+]{AbyssinicaSIL-Regular.ttf}
+\newcommand{\geez}[1]{{\ethiopicfont #1}}
+
+\lstset{
+  basicstyle=\small\ttfamily,
+  breaklines=true,
+  frame=single,
+  numbers=left,
+  numberstyle=\tiny,
+  xleftmargin=2em
+}
+
+\begin{document}
+
+\title{EthioMorph: Technical Implementation of a Rule-Based Ge'ez Morphological Engine}
+
+\author{
+\IEEEauthorblockN{Esubalew Chekol}
+\IEEEauthorblockA{
+\textit{College of Technology and Built Environment} \\
+\textit{Addis Ababa University} \\
+NLP Course Project}
+}
+
+\maketitle
+
+\begin{abstract}
+This paper presents the technical implementation of EthioMorph, a rule-based morphological analysis and generation system for Classical Ge'ez. The system implements all eight canonical verb types: \geez{ቀተለ} (Type A), \geez{ቀደሰ} (Type B/Geminate), \geez{ባረከ} (Type C), \geez{ጦመረ} (Type C-O), \geez{ሴሰየ} (Weak-Final), \geez{ክህለ} (Laryngeal), \geez{ማሕረከ} (Quadriliteral), and \geez{ተንበለ} (T-Quad). We describe the core algorithms including Unicode-based vowel arithmetic, radical extraction using consonant skeleton analysis, and template-driven word generation. The system operates on the mathematical principle that Ethiopic Unicode characters follow a predictable 7-order vowel pattern, enabling vowel transformations through simple arithmetic: $\text{char}_{\text{new}} = \text{base} + (\text{order} - 1)$. We detail the implementation of the C1-C2-C3 radical system, suffix fusion rules, laryngeal vowel shift algorithms, and the verb home detection classifier.
+\end{abstract}
+
+\begin{IEEEkeywords}
+Ge'ez, morphological analysis, NLP, Unicode processing, Semitic morphology, rule-based systems
+\end{IEEEkeywords}
+
+\section{Introduction}
+
+EthioMorph is a computational morphology engine for Classical Ge'ez (\geez{ግእዝ}) that implements linguistic rules as algorithms. Unlike statistical or neural approaches, EthioMorph uses explicit mathematical transformations based on the structure of the Ethiopic Unicode block and the grammatical rules of Ge'ez morphology.
+
+This document explains \textbf{how} the system works—the actual code logic, data structures, and algorithms that drive morphological processing.
+
+\subsection{Core Problem}
+
+Ge'ez, like other Semitic languages, forms words by combining:
+\begin{itemize}
+    \item \textbf{Root}: A sequence of consonants (typically 3) carrying lexical meaning
+    \item \textbf{Pattern}: A template of vowels and affixes encoding grammatical information
+\end{itemize}
+
+For example, the root \textbf{q-t-l} (\geez{ቀተለ}, ``kill'') combines with different patterns:
+\begin{align*}
+\text{q-t-l} + \text{[1-1-1]} &\rightarrow \text{\geez{ቀተለ}} \text{ (Perfective: ``he killed'')} \\
+\text{q-t-l} + \text{[yi-1-6-6]} &\rightarrow \text{\geez{ይቅትል}} \text{ (Imperfective: ``he kills'')}
+\end{align*}
+
+The challenge is implementing this bidirectionally:
+\begin{enumerate}
+    \item \textbf{Analysis}: \geez{ይቀትሉ} $\rightarrow$ root: \geez{ቀተለ}, tense: imperfective, person: 3rd plural masculine
+    \item \textbf{Generation}: (\geez{ቀተለ}, imperfective, 3PM) $\rightarrow$ \geez{ይቀትሉ}
+\end{enumerate}
+
+\section{Unicode Mathematics for Ethiopic}
+
+\subsection{The Ethiopic Block Structure}
+
+The Ethiopic Unicode block (U+1200–U+137F) organizes characters in a systematic pattern. Each consonant has 7 forms representing vowel variations:
+
+\begin{table}[h]
+\centering
+\caption{Unicode Pattern for Consonant \geez{ቀ} (qäf)}
+\begin{tabular}{cccc}
+\toprule
+Order & Unicode & Character & Vowel \\
+\midrule
+1 & U+1240 & \geez{ቀ} & ä (schwa) \\
+2 & U+1241 & \geez{ቁ} & u \\
+3 & U+1242 & \geez{ቂ} & i \\
+4 & U+1243 & \geez{ቃ} & a \\
+5 & U+1244 & \geez{ቄ} & e \\
+6 & U+1245 & \geez{ቅ} & (none) \\
+7 & U+1246 & \geez{ቆ} & o \\
+\bottomrule
+\end{tabular}
+\label{tab:unicode}
+\end{table}
+
+\subsection{Vowel Arithmetic}
+
+Given any Ethiopic character, we can compute its base consonant and vowel order:
+
+\begin{equation}
+\text{order}(c) = ((c - \text{base\_offset}) \mod 8) + 1
+\end{equation}
+
+\begin{equation}
+\text{base}(c) = c - (\text{order}(c) - 1)
+\end{equation}
+
+To change a character's vowel:
+
+\begin{equation}
+\text{revowelize}(\text{base}, \text{order}) = \text{base} + (\text{order} - 1)
+\end{equation}
+
+\textbf{Implementation:}
+\begin{lstlisting}[language=Python]
+def get_vowel_order(char):
+    """Extract vowel order (1-7) from character."""
+    return ORDER_MAP.get(char, 1)
+
+def devowelize(char):
+    """Return base consonant (1st order form)."""
+    return DEVOWELIZATION_MAP.get(char, char)
+
+def get_char_by_order(base, order):
+    """Apply vowel order to base consonant."""
+    return REVOWELIZATION_MAP.get((base, order), base)
+\end{lstlisting}
+
+\textbf{Example transformation:}
+\begin{align*}
+\text{devowelize}(\text{\geez{ቃ}}) &= \text{\geez{ቀ}} \\
+\text{get\_vowel\_order}(\text{\geez{ቃ}}) &= 4 \\
+\text{get\_char\_by\_order}(\text{\geez{ቀ}}, 6) &= \text{\geez{ቅ}}
+\end{align*}
+
+\section{The C1-C2-C3 Radical System}
+
+\subsection{Radical Representation}
+
+Ge'ez verbs use a consonantal skeleton notation:
+\begin{itemize}
+    \item \textbf{C1}: First radical (consonant 1)
+    \item \textbf{C2}: Second radical
+    \item \textbf{C3}: Third radical
+    \item \textbf{C4}: Fourth radical (quadriliterals only)
+\end{itemize}
+
+For \geez{ቀተለ}: C1=\geez{ቀ}, C2=\geez{ተ}, C3=\geez{ለ}
+
+\subsection{Template Definition}
+
+Each conjugation is defined by a \textbf{vowel map} specifying the order for each radical:
+
+\begin{lstlisting}[language=Python]
+# Perfective 3rd singular masculine for Type A
+template = {
+    "vowel_map": {"C1": 1, "C2": 1, "C3": 1},
+    "prefix": "",
+    "suffix": ""
+}
+# Result: C1(1st) + C2(1st) + C3(1st) = qä-tä-lä
+\end{lstlisting}
+
+\begin{lstlisting}[language=Python]
+# Imperfective 3rd singular masculine
+template = {
+    "vowel_map": {"C1": 1, "C2": 6, "C3": 6},
+    "prefix": "yi",
+    "suffix": ""
+}
+# Result: yi + C1(1st) + C2(6th) + C3(6th) = yi-qä-t-l
+\end{lstlisting}
+
+\subsection{The Generation Algorithm}
+
+\begin{algorithm}
+\caption{Word Generation from Root}
+\begin{algorithmic}[1]
+\REQUIRE root (string), tense, subject, verb\_type
+\ENSURE conjugated word (string)
+\STATE template $\gets$ TEMPLATES[verb\_type][tense][subject]
+\STATE vowel\_map $\gets$ template[``vowel\_map'']
+\STATE radicals $\gets$ extract\_radicals(root)
+\STATE result $\gets$ template[``prefix'']
+\FOR{each position in [``C1'', ``C2'', ``C3'']}
+    \STATE base $\gets$ devowelize(radicals[position])
+    \STATE order $\gets$ vowel\_map[position]
+    \STATE result $\gets$ result + get\_char\_by\_order(base, order)
+\ENDFOR
+\STATE result $\gets$ result + template[``suffix'']
+\STATE result $\gets$ apply\_suffix\_fusion(result)
+\RETURN result
+\end{algorithmic}
+\end{algorithm}
+
+\section{Suffix Fusion Rules}
+
+\subsection{The Collision Problem}
+
+When a vowel suffix attaches to a consonant-only (6th order) ending, they must fuse:
+
+\begin{equation}
+\text{C}_{6\text{th}} + \text{V}_{\text{suffix}} \rightarrow \text{C}_{\text{order}(V)}
+\end{equation}
+
+\textbf{Example}: \geez{ቅትል} + \geez{ኡ} (``they'') $\neq$ \geez{ቅትልኡ}
+
+Instead: \geez{ቅትል} + \geez{ኡ} $\rightarrow$ \geez{ቅትሉ}
+
+\subsection{Fusion Algorithm}
+
+\begin{lstlisting}[language=Python]
+def apply_suffix_fusion(stem, suffix):
+    """Fuse 6th-order final + vowel suffix."""
+    if not suffix:
+        return stem
+    
+    last_char = stem[-1]
+    last_order = get_vowel_order(last_char)
+    
+    # Check if stem ends in 6th order (consonant)
+    if last_order != 6:
+        return stem + suffix
+    
+    # Map suffix to target order
+    suffix_vowel_map = {
+        '\u12A1': 2,  # u-vowel suffix
+        '\u12A0': 4,  # a-vowel suffix  
+        '\u12A5': 5,  # e-vowel suffix
+    }
+    
+    first_suffix_char = suffix[0]
+    if first_suffix_char in suffix_vowel_map:
+        target_order = suffix_vowel_map[first_suffix_char]
+        base = devowelize(last_char)
+        fused = get_char_by_order(base, target_order)
+        return stem[:-1] + fused + suffix[1:]
+    
+    return stem + suffix
+\end{lstlisting}
+
+\section{Verb Home Detection Algorithm}
+
+\subsection{The Eight Canonical Verb Types}
+
+In Classical Ge'ez grammar, verbs are classified into ``homes'' (\geez{ቤት}) named after their canonical representative. EthioMorph implements all eight standard verb types:
+
+\begin{table}[h]
+\centering
+\caption{The Eight Canonical Ge'ez Verb Types (Homes)}
+\begin{tabular}{clll}
+\toprule
+\# & Type Head & Name & Description \\
+\midrule
+1 & \geez{ቀተለ} & Type A & Strong triradical (C1 = 1st order) \\
+2 & \geez{ቀደሰ} & Type B & Geminate (C2 doubles in conjugation) \\
+3 & \geez{ባረከ} & Type C & Long vowel (C1 = 4th order \geez{ራብዕ}) \\
+4 & \geez{ጦመረ} & Type C-O & O-initial (C1 = 7th order \geez{ሳብዕ}) \\
+5 & \geez{ሴሰየ} & Weak-Final & Final radical is \geez{የ} (weak) \\
+6 & \geez{ክህለ} & Laryngeal & Contains laryngeal (\geez{ህ}) radical \\
+7 & \geez{ማሕረከ} & Quadriliteral & Four consonant radicals \\
+8 & \geez{ተንበለ} & T-Quad & Quadriliteral with \geez{ተ-} prefix \\
+\bottomrule
+\end{tabular}
+\label{tab:verb_homes}
+\end{table}
+
+\subsection{Classification Rules}
+
+The verb ``home'' determines which conjugation templates to use. Detection is based on:
+
+\begin{enumerate}
+    \item \textbf{Radical count}: 3 (triradical) vs 4 (quadriliteral)
+    \item \textbf{C1 vowel order}: The vowel of the first radical in citation form
+    \item \textbf{Consonant quality}: Laryngeals (\geez{ሀ, ሐ, ኀ, አ, ዐ}) or weak (\geez{ወ, የ})
+    \item \textbf{Gemination pattern}: Whether C2 doubles (Type B)
+\end{enumerate}
+
+\begin{table}[h]
+\centering
+\caption{Algorithmic Classification Rules}
+\begin{tabular}{lll}
+\toprule
+Condition & Type & Example \\
+\midrule
+$|\text{radicals}| \geq 4$ & Quadriliteral & \geez{ማሕረከ}, \geez{ተንበለ} \\
+C1 order = 7 & Type C-O & \geez{ጦመረ} \\
+C1 order = 4 & Type C & \geez{ባረከ} \\
+C3 $\in$ \{weak\} & Weak-Final & \geez{ሴሰየ} \\
+C2 $\in$ \{laryngeal\} & Laryngeal & \geez{ክህለ} \\
+C2 geminated & Type B & \geez{ቀደሰ} \\
+Default & Type A & \geez{ቀተለ} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Detection Algorithm}
+
+\begin{algorithm}
+\caption{Verb Home Detection (All 8 Types)}
+\begin{algorithmic}[1]
+\REQUIRE root (string)
+\ENSURE (type, features)
+\STATE radicals $\gets$ extract\_consonants(root)
+\STATE features $\gets$ \{\}
+\STATE // Check radical count first
+\IF{len(radicals) $\geq$ 4}
+    \IF{root starts with \geez{ተ}}
+        \RETURN (``type\_tanbala'', features) \COMMENT{\geez{ተንበለ}}
+    \ELSE
+        \RETURN (``type\_mahraka'', features) \COMMENT{\geez{ማሕረከ}}
+    \ENDIF
+\ENDIF
+\STATE // Check C1 vowel order
+\STATE c1\_order $\gets$ get\_vowel\_order(root[0])
+\IF{c1\_order == 7}
+    \RETURN (``type\_c\_o'', features) \COMMENT{\geez{ጦመረ}}
+\ELSIF{c1\_order == 4}
+    \RETURN (``type\_c'', features) \COMMENT{\geez{ባረከ}}
+\ENDIF
+\STATE // Check for weak final radical
+\IF{devowelize(root[2]) $\in$ WEAK\_CONSONANTS}
+    \STATE features[``weak\_final''] $\gets$ True
+    \RETURN (``type\_sesaya'', features) \COMMENT{\geez{ሴሰየ}}
+\ENDIF
+\STATE // Check for laryngeal radicals
+\FOR{each radical in radicals}
+    \IF{devowelize(radical) $\in$ LARYNGEALS}
+        \STATE features[``has\_laryngeal''] $\gets$ True
+        \RETURN (``type\_kahla'', features) \COMMENT{\geez{ክህለ}}
+    \ENDIF
+\ENDFOR
+\STATE // Check for gemination (Type B)
+\IF{is\_geminate\_pattern(root)}
+    \RETURN (``type\_b'', features) \COMMENT{\geez{ቀደሰ}}
+\ENDIF
+\STATE // Default: Type A
+\RETURN (``type\_a'', features) \COMMENT{\geez{ቀተለ}}
+\end{algorithmic}
+\end{algorithm}
+
+\subsection{Feature Detection}
+
+Additional features modify conjugation behavior:
+
+\begin{lstlisting}[language=Python]
+LARYNGEALS = {'h', 'H', 'x', 'a', 'A'}  # Gutturals
+WEAK_CONSONANTS = {'w', 'y'}
+
+def detect_features(root, radicals):
+    features = {}
+    
+    # Check for laryngeal consonants
+    for rad in radicals:
+        base = devowelize(rad)
+        if base in LARYNGEAL_BASES:
+            features['has_laryngeal'] = True
+            break
+    
+    # Check for hollow verb (weak C2)
+    if len(radicals) >= 2:
+        c2_base = devowelize(radicals[1])
+        if c2_base in WEAK_BASES:
+            features['is_hollow'] = True
+    
+    # Check for weak initial
+    c1_base = devowelize(radicals[0])
+    if c1_base in WEAK_BASES:
+        features['weak_initial'] = True
+    
+    return features
+\end{lstlisting}
+
+\section{Laryngeal Vowel Shift Rules}
+
+\subsection{The Laryngeal Problem}
+
+Laryngeal consonants (\geez{ሀ, ሐ, ኀ, አ, ዐ}) cannot take certain vowels and trigger shifts:
+
+\begin{equation}
+\text{Laryngeal} + \text{1st order} \rightarrow \text{Laryngeal} + \text{4th order}
+\end{equation}
+
+\subsection{Implementation}
+
+\begin{lstlisting}[language=Python]
+def apply_laryngeal_rules(char, position, features):
+    """Shift vowels near laryngeal consonants."""
+    if not features.get('has_laryngeal'):
+        return char
+    
+    base = devowelize(char)
+    order = get_vowel_order(char)
+    
+    # Laryngeals prefer 4th order in jussive
+    if is_laryngeal(base) and order == 1:
+        return get_char_by_order(base, 4)
+    
+    return char
+\end{lstlisting}
+
+\section{Stemmer: The Analysis Pipeline}
+
+The Stemmer reverses word formation to extract roots and grammatical information.
+
+\subsection{Processing Pipeline}
+
+\begin{enumerate}
+    \item \textbf{Normalize}: Map homophonous characters to canonical forms
+    \item \textbf{Strip Prefixes}: Identify and remove grammatical prefixes
+    \item \textbf{Strip Suffixes}: Identify and remove grammatical suffixes
+    \item \textbf{Extract Skeleton}: Get consonant-only representation
+    \item \textbf{Reconstruct Root}: Handle weak consonant restoration
+    \item \textbf{Identify Pattern}: Determine tense/person/stem
+    \item \textbf{Detect Home}: Classify verb type
+\end{enumerate}
+
+\subsection{Prefix Priority}
+
+Prefixes must be checked longest-first to avoid partial matches:
+
+\begin{lstlisting}[language=Python]
+PREFIXES = [
+    # Stem IV (Causative-Passive) - check first
+    'yaste', 'taste', 'naste', 'laste',
+    # Stem III (Causative)
+    'yas', 'tas', 'nas', 'las',
+    'ya', 'ta', 'na', 'a',
+    # Stem II (Passive)
+    'yit', 'tit', 'te',
+    # Stem I (Basic)
+    'yi', 'ti', 'ni', 'li'
+]
+# Sorted by length descending
+PREFIXES.sort(key=len, reverse=True)
+\end{lstlisting}
+
+\subsection{Pattern Identification}
+
+\begin{lstlisting}[language=Python]
+def identify_verb_pattern(stem, stripped_prefixes):
+    """Determine grammatical pattern from affixes."""
+    
+    # Check stem markers in priority order
+    if 'aste' in stripped_prefixes:
+        return {'stem': 4, 'name': 'Causative-Passive'}
+    
+    if 'as' in stripped_prefixes or has_causative_vowel(stem):
+        return {'stem': 3, 'name': 'Causative'}
+    
+    if 'te' in stripped_prefixes or 'yit' in stripped_prefixes:
+        return {'stem': 2, 'name': 'Passive'}
+    
+    return {'stem': 1, 'name': 'Basic'}
+\end{lstlisting}
+
+\section{Data Structures}
+
+\subsection{Templates JSON}
+
+\begin{lstlisting}[language=Python]
+{
+  "type_a": {
+    "perfective": {
+      "3sm": {
+        "vowel_map": {"C1": 1, "C2": 1, "C3": 1},
+        "prefix": "",
+        "suffix": ""
+      },
+      "3sf": {
+        "vowel_map": {"C1": 1, "C2": 1, "C3": 4},
+        "prefix": "",
+        "suffix": "t"
+      }
+      // ... 10 person forms
+    },
+    "imperfective": {
+      "3sm": {
+        "vowel_map": {"C1": 1, "C2": 6, "C3": 6},
+        "prefix": "yi",
+        "suffix": ""
+      }
+      // ...
+    }
+    // jussive, imperative, derived forms
+  }
+}
+\end{lstlisting}
+
+\subsection{Lookup Maps}
+
+Three pre-computed maps enable O(1) character transformations:
+
+\begin{lstlisting}[language=Python]
+# Character -> Base consonant
+DEVOWELIZATION_MAP = {
+    '\u1240': '\u1240',  # qe -> qe (already base)
+    '\u1241': '\u1240',  # qu -> qe
+    '\u1242': '\u1240',  # qi -> qe
+    # ... all 300+ characters
+}
+
+# Character -> Vowel order (1-7)
+ORDER_MAP = {
+    '\u1240': 1,  # qe = 1st order
+    '\u1241': 2,  # qu = 2nd order
+    # ...
+}
+
+# (Base, Order) -> Character
+REVOWELIZATION_MAP = {
+    ('\u1240', 1): '\u1240',
+    ('\u1240', 2): '\u1241',
+    ('\u1240', 3): '\u1242',
+    # ...
+}
+\end{lstlisting}
+
+\section{System Architecture}
+
+\begin{figure}[h]
+\centering
+\begin{verbatim}
++------------------+
+|    Input Word    |
++--------+---------+
+         |
+         v
++--------+---------+
+|    Normalizer    | (homophone mapping)
++--------+---------+
+         |
+         v
++--------+---------+
+|     Stemmer      | (analysis)
+|  - Strip affixes |
+|  - Extract root  |
+|  - Detect pattern|
++--------+---------+
+         |
+         v
++--------+---------+
+|   Decomposer     | (Unicode math)
+|  - devowelize    |
+|  - get_order     |
+|  - revowelize    |
++--------+---------+
+         |
+         v
++--------+---------+
+|   Conjugator     | (generation)
+|  - Apply template|
+|  - Fuse suffixes |
+|  - Laryngeal adj |
++--------+---------+
+         |
+         v
++------------------+
+|   Output Word    |
++------------------+
+\end{verbatim}
+\caption{EthioMorph Processing Pipeline}
+\end{figure}
+
+\section{API Usage}
+
+\subsection{Analysis Endpoint}
+
+\begin{lstlisting}
+POST /api/xray
+{
+  "word": "yiqatlu"
+}
+
+Response:
+{
+  "root": "qatala",
+  "pattern": "imperfective",
+  "stem": 1,
+  "person": "3pm",
+  "verb_type": "type_a"
+}
+\end{lstlisting}
+
+\subsection{Generation Endpoint}
+
+\begin{lstlisting}
+POST /api/morph
+{
+  "root": "qatala"
+}
+
+Response:
+{
+  "perfective": {
+    "3sm": "qatala",
+    "3sf": "qatalat",
+    ...
+  },
+  "imperfective": {...},
+  "jussive": {...}
+}
+\end{lstlisting}
+
+\section{Conclusion}
+
+EthioMorph demonstrates that Ge'ez morphology can be effectively implemented through:
+
+\begin{enumerate}
+    \item \textbf{Unicode arithmetic}: Exploiting the systematic Ethiopic block structure for O(1) vowel transformations
+    \item \textbf{Template-driven generation}: Encoding linguistic rules as data rather than code
+    \item \textbf{Algorithmic classification}: Detecting verb types from formal properties rather than lexicon lookup
+    \item \textbf{Bidirectional processing}: Using the same core rules for both analysis and generation
+\end{enumerate}
+
+The source code is available at: \texttt{github.com/esubalew/EthioMorph}
+
+\end{document}

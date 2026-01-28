@@ -1,0 +1,926 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EthioMorph - Research Platform</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&family=Noto+Sans+Ethiopic:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL@20..48,100..700,0..1&display=swap" rel="stylesheet">
+    
+    <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://cdn.tailwindcss.com?plugins=forms"></script>
+    
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#f9d406",
+                        bronze: "#3a3727",
+                        surface: "#2d2a1b",
+                        "surface-dark": "#1a180b",
+                        "background-dark": "#23200f",
+                        muted: "#bbb69b"
+                    },
+                    fontFamily: {
+                        display: ["Lexend", "Space Grotesk", "sans-serif"],
+                        ethiopic: ["Noto Sans Ethiopic", "serif"]
+                    },
+                    boxShadow: {
+                        glow: "0 0 15px rgba(249, 212, 6, 0.3)",
+                        "glow-strong": "0 0 25px rgba(249, 212, 6, 0.5)"
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { background: #23200f; }
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { background: #1a180b; }
+        ::-webkit-scrollbar-thumb { background: #3a3727; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #55513a; }
+        
+        .manuscript-bg {
+            background-image: radial-gradient(circle at 50% 50%, rgba(249, 212, 6, 0.03) 0%, transparent 70%),
+                              repeating-linear-gradient(45deg, rgba(255,255,255,0.01) 0px, rgba(255,255,255,0.01) 1px, transparent 1px, transparent 20px);
+        }
+        .glow-text { text-shadow: 0 0 15px rgba(249, 212, 6, 0.5); }
+        .glow-box { box-shadow: 0 0 25px rgba(249, 212, 6, 0.15); }
+        .ghost-skeleton { font-size: 10rem; opacity: 0.03; user-select: none; pointer-events: none; }
+        .subject-wheel-mask { mask-image: linear-gradient(to bottom, transparent, black 15%, black 85%, transparent); }
+        @keyframes spin-slow { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+        .animate-spin-slow { animation: spin-slow 60s linear infinite; }
+    </style>
+</head>
+<body class="text-muted font-display min-h-screen flex flex-col overflow-hidden">
+    <div id="root"></div>
+
+    <script type="text/babel">
+        const { useState, useEffect, useRef } = React;
+
+        const API = {
+            analyze: async (word) => (await fetch(`/api/analyze?word=${encodeURIComponent(word)}`)).json(),
+            expand: async (root) => (await fetch(`/api/expand?root=${encodeURIComponent(root)}`)).json(),
+            expandSimple: async (root) => (await fetch(`/api/expand/simple?root=${encodeURIComponent(root)}`)).json(),
+            templates: async () => (await fetch('/api/templates')).json()
+        };
+
+        const Icon = ({ name, className = "" }) => (
+            <span className={`material-symbols-outlined ${className}`}>{name}</span>
+        );
+
+        // Navigation Component
+        const Nav = ({ activeTab, setActiveTab }) => {
+            const tabs = [
+                { id: 'xray', label: 'X-Ray', icon: 'radiology' },
+                { id: 'matrix', label: 'Multiplier', icon: 'grid_view' },
+                { id: 'slider', label: 'Morpher', icon: 'tune' },
+                { id: 'compare', label: 'Compare', icon: 'compare' },
+                { id: 'radial', label: 'Root Tree', icon: 'hub' },
+                { id: 'patterns', label: 'Patterns', icon: 'auto_awesome' }
+            ];
+
+            const titles = {
+                xray: 'X-Ray Feed', matrix: 'Multiplier Grid', slider: 'Subject Morpher',
+                compare: 'Compare Matrix', radial: 'Root Tree', patterns: 'Pattern Library'
+            };
+
+            return (
+                <header className="flex-none border-b border-bronze bg-surface-dark px-6 py-3 z-50">
+                    <div className="flex items-center justify-between">
+                        <div className="flex items-center gap-8">
+                            <div className="flex items-center gap-3 text-white">
+                                <div className="size-9 rounded-lg bg-primary/10 flex items-center justify-center text-primary">
+                                    <Icon name="translate" className="text-2xl" />
+                                </div>
+                                <div>
+                                    <h2 className="text-white text-lg font-bold tracking-tight leading-none">EthioMorph</h2>
+                                    <span className="text-xs text-primary/70">{titles[activeTab]}</span>
+                                </div>
+                            </div>
+                            <nav className="hidden md:flex items-center gap-1 bg-surface p-1 rounded-lg border border-bronze">
+                                {tabs.map(tab => (
+                                    <button
+                                        key={tab.id}
+                                        onClick={() => setActiveTab(tab.id)}
+                                        className={`px-3 py-1.5 rounded text-sm font-medium flex items-center gap-1.5 transition-all ${
+                                            activeTab === tab.id 
+                                                ? 'bg-primary text-background-dark font-bold shadow-glow' 
+                                                : 'text-muted hover:text-white'
+                                        }`}
+                                    >
+                                        <Icon name={tab.icon} className="text-base" />
+                                        <span className="hidden lg:inline">{tab.label}</span>
+                                    </button>
+                                ))}
+                            </nav>
+                        </div>
+                        <div className="flex items-center gap-3">
+                            <a href="/api/health" target="_blank" className="size-9 rounded-full bg-surface hover:bg-bronze flex items-center justify-center border border-bronze transition-colors" title="API Health">
+                                <Icon name="monitor_heart" className="text-lg" />
+                            </a>
+                            <a href="/api/templates" target="_blank" className="size-9 rounded-full bg-surface hover:bg-bronze flex items-center justify-center border border-bronze transition-colors" title="Templates JSON">
+                                <Icon name="data_object" className="text-lg" />
+                            </a>
+                        </div>
+                    </div>
+                </header>
+            );
+        };
+
+        // X-Ray Tab - Morphological Analysis
+        const XRayTab = () => {
+            const [word, setWord] = useState('አግብርት');
+            const [result, setResult] = useState(null);
+            const [loading, setLoading] = useState(false);
+
+            const analyze = async () => {
+                if (!word.trim()) return;
+                setLoading(true);
+                try { setResult(await API.analyze(word)); } catch (e) { console.error(e); }
+                setLoading(false);
+            };
+
+            return (
+                <div className="flex-1 overflow-auto manuscript-bg">
+                    <div className="max-w-[1280px] mx-auto p-6 lg:p-10 grid grid-cols-1 lg:grid-cols-12 gap-8">
+                        {/* Input Section */}
+                        <section className="lg:col-span-12">
+                            <h3 className="text-muted text-xs font-bold uppercase tracking-widest mb-3">Scriptorium Input</h3>
+                            <div className="rounded-xl overflow-hidden shadow-2xl border border-bronze">
+                                <div className="flex bg-surface px-4 py-3 border-b border-bronze justify-between items-center">
+                                    <div className="flex items-center gap-2 text-muted/50">
+                                        <Icon name="keyboard" className="text-sm" />
+                                        <span className="text-xs font-mono">GEEZ_INPUT_MODE: ACTIVE</span>
+                                    </div>
+                                    <div className="flex gap-2">
+                                        <div className="size-3 rounded-full bg-red-500/30 border border-red-500/50"></div>
+                                        <div className="size-3 rounded-full bg-primary/30 border border-primary/50"></div>
+                                        <div className="size-3 rounded-full bg-green-500/30 border border-green-500/50"></div>
+                                    </div>
+                                </div>
+                                <div className="relative">
+                                    <textarea 
+                                        value={word}
+                                        onChange={(e) => setWord(e.target.value)}
+                                        onKeyPress={(e) => e.key === 'Enter' && !e.shiftKey && (e.preventDefault(), analyze())}
+                                        className="w-full resize-none bg-surface-dark border-none focus:ring-0 min-h-[140px] p-6 text-4xl lg:text-5xl font-ethiopic text-white placeholder-muted/30"
+                                        placeholder="Enter Ge'ez text..."
+                                        spellCheck="false"
+                                    />
+                                    <div className="absolute bottom-4 right-4">
+                                        <button 
+                                            onClick={analyze}
+                                            disabled={loading}
+                                            className="flex items-center gap-2 px-6 py-2.5 bg-primary hover:bg-[#e0c000] text-background-dark text-sm font-bold rounded-lg transition-all shadow-glow disabled:opacity-50"
+                                        >
+                                            <Icon name="auto_awesome" />
+                                            {loading ? 'Analyzing...' : 'Analyze Sequence'}
+                                        </button>
+                                    </div>
+                                </div>
+                                <div className="bg-surface px-4 py-2 border-t border-bronze">
+                                    <div className="flex gap-4 text-xs text-muted/50 font-mono">
+                                        <span>Ln 1, Col {word.length}</span>
+                                        <span>UTF-8</span>
+                                        <span>Ethiopic Classic</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+                        {result && !result.error && (
+                            <>
+                                {/* Morphological Breakdown */}
+                                <section className="lg:col-span-7">
+                                    <h3 className="text-muted text-xs font-bold uppercase tracking-widest mb-3">Morphological Breakdown</h3>
+                                    <div className="bg-surface/50 border border-bronze/50 rounded-xl p-6 relative">
+                                        <div className="absolute left-10 top-6 bottom-6 w-px bg-bronze/30"></div>
+                                        
+                                        {/* Input Stage */}
+                                        <div className="flex gap-6 mb-6 relative">
+                                            <div className="size-10 rounded-full bg-surface border-2 border-bronze flex items-center justify-center z-10">
+                                                <Icon name="input" className="text-white" />
+                                            </div>
+                                            <div className="flex-1">
+                                                <p className="text-xs font-mono text-muted/50 mb-2">STAGE 01: INPUT</p>
+                                                <div className="bg-surface-dark border border-bronze rounded-lg p-4 flex justify-between items-center">
+                                                    <span className="text-2xl font-bold font-ethiopic text-white">{result.input}</span>
+                                                    <span className="text-xs text-muted/50">Original Token</span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        {/* Affix Stripping */}
+                                        {result.derivation_path?.filter(s => s.action?.includes('strip')).length > 0 && (
+                                            <div className="flex gap-6 mb-6 relative">
+                                                <div className="size-10 rounded-full bg-surface border-2 border-primary/50 flex items-center justify-center z-10">
+                                                    <Icon name="content_cut" className="text-primary" />
+                                                </div>
+                                                <div className="flex-1">
+                                                    <p className="text-xs font-mono text-muted/50 mb-2">STAGE 02: AFFIX PEELING</p>
+                                                    <div className="space-y-2">
+                                                        {result.derivation_path.filter(s => s.action?.includes('strip')).map((step, i) => (
+                                                            <div key={i} className="bg-surface-dark border border-bronze rounded-lg p-3 flex justify-between items-center hover:border-primary/30 transition-colors">
+                                                                <div className="flex items-center gap-3">
+                                                                    <span className={`font-bold font-ethiopic text-lg ${step.action?.includes('prefix') ? 'text-cyan-400' : 'text-red-400'}`}>
+                                                                        {step.affix}
+                                                                    </span>
+                                                                    <span className="text-sm text-muted/50">{step.rule?.split("'")[1] || 'Affix'}</span>
+                                                                </div>
+                                                                <span className="text-[10px] font-bold uppercase px-2 py-1 rounded bg-bronze/50 text-muted">
+                                                                    {step.action?.includes('prefix') ? 'Prefix' : 'Suffix'}
+                                                                </span>
+                                                            </div>
+                                                        ))}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        )}
+
+                                        {/* Root Identified */}
+                                        <div className="flex gap-6 relative">
+                                            <div className="size-10 rounded-full bg-primary/20 border-2 border-primary flex items-center justify-center z-10 shadow-glow">
+                                                <Icon name="diamond" className="text-primary" />
+                                            </div>
+                                            <div className="flex-1">
+                                                <p className="text-xs font-mono text-primary mb-2">STAGE 03: ROOT IDENTIFIED</p>
+                                                <div className="bg-surface-dark border-2 border-primary/50 rounded-xl p-5 glow-box relative overflow-hidden">
+                                                    <div className="absolute inset-0 opacity-10" style={{backgroundImage: 'radial-gradient(#f9d406 1px, transparent 1px)', backgroundSize: '10px 10px'}}></div>
+                                                    <div className="relative flex justify-between items-center">
+                                                        <div>
+                                                            <p className="text-3xl font-bold font-ethiopic text-primary glow-text">{result.root}</p>
+                                                            <p className="text-sm text-white mt-1">{result.root_type?.replace(/_/g, ' ')} ({result.root?.split('').join('-')})</p>
+                                                        </div>
+                                                        <div className="size-12 rounded-full bg-primary/10 flex items-center justify-center">
+                                                            <Icon name="check_circle" className="text-primary text-2xl" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </section>
+
+                                {/* Lexical Data */}
+                                <section className="lg:col-span-5 space-y-4">
+                                    <h3 className="text-muted text-xs font-bold uppercase tracking-widest mb-3">Lexical Data</h3>
+                                    <div className="bg-surface-dark border border-bronze rounded-xl overflow-hidden">
+                                        <div className="bg-surface border-b border-bronze px-5 py-3 flex justify-between items-center">
+                                            <span className="text-xl font-bold text-white font-ethiopic">{result.root}</span>
+                                            <span className="text-[10px] font-bold uppercase px-2 py-1 rounded bg-primary/20 text-primary border border-primary/30">
+                                                {result.root_type?.replace('type_', 'TYPE ')}
+                                            </span>
+                                        </div>
+                                        <div className="p-5">
+                                            {result.meaning && (
+                                                <div className="mb-6">
+                                                    <p className="text-xs text-muted/50 uppercase tracking-wider mb-1">Meaning</p>
+                                                    <p className="text-white text-lg">{result.meaning}</p>
+                                                </div>
+                                            )}
+                                            <div>
+                                                <p className="text-xs text-muted/50 uppercase tracking-wider mb-1">Analysis Method</p>
+                                                <p className="text-white">{result.analysis?.method}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className="grid grid-cols-2 gap-3">
+                                        <div className="bg-surface rounded-lg p-4 border border-bronze">
+                                            <p className="text-xs text-muted/50 uppercase">Pattern</p>
+                                            <p className="text-white text-lg font-bold">{result.analysis?.pattern?.english_name || '-'}</p>
+                                        </div>
+                                        <div className="bg-surface rounded-lg p-4 border border-bronze">
+                                            <p className="text-xs text-muted/50 uppercase">Confidence</p>
+                                            <p className="text-primary text-lg font-bold font-mono">{Math.round((result.confidence || 0) * 100)}%</p>
+                                        </div>
+                                    </div>
+                                </section>
+                            </>
+                        )}
+                    </div>
+                </div>
+            );
+        };
+
+        // Matrix Tab - Conjugation Grid with Subject Wheel
+        const MatrixTab = () => {
+            const [root, setRoot] = useState('ቀተለ');
+            const [data, setData] = useState(null);
+            const [loading, setLoading] = useState(false);
+            const [selectedSubject, setSelectedSubject] = useState(0);
+
+            const SUBJECTS = [
+                { key: 'he', geez: 'ውእቱ', en: 'He', label: '3SM' },
+                { key: 'she', geez: 'ይእቲ', en: 'She', label: '3SF' },
+                { key: 'they_m', geez: 'ውእቶሙ', en: 'They M', label: '3PM' },
+                { key: 'they_f', geez: 'ውእቶን', en: 'They F', label: '3PF' },
+                { key: 'you_m', geez: 'አንተ', en: 'You M', label: '2SM' },
+                { key: 'you_f', geez: 'አንቲ', en: 'You F', label: '2SF' },
+                { key: 'you_pl_m', geez: 'አንትሙ', en: 'You pl M', label: '2PM' },
+                { key: 'you_pl_f', geez: 'አንትን', en: 'You pl F', label: '2PF' },
+                { key: 'I', geez: 'አነ', en: 'I', label: '1S' },
+                { key: 'we', geez: 'ንሕነ', en: 'We', label: '1P' }
+            ];
+
+            const TENSES = [
+                { key: 'perfective', geez: 'ቀዳማይ', en: 'Perfect' },
+                { key: 'imperfective', geez: 'ካልኣይ', en: 'Imperfect' },
+                { key: 'jussive', geez: 'ሣልሳይ', en: 'Jussive' },
+                { key: 'imperative', geez: 'ትእዛዝ', en: 'Imperative' }
+            ];
+
+            const expand = async () => {
+                if (!root.trim()) return;
+                setLoading(true);
+                try { setData(await API.expandSimple(root)); } catch (e) { console.error(e); }
+                setLoading(false);
+            };
+
+            useEffect(() => { expand(); }, []);
+
+            return (
+                <div className="flex-1 flex overflow-hidden manuscript-bg">
+                    {/* Left Sidebar - Subject Wheel */}
+                    <aside className="w-72 flex-none bg-surface-dark border-r border-bronze flex flex-col z-10">
+                        <div className="p-5 border-b border-bronze">
+                            <span className="text-xs font-bold tracking-widest text-primary uppercase">Subject Control</span>
+                            <h3 className="text-white text-lg font-bold mt-1">Grammatical Person</h3>
+                            <p className="text-sm text-muted/50 mt-1">Select subject to filter grid.</p>
+                        </div>
+                        
+                        {/* Subject Wheel */}
+                        <div className="flex-1 flex flex-col items-center justify-center relative p-8">
+                            {/* Decorative rings */}
+                            <div className="absolute inset-0 flex items-center justify-center opacity-10 pointer-events-none">
+                                <div className="w-56 h-56 rounded-full border border-primary border-dashed animate-spin-slow"></div>
+                                <div className="absolute w-40 h-40 rounded-full border border-white/20"></div>
+                            </div>
+                            
+                            {/* Wheel */}
+                            <div className="relative w-48 h-48 rounded-full border-4 border-bronze bg-surface-dark shadow-2xl flex items-center justify-center">
+                                <div className="absolute z-20 w-14 h-14 rounded-full bg-gradient-to-br from-bronze to-surface-dark border border-bronze/50 flex items-center justify-center shadow-lg">
+                                    <Icon name="api" className="text-primary text-2xl" />
+                                </div>
+                                
+                                {/* Subject labels around wheel */}
+                                {SUBJECTS.slice(0, 6).map((subj, i) => {
+                                    const angle = (i * 60 - 90) * Math.PI / 180;
+                                    const x = Math.cos(angle) * 75;
+                                    const y = Math.sin(angle) * 75;
+                                    const isActive = selectedSubject === i;
+                                    
+                                    return (
+                                        <button
+                                            key={subj.key}
+                                            onClick={() => setSelectedSubject(i)}
+                                            className={`absolute flex flex-col items-center transition-all ${isActive ? 'scale-110' : 'opacity-50 hover:opacity-80'}`}
+                                            style={{ transform: `translate(${x}px, ${y}px)` }}
+                                        >
+                                            <span className={`font-ethiopic font-bold ${isActive ? 'text-primary text-lg glow-text' : 'text-muted'}`}>{subj.geez}</span>
+                                            <span className={`text-[9px] uppercase ${isActive ? 'text-primary font-bold' : 'text-muted/50'}`}>{subj.label}</span>
+                                        </button>
+                                    );
+                                })}
+                            </div>
+                            
+                            {/* Additional subjects below */}
+                            <div className="mt-6 grid grid-cols-4 gap-2 w-full">
+                                {SUBJECTS.slice(6).map((subj, i) => {
+                                    const idx = i + 6;
+                                    const isActive = selectedSubject === idx;
+                                    return (
+                                        <button
+                                            key={subj.key}
+                                            onClick={() => setSelectedSubject(idx)}
+                                            className={`p-2 rounded-lg border text-center transition-all ${isActive ? 'border-primary bg-primary/10 text-primary' : 'border-bronze/50 text-muted/50 hover:border-bronze'}`}
+                                        >
+                                            <span className="font-ethiopic text-sm block">{subj.geez}</span>
+                                            <span className="text-[8px] uppercase">{subj.label}</span>
+                                        </button>
+                                    );
+                                })}
+                            </div>
+                        </div>
+                        
+                        {/* Root Input */}
+                        <div className="p-5 border-t border-bronze bg-surface-dark">
+                            <p className="text-xs text-muted/50 uppercase tracking-wider mb-2">Root Input</p>
+                            <div className="flex gap-2">
+                                <input
+                                    type="text"
+                                    value={root}
+                                    onChange={(e) => setRoot(e.target.value)}
+                                    onKeyPress={(e) => e.key === 'Enter' && expand()}
+                                    className="flex-1 bg-surface border border-bronze rounded-lg px-3 py-2 text-xl font-ethiopic text-center text-white focus:outline-none focus:border-primary"
+                                />
+                                <button onClick={expand} disabled={loading} className="px-4 py-2 bg-primary text-background-dark font-bold rounded-lg">
+                                    <Icon name="send" />
+                                </button>
+                            </div>
+                        </div>
+                    </aside>
+
+                    {/* Main Grid */}
+                    <main className="flex-1 min-w-0 overflow-hidden flex flex-col p-6">
+                        <div className="mb-6 flex-none">
+                            <h1 className="text-2xl font-bold text-white flex items-baseline gap-3">
+                                Root: <span className="text-primary font-ethiopic glow-text">{root}</span>
+                                {data?._meta?.meaning && <span className="text-base font-normal text-muted">({data._meta?.meaning})</span>}
+                            </h1>
+                            <p className="text-muted/70 text-sm mt-1">Morphological Expansion Grid • Showing all subjects</p>
+                        </div>
+
+                        {data && !data.error && (
+                            <div className="flex-1 overflow-auto grid lg:grid-cols-4 gap-6 content-start">
+                                <div className="lg:col-span-3 bg-surface-dark rounded-xl border border-bronze overflow-hidden shadow-xl h-fit">
+                                    <div className="overflow-x-auto">
+                                        <table className="w-full">
+                                            <thead className="bg-surface border-b-2 border-primary/30">
+                                                <tr>
+                                                    <th className="py-4 px-5 text-left text-xs font-bold text-primary uppercase tracking-wider w-32">Subject</th>
+                                                    {TENSES.map(t => (
+                                                        <th key={t.key} className="py-4 px-5 text-left min-w-[140px]">
+                                                            <span className="text-white text-sm font-bold block">{t.en}</span>
+                                                            <span className="font-ethiopic text-xs text-primary/70">{t.geez}</span>
+                                                        </th>
+                                                    ))}
+                                                </tr>
+                                            </thead>
+                                            <tbody className="divide-y divide-bronze/30">
+                                                {SUBJECTS.map((subj, i) => (
+                                                    <tr key={subj.key} className={`transition-colors ${selectedSubject === i ? 'bg-primary/5' : 'hover:bg-surface/50'}`}>
+                                                        <td className="py-3 px-5">
+                                                            <span className="font-ethiopic text-lg text-white">{subj.geez}</span>
+                                                            <span className="text-xs text-muted/50 block">{subj.en}</span>
+                                                        </td>
+                                                        {TENSES.map(t => (
+                                                            <td key={t.key} className="px-5 py-3">
+                                                                <span className="font-ethiopic text-xl text-white">
+                                                                    {data?.[t.key]?.[subj.key] || '—'}
+                                                                </span>
+                                                            </td>
+                                                        ))}
+                                                    </tr>
+                                                ))}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+
+                                {/* Derived Forms Sidebar */}
+                                <div className="space-y-3">
+                                    <h3 className="text-xs text-muted uppercase tracking-widest font-bold">Derived Forms</h3>
+                                    {data?.derived && Object.entries(data.derived).map(([key, word]) => (
+                                        <div key={key} className="bg-surface-dark rounded-lg p-4 border border-bronze/50 hover:border-primary/30 transition-all">
+                                            <p className="text-[10px] text-muted/50 uppercase tracking-wider">{key.replace(/_/g, ' ')}</p>
+                                            <p className="font-ethiopic text-xl text-white">{word}</p>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                        )}
+                    </main>
+                </div>
+            );
+        };
+
+        // Slider Tab - Subject Morpher
+        const SliderTab = () => {
+            const [root, setRoot] = useState('ቀተለ');
+            const [tense, setTense] = useState('perfective');
+            const [subjectIndex, setSubjectIndex] = useState(0);
+            const [data, setData] = useState(null);
+            const [loading, setLoading] = useState(false);
+
+            const SUBJECTS = [
+                { key: 'he', geez: 'ውእቱ', en: 'He', label: '3SM' },
+                { key: 'she', geez: 'ይእቲ', en: 'She', label: '3SF' },
+                { key: 'they_m', geez: 'ውእቶሙ', en: 'They M', label: '3PM' },
+                { key: 'they_f', geez: 'ውእቶን', en: 'They F', label: '3PF' },
+                { key: 'you_m', geez: 'አንተ', en: 'You M', label: '2SM' },
+                { key: 'you_f', geez: 'አንቲ', en: 'You F', label: '2SF' },
+                { key: 'you_pl_m', geez: 'አንትሙ', en: 'You pl M', label: '2PM' },
+                { key: 'you_pl_f', geez: 'አንትን', en: 'You pl F', label: '2PF' },
+                { key: 'I', geez: 'አነ', en: 'I', label: '1S' },
+                { key: 'we', geez: 'ንሕነ', en: 'We', label: '1P' }
+            ];
+
+            const expand = async () => {
+                if (!root.trim()) return;
+                setLoading(true);
+                try { setData(await API.expandSimple(root)); } catch(e) { console.error(e); }
+                setLoading(false);
+            };
+
+            useEffect(() => { expand(); }, []);
+
+            const currentSubject = SUBJECTS[subjectIndex];
+            const currentWord = data?.[tense]?.[currentSubject.key] || '—';
+
+            return (
+                <main className="flex-1 relative overflow-hidden manuscript-bg">
+                    {/* Ghost background */}
+                    <div className="ghost-skeleton absolute inset-0 flex items-center justify-center text-white font-ethiopic">{root}</div>
+                    
+                    <div className="relative z-10 h-full flex flex-col p-8">
+                        {/* Top Controls */}
+                        <div className="flex justify-between items-start mb-auto">
+                            <div>
+                                <p className="text-xs text-muted/50 uppercase tracking-widest mb-2">Root Input</p>
+                                <div className="flex gap-2">
+                                    <input
+                                        type="text"
+                                        value={root}
+                                        onChange={(e) => setRoot(e.target.value)}
+                                        onKeyPress={(e) => e.key === 'Enter' && expand()}
+                                        className="bg-surface border border-bronze rounded-lg px-4 py-2 text-2xl font-ethiopic w-32 text-center text-white focus:outline-none focus:border-primary"
+                                    />
+                                    <button onClick={expand} disabled={loading} className="px-4 py-2 bg-primary text-background-dark font-bold rounded-lg">
+                                        {loading ? '...' : 'Load'}
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            {/* Tense Selector */}
+                            <div className="bg-surface/80 backdrop-blur border border-bronze rounded-xl p-4">
+                                <p className="text-[10px] text-muted/50 uppercase tracking-widest mb-3">Tense</p>
+                                <div className="grid grid-cols-2 gap-2">
+                                    {['perfective', 'imperfective', 'jussive', 'imperative'].map(t => (
+                                        <button 
+                                            key={t}
+                                            onClick={() => setTense(t)}
+                                            className={`px-3 py-2 rounded-lg text-[11px] font-bold uppercase transition-all ${
+                                                tense === t ? 'bg-primary text-background-dark shadow-glow' : 'bg-bronze/50 text-muted hover:text-white'
+                                            }`}
+                                        >
+                                            {t}
+                                        </button>
+                                    ))}
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* Center Display */}
+                        <div className="flex-1 flex items-center justify-center">
+                            <div className="text-center">
+                                <div className="text-7xl md:text-8xl lg:text-9xl font-bold font-ethiopic text-primary glow-text transition-all duration-300">
+                                    {currentWord}
+                                </div>
+                                <div className="mt-8">
+                                    <span className="inline-block px-6 py-3 rounded-full border border-bronze bg-surface/50 backdrop-blur text-sm uppercase tracking-widest">
+                                        {tense} • <span className="text-white font-bold">{currentSubject.en}</span> • <span className="font-ethiopic text-primary">{currentSubject.geez}</span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* Bottom Subject Slider */}
+                        <div className="mt-auto">
+                            <p className="text-xs text-muted/50 uppercase tracking-widest text-center mb-4">Subject Selector</p>
+                            <div className="flex justify-center gap-2">
+                                {SUBJECTS.map((subj, i) => (
+                                    <button
+                                        key={subj.key}
+                                        onClick={() => setSubjectIndex(i)}
+                                        className={`px-4 py-3 rounded-lg border transition-all ${
+                                            i === subjectIndex 
+                                                ? 'border-primary bg-primary/10 text-primary scale-110 shadow-glow' 
+                                                : 'border-bronze/50 text-muted/50 hover:border-bronze hover:text-muted'
+                                        }`}
+                                    >
+                                        <span className="font-ethiopic text-lg block">{subj.geez}</span>
+                                        <span className="text-[9px] uppercase">{subj.label}</span>
+                                    </button>
+                                ))}
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            );
+        };
+
+        // Compare Tab - Side by side comparison
+        const CompareTab = () => {
+            const [verbs, setVerbs] = useState(['ሰከበ', 'ቀደሰ', 'ባረከ']);
+            const [data, setData] = useState({});
+            const [loading, setLoading] = useState(false);
+
+            const loadAll = async () => {
+                setLoading(true);
+                const results = {};
+                for (const v of verbs.filter(x => x)) {
+                    try { results[v] = await API.expandSimple(v); } catch(e) { results[v] = null; }
+                }
+                setData(results);
+                setLoading(false);
+            };
+
+            useEffect(() => { loadAll(); }, []);
+
+            const FORMS = [
+                { key: 'perfective.he', label: 'Perfect (He)', get: d => d?.perfective?.he },
+                { key: 'imperfective.he', label: 'Imperfect (He)', get: d => d?.imperfective?.he },
+                { key: 'jussive.he', label: 'Jussive (He)', get: d => d?.jussive?.he },
+                { key: 'derived.infinitive', label: 'Infinitive', get: d => d?.derived?.infinitive },
+                { key: 'derived.active_participle', label: 'Active Part.', get: d => d?.derived?.active_participle },
+                { key: 'derived.passive_participle', label: 'Passive Part.', get: d => d?.derived?.passive_participle },
+                { key: 'derived.instrumental', label: 'Instrumental', get: d => d?.derived?.instrumental },
+                { key: 'derived.verbal_noun', label: 'Verbal Noun', get: d => d?.derived?.verbal_noun }
+            ];
+
+            return (
+                <div className="flex-1 overflow-auto manuscript-bg p-8">
+                    <div className="max-w-[1400px] mx-auto">
+                        <div className="flex flex-wrap items-end justify-between gap-4 mb-8">
+                            <div>
+                                <h1 className="text-3xl font-bold text-white mb-2">Comparison Matrix</h1>
+                                <p className="text-muted/70">Compare conjugation patterns across different verb types</p>
+                            </div>
+                            <div className="flex gap-2 items-end">
+                                {verbs.map((v, i) => (
+                                    <input
+                                        key={i}
+                                        type="text"
+                                        value={v}
+                                        onChange={(e) => { const newV = [...verbs]; newV[i] = e.target.value; setVerbs(newV); }}
+                                        className="bg-surface border border-bronze rounded-lg px-3 py-2 text-xl font-ethiopic w-24 text-center text-white focus:outline-none focus:border-primary"
+                                    />
+                                ))}
+                                <button onClick={() => setVerbs([...verbs, ''])} className="px-3 py-2 border border-bronze/50 rounded-lg text-muted hover:text-white">
+                                    <Icon name="add" />
+                                </button>
+                                <button onClick={loadAll} disabled={loading} className="px-6 py-2 bg-primary text-background-dark font-bold rounded-lg">
+                                    {loading ? '...' : 'Compare'}
+                                </button>
+                            </div>
+                        </div>
+
+                        <div className="bg-surface-dark rounded-xl border border-bronze overflow-hidden shadow-xl">
+                            <div className="overflow-x-auto">
+                                <table className="w-full">
+                                    <thead className="bg-surface border-b-2 border-primary/30">
+                                        <tr>
+                                            <th className="p-4 text-left text-xs font-bold uppercase tracking-wider text-primary min-w-[140px] sticky left-0 bg-surface z-10">Form</th>
+                                            {verbs.filter(v => v).map(v => (
+                                                <th key={v} className="p-4 text-center min-w-[160px]">
+                                                    <span className="text-2xl font-bold font-ethiopic text-primary block">{v}</span>
+                                                </th>
+                                            ))}
+                                        </tr>
+                                    </thead>
+                                    <tbody className="divide-y divide-bronze/30">
+                                        {FORMS.map((form, fi) => (
+                                            <tr key={form.key} className={fi % 2 === 0 ? 'bg-background-dark/30' : ''}>
+                                                <td className="p-4 text-sm font-medium text-white sticky left-0 bg-surface-dark border-r border-bronze/30 z-10">
+                                                    {form.label}
+                                                </td>
+                                                {verbs.filter(v => v).map(v => (
+                                                    <td key={v} className="p-4 text-center">
+                                                        <span className="font-ethiopic text-xl text-white">{form.get(data[v]) || '—'}</span>
+                                                    </td>
+                                                ))}
+                                            </tr>
+                                        ))}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        {/* Type explanations */}
+                        <div className="mt-6 grid grid-cols-3 gap-4">
+                            <div className="p-4 rounded-lg bg-surface border border-bronze/50">
+                                <p className="text-xs text-primary uppercase font-bold mb-1">Type A (ሰከበ)</p>
+                                <p className="text-muted text-sm">Standard pattern - no vowel shift in imperfective</p>
+                            </div>
+                            <div className="p-4 rounded-lg bg-surface border border-bronze/50">
+                                <p className="text-xs text-primary uppercase font-bold mb-1">Type B (ቀደሰ)</p>
+                                <p className="text-muted text-sm">C1 shifts to 5th order (ቄ) in imperfective</p>
+                            </div>
+                            <div className="p-4 rounded-lg bg-surface border border-bronze/50">
+                                <p className="text-xs text-primary uppercase font-bold mb-1">Type C (ባረከ)</p>
+                                <p className="text-muted text-sm">C1 stays 4th order (ባ) throughout</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            );
+        };
+
+        // Radial Tab - Root Tree
+        const RadialTab = () => {
+            const svgRef = useRef();
+            const [root, setRoot] = useState('ገበረ');
+            const [data, setData] = useState(null);
+            const [loading, setLoading] = useState(false);
+
+            const expand = async () => {
+                if (!root.trim()) return;
+                setLoading(true);
+                try { setData(await API.expand(root)); } catch(e) { console.error(e); }
+                setLoading(false);
+            };
+
+            useEffect(() => {
+                if (!data || data.error) return;
+                const width = 700, height = 500;
+                const cx = width / 2, cy = height / 2;
+
+                d3.select(svgRef.current).selectAll("*").remove();
+                const svg = d3.select(svgRef.current).attr("width", width).attr("height", height);
+
+                const gradient = svg.append("defs").append("radialGradient").attr("id", "glow").attr("cx", "50%").attr("cy", "50%").attr("r", "50%");
+                gradient.append("stop").attr("offset", "0%").attr("stop-color", "rgba(249, 212, 6, 0.3)");
+                gradient.append("stop").attr("offset", "100%").attr("stop-color", "transparent");
+
+                svg.append("circle").attr("cx", cx).attr("cy", cy).attr("r", 150).attr("fill", "url(#glow)");
+                svg.append("circle").attr("cx", cx).attr("cy", cy).attr("r", 180).attr("fill", "none").attr("stroke", "rgba(255,255,255,0.05)").attr("stroke-dasharray", "5,5");
+                svg.append("circle").attr("cx", cx).attr("cy", cy).attr("r", 50).attr("fill", "#2d2a1b").attr("stroke", "#f9d406").attr("stroke-width", 3);
+
+                svg.append("text").attr("x", cx).attr("y", cy - 5).attr("text-anchor", "middle").attr("dominant-baseline", "middle")
+                    .attr("fill", "#fff").attr("font-family", "Noto Sans Ethiopic").attr("font-size", "22px").attr("font-weight", "bold")
+                    .text(data._meta?.root || root);
+                svg.append("text").attr("x", cx).attr("y", cy + 16).attr("text-anchor", "middle").attr("fill", "#f9d406").attr("font-size", "9px")
+                    .text("ROOT");
+
+                const branches = [
+                    { angle: -90, label: "TENSE", items: [] },
+                    { angle: 210, label: "DERIVED", items: [] },
+                    { angle: 330, label: "FORMS", items: [] }
+                ];
+
+                if (data.perfective?.conjugations?.['3sm']) branches[0].items.push({ label: "Perfect", word: data.perfective.conjugations['3sm'].word });
+                if (data.imperfective?.conjugations?.['3sm']) branches[0].items.push({ label: "Imperfect", word: data.imperfective.conjugations['3sm'].word });
+                if (data.derived?.infinitive) branches[1].items.push({ label: "Infinitive", word: data.derived.infinitive.word });
+                if (data.derived?.active_participle) branches[1].items.push({ label: "Participle", word: data.derived.active_participle.word });
+                if (data.derived?.verbal_noun) branches[2].items.push({ label: "Verbal Noun", word: data.derived.verbal_noun.word });
+                if (data.derived?.instrumental) branches[2].items.push({ label: "Instrumental", word: data.derived.instrumental.word });
+
+                branches.forEach((branch) => {
+                    const rad = (branch.angle * Math.PI) / 180;
+                    const bx = cx + Math.cos(rad) * 110, by = cy + Math.sin(rad) * 110;
+
+                    svg.append("line").attr("x1", cx).attr("y1", cy).attr("x2", bx).attr("y2", by)
+                        .attr("stroke", "rgba(249, 212, 6, 0.4)").attr("stroke-width", 2).attr("stroke-dasharray", "4,4");
+
+                    const g = svg.append("g").attr("transform", `translate(${bx}, ${by})`);
+                    g.append("rect").attr("x", -35).attr("y", -10).attr("width", 70).attr("height", 20).attr("rx", 4)
+                        .attr("fill", "#2d2a1b").attr("stroke", "rgba(249, 212, 6, 0.5)");
+                    g.append("text").attr("x", 0).attr("y", 4).attr("text-anchor", "middle").attr("fill", "#fff").attr("font-size", "9px").attr("font-weight", "bold")
+                        .text(branch.label);
+
+                    branch.items.forEach((item, i) => {
+                        const itemRad = rad + (i - (branch.items.length - 1) / 2) * 0.4;
+                        const ix = cx + Math.cos(itemRad) * 210, iy = cy + Math.sin(itemRad) * 210;
+
+                        svg.append("line").attr("x1", bx).attr("y1", by).attr("x2", ix).attr("y2", iy)
+                            .attr("stroke", "rgba(255,255,255,0.08)").attr("stroke-width", 1);
+
+                        const ig = svg.append("g").attr("transform", `translate(${ix}, ${iy})`).style("cursor", "pointer");
+                        ig.append("rect").attr("x", -45).attr("y", -25).attr("width", 90).attr("height", 50).attr("rx", 8)
+                            .attr("fill", "#2d2a1b").attr("stroke", "rgba(255,255,255,0.1)");
+                        ig.append("text").attr("x", 0).attr("y", -3).attr("text-anchor", "middle").attr("fill", "#fff")
+                            .attr("font-family", "Noto Sans Ethiopic").attr("font-size", "15px").text(item.word);
+                        ig.append("text").attr("x", 0).attr("y", 12).attr("text-anchor", "middle").attr("fill", "#f9d406").attr("font-size", "8px")
+                            .text(item.label.toUpperCase());
+                    });
+                });
+            }, [data, root]);
+
+            return (
+                <div className="flex-1 overflow-auto manuscript-bg p-8">
+                    <div className="max-w-[1000px] mx-auto">
+                        <div className="flex items-center justify-between mb-6">
+                            <div>
+                                <h1 className="text-2xl font-bold text-white">Radial Root Tree</h1>
+                                <p className="text-muted/70 text-sm">Interactive visualization of root derivations</p>
+                            </div>
+                            <div className="flex gap-3 items-center">
+                                <input
+                                    type="text"
+                                    value={root}
+                                    onChange={(e) => setRoot(e.target.value)}
+                                    onKeyPress={(e) => e.key === 'Enter' && expand()}
+                                    className="bg-surface border border-bronze rounded-lg px-4 py-2 text-2xl font-ethiopic w-32 text-center text-white focus:outline-none focus:border-primary"
+                                />
+                                <button onClick={expand} disabled={loading} className="px-6 py-2 bg-primary text-background-dark font-bold rounded-lg flex items-center gap-2">
+                                    <Icon name="hub" />
+                                    {loading ? '...' : 'Generate'}
+                                </button>
+                            </div>
+                        </div>
+                        <div className="bg-surface-dark/50 rounded-xl border border-bronze p-8 flex justify-center items-center min-h-[500px]" style={{backgroundImage: 'radial-gradient(rgba(249,212,6,0.03) 1px, transparent 1px)', backgroundSize: '20px 20px'}}>
+                            {data && !data.error ? (
+                                <svg ref={svgRef}></svg>
+                            ) : (
+                                <div className="text-center text-muted/50">
+                                    <Icon name="hub" className="text-6xl mb-4" />
+                                    <p>Enter a root and click Generate</p>
+                                </div>
+                            )}
+                        </div>
+                    </div>
+                </div>
+            );
+        };
+
+        // Patterns Tab
+        const PatternsTab = () => {
+            const [templates, setTemplates] = useState(null);
+            const [loading, setLoading] = useState(true);
+
+            useEffect(() => {
+                API.templates().then(data => { setTemplates(data); setLoading(false); }).catch(() => setLoading(false));
+            }, []);
+
+            const derivedPatterns = templates?.type_a?.derived ? Object.entries(templates.type_a.derived).map(([key, val]) => ({
+                key, name: key.replace(/_/g, ' ').replace(/\b\w/g, c => c.toUpperCase()),
+                template: val.template || '-', prefix: val.prefix || '', suffix: val.suffix || '', pattern: val.pattern || {}
+            })) : [];
+
+            return (
+                <div className="flex-1 overflow-auto manuscript-bg p-8">
+                    <div className="max-w-[1400px] mx-auto">
+                        <div className="flex items-end justify-between mb-8">
+                            <div>
+                                <h1 className="text-3xl font-bold text-white mb-2">Pattern Library</h1>
+                                <p className="text-muted/70">Morphological templates from templates.json</p>
+                            </div>
+                            <a href="/api/templates" target="_blank" className="flex items-center gap-2 px-4 py-2 border border-primary/30 rounded-lg text-sm font-medium text-primary hover:bg-primary/5">
+                                <Icon name="code" />
+                                View Raw JSON
+                            </a>
+                        </div>
+
+                        {loading ? (
+                            <div className="text-center py-20 text-muted/50"><Icon name="hourglass_empty" className="text-4xl mb-2" /><p>Loading...</p></div>
+                        ) : (
+                            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5">
+                                {derivedPatterns.map((pattern, i) => (
+                                    <div key={i} className="group bg-surface-dark rounded-xl border border-bronze/50 hover:border-primary/50 transition-all p-5 relative overflow-hidden">
+                                        <div className="absolute top-0 right-0 w-24 h-24 bg-primary/5 -mr-12 -mt-12 rounded-full blur-2xl group-hover:bg-primary/10 transition-all"></div>
+                                        <div className="relative">
+                                            <h3 className="text-lg font-bold text-white mb-1">{pattern.name}</h3>
+                                            <p className="text-xs text-muted/50 font-mono mb-4">{pattern.template}</p>
+                                            <div className="bg-background-dark/50 rounded-lg p-4 flex items-center justify-center gap-3 mb-4">
+                                                {pattern.prefix && <span className="text-cyan-400 text-xl font-bold">{pattern.prefix}</span>}
+                                                {Object.entries(pattern.pattern).map(([k, v], pi) => (
+                                                    <span key={pi} className="text-muted">{k}:{v}</span>
+                                                ))}
+                                                {pattern.suffix && <span className="text-cyan-400 text-xl font-bold">{pattern.suffix}</span>}
+                                            </div>
+                                            <div className="flex flex-wrap gap-2">
+                                                {pattern.prefix && <span className="px-2 py-1 bg-primary/10 text-primary text-[10px] font-bold uppercase rounded">Prefix: {pattern.prefix}</span>}
+                                                {pattern.suffix && <span className="px-2 py-1 bg-cyan-400/10 text-cyan-400 text-[10px] font-bold uppercase rounded">Suffix: {pattern.suffix}</span>}
+                                            </div>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        )}
+
+                        {templates && (
+                            <div className="mt-10">
+                                <h2 className="text-xl font-bold text-white mb-4">Available Verb Types</h2>
+                                <div className="flex flex-wrap gap-2">
+                                    {Object.keys(templates).filter(k => !k.startsWith('_') && !k.startsWith('weak')).map(type => (
+                                        <span key={type} className="px-3 py-2 bg-surface border border-bronze/50 rounded-lg text-sm text-muted">
+                                            {type}
+                                        </span>
+                                    ))}
+                                </div>
+                            </div>
+                        )}
+                    </div>
+                </div>
+            );
+        };
+
+        // Main App
+        const App = () => {
+            const [activeTab, setActiveTab] = useState('xray');
+            return (
+                <div className="h-screen flex flex-col">
+                    <Nav activeTab={activeTab} setActiveTab={setActiveTab} />
+                    {activeTab === 'xray' && <XRayTab />}
+                    {activeTab === 'matrix' && <MatrixTab />}
+                    {activeTab === 'slider' && <SliderTab />}
+                    {activeTab === 'compare' && <CompareTab />}
+                    {activeTab === 'radial' && <RadialTab />}
+                    {activeTab === 'patterns' && <PatternsTab />}
+                </div>
+            );
+        };
+
+        ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+    </script>
+</body>
+</html>
