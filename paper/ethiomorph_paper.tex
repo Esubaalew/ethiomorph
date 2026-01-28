@@ -44,7 +44,9 @@ NLP Course Project}
 \maketitle
 
 \begin{abstract}
-This paper presents the technical implementation of EthioMorph, a rule-based morphological analysis and generation system for Classical Ge'ez. The system implements all eight canonical verb types: \geez{ቀተለ} (Type A), \geez{ቀደሰ} (Type B/Geminate), \geez{ባረከ} (Type C), \geez{ጦመረ} (Type C-O), \geez{ሴሰየ} (Weak-Final), \geez{ክህለ} (Laryngeal), \geez{ማሕረከ} (Quadriliteral), and \geez{ተንበለ} (T-Quad). We describe the core algorithms including Unicode-based vowel arithmetic, radical extraction using consonant skeleton analysis, and template-driven word generation. The system operates on the mathematical principle that Ethiopic Unicode characters follow a predictable 7-order vowel pattern, enabling vowel transformations through simple arithmetic: $\text{char}_{\text{new}} = \text{base} + (\text{order} - 1)$. We detail the implementation of the C1-C2-C3 radical system, suffix fusion rules, laryngeal vowel shift algorithms, and the verb home detection classifier.
+Ge'ez verb conjugation follows strict patterns. Given a root like \geez{ቀተለ}, every form (perfective, imperfective, jussive, imperative) can be computed by rearranging vowels and attaching affixes. No dictionary lookup, no statistical model—just rules.
+
+This paper documents EthioMorph, a Python system I built to do exactly that. It handles all eight verb types that traditional Ge'ez grammar recognizes: \geez{ቀተለ}, \geez{ቀደሰ}, \geez{ባረከ}, \geez{ጦመረ}, \geez{ሴሰየ}, \geez{ክህለ}, \geez{ማሕረከ}, and \geez{ተንበለ}. The core trick: Ethiopic Unicode assigns consecutive codepoints to vowel forms, so changing a vowel is just arithmetic. The rest is template matching and a few special rules for laryngeal consonants.
 \end{abstract}
 
 \begin{IEEEkeywords}
@@ -53,29 +55,26 @@ Ge'ez, morphological analysis, NLP, Unicode processing, Semitic morphology, rule
 
 \section{Introduction}
 
-EthioMorph is a computational morphology engine for Classical Ge'ez (\geez{ግእዝ}) that implements linguistic rules as algorithms. Unlike statistical or neural approaches, EthioMorph uses explicit mathematical transformations based on the structure of the Ethiopic Unicode block and the grammatical rules of Ge'ez morphology.
+I wanted to build a Ge'ez conjugator that works from first principles. Not a lookup table with thousands of pre-stored forms, and not a neural network trained on text. Just the rules, written in code.
 
-This document explains \textbf{how} the system works—the actual code logic, data structures, and algorithms that drive morphological processing.
+Why is this even possible? Because Ge'ez is regular. The same root (\geez{ቀተለ}, meaning ``kill'') always conjugates the same way. There are eight verb types and maybe a dozen special cases for guttural consonants. Once you encode those rules, you can generate or analyze any verb.
 
-\subsection{Core Problem}
+\subsection{What the System Does}
 
-Ge'ez, like other Semitic languages, forms words by combining:
-\begin{itemize}
-    \item \textbf{Root}: A sequence of consonants (typically 3) carrying lexical meaning
-    \item \textbf{Pattern}: A template of vowels and affixes encoding grammatical information
-\end{itemize}
+Ge'ez verbs have two parts: a consonant root (usually 3 letters) and a vowel pattern. The root carries meaning, the pattern carries grammar.
 
-For example, the root \textbf{q-t-l} (\geez{ቀተለ}, ``kill'') combines with different patterns:
+Take \textbf{q-t-l} (\geez{ቀተለ}, ``kill''). Same three consonants, different vowels:
+
 \begin{align*}
-\text{q-t-l} + \text{[1-1-1]} &\rightarrow \text{\geez{ቀተለ}} \text{ (Perfective: ``he killed'')} \\
-\text{q-t-l} + \text{[yi-1-6-6]} &\rightarrow \text{\geez{ይቅትል}} \text{ (Imperfective: ``he kills'')}
+\text{q-t-l} + \text{[1-1-1]} &\rightarrow \text{\geez{ቀተለ}} \text{ (past: ``he killed'')} \\
+\text{q-t-l} + \text{[yi-1-6-6]} &\rightarrow \text{\geez{ይቅትል}} \text{ (present: ``he kills'')}
 \end{align*}
 
-The challenge is implementing this bidirectionally:
-\begin{enumerate}
-    \item \textbf{Analysis}: \geez{ይቀትሉ} $\rightarrow$ root: \geez{ቀተለ}, tense: imperfective, person: 3rd plural masculine
-    \item \textbf{Generation}: (\geez{ቀተለ}, imperfective, 3PM) $\rightarrow$ \geez{ይቀትሉ}
-\end{enumerate}
+EthioMorph does this in both directions:
+
+\textbf{Analysis}: \geez{ይቀትሉ} $\rightarrow$ root: \geez{ቀተለ}, tense: imperfective, subject: 3rd plural masculine
+
+\textbf{Generation}: (\geez{ቀተለ}, imperfective, 3PM) $\rightarrow$ \geez{ይቀትሉ}
 
 \section{Unicode Mathematics for Ethiopic}
 
@@ -104,7 +103,7 @@ Order & Unicode & Character & Vowel \\
 
 \subsection{Vowel Arithmetic}
 
-Given any Ethiopic character, we can compute its base consonant and vowel order:
+Since vowel forms are consecutive in Unicode, you can do math on them:
 
 \begin{equation}
 \text{order}(c) = ((c - \text{base\_offset}) \mod 8) + 1
@@ -114,7 +113,7 @@ Given any Ethiopic character, we can compute its base consonant and vowel order:
 \text{base}(c) = c - (\text{order}(c) - 1)
 \end{equation}
 
-To change a character's vowel:
+To change a vowel:
 
 \begin{equation}
 \text{revowelize}(\text{base}, \text{order}) = \text{base} + (\text{order} - 1)
@@ -144,9 +143,9 @@ def get_char_by_order(base, order):
 
 \section{The C1-C2-C3 Radical System}
 
-\subsection{Radical Representation}
+\subsection{Naming the Radicals}
 
-Ge'ez verbs use a consonantal skeleton notation:
+I use C1, C2, C3 to refer to the consonants:
 \begin{itemize}
     \item \textbf{C1}: First radical (consonant 1)
     \item \textbf{C2}: Second radical
@@ -156,9 +155,9 @@ Ge'ez verbs use a consonantal skeleton notation:
 
 For \geez{ቀተለ}: C1=\geez{ቀ}, C2=\geez{ተ}, C3=\geez{ለ}
 
-\subsection{Template Definition}
+\subsection{How Templates Work}
 
-Each conjugation is defined by a \textbf{vowel map} specifying the order for each radical:
+Each conjugation form is just a vowel pattern plus optional prefix/suffix:
 
 \begin{lstlisting}[language=Python]
 # Perfective 3rd singular masculine for Type A
@@ -180,10 +179,10 @@ template = {
 # Result: yi + C1(1st) + C2(6th) + C3(6th) = yi-qä-t-l
 \end{lstlisting}
 
-\subsection{The Generation Algorithm}
+\subsection{Putting It Together}
 
 \begin{algorithm}
-\caption{Word Generation from Root}
+\caption{Generate a conjugated word}
 \begin{algorithmic}[1]
 \REQUIRE root (string), tense, subject, verb\_type
 \ENSURE conjugated word (string)
@@ -204,9 +203,9 @@ template = {
 
 \section{Suffix Fusion Rules}
 
-\subsection{The Collision Problem}
+\subsection{When Suffixes Collide}
 
-When a vowel suffix attaches to a consonant-only (6th order) ending, they must fuse:
+When you attach a vowel suffix to a consonant-only ending (6th order), you can't just concatenate them:
 
 \begin{equation}
 \text{C}_{6\text{th}} + \text{V}_{\text{suffix}} \rightarrow \text{C}_{\text{order}(V)}
@@ -274,16 +273,16 @@ In Classical Ge'ez grammar, verbs are classified into ``homes'' (\geez{ቤት}) 
 \label{tab:verb_homes}
 \end{table}
 
-\subsection{Classification Rules}
+\subsection{How to Classify a Verb}
 
-The verb ``home'' determines which conjugation templates to use. Detection is based on:
+Each verb type uses different conjugation templates, so you need to figure out the type first. The algorithm checks:
 
-\begin{enumerate}
-    \item \textbf{Radical count}: 3 (triradical) vs 4 (quadriliteral)
-    \item \textbf{C1 vowel order}: The vowel of the first radical in citation form
-    \item \textbf{Consonant quality}: Laryngeals (\geez{ሀ, ሐ, ኀ, አ, ዐ}) or weak (\geez{ወ, የ})
-    \item \textbf{Gemination pattern}: Whether C2 doubles (Type B)
-\end{enumerate}
+\begin{itemize}
+    \item How many radicals? (3 = triradical, 4 = quadriliteral)
+    \item What vowel does C1 have? (4th order = Type C, 7th order = Type C-O)
+    \item Any laryngeals (\geez{ሀ, ሐ, ኀ, አ, ዐ}) or weak consonants (\geez{ወ, የ})?
+    \item Does C2 double? (That's Type B)
+\end{itemize}
 
 \begin{table}[h]
 \centering
@@ -306,7 +305,7 @@ Default & Type A & \geez{ቀተለ} \\
 \subsection{Detection Algorithm}
 
 \begin{algorithm}
-\caption{Verb Home Detection (All 8 Types)}
+\caption{Figure out which verb type this is}
 \begin{algorithmic}[1]
 \REQUIRE root (string)
 \ENSURE (type, features)
@@ -350,7 +349,7 @@ Default & Type A & \geez{ቀተለ} \\
 
 \subsection{Feature Detection}
 
-Additional features modify conjugation behavior:
+Some roots have special properties that affect conjugation:
 
 \begin{lstlisting}[language=Python]
 LARYNGEALS = {'h', 'H', 'x', 'a', 'A'}  # Gutturals
@@ -382,9 +381,9 @@ def detect_features(root, radicals):
 
 \section{Laryngeal Vowel Shift Rules}
 
-\subsection{The Laryngeal Problem}
+\subsection{Gutturals Are Picky}
 
-Laryngeal consonants (\geez{ሀ, ሐ, ኀ, አ, ዐ}) cannot take certain vowels and trigger shifts:
+Laryngeal consonants (\geez{ሀ, ሐ, ኀ, አ, ዐ}) don't accept certain vowels. When you try to apply a 1st order vowel to a laryngeal, it shifts:
 
 \begin{equation}
 \text{Laryngeal} + \text{1st order} \rightarrow \text{Laryngeal} + \text{4th order}
@@ -408,25 +407,25 @@ def apply_laryngeal_rules(char, position, features):
     return char
 \end{lstlisting}
 
-\section{Stemmer: The Analysis Pipeline}
+\section{Stemmer: Going Backwards}
 
-The Stemmer reverses word formation to extract roots and grammatical information.
+The Stemmer takes a conjugated word and figures out its root. It's the reverse of generation.
 
-\subsection{Processing Pipeline}
+\subsection{The Steps}
 
 \begin{enumerate}
-    \item \textbf{Normalize}: Map homophonous characters to canonical forms
-    \item \textbf{Strip Prefixes}: Identify and remove grammatical prefixes
-    \item \textbf{Strip Suffixes}: Identify and remove grammatical suffixes
-    \item \textbf{Extract Skeleton}: Get consonant-only representation
-    \item \textbf{Reconstruct Root}: Handle weak consonant restoration
-    \item \textbf{Identify Pattern}: Determine tense/person/stem
-    \item \textbf{Detect Home}: Classify verb type
+    \item Normalize spelling (Ge'ez has some redundant characters)
+    \item Strip prefixes (\geez{ይ}, \geez{ተ}, \geez{አ}, etc.)
+    \item Strip suffixes (\geez{ኡ}, \geez{ከ}, etc.)
+    \item Get the consonant skeleton
+    \item Restore any weak consonants that disappeared
+    \item Figure out tense/person from what you stripped
+    \item Classify the verb type
 \end{enumerate}
 
-\subsection{Prefix Priority}
+\subsection{Checking Prefixes}
 
-Prefixes must be checked longest-first to avoid partial matches:
+You have to check longer prefixes first, or you'll make wrong matches:
 
 \begin{lstlisting}[language=Python]
 PREFIXES = [
@@ -498,7 +497,7 @@ def identify_verb_pattern(stem, stripped_prefixes):
 
 \subsection{Lookup Maps}
 
-Three pre-computed maps enable O(1) character transformations:
+I precompute three dictionaries so character lookups are instant:
 
 \begin{lstlisting}[language=Python]
 # Character -> Base consonant
@@ -568,7 +567,7 @@ REVOWELIZATION_MAP = {
 |   Output Word    |
 +------------------+
 \end{verbatim}
-\caption{EthioMorph Processing Pipeline}
+\caption{How a word flows through the system}
 \end{figure}
 
 \section{API Usage}
@@ -611,17 +610,12 @@ Response:
 }
 \end{lstlisting}
 
-\section{Conclusion}
+\section{What I Learned}
 
-EthioMorph demonstrates that Ge'ez morphology can be effectively implemented through:
+Building this taught me that Ge'ez morphology is more regular than I expected. The Unicode trick—that vowel forms are consecutive codepoints—turns what seems like a complex linguistic operation into basic arithmetic. Most of the code is just applying templates and handling edge cases for gutturals.
 
-\begin{enumerate}
-    \item \textbf{Unicode arithmetic}: Exploiting the systematic Ethiopic block structure for O(1) vowel transformations
-    \item \textbf{Template-driven generation}: Encoding linguistic rules as data rather than code
-    \item \textbf{Algorithmic classification}: Detecting verb types from formal properties rather than lexicon lookup
-    \item \textbf{Bidirectional processing}: Using the same core rules for both analysis and generation
-\end{enumerate}
+The system isn't complete. It handles the eight main verb types and basic stems, but there are derived forms and obscure patterns I haven't implemented. Still, it works well enough to conjugate most verbs you'd encounter in classical texts.
 
-The source code is available at: \texttt{github.com/esubalew/EthioMorph}
+Code: \texttt{github.com/esubalew/EthioMorph}
 
 \end{document}
