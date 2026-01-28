@@ -28,7 +28,7 @@ class handler(BaseHTTPRequestHandler):
         
         try:
             stemmer = GeezStemmer()
-            result = stemmer.analyze(word)
+            result = stemmer.extract_root(word)
             self.wfile.write(json.dumps(result, ensure_ascii=False, indent=2).encode())
         except Exception as e:
             self.wfile.write(json.dumps({"error": str(e)}).encode())

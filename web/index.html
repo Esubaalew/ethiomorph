@@ -124,15 +124,46 @@
                             </nav>
                         </div>
                         <div className="flex items-center gap-3">
-                            <a href="/api/health" target="_blank" className="size-9 rounded-full bg-surface hover:bg-bronze flex items-center justify-center border border-bronze transition-colors" title="API Health">
+                            <a href="/api/health" target="_blank" className="hidden md:flex size-9 rounded-full bg-surface hover:bg-bronze items-center justify-center border border-bronze transition-colors" title="API Health">
                                 <Icon name="monitor_heart" className="text-lg" />
                             </a>
-                            <a href="/api/templates" target="_blank" className="size-9 rounded-full bg-surface hover:bg-bronze flex items-center justify-center border border-bronze transition-colors" title="Templates JSON">
+                            <a href="/api/templates" target="_blank" className="hidden md:flex size-9 rounded-full bg-surface hover:bg-bronze items-center justify-center border border-bronze transition-colors" title="Templates JSON">
                                 <Icon name="data_object" className="text-lg" />
                             </a>
                         </div>
                     </div>
                 </header>
+            );
+        };
+
+        // Mobile Bottom Navigation
+        const MobileNav = ({ activeTab, setActiveTab }) => {
+            const tabs = [
+                { id: 'xray', label: 'X-Ray', icon: 'radiology' },
+                { id: 'matrix', label: 'Grid', icon: 'grid_view' },
+                { id: 'slider', label: 'Morph', icon: 'tune' },
+                { id: 'compare', label: 'Compare', icon: 'compare' },
+                { id: 'patterns', label: 'Patterns', icon: 'library_books' },
+            ];
+            return (
+                <nav className="md:hidden fixed bottom-0 left-0 right-0 bg-surface-dark border-t border-bronze z-50">
+                    <div className="flex justify-around items-center py-2">
+                        {tabs.map(tab => (
+                            <button
+                                key={tab.id}
+                                onClick={() => setActiveTab(tab.id)}
+                                className={`flex flex-col items-center gap-0.5 px-3 py-1 rounded-lg transition-all ${
+                                    activeTab === tab.id 
+                                        ? 'text-primary' 
+                                        : 'text-muted'
+                                }`}
+                            >
+                                <Icon name={tab.icon} className={`text-xl ${activeTab === tab.id ? 'text-primary' : ''}`} />
+                                <span className="text-[10px] font-medium">{tab.label}</span>
+                            </button>
+                        ))}
+                    </div>
+                </nav>
             );
         };
 
@@ -910,12 +941,15 @@
             return (
                 <div className="h-screen flex flex-col">
                     <Nav activeTab={activeTab} setActiveTab={setActiveTab} />
-                    {activeTab === 'xray' && <XRayTab />}
-                    {activeTab === 'matrix' && <MatrixTab />}
-                    {activeTab === 'slider' && <SliderTab />}
-                    {activeTab === 'compare' && <CompareTab />}
-                    {activeTab === 'radial' && <RadialTab />}
-                    {activeTab === 'patterns' && <PatternsTab />}
+                    <div className="flex-1 overflow-auto pb-16 md:pb-0">
+                        {activeTab === 'xray' && <XRayTab />}
+                        {activeTab === 'matrix' && <MatrixTab />}
+                        {activeTab === 'slider' && <SliderTab />}
+                        {activeTab === 'compare' && <CompareTab />}
+                        {activeTab === 'radial' && <RadialTab />}
+                        {activeTab === 'patterns' && <PatternsTab />}
+                    </div>
+                    <MobileNav activeTab={activeTab} setActiveTab={setActiveTab} />
                 </div>
             );
         };
