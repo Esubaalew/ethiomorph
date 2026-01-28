@@ -44,9 +44,9 @@ NLP Course Project}
 \maketitle
 
 \begin{abstract}
-Ge'ez verb conjugation follows strict patterns. Given a root like \geez{ቀተለ}, every form (perfective, imperfective, jussive, imperative) can be computed by rearranging vowels and attaching affixes. No dictionary lookup, no statistical model—just rules.
+Ge'ez verb conjugation follows strict patterns. Given a root like \geez{ቀተለ}, every form (perfective, imperfective, jussive, imperative) can be computed by rearranging vowels and attaching affixes. No dictionary lookup, no statistical model. Just rules.
 
-This paper documents EthioMorph, a Python system I built to do exactly that. It handles all eight verb types that traditional Ge'ez grammar recognizes: \geez{ቀተለ}, \geez{ቀደሰ}, \geez{ባረከ}, \geez{ጦመረ}, \geez{ሴሰየ}, \geez{ክህለ}, \geez{ማሕረከ}, and \geez{ተንበለ}. The core trick: Ethiopic Unicode assigns consecutive codepoints to vowel forms, so changing a vowel is just arithmetic. The rest is template matching and a few special rules for laryngeal consonants.
+This paper documents EthioMorph, a Python system that does exactly that. It handles all eight verb types that traditional Ge'ez grammar recognizes: \geez{ቀተለ}, \geez{ቀደሰ}, \geez{ባረከ}, \geez{ጦመረ}, \geez{ሴሰየ}, \geez{ክህለ}, \geez{ማሕረከ}, and \geez{ተንበለ}. The core trick: Ethiopic Unicode assigns consecutive codepoints to vowel forms, so changing a vowel is just arithmetic. The rest is template matching and a few special rules for laryngeal consonants.
 \end{abstract}
 
 \begin{IEEEkeywords}
@@ -55,7 +55,7 @@ Ge'ez, morphological analysis, NLP, Unicode processing, Semitic morphology, rule
 
 \section{Introduction}
 
-I wanted to build a Ge'ez conjugator that works from first principles. Not a lookup table with thousands of pre-stored forms, and not a neural network trained on text. Just the rules, written in code.
+EthioMorph is a Ge'ez conjugator that works from first principles. Not a lookup table with thousands of pre-stored forms, and not a neural network trained on text. Just the rules, written in code.
 
 Why is this even possible? Because Ge'ez is regular. The same root (\geez{ቀተለ}, meaning ``kill'') always conjugates the same way. There are eight verb types and maybe a dozen special cases for guttural consonants. Once you encode those rules, you can generate or analyze any verb.
 
@@ -145,7 +145,7 @@ def get_char_by_order(base, order):
 
 \subsection{Naming the Radicals}
 
-I use C1, C2, C3 to refer to the consonants:
+C1, C2, C3 refer to the consonants:
 \begin{itemize}
     \item \textbf{C1}: First radical (consonant 1)
     \item \textbf{C2}: Second radical
@@ -497,7 +497,7 @@ def identify_verb_pattern(stem, stripped_prefixes):
 
 \subsection{Lookup Maps}
 
-I precompute three dictionaries so character lookups are instant:
+Three precomputed dictionaries make character lookups instant:
 
 \begin{lstlisting}[language=Python]
 # Character -> Base consonant
@@ -610,12 +610,12 @@ Response:
 }
 \end{lstlisting}
 
-\section{What I Learned}
+\section{Observations}
 
-Building this taught me that Ge'ez morphology is more regular than I expected. The Unicode trick—that vowel forms are consecutive codepoints—turns what seems like a complex linguistic operation into basic arithmetic. Most of the code is just applying templates and handling edge cases for gutturals.
+Ge'ez morphology turns out to be more regular than expected. The Unicode trick (vowel forms are consecutive codepoints) turns what seems like a complex linguistic operation into basic arithmetic. Most of the code is just applying templates and handling edge cases for gutturals.
 
-The system isn't complete. It handles the eight main verb types and basic stems, but there are derived forms and obscure patterns I haven't implemented. Still, it works well enough to conjugate most verbs you'd encounter in classical texts.
+The system isn't complete. It handles the eight main verb types and basic stems, but there are derived forms and obscure patterns not yet implemented. Still, it works well enough to conjugate most verbs you'd encounter in classical texts.
 
-Code: \texttt{github.com/esubalew/EthioMorph}
+Code: \texttt{github.com/Esubaalew/EthioMorph}
 
 \end{document}
