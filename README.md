@@ -53,4 +53,5 @@ Generate: ቀተለ → ቀተለ, ይቀትል, ይትቀተል, ያቀትል, 
 
 
 **Esubalew Chekol**  
+As a course project fulfilment for NLP
 Addis Ababa University

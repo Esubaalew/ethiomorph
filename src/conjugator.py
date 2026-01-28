@@ -142,6 +142,9 @@ class EthioMorphGenerator:
         """
         Detect and strip known prefixes from the root for processing.
         
+        Only strips prefix if the remaining root has at least 3 radicals.
+        This prevents incorrectly stripping "አ-" from roots like "አመረ".
+        
         Args:
             root: The input root string.
             
@@ -153,7 +156,11 @@ class EthioMorphGenerator:
         
         for p in prefixes:
             if root.startswith(p) and len(root) > len(p):
-                return root[len(p):], p
+                remaining = root[len(p):]
+                # Only strip if remaining has at least 3 characters (radicals)
+                remaining_consonants = [devowelize(c) for c in remaining]
+                if len(remaining_consonants) >= 3:
+                    return remaining, p
                 
         return root, ""
     
@@ -694,7 +701,8 @@ class EthioMorphGenerator:
         derived_keys = [
             "infinitive", "active_participle", "passive_participle", 
             "instrumental", "verbal_noun", "abstract_noun",
-            "verbal_noun_alt", "causative_agent", "passive_adj", "place_noun"
+            "verbal_noun_alt", "causative_agent", "passive_adj", "place_noun",
+            "result_noun"
         ]
         
         for key in derived_keys:
@@ -809,7 +817,8 @@ class EthioMorphGenerator:
         derived_keys = [
             "infinitive", "active_participle", "passive_participle", 
             "instrumental", "verbal_noun", "abstract_noun",
-            "verbal_noun_alt", "causative_agent", "passive_adj", "place_noun"
+            "verbal_noun_alt", "causative_agent", "passive_adj", "place_noun",
+            "result_noun"
         ]
         for key in derived_keys:
             gen_result = self.generate_derived(root, key, verb_type)
