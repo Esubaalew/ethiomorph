@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html class="dark" lang="en">
 <head>
+    <script>
+        if (localStorage.getItem('theme') === 'light') {
+            document.documentElement.classList.remove('dark');
+        }
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EthioMorph - Research Platform</title>
@@ -23,38 +28,56 @@
             theme: {
                 extend: {
                     colors: {
-                        primary: "#f9d406",
-                        bronze: "#3a3727",
-                        surface: "#2d2a1b",
-                        "surface-dark": "#1a180b",
-                        "background-dark": "#23200f",
-                        muted: "#bbb69b"
+                        primary: "var(--color-primary)",
+                        bronze: "var(--color-bronze)",
+                        surface: "var(--color-surface)",
+                        "surface-dark": "var(--color-surface-dark)",
+                        "background-dark": "var(--color-bg)",
+                        muted: "var(--color-muted)"
                     },
                     fontFamily: {
                         display: ["Lexend", "Space Grotesk", "sans-serif"],
                         ethiopic: ["Noto Sans Ethiopic", "serif"]
                     },
                     boxShadow: {
-                        glow: "0 0 15px rgba(249, 212, 6, 0.3)",
-                        "glow-strong": "0 0 25px rgba(249, 212, 6, 0.5)"
+                        glow: "0 0 15px rgba(255, 255, 255, 0.1)",
+                        "glow-strong": "0 0 25px rgba(255, 255, 255, 0.2)"
                     }
                 }
             }
         }
     </script>
     <style>
-        body { background: #23200f; }
-        ::-webkit-scrollbar { width: 8px; height: 8px; }
-        ::-webkit-scrollbar-track { background: #1a180b; }
-        ::-webkit-scrollbar-thumb { background: #3a3727; border-radius: 4px; }
-        ::-webkit-scrollbar-thumb:hover { background: #55513a; }
-        
-        .manuscript-bg {
-            background-image: radial-gradient(circle at 50% 50%, rgba(249, 212, 6, 0.03) 0%, transparent 70%),
-                              repeating-linear-gradient(45deg, rgba(255,255,255,0.01) 0px, rgba(255,255,255,0.01) 1px, transparent 1px, transparent 20px);
+        :root {
+            --color-primary: #000000;
+            --color-bronze: #e5e5e5;
+            --color-surface: #f5f5f5;
+            --color-surface-dark: #fafafa;
+            --color-bg: #ffffff;
+            --color-muted: #666666;
         }
-        .glow-text { text-shadow: 0 0 15px rgba(249, 212, 6, 0.5); }
-        .glow-box { box-shadow: 0 0 25px rgba(249, 212, 6, 0.15); }
+        .dark {
+            --color-primary: #ffffff;
+            --color-bronze: #333333;
+            --color-surface: #1a1a1a;
+            --color-surface-dark: #0f0f0f;
+            --color-bg: #0a0a0a;
+            --color-muted: #888888;
+        }
+        body { background: var(--color-bg); }
+        .dark body, html.dark body { background: #0a0a0a; }
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { background: #f5f5f5; }
+        .dark ::-webkit-scrollbar-track { background: #111; }
+        ::-webkit-scrollbar-thumb { background: #ccc; border-radius: 4px; }
+        .dark ::-webkit-scrollbar-thumb { background: #333; }
+        ::-webkit-scrollbar-thumb:hover { background: #999; }
+        .dark ::-webkit-scrollbar-thumb:hover { background: #444; }
+        
+        .manuscript-bg { background: transparent; }
+        .glow-text { text-shadow: none; }
+        .glow-box { box-shadow: 0 0 20px rgba(0, 0, 0, 0.05); }
+        .dark .glow-box { box-shadow: 0 0 20px rgba(255, 255, 255, 0.05); }
         .ghost-skeleton { font-size: 10rem; opacity: 0.03; user-select: none; pointer-events: none; }
         .subject-wheel-mask { mask-image: linear-gradient(to bottom, transparent, black 15%, black 85%, transparent); }
         @keyframes spin-slow { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
@@ -81,12 +104,12 @@
         // Navigation Component
         const Nav = ({ activeTab, setActiveTab }) => {
             const tabs = [
-                { id: 'xray', label: 'X-Ray', icon: 'radiology' },
+                { id: 'xray', label: 'Analyze', icon: 'search' },
                 { id: 'matrix', label: 'Multiplier', icon: 'grid_view' },
                 { id: 'slider', label: 'Morpher', icon: 'tune' },
                 { id: 'compare', label: 'Compare', icon: 'compare' },
-                { id: 'radial', label: 'Root Tree', icon: 'hub' },
-                { id: 'patterns', label: 'Patterns', icon: 'auto_awesome' }
+                { id: 'radial', label: 'Root Tree', icon: 'account_tree' },
+                { id: 'patterns', label: 'Patterns', icon: 'category' }
             ];
 
             const titles = {
@@ -98,12 +121,12 @@
                 <header className="flex-none border-b border-bronze bg-surface-dark px-6 py-3 z-50">
                     <div className="flex items-center justify-between">
                         <div className="flex items-center gap-8">
-                            <div className="flex items-center gap-3 text-white">
+                            <div className="flex items-center gap-3 text-gray-900 dark:text-white">
                                 <div className="size-9 rounded-lg bg-primary/10 flex items-center justify-center text-primary">
                                     <Icon name="translate" className="text-2xl" />
                                 </div>
                                 <div>
-                                    <h2 className="text-white text-lg font-bold tracking-tight leading-none">EthioMorph</h2>
+                                    <h2 className="text-gray-900 dark:text-white text-lg font-bold tracking-tight leading-none">EthioMorph</h2>
                                     <span className="text-xs text-primary/70">{titles[activeTab]}</span>
                                 </div>
                             </div>
@@ -114,8 +137,8 @@
                                         onClick={() => setActiveTab(tab.id)}
                                         className={`px-3 py-1.5 rounded text-sm font-medium flex items-center gap-1.5 transition-all ${
                                             activeTab === tab.id 
-                                                ? 'bg-primary text-background-dark font-bold shadow-glow' 
-                                                : 'text-muted hover:text-white'
+                                                ? 'bg-primary text-background-dark font-bold' 
+                                                : 'text-muted hover:text-gray-900 dark:text-white'
                                         }`}
                                     >
                                         <Icon name={tab.icon} className="text-base" />
@@ -125,6 +148,16 @@
                             </nav>
                         </div>
                     <div className="flex items-center gap-3">
+                            <button 
+                                onClick={() => {
+                                    document.documentElement.classList.toggle('dark');
+                                    localStorage.setItem('theme', document.documentElement.classList.contains('dark') ? 'dark' : 'light');
+                                }} 
+                                className="size-9 rounded-full bg-surface hover:bg-bronze flex items-center justify-center border border-bronze transition-colors" 
+                                title="Toggle theme"
+                            >
+                                <Icon name="contrast" className="text-lg" />
+                            </button>
                             <a href="/api/health" target="_blank" className="hidden md:flex size-9 rounded-full bg-surface hover:bg-bronze items-center justify-center border border-bronze transition-colors" title="API Health">
                                 <Icon name="monitor_heart" className="text-lg" />
                             </a>
@@ -140,11 +173,11 @@
         // Mobile Bottom Navigation
         const MobileNav = ({ activeTab, setActiveTab }) => {
             const tabs = [
-                { id: 'xray', label: 'X-Ray', icon: 'radiology' },
+                { id: 'xray', label: 'Analyze', icon: 'search' },
                 { id: 'matrix', label: 'Grid', icon: 'grid_view' },
                 { id: 'slider', label: 'Morph', icon: 'tune' },
                 { id: 'compare', label: 'Compare', icon: 'compare' },
-                { id: 'patterns', label: 'Patterns', icon: 'library_books' },
+                { id: 'patterns', label: 'Patterns', icon: 'category' },
             ];
             return (
                 <nav className="md:hidden fixed bottom-0 left-0 right-0 bg-surface-dark border-t border-bronze z-50">
@@ -204,7 +237,7 @@
                                 value={word}
                                 onChange={(e) => setWord(e.target.value)}
                                         onKeyPress={(e) => e.key === 'Enter' && !e.shiftKey && (e.preventDefault(), analyze())}
-                                        className="w-full resize-none bg-surface-dark border-none focus:ring-0 min-h-[140px] p-6 text-4xl lg:text-5xl font-ethiopic text-white placeholder-muted/30"
+                                        className="w-full resize-none bg-surface-dark border-none focus:ring-0 min-h-[140px] p-6 text-4xl lg:text-5xl font-ethiopic text-gray-900 dark:text-white placeholder-muted/30"
                                         placeholder="Enter Ge'ez text..."
                                         spellCheck="false"
                                     />
@@ -212,9 +245,9 @@
                             <button
                                 onClick={analyze}
                                 disabled={loading}
-                                            className="flex items-center gap-2 px-6 py-2.5 bg-primary hover:bg-[#e0c000] text-background-dark text-sm font-bold rounded-lg transition-all shadow-glow disabled:opacity-50"
+                                            className="flex items-center gap-2 px-6 py-2.5 bg-primary hover:bg-gray-200 text-background-dark text-sm font-bold rounded-lg transition-all disabled:opacity-50"
                             >
-                                <Icon name="auto_awesome" />
+                                <Icon name="arrow_forward" />
                                             {loading ? 'Analyzing...' : 'Analyze Sequence'}
                             </button>
                                     </div>
@@ -240,12 +273,12 @@
                                         {/* Input Stage */}
                                         <div className="flex gap-6 mb-6 relative">
                                             <div className="size-10 rounded-full bg-surface border-2 border-bronze flex items-center justify-center z-10">
-                                                <Icon name="input" className="text-white" />
+                                                <Icon name="input" className="text-gray-900 dark:text-white" />
                                             </div>
                                             <div className="flex-1">
                                                 <p className="text-xs font-mono text-muted/50 mb-2">STAGE 01: INPUT</p>
                                                 <div className="bg-surface-dark border border-bronze rounded-lg p-4 flex justify-between items-center">
-                                                    <span className="text-2xl font-bold font-ethiopic text-white">{result.input}</span>
+                                                    <span className="text-2xl font-bold font-ethiopic text-gray-900 dark:text-white">{result.input}</span>
                                                     <span className="text-xs text-muted/50">Original Token</span>
                                                 </div>
                                             </div>
@@ -280,17 +313,17 @@
 
                                         {/* Root Identified */}
                                         <div className="flex gap-6 relative">
-                                            <div className="size-10 rounded-full bg-primary/20 border-2 border-primary flex items-center justify-center z-10 shadow-glow">
+                                            <div className="size-10 rounded-full bg-primary/20 border-2 border-primary flex items-center justify-center z-10">
                                                 <Icon name="diamond" className="text-primary" />
                                             </div>
                                             <div className="flex-1">
                                                 <p className="text-xs font-mono text-primary mb-2">STAGE 03: ROOT IDENTIFIED</p>
                                                 <div className="bg-surface-dark border-2 border-primary/50 rounded-xl p-5 glow-box relative overflow-hidden">
-                                                    <div className="absolute inset-0 opacity-10" style={{backgroundImage: 'radial-gradient(#f9d406 1px, transparent 1px)', backgroundSize: '10px 10px'}}></div>
+                                                    <div className="absolute inset-0 opacity-5" style={{backgroundImage: 'radial-gradient(#000000 1px, transparent 1px)', backgroundSize: '10px 10px'}}></div>
                                                     <div className="relative flex justify-between items-center">
                                                         <div>
-                                                            <p className="text-3xl font-bold font-ethiopic text-primary glow-text">{result.root}</p>
-                                                            <p className="text-sm text-white mt-1">{result.root_type?.replace(/_/g, ' ')} ({result.root?.split('').join('-')})</p>
+                                                            <p className="text-3xl font-bold font-ethiopic text-primary">{result.root}</p>
+                                                            <p className="text-sm text-gray-900 dark:text-white mt-1">{result.root_type?.replace(/_/g, ' ')} ({result.root?.split('').join('-')})</p>
                                                         </div>
                                                         <div className="size-12 rounded-full bg-primary/10 flex items-center justify-center">
                                                             <Icon name="check_circle" className="text-primary text-2xl" />
@@ -307,7 +340,7 @@
                                     <h3 className="text-muted text-xs font-bold uppercase tracking-widest mb-3">Lexical Data</h3>
                                     <div className="bg-surface-dark border border-bronze rounded-xl overflow-hidden">
                                         <div className="bg-surface border-b border-bronze px-5 py-3 flex justify-between items-center">
-                                            <span className="text-xl font-bold text-white font-ethiopic">{result.root}</span>
+                                            <span className="text-xl font-bold text-gray-900 dark:text-white font-ethiopic">{result.root}</span>
                                             <span className="text-[10px] font-bold uppercase px-2 py-1 rounded bg-primary/20 text-primary border border-primary/30">
                                                 {result.root_type?.replace('type_', 'TYPE ')}
                                             </span>
@@ -316,19 +349,19 @@
                                             {result.meaning && (
                                                 <div className="mb-6">
                                                     <p className="text-xs text-muted/50 uppercase tracking-wider mb-1">Meaning</p>
-                                                    <p className="text-white text-lg">{result.meaning}</p>
+                                                    <p className="text-gray-900 dark:text-white text-lg">{result.meaning}</p>
                                                 </div>
                                             )}
                                             <div>
                                                 <p className="text-xs text-muted/50 uppercase tracking-wider mb-1">Analysis Method</p>
-                                                <p className="text-white">{result.analysis?.method}</p>
+                                                <p className="text-gray-900 dark:text-white">{result.analysis?.method}</p>
                                             </div>
                                         </div>
                                     </div>
                                     <div className="grid grid-cols-2 gap-3">
                                         <div className="bg-surface rounded-lg p-4 border border-bronze">
                                             <p className="text-xs text-muted/50 uppercase">Pattern</p>
-                                            <p className="text-white text-lg font-bold">{result.analysis?.pattern?.english_name || '-'}</p>
+                                            <p className="text-gray-900 dark:text-white text-lg font-bold">{result.analysis?.pattern?.english_name || '-'}</p>
                                         </div>
                                         <div className="bg-surface rounded-lg p-4 border border-bronze">
                                             <p className="text-xs text-muted/50 uppercase">Confidence</p>
@@ -385,7 +418,7 @@
                     <aside className="w-72 flex-none bg-surface-dark border-r border-bronze flex flex-col z-10">
                         <div className="p-5 border-b border-bronze">
                             <span className="text-xs font-bold tracking-widest text-primary uppercase">Subject Control</span>
-                            <h3 className="text-white text-lg font-bold mt-1">Grammatical Person</h3>
+                            <h3 className="text-gray-900 dark:text-white text-lg font-bold mt-1">Grammatical Person</h3>
                             <p className="text-sm text-muted/50 mt-1">Select subject to filter grid.</p>
                         </div>
                         
@@ -417,7 +450,7 @@
                                             className={`absolute flex flex-col items-center transition-all ${isActive ? 'scale-110' : 'opacity-50 hover:opacity-80'}`}
                                             style={{ transform: `translate(${x}px, ${y}px)` }}
                                         >
-                                            <span className={`font-ethiopic font-bold ${isActive ? 'text-primary text-lg glow-text' : 'text-muted'}`}>{subj.geez}</span>
+                                            <span className={`font-ethiopic font-bold ${isActive ? 'text-primary text-lg' : 'text-muted'}`}>{subj.geez}</span>
                                             <span className={`text-[9px] uppercase ${isActive ? 'text-primary font-bold' : 'text-muted/50'}`}>{subj.label}</span>
                                         </button>
                                     );
@@ -452,7 +485,7 @@
                                     value={root}
                                     onChange={(e) => setRoot(e.target.value)}
                                     onKeyPress={(e) => e.key === 'Enter' && expand()}
-                                    className="flex-1 bg-surface border border-bronze rounded-lg px-3 py-2 text-xl font-ethiopic text-center text-white focus:outline-none focus:border-primary"
+                                    className="flex-1 bg-surface border border-bronze rounded-lg px-3 py-2 text-xl font-ethiopic text-center text-gray-900 dark:text-white focus:outline-none focus:border-primary"
                                 />
                                 <button onClick={expand} disabled={loading} className="px-4 py-2 bg-primary text-background-dark font-bold rounded-lg">
                                     <Icon name="send" />
@@ -464,8 +497,8 @@
                     {/* Main Grid */}
                     <main className="flex-1 min-w-0 overflow-hidden flex flex-col p-6">
                         <div className="mb-6 flex-none">
-                            <h1 className="text-2xl font-bold text-white flex items-baseline gap-3">
-                                Root: <span className="text-primary font-ethiopic glow-text">{root}</span>
+                            <h1 className="text-2xl font-bold text-gray-900 dark:text-white flex items-baseline gap-3">
+                                Root: <span className="text-primary font-ethiopic">{root}</span>
                                 {data?._meta?.meaning && <span className="text-base font-normal text-muted">({data._meta?.meaning})</span>}
                             </h1>
                             <p className="text-muted/70 text-sm mt-1">Morphological Expansion Grid • Showing all subjects</p>
@@ -481,7 +514,7 @@
                                                     <th className="py-4 px-5 text-left text-xs font-bold text-primary uppercase tracking-wider w-32">Subject</th>
                                                     {TENSES.map(t => (
                                                         <th key={t.key} className="py-4 px-5 text-left min-w-[140px]">
-                                                            <span className="text-white text-sm font-bold block">{t.en}</span>
+                                                            <span className="text-gray-900 dark:text-white text-sm font-bold block">{t.en}</span>
                                                             <span className="font-ethiopic text-xs text-primary/70">{t.geez}</span>
                                                         </th>
                                                     ))}
@@ -491,12 +524,12 @@
                                                 {SUBJECTS.map((subj, i) => (
                                                     <tr key={subj.key} className={`transition-colors ${selectedSubject === i ? 'bg-primary/5' : 'hover:bg-surface/50'}`}>
                                                         <td className="py-3 px-5">
-                                                            <span className="font-ethiopic text-lg text-white">{subj.geez}</span>
+                                                            <span className="font-ethiopic text-lg text-gray-900 dark:text-white">{subj.geez}</span>
                                                             <span className="text-xs text-muted/50 block">{subj.en}</span>
                                                         </td>
                                                         {TENSES.map(t => (
                                                             <td key={t.key} className="px-5 py-3">
-                                                                <span className="font-ethiopic text-xl text-white">
+                                                                <span className="font-ethiopic text-xl text-gray-900 dark:text-white">
                                                                     {data?.[t.key]?.[subj.key] || '—'}
                                                                 </span>
                                                             </td>
@@ -514,7 +547,7 @@
                                     {data?.derived && Object.entries(data.derived).map(([key, word]) => (
                                         <div key={key} className="bg-surface-dark rounded-lg p-4 border border-bronze/50 hover:border-primary/30 transition-all">
                                             <p className="text-[10px] text-muted/50 uppercase tracking-wider">{key.replace(/_/g, ' ')}</p>
-                                            <p className="font-ethiopic text-xl text-white">{word}</p>
+                                            <p className="font-ethiopic text-xl text-gray-900 dark:text-white">{word}</p>
                                         </div>
                                     ))}
                                 </div>
@@ -561,7 +594,7 @@
             return (
                 <main className="flex-1 relative overflow-hidden manuscript-bg">
                     {/* Ghost background */}
-                    <div className="ghost-skeleton absolute inset-0 flex items-center justify-center text-white font-ethiopic">{root}</div>
+                    <div className="ghost-skeleton absolute inset-0 flex items-center justify-center text-gray-900 dark:text-white font-ethiopic">{root}</div>
                     
                     <div className="relative z-10 h-full flex flex-col p-8">
                         {/* Top Controls */}
@@ -574,7 +607,7 @@
                                 value={root}
                                 onChange={(e) => setRoot(e.target.value)}
                                 onKeyPress={(e) => e.key === 'Enter' && expand()}
-                                        className="bg-surface border border-bronze rounded-lg px-4 py-2 text-2xl font-ethiopic w-32 text-center text-white focus:outline-none focus:border-primary"
+                                        className="bg-surface border border-bronze rounded-lg px-4 py-2 text-2xl font-ethiopic w-32 text-center text-gray-900 dark:text-white focus:outline-none focus:border-primary"
                                     />
                                     <button onClick={expand} disabled={loading} className="px-4 py-2 bg-primary text-background-dark font-bold rounded-lg">
                                         {loading ? '...' : 'Load'}
@@ -591,7 +624,7 @@
                                             key={t}
                                             onClick={() => setTense(t)}
                                             className={`px-3 py-2 rounded-lg text-[11px] font-bold uppercase transition-all ${
-                                                tense === t ? 'bg-primary text-background-dark shadow-glow' : 'bg-bronze/50 text-muted hover:text-white'
+                                                tense === t ? 'bg-primary text-background-dark' : 'bg-bronze/50 text-muted hover:text-gray-900 dark:text-white'
                                             }`}
                                         >
                                             {t}
@@ -604,12 +637,12 @@
                         {/* Center Display */}
                         <div className="flex-1 flex items-center justify-center">
                             <div className="text-center">
-                                <div className="text-7xl md:text-8xl lg:text-9xl font-bold font-ethiopic text-primary glow-text transition-all duration-300">
+                                <div className="text-7xl md:text-8xl lg:text-9xl font-bold font-ethiopic text-primary transition-all duration-300">
                                     {currentWord}
                                 </div>
                                 <div className="mt-8">
                                     <span className="inline-block px-6 py-3 rounded-full border border-bronze bg-surface/50 backdrop-blur text-sm uppercase tracking-widest">
-                                        {tense} • <span className="text-white font-bold">{currentSubject.en}</span> • <span className="font-ethiopic text-primary">{currentSubject.geez}</span>
+                                        {tense} • <span className="text-gray-900 dark:text-white font-bold">{currentSubject.en}</span> • <span className="font-ethiopic text-primary">{currentSubject.geez}</span>
                                     </span>
                                 </div>
                             </div>
@@ -625,7 +658,7 @@
                                         onClick={() => setSubjectIndex(i)}
                                         className={`px-4 py-3 rounded-lg border transition-all ${
                                             i === subjectIndex 
-                                                ? 'border-primary bg-primary/10 text-primary scale-110 shadow-glow' 
+                                                ? 'border-primary bg-primary/10 text-primary scale-110' 
                                                 : 'border-bronze/50 text-muted/50 hover:border-bronze hover:text-muted'
                                         }`}
                                     >
@@ -674,7 +707,7 @@
                     <div className="max-w-[1400px] mx-auto">
                         <div className="flex flex-wrap items-end justify-between gap-4 mb-8">
                             <div>
-                                <h1 className="text-3xl font-bold text-white mb-2">Comparison Matrix</h1>
+                                <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">Comparison Matrix</h1>
                                 <p className="text-muted/70">Compare conjugation patterns across different verb types</p>
                                                 </div>
                             <div className="flex gap-2 items-end">
@@ -684,10 +717,10 @@
                                         type="text"
                                         value={v}
                                         onChange={(e) => { const newV = [...verbs]; newV[i] = e.target.value; setVerbs(newV); }}
-                                        className="bg-surface border border-bronze rounded-lg px-3 py-2 text-xl font-ethiopic w-24 text-center text-white focus:outline-none focus:border-primary"
+                                        className="bg-surface border border-bronze rounded-lg px-3 py-2 text-xl font-ethiopic w-24 text-center text-gray-900 dark:text-white focus:outline-none focus:border-primary"
                                     />
                                 ))}
-                                <button onClick={() => setVerbs([...verbs, ''])} className="px-3 py-2 border border-bronze/50 rounded-lg text-muted hover:text-white">
+                                <button onClick={() => setVerbs([...verbs, ''])} className="px-3 py-2 border border-bronze/50 rounded-lg text-muted hover:text-gray-900 dark:text-white">
                                     <Icon name="add" />
                                 </button>
                                 <button onClick={loadAll} disabled={loading} className="px-6 py-2 bg-primary text-background-dark font-bold rounded-lg">
@@ -712,12 +745,12 @@
                                     <tbody className="divide-y divide-bronze/30">
                                         {FORMS.map((form, fi) => (
                                             <tr key={form.key} className={fi % 2 === 0 ? 'bg-background-dark/30' : ''}>
-                                                <td className="p-4 text-sm font-medium text-white sticky left-0 bg-surface-dark border-r border-bronze/30 z-10">
+                                                <td className="p-4 text-sm font-medium text-gray-900 dark:text-white sticky left-0 bg-surface-dark border-r border-bronze/30 z-10">
                                                     {form.label}
                                                 </td>
                                                 {verbs.filter(v => v).map(v => (
                                                     <td key={v} className="p-4 text-center">
-                                                        <span className="font-ethiopic text-xl text-white">{form.get(data[v]) || '—'}</span>
+                                                        <span className="font-ethiopic text-xl text-gray-900 dark:text-white">{form.get(data[v]) || '—'}</span>
                                                     </td>
                                                 ))}
                                                 </tr>
@@ -775,12 +808,12 @@
 
                 svg.append("circle").attr("cx", cx).attr("cy", cy).attr("r", 150).attr("fill", "url(#glow)");
                 svg.append("circle").attr("cx", cx).attr("cy", cy).attr("r", 180).attr("fill", "none").attr("stroke", "rgba(255,255,255,0.05)").attr("stroke-dasharray", "5,5");
-                svg.append("circle").attr("cx", cx).attr("cy", cy).attr("r", 50).attr("fill", "#2d2a1b").attr("stroke", "#f9d406").attr("stroke-width", 3);
+                svg.append("circle").attr("cx", cx).attr("cy", cy).attr("r", 50).attr("fill", "#f5f5f5").attr("stroke", "#000000").attr("stroke-width", 2);
 
                 svg.append("text").attr("x", cx).attr("y", cy - 5).attr("text-anchor", "middle").attr("dominant-baseline", "middle")
                     .attr("fill", "#fff").attr("font-family", "Noto Sans Ethiopic").attr("font-size", "22px").attr("font-weight", "bold")
                     .text(data._meta?.root || root);
-                svg.append("text").attr("x", cx).attr("y", cy + 16).attr("text-anchor", "middle").attr("fill", "#f9d406").attr("font-size", "9px")
+                svg.append("text").attr("x", cx).attr("y", cy + 16).attr("text-anchor", "middle").attr("fill", "#000000").attr("font-size", "9px")
                     .text("ROOT");
 
                 const branches = [
@@ -805,7 +838,7 @@
 
                     const g = svg.append("g").attr("transform", `translate(${bx}, ${by})`);
                     g.append("rect").attr("x", -35).attr("y", -10).attr("width", 70).attr("height", 20).attr("rx", 4)
-                        .attr("fill", "#2d2a1b").attr("stroke", "rgba(249, 212, 6, 0.5)");
+                        .attr("fill", "#f5f5f5").attr("stroke", "rgba(0, 0, 0, 0.2)");
                     g.append("text").attr("x", 0).attr("y", 4).attr("text-anchor", "middle").attr("fill", "#fff").attr("font-size", "9px").attr("font-weight", "bold")
                         .text(branch.label);
 
@@ -818,10 +851,10 @@
 
                         const ig = svg.append("g").attr("transform", `translate(${ix}, ${iy})`).style("cursor", "pointer");
                         ig.append("rect").attr("x", -45).attr("y", -25).attr("width", 90).attr("height", 50).attr("rx", 8)
-                            .attr("fill", "#2d2a1b").attr("stroke", "rgba(255,255,255,0.1)");
+                            .attr("fill", "#f5f5f5").attr("stroke", "rgba(0,0,0,0.1)");
                         ig.append("text").attr("x", 0).attr("y", -3).attr("text-anchor", "middle").attr("fill", "#fff")
                             .attr("font-family", "Noto Sans Ethiopic").attr("font-size", "15px").text(item.word);
-                        ig.append("text").attr("x", 0).attr("y", 12).attr("text-anchor", "middle").attr("fill", "#f9d406").attr("font-size", "8px")
+                        ig.append("text").attr("x", 0).attr("y", 12).attr("text-anchor", "middle").attr("fill", "#000000").attr("font-size", "8px")
                             .text(item.label.toUpperCase());
                     });
                 });
@@ -832,7 +865,7 @@
                     <div className="max-w-[1000px] mx-auto">
                         <div className="flex items-center justify-between mb-6">
                             <div>
-                                <h1 className="text-2xl font-bold text-white">Radial Root Tree</h1>
+                                <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Radial Root Tree</h1>
                                 <p className="text-muted/70 text-sm">Interactive visualization of root derivations</p>
                             </div>
                             <div className="flex gap-3 items-center">
@@ -841,7 +874,7 @@
                                 value={root}
                                 onChange={(e) => setRoot(e.target.value)}
                                 onKeyPress={(e) => e.key === 'Enter' && expand()}
-                                    className="bg-surface border border-bronze rounded-lg px-4 py-2 text-2xl font-ethiopic w-32 text-center text-white focus:outline-none focus:border-primary"
+                                    className="bg-surface border border-bronze rounded-lg px-4 py-2 text-2xl font-ethiopic w-32 text-center text-gray-900 dark:text-white focus:outline-none focus:border-primary"
                             />
                                 <button onClick={expand} disabled={loading} className="px-6 py-2 bg-primary text-background-dark font-bold rounded-lg flex items-center gap-2">
                                 <Icon name="hub" />
@@ -849,7 +882,7 @@
                             </button>
                             </div>
                         </div>
-                        <div className="bg-surface-dark/50 rounded-xl border border-bronze p-8 flex justify-center items-center min-h-[500px]" style={{backgroundImage: 'radial-gradient(rgba(249,212,6,0.03) 1px, transparent 1px)', backgroundSize: '20px 20px'}}>
+                        <div className="bg-surface-dark/50 rounded-xl border border-bronze p-8 flex justify-center items-center min-h-[500px]">
                             {data && !data.error ? (
                                 <svg ref={svgRef}></svg>
                             ) : (
@@ -883,7 +916,7 @@
                     <div className="max-w-[1400px] mx-auto">
                         <div className="flex items-end justify-between mb-8">
                             <div>
-                                <h1 className="text-3xl font-bold text-white mb-2">Pattern Library</h1>
+                                <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">Pattern Library</h1>
                                 <p className="text-muted/70">Morphological templates from templates.json</p>
                             </div>
                             <a href="/api/templates" target="_blank" className="flex items-center gap-2 px-4 py-2 border border-primary/30 rounded-lg text-sm font-medium text-primary hover:bg-primary/5">
@@ -900,7 +933,7 @@
                                     <div key={i} className="group bg-surface-dark rounded-xl border border-bronze/50 hover:border-primary/50 transition-all p-5 relative overflow-hidden">
                                         <div className="absolute top-0 right-0 w-24 h-24 bg-primary/5 -mr-12 -mt-12 rounded-full blur-2xl group-hover:bg-primary/10 transition-all"></div>
                                         <div className="relative">
-                                            <h3 className="text-lg font-bold text-white mb-1">{pattern.name}</h3>
+                                            <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-1">{pattern.name}</h3>
                                             <p className="text-xs text-muted/50 font-mono mb-4">{pattern.template}</p>
                                             <div className="bg-background-dark/50 rounded-lg p-4 flex items-center justify-center gap-3 mb-4">
                                                 {pattern.prefix && <span className="text-cyan-400 text-xl font-bold">{pattern.prefix}</span>}
@@ -921,7 +954,7 @@
 
                         {templates && (
                             <div className="mt-10">
-                                <h2 className="text-xl font-bold text-white mb-4">Available Verb Types</h2>
+                                <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-4">Available Verb Types</h2>
                                 <div className="flex flex-wrap gap-2">
                                     {Object.keys(templates).filter(k => !k.startsWith('_') && !k.startsWith('weak')).map(type => (
                                         <span key={type} className="px-3 py-2 bg-surface border border-bronze/50 rounded-lg text-sm text-muted">
