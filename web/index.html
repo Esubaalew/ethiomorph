@@ -82,6 +82,24 @@
         .subject-wheel-mask { mask-image: linear-gradient(to bottom, transparent, black 15%, black 85%, transparent); }
         @keyframes spin-slow { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
         .animate-spin-slow { animation: spin-slow 60s linear infinite; }
+        @keyframes skeleton-shimmer {
+            0%, 100% { opacity: 0.45; }
+            50% { opacity: 0.85; }
+        }
+        .skeleton {
+            background-color: rgba(0, 0, 0, 0.1);
+            animation: skeleton-shimmer 1.5s ease-in-out infinite;
+        }
+        .dark .skeleton { background-color: rgba(255, 255, 255, 0.12); }
+        .skeleton-surface {
+            background-color: var(--color-surface);
+            border: 1px solid var(--color-bronze);
+        }
+        .dark .skeleton-surface { background-color: var(--color-surface); }
+        .skeleton-node { fill: var(--color-surface); stroke: var(--color-bronze); stroke-width: 1; }
+        .skeleton-fill { fill: rgba(0, 0, 0, 0.1); animation: skeleton-shimmer 1.5s ease-in-out infinite; }
+        .dark .skeleton-fill { fill: rgba(255, 255, 255, 0.12); }
+        .skeleton-stroke { stroke: var(--color-bronze); stroke-opacity: 0.55; animation: skeleton-shimmer 1.5s ease-in-out infinite; }
     </style>
 </head>
 <body class="text-muted font-display min-h-screen flex flex-col overflow-hidden">
@@ -99,6 +117,252 @@
 
         const Icon = ({ name, className = "" }) => (
             <span className={`material-symbols-outlined ${className}`}>{name}</span>
+        );
+
+        const Skeleton = ({ className = "", style }) => (
+            <div className={`skeleton ${className}`} style={style} aria-hidden="true" />
+        );
+        const SkeletonLine = ({ w = "w-full", h = "h-3", className = "", style }) => (
+            <Skeleton className={`${w} ${h} rounded ${className}`} style={style} />
+        );
+        const SkeletonSurface = ({ className = "", children }) => (
+            <div className={`skeleton-surface rounded-lg ${className}`}>{children}</div>
+        );
+
+        const RADIAL_LAYOUT = {
+            width: 700, height: 500, cx: 350, cy: 250,
+            branchDist: 110, itemDist: 210, itemSpread: 0.4, itemsPerBranch: 2,
+            branches: [
+                { angle: -90, label: 'TENSE' },
+                { angle: 210, label: 'DERIVED' },
+                { angle: 330, label: 'FORMS' },
+            ],
+        };
+        const radialItemAngles = (branchAngle, count = RADIAL_LAYOUT.itemsPerBranch) =>
+            Array.from({ length: count }, (_, i) =>
+                branchAngle + (i - (count - 1) / 2) * RADIAL_LAYOUT.itemSpread
+            );
+
+        const XRayResultsSkeleton = () => (
+            <div className="lg:col-span-12 grid grid-cols-1 lg:grid-cols-12 gap-8" aria-busy="true">
+                <section className="lg:col-span-7">
+                    <h3 className="text-muted text-xs font-bold uppercase tracking-widest mb-3">Morphological Breakdown</h3>
+                    <div className="bg-surface/50 border border-bronze/50 rounded-xl p-6 relative">
+                        <div className="absolute left-10 top-6 bottom-6 w-px bg-bronze/30" />
+                        {[
+                            { stage: 'STAGE 01: INPUT', h: 'h-14' },
+                            { stage: 'STAGE 02: AFFIX PEELING', h: 'h-14' },
+                            { stage: 'STAGE 03: ROOT IDENTIFIED', h: 'h-20' },
+                        ].map((row, i) => (
+                            <div key={i} className={`flex gap-6 relative ${i < 2 ? 'mb-6' : ''}`}>
+                                <div className="size-10 rounded-full skeleton-surface shrink-0 z-10" />
+                                <div className="flex-1">
+                                    <p className="text-xs font-mono text-muted/50 mb-2">{row.stage}</p>
+                                    <SkeletonSurface className={`p-4 ${row.h} flex items-center`}>
+                                        <SkeletonLine w="w-24" h="h-6" />
+                                    </SkeletonSurface>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </section>
+                <section className="lg:col-span-5 space-y-4">
+                    <h3 className="text-muted text-xs font-bold uppercase tracking-widest mb-3">Lexical Data</h3>
+                    <div className="bg-surface-dark border border-bronze rounded-xl overflow-hidden">
+                        <div className="bg-surface border-b border-bronze px-5 py-3 flex justify-between items-center">
+                            <SkeletonLine w="w-16" h="h-6" />
+                            <Skeleton className="w-16 h-5 rounded" />
+                        </div>
+                        <div className="p-5 space-y-4">
+                            <div>
+                                <p className="text-xs text-muted/50 uppercase tracking-wider mb-1">Meaning</p>
+                                <SkeletonLine w="w-full" h="h-5" />
+                            </div>
+                            <div>
+                                <p className="text-xs text-muted/50 uppercase tracking-wider mb-1">Analysis Method</p>
+                                <SkeletonLine w="w-3/4" h="h-4" />
+                            </div>
+                        </div>
+                    </div>
+                    <div className="grid grid-cols-2 gap-3">
+                        {['Pattern', 'Confidence'].map(label => (
+                            <div key={label} className="bg-surface rounded-lg p-4 border border-bronze">
+                                <p className="text-xs text-muted/50 uppercase mb-2">{label}</p>
+                                <SkeletonLine w="w-16" h="h-5" />
+                            </div>
+                        ))}
+                    </div>
+                </section>
+            </div>
+        );
+
+        const MatrixGridSkeleton = () => (
+            <div className="flex-1 overflow-auto grid lg:grid-cols-4 gap-6 content-start" aria-busy="true">
+                <div className="lg:col-span-3 bg-surface-dark rounded-xl border border-bronze overflow-hidden shadow-xl h-fit">
+                    <div className="overflow-x-auto">
+                        <table className="w-full">
+                            <thead className="bg-surface border-b-2 border-primary/30">
+                                <tr>
+                                    <th className="py-4 px-5 text-left text-xs font-bold text-primary uppercase tracking-wider w-32">Subject</th>
+                                    {['Perfect', 'Imperfect', 'Jussive', 'Imperative'].map(label => (
+                                        <th key={label} className="py-4 px-5 text-left min-w-[140px]">
+                                            <span className="text-gray-900 dark:text-white text-sm font-bold block">{label}</span>
+                                            <SkeletonLine w="w-12" h="h-2" className="mt-1" />
+                                        </th>
+                                    ))}
+                                </tr>
+                            </thead>
+                            <tbody className="divide-y divide-bronze/30">
+                                {Array.from({ length: 10 }).map((_, i) => (
+                                    <tr key={i}>
+                                        <td className="py-3 px-5">
+                                            <SkeletonLine w="w-12" h="h-5" className="mb-1" />
+                                            <SkeletonLine w="w-8" h="h-2" />
+                                        </td>
+                                        {[0, 1, 2, 3].map(j => (
+                                            <td key={j} className="px-5 py-3">
+                                                <SkeletonSurface className="px-3 py-2 inline-block min-w-[80px]">
+                                                    <SkeletonLine w="w-14" h="h-5" />
+                                                </SkeletonSurface>
+                                            </td>
+                                        ))}
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div className="space-y-3">
+                    <h3 className="text-xs text-muted uppercase tracking-widest font-bold">Derived Forms</h3>
+                    {['infinitive', 'active participle', 'passive participle', 'instrumental', 'verbal noun', 'abstract noun', 'causative agent'].map(key => (
+                        <div key={key} className="bg-surface-dark rounded-lg p-4 border border-bronze/50">
+                            <p className="text-[10px] text-muted/50 uppercase tracking-wider mb-2">{key}</p>
+                            <SkeletonLine w="w-16" h="h-6" />
+                        </div>
+                    ))}
+                </div>
+            </div>
+        );
+
+        const MorpherSkeleton = () => (
+            <div className="text-center" aria-busy="true">
+                <SkeletonSurface className="inline-block px-12 py-6 md:px-16 md:py-8">
+                    <SkeletonLine w="w-32 md:w-40" h="h-14 md:h-20" />
+                </SkeletonSurface>
+                <div className="mt-8 inline-block px-6 py-3 rounded-full border border-bronze bg-surface/50">
+                    <SkeletonLine w="w-52" h="h-4" />
+                </div>
+            </div>
+        );
+
+        const CompareTableSkeleton = ({ verbCount = 3, forms }) => (
+            <tbody className="divide-y divide-bronze/30" aria-busy="true">
+                {forms.map((form, fi) => (
+                    <tr key={form.key} className={fi % 2 === 0 ? 'bg-background-dark/30' : ''}>
+                        <td className="p-4 text-sm font-medium text-gray-900 dark:text-white sticky left-0 bg-surface-dark border-r border-bronze/30 z-10">
+                            {form.label}
+                        </td>
+                        {Array.from({ length: verbCount }).map((_, vi) => (
+                            <td key={vi} className="p-4 text-center">
+                                <SkeletonSurface className="px-4 py-2 inline-block min-w-[100px]">
+                                    <SkeletonLine w="w-16" h="h-6" className="mx-auto" />
+                                </SkeletonSurface>
+                            </td>
+                        ))}
+                    </tr>
+                ))}
+            </tbody>
+        );
+
+        const RadialTreeSkeleton = () => {
+            const { width, height, cx, cy, branchDist, itemDist, branches } = RADIAL_LAYOUT;
+            return (
+                <svg width={width} height={height} className="mx-auto" aria-busy="true">
+                    <circle cx={cx} cy={cy} r={150} className="skeleton-fill" opacity="0.15" />
+                    <circle cx={cx} cy={cy} r={180} fill="none" className="skeleton-stroke" strokeWidth="1" strokeDasharray="5,5" />
+                    <circle cx={cx} cy={cy} r={50} className="skeleton-node" />
+                    <rect x={cx - 22} y={cy - 14} width={44} height={16} rx={3} className="skeleton-fill" />
+                    <rect x={cx - 14} y={cy + 6} width={28} height={8} rx={2} className="skeleton-fill" />
+                    {branches.map((branch) => {
+                        const rad = (branch.angle * Math.PI) / 180;
+                        const bx = cx + Math.cos(rad) * branchDist;
+                        const by = cy + Math.sin(rad) * branchDist;
+                        return (
+                            <g key={branch.label}>
+                                <line x1={cx} y1={cy} x2={bx} y2={by} className="skeleton-stroke" strokeWidth="1" strokeDasharray="4,4" />
+                                <rect x={bx - 35} y={by - 10} width={70} height={20} rx={4} className="skeleton-node" />
+                                <rect x={bx - 18} y={by - 4} width={36} height={8} rx={2} className="skeleton-fill" />
+                                {radialItemAngles(branch.angle).map((itemAngle, ii) => {
+                                    const itemRad = (itemAngle * Math.PI) / 180;
+                                    const ix = cx + Math.cos(itemRad) * itemDist;
+                                    const iy = cy + Math.sin(itemRad) * itemDist;
+                                    return (
+                                        <g key={ii}>
+                                            <line x1={bx} y1={by} x2={ix} y2={iy} className="skeleton-stroke" strokeWidth="1" opacity="0.6" />
+                                            <rect x={ix - 45} y={iy - 25} width={90} height={50} rx={8} className="skeleton-node" />
+                                            <rect x={ix - 20} y={iy - 12} width={40} height={14} rx={3} className="skeleton-fill" />
+                                            <rect x={ix - 24} y={iy + 4} width={48} height={8} rx={2} className="skeleton-fill" />
+                                        </g>
+                                    );
+                                })}
+                            </g>
+                        );
+                    })}
+                </svg>
+            );
+        };
+
+        const PatternCardsSkeleton = () => (
+            <div aria-busy="true">
+                <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5">
+                    {Array.from({ length: 6 }).map((_, i) => (
+                        <div key={i} className="bg-surface-dark rounded-xl border border-bronze/50 p-5">
+                            <SkeletonLine w="w-32" h="h-5" className="mb-1" />
+                            <SkeletonLine w="w-full" h="h-3" className="mb-4 font-mono" />
+                            <SkeletonSurface className="p-4 flex items-center justify-center gap-3 mb-4 h-16">
+                                <SkeletonLine w="w-8" h="h-5" />
+                                <SkeletonLine w="w-12" h="h-4" />
+                                <SkeletonLine w="w-8" h="h-5" />
+                            </SkeletonSurface>
+                            <div className="flex flex-wrap gap-2">
+                                <Skeleton className="w-20 h-5 rounded" />
+                                <Skeleton className="w-20 h-5 rounded" />
+                            </div>
+                        </div>
+                    ))}
+                </div>
+                <div className="mt-10">
+                    <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-4">Available Verb Types</h2>
+                    <div className="flex flex-wrap gap-2">
+                        {Array.from({ length: 8 }).map((_, i) => (
+                            <Skeleton key={i} className="w-20 h-9 rounded-lg" />
+                        ))}
+                    </div>
+                </div>
+            </div>
+        );
+
+        const RootInput = ({ value, onChange, onSubmit, loading, label = 'Root Input', submitLabel = 'Expand', submitIcon = 'play_arrow', showLabel = true }) => (
+            <div>
+                {showLabel && <p className="text-xs text-muted/50 uppercase tracking-widest mb-2">{label}</p>}
+                <div className="flex gap-2 items-center">
+                    <input
+                        type="text"
+                        value={value}
+                        onChange={onChange}
+                        onKeyPress={(e) => e.key === 'Enter' && !loading && onSubmit()}
+                        className="bg-surface border border-bronze rounded-lg px-4 py-2.5 text-2xl font-ethiopic w-32 text-center text-gray-900 dark:text-white focus:outline-none focus:border-primary"
+                    />
+                    <button
+                        onClick={onSubmit}
+                        disabled={loading || !value.trim()}
+                        className="px-4 py-2.5 bg-primary text-background-dark font-bold rounded-lg flex items-center gap-2 disabled:opacity-50 transition-opacity"
+                    >
+                        <Icon name={loading ? 'progress_activity' : submitIcon} className={`text-lg ${loading ? 'animate-spin-slow' : ''}`} />
+                        <span>{submitLabel}</span>
+                    </button>
+                </div>
+            </div>
         );
 
         // Navigation Component
@@ -262,7 +526,9 @@
                             </div>
                         </section>
 
-                        {result && !result.error && (
+                        {loading && <XRayResultsSkeleton />}
+
+                        {!loading && result && !result.error && (
                             <>
                                 {/* Morphological Breakdown */}
                                 <section className="lg:col-span-7">
@@ -380,7 +646,7 @@
         const MatrixTab = () => {
             const [root, setRoot] = useState('ቀተለ');
             const [data, setData] = useState(null);
-            const [loading, setLoading] = useState(false);
+            const [loading, setLoading] = useState(true);
             const [selectedSubject, setSelectedSubject] = useState(0);
 
             const SUBJECTS = [
@@ -416,6 +682,16 @@
                 <div className="flex-1 flex overflow-hidden manuscript-bg">
                     {/* Left Sidebar - Subject Wheel */}
                     <aside className="w-72 flex-none bg-surface-dark border-r border-bronze flex flex-col z-10">
+                        <div className="p-5 border-b border-bronze">
+                            <RootInput
+                                value={root}
+                                onChange={(e) => setRoot(e.target.value)}
+                                onSubmit={expand}
+                                loading={loading}
+                                submitLabel="Expand"
+                                submitIcon="grid_view"
+                            />
+                        </div>
                         <div className="p-5 border-b border-bronze">
                             <span className="text-xs font-bold tracking-widest text-primary uppercase">Subject Control</span>
                             <h3 className="text-gray-900 dark:text-white text-lg font-bold mt-1">Grammatical Person</h3>
@@ -475,23 +751,6 @@
                                 })}
                             </div>
                         </div>
-                        
-                        {/* Root Input */}
-                        <div className="p-5 border-t border-bronze bg-surface-dark">
-                            <p className="text-xs text-muted/50 uppercase tracking-wider mb-2">Root Input</p>
-                            <div className="flex gap-2">
-                                <input
-                                    type="text"
-                                    value={root}
-                                    onChange={(e) => setRoot(e.target.value)}
-                                    onKeyPress={(e) => e.key === 'Enter' && expand()}
-                                    className="flex-1 bg-surface border border-bronze rounded-lg px-3 py-2 text-xl font-ethiopic text-center text-gray-900 dark:text-white focus:outline-none focus:border-primary"
-                                />
-                                <button onClick={expand} disabled={loading} className="px-4 py-2 bg-primary text-background-dark font-bold rounded-lg">
-                                    <Icon name="send" />
-                                </button>
-                            </div>
-                        </div>
                     </aside>
 
                     {/* Main Grid */}
@@ -504,7 +763,9 @@
                             <p className="text-muted/70 text-sm mt-1">Morphological Expansion Grid • Showing all subjects</p>
                         </div>
 
-                        {data && !data.error && (
+                        {(loading || !data) ? (
+                            <MatrixGridSkeleton />
+                        ) : data && !data.error && (
                             <div className="flex-1 overflow-auto grid lg:grid-cols-4 gap-6 content-start">
                                 <div className="lg:col-span-3 bg-surface-dark rounded-xl border border-bronze overflow-hidden shadow-xl h-fit">
                                     <div className="overflow-x-auto">
@@ -564,7 +825,7 @@
             const [tense, setTense] = useState('perfective');
             const [subjectIndex, setSubjectIndex] = useState(0);
             const [data, setData] = useState(null);
-            const [loading, setLoading] = useState(false);
+            const [loading, setLoading] = useState(true);
 
             const SUBJECTS = [
                 { key: 'he', geez: 'ውእቱ', en: 'He', label: '3SM' },
@@ -593,27 +854,21 @@
 
             return (
                 <main className="flex-1 relative overflow-hidden manuscript-bg">
-                    {/* Ghost background */}
-                    <div className="ghost-skeleton absolute inset-0 flex items-center justify-center text-gray-900 dark:text-white font-ethiopic">{root}</div>
+                    {!loading && data && (
+                        <div className="ghost-skeleton absolute inset-0 flex items-center justify-center text-gray-900 dark:text-white font-ethiopic">{root}</div>
+                    )}
                     
                     <div className="relative z-10 h-full flex flex-col p-8">
                         {/* Top Controls */}
                         <div className="flex justify-between items-start mb-auto">
-                            <div>
-                                <p className="text-xs text-muted/50 uppercase tracking-widest mb-2">Root Input</p>
-                                <div className="flex gap-2">
-                            <input
-                                type="text"
+                            <RootInput
                                 value={root}
                                 onChange={(e) => setRoot(e.target.value)}
-                                onKeyPress={(e) => e.key === 'Enter' && expand()}
-                                        className="bg-surface border border-bronze rounded-lg px-4 py-2 text-2xl font-ethiopic w-32 text-center text-gray-900 dark:text-white focus:outline-none focus:border-primary"
-                                    />
-                                    <button onClick={expand} disabled={loading} className="px-4 py-2 bg-primary text-background-dark font-bold rounded-lg">
-                                        {loading ? '...' : 'Load'}
-                            </button>
-                        </div>
-                    </div>
+                                onSubmit={expand}
+                                loading={loading}
+                                submitLabel="Load"
+                                submitIcon="tune"
+                            />
 
                             {/* Tense Selector */}
                             <div className="bg-surface/80 backdrop-blur border border-bronze rounded-xl p-4">
@@ -636,6 +891,9 @@
 
                         {/* Center Display */}
                         <div className="flex-1 flex items-center justify-center">
+                            {(loading || !data) ? (
+                                <MorpherSkeleton />
+                            ) : (
                             <div className="text-center">
                                 <div className="text-7xl md:text-8xl lg:text-9xl font-bold font-ethiopic text-primary transition-all duration-300">
                                     {currentWord}
@@ -646,6 +904,7 @@
                                     </span>
                                 </div>
                             </div>
+                            )}
                             </div>
 
                         {/* Bottom Subject Slider */}
@@ -677,7 +936,7 @@
         const CompareTab = () => {
             const [verbs, setVerbs] = useState(['ሰከበ', 'ቀደሰ', 'ባረከ']);
             const [data, setData] = useState({});
-            const [loading, setLoading] = useState(false);
+            const [loading, setLoading] = useState(true);
 
             const loadAll = async () => {
                 setLoading(true);
@@ -710,26 +969,33 @@
                                 <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">Comparison Matrix</h1>
                                 <p className="text-muted/70">Compare conjugation patterns across different verb types</p>
                                                 </div>
-                            <div className="flex gap-2 items-end">
+                            <div className="flex flex-wrap items-end gap-4">
+                                <div>
+                                    <p className="text-xs text-muted/50 uppercase tracking-widest mb-2">Verb Roots</p>
+                                    <div className="flex gap-2 items-center flex-wrap">
                                 {verbs.map((v, i) => (
                                     <input
                                         key={i}
                                         type="text"
                                         value={v}
                                         onChange={(e) => { const newV = [...verbs]; newV[i] = e.target.value; setVerbs(newV); }}
-                                        className="bg-surface border border-bronze rounded-lg px-3 py-2 text-xl font-ethiopic w-24 text-center text-gray-900 dark:text-white focus:outline-none focus:border-primary"
+                                        placeholder={`Root ${i + 1}`}
+                                        className="bg-surface border border-bronze rounded-lg px-4 py-2.5 text-2xl font-ethiopic w-32 text-center text-gray-900 dark:text-white focus:outline-none focus:border-primary placeholder:text-muted/30 placeholder:text-sm"
                                     />
                                 ))}
-                                <button onClick={() => setVerbs([...verbs, ''])} className="px-3 py-2 border border-bronze/50 rounded-lg text-muted hover:text-gray-900 dark:text-white">
+                                <button onClick={() => setVerbs([...verbs, ''])} className="px-3 py-2.5 border border-bronze/50 rounded-lg text-muted hover:text-gray-900 dark:text-white">
                                     <Icon name="add" />
                                 </button>
-                                <button onClick={loadAll} disabled={loading} className="px-6 py-2 bg-primary text-background-dark font-bold rounded-lg">
-                                    {loading ? '...' : 'Compare'}
+                                <button onClick={loadAll} disabled={loading} className="px-4 py-2.5 bg-primary text-background-dark font-bold rounded-lg flex items-center gap-2 disabled:opacity-50">
+                                    <Icon name={loading ? 'progress_activity' : 'compare'} className={`text-lg ${loading ? 'animate-spin-slow' : ''}`} />
+                                    <span>Compare</span>
                                 </button>
+                                    </div>
+                                </div>
                                             </div>
                                         </div>
 
-                        <div className="bg-surface-dark rounded-xl border border-bronze overflow-hidden shadow-xl">
+                        <div className="bg-surface-dark rounded-xl border border-bronze overflow-hidden shadow-xl" aria-busy={loading}>
                                 <div className="overflow-x-auto">
                                     <table className="w-full">
                                     <thead className="bg-surface border-b-2 border-primary/30">
@@ -742,6 +1008,9 @@
                                                 ))}
                                             </tr>
                                         </thead>
+                                    {loading ? (
+                                        <CompareTableSkeleton verbCount={verbs.filter(v => v).length} forms={FORMS} />
+                                    ) : (
                                     <tbody className="divide-y divide-bronze/30">
                                         {FORMS.map((form, fi) => (
                                             <tr key={form.key} className={fi % 2 === 0 ? 'bg-background-dark/30' : ''}>
@@ -756,6 +1025,7 @@
                                                 </tr>
                                             ))}
                                         </tbody>
+                                    )}
                                     </table>
                                 </div>
                             </div>
@@ -888,22 +1158,20 @@
                                 <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Radial Root Tree</h1>
                                 <p className="text-muted/70 text-sm">Interactive visualization of root derivations</p>
                             </div>
-                            <div className="flex gap-3 items-center">
-                            <input
-                                type="text"
+                            <RootInput
                                 value={root}
                                 onChange={(e) => setRoot(e.target.value)}
-                                onKeyPress={(e) => e.key === 'Enter' && expand()}
-                                    className="bg-surface border border-bronze rounded-lg px-4 py-2 text-2xl font-ethiopic w-32 text-center text-gray-900 dark:text-white focus:outline-none focus:border-primary"
+                                onSubmit={expand}
+                                loading={loading}
+                                submitLabel="Generate"
+                                submitIcon="hub"
+                                showLabel={false}
                             />
-                                <button onClick={expand} disabled={loading} className="px-6 py-2 bg-primary text-background-dark font-bold rounded-lg flex items-center gap-2">
-                                <Icon name="hub" />
-                                    {loading ? '...' : 'Generate'}
-                            </button>
-                            </div>
                         </div>
-                        <div className="bg-surface-dark/50 rounded-xl border border-bronze p-8 flex justify-center items-center min-h-[500px]">
-                            {data && !data.error ? (
+                        <div className="bg-surface-dark/50 rounded-xl border border-bronze p-8 flex justify-center items-center min-h-[500px]" aria-busy={loading}>
+                            {loading ? (
+                                <RadialTreeSkeleton />
+                            ) : data && !data.error ? (
                                 <svg ref={svgRef}></svg>
                             ) : (
                                 <div className="text-center text-muted/50">
@@ -946,7 +1214,7 @@
                         </div>
 
                         {loading ? (
-                            <div className="text-center py-20 text-muted/50"><Icon name="hourglass_empty" className="text-4xl mb-2" /><p>Loading...</p></div>
+                            <PatternCardsSkeleton />
                         ) : (
                             <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5">
                                 {derivedPatterns.map((pattern, i) => (
