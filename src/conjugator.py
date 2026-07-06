@@ -33,6 +33,9 @@ VOWEL_SUFFIX_MAP = {
 
 LARYNGEALS = set(['ሀ', 'ሐ', 'ኀ', 'አ', 'ዐ'])
 
+DERIVED_TYPE_SUFFIXES = ("_passive", "_causative", "_aste", "_reciprocal")
+PREFIX_LOOKALIKES = ("አን", "አስተ", "ተ", "አ", "ነ")
+
 
 class EthioMorphGenerator:
     """
@@ -138,7 +141,30 @@ class EthioMorphGenerator:
         """Legacy wrapper for _apply_fusion targeting C3."""
         return self._apply_fusion(c3_base, c3_order, suffix)
     
-    def _handle_prefixes(self, root):
+    def _is_derived_stem_type(self, verb_type):
+        """Return True if verb_type names a derived stem template (passive, causative, etc.)."""
+        return any(suffix in verb_type for suffix in DERIVED_TYPE_SUFFIXES)
+
+    def _should_strip_prefix(self, root, verb_type=None):
+        """
+        Decide whether leading ተ/አ/ነ/አን is derivational or inherent to the root.
+
+        Skip stripping for type_tanbala and for lexicon-typed base roots whose
+        leading characters are part of the lexical root, not passive/causative markers.
+        """
+        if not verb_type:
+            verb_type = self.lexicon.get(root)
+
+        if verb_type == "type_tanbala":
+            return False
+
+        if verb_type and not self._is_derived_stem_type(verb_type):
+            if any(root.startswith(p) for p in PREFIX_LOOKALIKES):
+                return False
+
+        return True
+
+    def _handle_prefixes(self, root, allow_strip=True):
         """
         Detect and strip known prefixes from the root for processing.
         
@@ -147,11 +173,15 @@ class EthioMorphGenerator:
         
         Args:
             root: The input root string.
+            allow_strip: When False, return the root unchanged (inherent prefix).
             
         Returns:
             Tuple of (clean_root, prefix_chars).
         """
-        prefixes = ["አን", "አስተ", "ተ", "አ", "ነ"]
+        if not allow_strip:
+            return root, ""
+
+        prefixes = list(PREFIX_LOOKALIKES)
         prefixes.sort(key=len, reverse=True)
         
         for p in prefixes:
@@ -295,7 +325,6 @@ class EthioMorphGenerator:
         Returns:
             Dict with word and complete derivation metadata.
         """
-        clean_root, root_prefix = self._handle_prefixes(root)
         root_chars = [devowelize(c) for c in root]
         
         if not verb_home:
@@ -307,9 +336,10 @@ class EthioMorphGenerator:
         if not verb_type:
             verb_type = self.lexicon.get(root) or verb_home.get('type') or "type_a"
         
-        is_derived_stem_template = any(
-            suffix in verb_type for suffix in ["_passive", "_causative", "_aste", "_reciprocal"]
-        )
+        allow_strip = self._should_strip_prefix(root, verb_type)
+        clean_root, root_prefix = self._handle_prefixes(root, allow_strip=allow_strip)
+        
+        is_derived_stem_template = self._is_derived_stem_type(verb_type)
         
         prefix_adjustment = ""
         if root_prefix:
@@ -317,6 +347,8 @@ class EthioMorphGenerator:
             root_chars = clean_root_chars
             if not is_derived_stem_template:
                 prefix_adjustment = root_prefix
+
+        surface_root = clean_root if root_prefix else root
         
         if len(root_chars) < 3:
              return {"error": f"Root must be at least 3 letters (Got '{root}')"}
@@ -441,6 +473,15 @@ class EthioMorphGenerator:
                 if i < len(root_chars):
                     base = root_chars[i]
                     order = vowel_map.get(key, 1)
+
+                    if (
+                        verb_type == "type_d"
+                        and tense == "perfective"
+                        and key == "C1"
+                        and i < len(surface_root)
+                        and get_vowel_order(surface_root[i]) == 6
+                    ):
+                        order = 6
                     
                     # Weak Initial C1-Drop Rule: ወለደ → ይልድ (C1 drops in Jussive/Imperative)
                     # When verb is weak_initial (C1=ወ), drop C1 in jussive and imperative
@@ -564,7 +605,8 @@ class EthioMorphGenerator:
             
         root_chars = [devowelize(c) for c in root]
         
-        clean_root, root_prefix = self._handle_prefixes(root)
+        allow_strip = self._should_strip_prefix(root, verb_type)
+        clean_root, root_prefix = self._handle_prefixes(root, allow_strip=allow_strip)
         if len(root_chars) > 4:
             root_chars = [devowelize(c) for c in clean_root]
 
@@ -618,7 +660,15 @@ class EthioMorphGenerator:
         Returns:
             Dict with complete matrix of conjugations and derived forms.
         """
-        clean_root, stem_prefix = self._handle_prefixes(root)
+        skeleton = get_consonant_skeleton(root)
+        verb_home = detect_verb_home(skeleton, root)
+        base_type = self.lexicon.get(root) or verb_home.get('type') or "type_a"
+
+        if not verb_type:
+            verb_type = base_type
+
+        allow_strip = self._should_strip_prefix(root, base_type)
+        clean_root, stem_prefix = self._handle_prefixes(root, allow_strip=allow_strip)
         
         stem_info = self._identify_stem(stem_prefix, root)
         stem_number = stem_info['number']
@@ -630,16 +680,11 @@ class EthioMorphGenerator:
         if len(root_chars) < 3:
              return {"error": f"Root must be at least 3 letters (Got '{root}')"}
 
-        skeleton = get_consonant_skeleton(analysis_root)
-        verb_home = detect_verb_home(skeleton, analysis_root)
         features = verb_home.get('features', {})
         
         features['stem_number'] = stem_number
         features['stem_prefix'] = stem_prefix or None
         features['stem_type'] = stem_info['name']
-        
-       
-        base_type = self.lexicon.get(analysis_root) or verb_home.get('type') or "type_a"
         
        
         if stem_suffix and f"{base_type}_{stem_suffix}" in self.templates:

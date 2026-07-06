@@ -44,9 +44,9 @@ NLP Course Project}
 \maketitle
 
 \begin{abstract}
-Ge'ez verb conjugation follows strict patterns. Given a root like \geez{ቀተለ}, every form (perfective, imperfective, jussive, imperative) can be computed by rearranging vowels and attaching affixes. No dictionary lookup, no statistical model. Just rules.
+Ge'ez verb conjugation follows strict patterns. Given a root like \geez{ቀተለ}, every form (perfective, imperfective, jussive, imperative) can be computed by rearranging vowels and attaching affixes---no statistical model, but a typed root lexicon (\texttt{lexicon.json}) resolves verb class and a handful of edge cases that pure vowel heuristics cannot.
 
-This paper documents EthioMorph, a Python system that does exactly that. It handles all eight verb types that traditional Ge'ez grammar recognizes: \geez{ቀተለ}, \geez{ቀደሰ}, \geez{ባረከ}, \geez{ጦመረ}, \geez{ሴሰየ}, \geez{ክህለ}, \geez{ማሕረከ}, and \geez{ተንበለ}. The core trick: Ethiopic Unicode assigns consecutive codepoints to vowel forms, so changing a vowel is just arithmetic. The rest is template matching and a few special rules for laryngeal consonants.
+This paper documents EthioMorph, a Python system that does exactly that. It handles all eight verb types that traditional Ge'ez grammar recognizes: \geez{ቀተለ}, \geez{ቀደሰ}, \geez{ባረከ}, \geez{ጦመረ}, \geez{ሴሰየ}, \geez{ክህለ}, \geez{ማሕረከ}, and \geez{ተንበለ}. The core trick: Ethiopic Unicode assigns consecutive codepoints to vowel forms, so changing a vowel is just arithmetic. The rest is template matching, lexicon lookup, and special rules for laryngeal consonants and inherent root-initial \geez{ተ}/\geez{አ} sequences.
 \end{abstract}
 
 \begin{IEEEkeywords}
@@ -55,7 +55,7 @@ Ge'ez, morphological analysis, NLP, Unicode processing, Semitic morphology, rule
 
 \section{Introduction}
 
-EthioMorph is a Ge'ez conjugator that works from first principles. Not a lookup table with thousands of pre-stored forms, and not a neural network trained on text. Just the rules, written in code.
+EthioMorph is a Ge'ez conjugator that works from first principles. Not a lookup table with thousands of pre-stored \emph{forms}, and not a neural network trained on text. Conjugation is rule-driven via JSON templates; a compact lexicon maps each attested root to its verb class (\texttt{type\_a}, \texttt{type\_d}, \texttt{type\_tanbala}, etc.).
 
 Why is this even possible? Because Ge'ez is regular. The same root (\geez{ቀተለ}, meaning ``kill'') always conjugates the same way. There are eight verb types and maybe a dozen special cases for guttural consonants. Once you encode those rules, you can generate or analyze any verb.
 
@@ -141,6 +141,10 @@ def get_char_by_order(base, order):
 \text{get\_char\_by\_order}(\text{\geez{ቀ}}, 6) &= \text{\geez{ቅ}}
 \end{align*}
 
+\subsection{Ambiguous Vowel Glyphs}
+
+Some Ethiopic characters appear in more than one consonant row. The glyph \geez{ጺ} is shared by both the \geez{ጸ}-row and \geez{ፀ}-row. Flat lookup maps can store only one base per character; EthioMorph pins \geez{ጺ} to the \geez{ጸ}-row after registration (\texttt{AMBIGUOUS\_VOWEL\_DEFAULTS}), matching the normalizer's \geez{ፀ}$\,$→\,\geez{ጸ} homophone map. Both valid bases are recorded in \texttt{AMBIGUOUS\_VOWELS}.
+
 \section{The C1-C2-C3 Radical System}
 
 \subsection{Naming the Radicals}
@@ -184,15 +188,24 @@ template = {
 \begin{algorithm}
 \caption{Generate a conjugated word}
 \begin{algorithmic}[1]
-\REQUIRE root (string), tense, subject, verb\_type
+\REQUIRE root (string), tense, subject, verb\_type (optional)
 \ENSURE conjugated word (string)
+\STATE verb\_type $\gets$ LEXICON[root] or detect\_verb\_home(root) or ``type\_a''
+\STATE (surface\_root, prefix\_adj) $\gets$ handle\_prefixes(root, verb\_type)
+\COMMENT{Skip strip for \texttt{type\_tanbala} and inherent \geez{ተ}/\geez{አ} roots}
 \STATE template $\gets$ TEMPLATES[verb\_type][tense][subject]
 \STATE vowel\_map $\gets$ template[``vowel\_map'']
-\STATE radicals $\gets$ extract\_radicals(root)
-\STATE result $\gets$ template[``prefix'']
-\FOR{each position in [``C1'', ``C2'', ``C3'']}
+\STATE radicals $\gets$ extract\_radicals(surface\_root)
+\STATE result $\gets$ template[``prefix''] + prefix\_adj
+\FOR{each position in [``C1'', ``C2'', ``C3'', ``C4'']}
     \STATE base $\gets$ devowelize(radicals[position])
     \STATE order $\gets$ vowel\_map[position]
+    \IF{verb\_type == ``type\_d'' and tense == ``perfective'' and position == ``C1''}
+        \IF{get\_vowel\_order(surface\_root[C1]) == 6}
+            \STATE order $\gets$ 6 \COMMENT{Preserve bare C1, e.g.\ \geez{ክ} in \geez{ክህለ}}
+        \ENDIF
+    \ENDIF
+    \STATE order $\gets$ apply\_laryngeal\_rules(base, order, position, tense, features)
     \STATE result $\gets$ result + get\_char\_by\_order(base, order)
 \ENDFOR
 \STATE result $\gets$ result + template[``suffix'']
@@ -265,9 +278,9 @@ In Classical Ge'ez grammar, verbs are classified into ``homes'' (\geez{ቤት}) 
 3 & \geez{ባረከ} & Type C & Long vowel (C1 = 4th order \geez{ራብዕ}) \\
 4 & \geez{ጦመረ} & Type C-O & O-initial (C1 = 7th order \geez{ሳብዕ}) \\
 5 & \geez{ሴሰየ} & Weak-Final & Final radical is \geez{የ} (weak) \\
-6 & \geez{ክህለ} & Laryngeal & Contains laryngeal (\geez{ህ}) radical \\
-7 & \geez{ማሕረከ} & Quadriliteral & Four consonant radicals \\
-8 & \geez{ተንበለ} & T-Quad & Quadriliteral with \geez{ተ-} prefix \\
+6 & \geez{ክህለ} & Type D & Laryngeal/weak-pattern verbs (\texttt{type\_d}) \\
+7 & \geez{ማሕረከ} & Quadriliteral & Four consonant radicals (\texttt{type\_mahräka}) \\
+8 & \geez{ተንበለ} & Tänbälä & Quadriliteral; initial \geez{ተ} is lexical, not derivational \\
 \bottomrule
 \end{tabular}
 \label{tab:verb_homes}
@@ -275,29 +288,31 @@ In Classical Ge'ez grammar, verbs are classified into ``homes'' (\geez{ቤት}) 
 
 \subsection{How to Classify a Verb}
 
-Each verb type uses different conjugation templates, so you need to figure out the type first. The algorithm checks:
+Each verb type uses different conjugation templates. Classification combines algorithmic vowel-pattern detection with a lexicon override:
 
 \begin{itemize}
     \item How many radicals? (3 = triradical, 4 = quadriliteral)
-    \item What vowel does C1 have? (4th order = Type C, 7th order = Type C-O)
-    \item Any laryngeals (\geez{ሀ, ሐ, ኀ, አ, ዐ}) or weak consonants (\geez{ወ, የ})?
-    \item Does C2 double? (That's Type B)
+    \item What vowel does C1 have? (5th order = Type B, 4th = Type C, 7th = Type C-O)
+    \item For quadriliterals: is C2 at 6th order? (Tänbälä pattern, e.g.\ \geez{ተንበለ})
+    \item Any laryngeals (\geez{ሀ, ሐ, ኀ, አ, ዐ}) or weak consonants (\geez{ወ, የ})? (stored as \emph{features}, not always the class)
+    \item Lexicon entry when present (e.g.\ \geez{ክህለ} $\rightarrow$ \texttt{type\_d}, \geez{ፈጸመ} $\rightarrow$ \texttt{type\_d})
 \end{itemize}
 
 \begin{table}[h]
 \centering
-\caption{Algorithmic Classification Rules}
+\caption{Algorithmic Classification Rules (before lexicon override)}
 \begin{tabular}{lll}
 \toprule
 Condition & Type & Example \\
 \midrule
-$|\text{radicals}| \geq 4$ & Quadriliteral & \geez{ማሕረከ}, \geez{ተንበለ} \\
+$|\text{radicals}| = 4$, C2 order = 6 & Tänbälä & \geez{ተንበለ} \\
+$|\text{radicals}| = 4$, else & Quadriliteral & \geez{ማሕረከ}, \geez{ተጋደለ} \\
 C1 order = 7 & Type C-O & \geez{ጦመረ} \\
+C1 order = 5 & Type B & \geez{ቀደሰ} \\
 C1 order = 4 & Type C & \geez{ባረከ} \\
 C3 $\in$ \{weak\} & Weak-Final & \geez{ሴሰየ} \\
-C2 $\in$ \{laryngeal\} & Laryngeal & \geez{ክህለ} \\
-C2 geminated & Type B & \geez{ቀደሰ} \\
-Default & Type A & \geez{ቀተለ} \\
+Default (3 radicals) & Type A & \geez{ቀተለ}, \geez{አመረ} \\
+Lexicon match & As listed & \geez{ክህለ} $\rightarrow$ \texttt{type\_d} \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -305,47 +320,34 @@ Default & Type A & \geez{ቀተለ} \\
 \subsection{Detection Algorithm}
 
 \begin{algorithm}
-\caption{Figure out which verb type this is}
+\caption{Figure out which verb type this is (\texttt{detect\_verb\_home})}
 \begin{algorithmic}[1]
-\REQUIRE root (string)
+\REQUIRE root (string with vowels)
 \ENSURE (type, features)
-\STATE radicals $\gets$ extract\_consonants(root)
-\STATE features $\gets$ \{\}
-\STATE // Check radical count first
-\IF{len(radicals) $\geq$ 4}
-    \IF{root starts with \geez{ተ}}
+\STATE skeleton $\gets$ consonant\_skeleton(root)
+\STATE radicals $\gets$ len(skeleton)
+\STATE c1\_order $\gets$ get\_vowel\_order(root[0])
+\STATE c2\_order $\gets$ get\_vowel\_order(root[1]) \COMMENT{if present}
+\STATE features $\gets$ detect\_laryngeal\_and\_hollow(skeleton)
+\IF{radicals == 4}
+    \IF{c2\_order == 6}
         \RETURN (``type\_tanbala'', features) \COMMENT{\geez{ተንበለ}}
     \ELSE
-        \RETURN (``type\_mahraka'', features) \COMMENT{\geez{ማሕረከ}}
+        \RETURN (``type\_mahräka'', features) \COMMENT{\geez{ማሕረከ}, \geez{ተጋደለ}}
     \ENDIF
 \ENDIF
-\STATE // Check C1 vowel order
-\STATE c1\_order $\gets$ get\_vowel\_order(root[0])
-\IF{c1\_order == 7}
-    \RETURN (``type\_c\_o'', features) \COMMENT{\geez{ጦመረ}}
+\IF{c1\_order == 5}
+    \RETURN (``type\_b'', features) \COMMENT{\geez{ቀደሰ}}
 \ELSIF{c1\_order == 4}
     \RETURN (``type\_c'', features) \COMMENT{\geez{ባረከ}}
+\ELSIF{c1\_order == 7}
+    \RETURN (``type\_c\_o'', features) \COMMENT{\geez{ጦመረ}}
 \ENDIF
-\STATE // Check for weak final radical
-\IF{devowelize(root[2]) $\in$ WEAK\_CONSONANTS}
-    \STATE features[``weak\_final''] $\gets$ True
-    \RETURN (``type\_sesaya'', features) \COMMENT{\geez{ሴሰየ}}
-\ENDIF
-\STATE // Check for laryngeal radicals
-\FOR{each radical in radicals}
-    \IF{devowelize(radical) $\in$ LARYNGEALS}
-        \STATE features[``has\_laryngeal''] $\gets$ True
-        \RETURN (``type\_kahla'', features) \COMMENT{\geez{ክህለ}}
-    \ENDIF
-\ENDFOR
-\STATE // Check for gemination (Type B)
-\IF{is\_geminate\_pattern(root)}
-    \RETURN (``type\_b'', features) \COMMENT{\geez{ቀደሰ}}
-\ENDIF
-\STATE // Default: Type A
-\RETURN (``type\_a'', features) \COMMENT{\geez{ቀተለ}}
+\RETURN (``type\_a'', features) \COMMENT{default; \geez{ክህለ} uses \texttt{type\_d} via lexicon}
 \end{algorithmic}
 \end{algorithm}
+
+The conjugator resolves the final class as \texttt{LEXICON[root] or detect\_verb\_home(root).type or ``type\_a''}. Roots such as \geez{ክህለ} and \geez{ፈጸመ} are listed as \texttt{type\_d} in the lexicon even when vowel heuristics alone would yield Type~A.
 
 \subsection{Feature Detection}
 
@@ -407,9 +409,44 @@ def apply_laryngeal_rules(char, position, features):
     return char
 \end{lstlisting}
 
+\section{Conjugator: Generation Edge Cases}
+
+\subsection{Inherent vs.\ Derivational Prefixes}
+
+During \emph{analysis}, the stemmer strips tense markers (\geez{ይ}, \geez{ተ}, \geez{አ}, etc.). During \emph{generation}, the conjugator must \emph{not} strip leading \geez{ተ}/\geez{አ}/\geez{ነ} when they belong to the lexical root itself. Stripping is allowed only for derived stem templates (\texttt{type\_a\_passive}, \texttt{*\_causative}, etc.).
+
+\begin{lstlisting}[language=Python]
+# PREFIX_LOOKALIKES = (asn, aste, te, a, ne) in Ge'ez script
+
+def should_strip_prefix(root, verb_type):
+    if verb_type == "type_tanbala":
+        return False  # tenbele: te- is C1, not passive
+    if verb_type and not is_derived_stem_type(verb_type):
+        if root.startswith(PREFIX_LOOKALIKES):
+            return False  # e.g. amare, tagedele
+    return True
+\end{lstlisting}
+
+\textbf{Examples:} (\geez{ተንበለ}, perfective, 3sm) $\rightarrow$ \geez{ተንበለ} (identity); (\geez{ተንበለ}, jussive, 3sm) $\rightarrow$ \geez{ይተንብል} (not the erroneous double-marked \geez{ይተነብል} produced when \geez{ተ-} was stripped).
+
+\subsection{Type D Perfective Templates}
+
+Type~D verbs (\geez{ክህለ} ``be able'', \geez{ፈጸመ} ``finish'') use a distinct perfective vowel map: C1 defaults to 1st order, C2 to 6th (bare consonant), C3 to 1st.
+
+\begin{lstlisting}[language=Python]
+"type_d": {
+  "perfective": {
+    "3sm": {"vowel_map": {"C1": 1, "C2": 6, "C3": 1}},
+    "3sf": {"suffix": "t", "vowel_map": {"C1": 1, "C2": 6, "C3": 1}}
+  }
+}
+\end{lstlisting}
+
+Guttural roots often store C1 at 6th order in the lexicon (\geez{ክ} in \geez{ክህለ}). The conjugator preserves that input order when C1 is already bare, so (\geez{ክህለ}, perfective) $\rightarrow$ \geez{ክህለ} while (\geez{ፈጸመ}, perfective, 3sf) $\rightarrow$ \geez{ፈጽመት} (C2 \geez{ጸ} $\rightarrow$ \geez{ፅ}).
+
 \section{Stemmer: Going Backwards}
 
-The Stemmer takes a conjugated word and figures out its root. It's the reverse of generation.
+The Stemmer takes a conjugated word and figures out its root. It's the reverse of generation. Prefix stripping here applies to \emph{tense and stem markers on inflected forms}, not to the inherent root-initial radicals guarded during generation.
 
 \subsection{The Steps}
 
@@ -464,6 +501,22 @@ def identify_verb_pattern(stem, stripped_prefixes):
 
 \section{Data Structures}
 
+\subsection{Lexicon JSON}
+
+Each root entry supplies the verb class used by the conjugator (overriding \texttt{detect\_verb\_home} when present):
+
+\begin{lstlisting}[language=Python]
+{
+  "roots": [
+    {"root": "<keHle>", "type": "type_d", "meaning": "to be able"},
+    {"root": "<feTSeMe>", "type": "type_d", "meaning": "to finish"},
+    {"root": "<tenbele>", "type": "type_tanbala", "meaning": "to intercede"}
+  ]
+}
+\end{lstlisting}
+
+\noindent In the repository, \texttt{root} values are Ge'ez strings (\geez{ክህለ}, \geez{ፈጸመ}, \geez{ተንበለ}, etc.).
+
 \subsection{Templates JSON}
 
 \begin{lstlisting}[language=Python]
@@ -491,13 +544,19 @@ def identify_verb_pattern(stem, stripped_prefixes):
       // ...
     }
     // jussive, imperative, derived forms
+  },
+  "type_d": {
+    "perfective": {
+      "3sm": {"vowel_map": {"C1": 1, "C2": 6, "C3": 1}},
+      "3sf": {"vowel_map": {"C1": 1, "C2": 6, "C3": 1}, "suffix": "t"}
+    }
   }
 }
 \end{lstlisting}
 
 \subsection{Lookup Maps}
 
-Three precomputed dictionaries make character lookups instant:
+Three precomputed dictionaries make character lookups instant (with one documented ambiguity for \geez{ጺ}):
 
 \begin{lstlisting}[language=Python]
 # Character -> Base consonant
@@ -523,6 +582,8 @@ REVOWELIZATION_MAP = {
     # ...
 }
 \end{lstlisting}
+
+\noindent The glyph \geez{ጺ} (U+13BA) is registered in both the \geez{ጸ}-row and \geez{ፀ}-row; \texttt{AMBIGUOUS\_VOWELS} records both bases, with \geez{ጸ} pinned as the default in \texttt{AMBIGUOUS\_VOWEL\_DEFAULTS}.
 
 \section{System Architecture}
 
@@ -557,7 +618,9 @@ REVOWELIZATION_MAP = {
          v
 +--------+---------+
 |   Conjugator     | (generation)
+|  - Lexicon type  |
 |  - Apply template|
+|  - Prefix guard  |
 |  - Fuse suffixes |
 |  - Laryngeal adj |
 +--------+---------+
@@ -612,9 +675,9 @@ Response:
 
 \section{Observations}
 
-Ge'ez morphology turns out to be more regular than expected. The Unicode trick (vowel forms are consecutive codepoints) turns what seems like a complex linguistic operation into basic arithmetic. Most of the code is just applying templates and handling edge cases for gutturals.
+Ge'ez morphology turns out to be more regular than expected. The Unicode trick (vowel forms are consecutive codepoints) turns what seems like a complex linguistic operation into basic arithmetic. Most of the code applies JSON templates, consults a typed lexicon, and handles edge cases: guttural vowel shifts, Type~D perfective C2 muting, Tänbälä roots whose initial \geez{ተ} must not be treated as a passive prefix, and ambiguous glyphs such as \geez{ጺ}.
 
-The system isn't complete. It handles the eight main verb types and basic stems, but there are derived forms and obscure patterns not yet implemented. Still, it works well enough to conjugate most verbs you'd encounter in classical texts.
+The system isn't complete. It handles the eight main verb types and basic stems, but derived forms and obscure patterns remain partial. Still, it conjugates most roots attested in the lexicon with rule-level accuracy on the regression suites for prefix look-alikes and Type~D perfective forms.
 
 Code: \texttt{github.com/Esubaalew/EthioMorph}
 

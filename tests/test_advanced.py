@@ -7,6 +7,13 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 from src.stemmer import GeezStemmer
 from src.normalizer import normalize_geez
+from src.decomposer import (
+    devowelize,
+    get_char_order,
+    get_consonant_skeleton,
+    AMBIGUOUS_VOWELS,
+    AMBIGUOUS_VOWEL_DEFAULTS,
+)
 
 class TestAdvancedGeezRootAnalyzer(unittest.TestCase):
     def setUp(self):
@@ -46,6 +53,22 @@ class TestAdvancedGeezRootAnalyzer(unittest.TestCase):
         print("\n--- Testing Boss Level (1-char) ---")
         self.check_root("ፃ", "ወፀአ", "1-char Tsa")
         self.check_root("ሖ", "ሐወረ", "1-char Ho")
+
+    def test_ambiguous_tsi_unicode_default(self):
+        print("\n--- Testing Ambiguous ጺ (S'ädai / Ts'äppai collision) ---")
+        self.assertEqual(AMBIGUOUS_VOWELS["ጺ"], ("ጸ", "ፀ"))
+        self.assertEqual(AMBIGUOUS_VOWEL_DEFAULTS["ጺ"], "ጸ")
+        self.assertEqual(devowelize("ጺ"), "ጸ")
+        self.assertEqual(get_char_order("ጺ"), 3)
+        self.assertEqual(get_consonant_skeleton("ጺ"), "ጸ")
+
+    def test_ambiguous_tsi_stemmer_does_not_bleed_to_tsa_row(self):
+        print("\n--- Testing ጺ in stemmer analysis ---")
+        result = self.stemmer.extract_root("ደንግጺ")
+        self.assertNotIn("error", result)
+        self.assertEqual(result["root"], normalize_geez("ደነገጸ"))
+        self.assertIn("ጸ", result["root_consonants"])
+        self.assertNotIn("ፀ", result["root_consonants"])
 
 if __name__ == '__main__':
     unittest.main()

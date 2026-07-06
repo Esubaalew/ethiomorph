@@ -11,6 +11,15 @@ DEVOWELIZATION_MAP = {}
 ORDER_MAP = {}
 REVOWELIZATION_MAP = {}
 
+# ጺ is shared between the ጸ-row (S'ädai) and ፀ-row (Ts'äppai). Flat maps hold
+# one base per glyph; AMBIGUOUS_VOWEL_DEFAULTS pins the corpus-preferred row.
+AMBIGUOUS_VOWELS = {
+    'ጺ': ('ጸ', 'ፀ'),
+}
+AMBIGUOUS_VOWEL_DEFAULTS = {
+    char: bases[0] for char, bases in AMBIGUOUS_VOWELS.items()
+}
+
 
 def _add_row(base, chars):
     """Populate character maps for a standard 7-order row."""
@@ -20,6 +29,10 @@ def _add_row(base, chars):
         REVOWELIZATION_MAP[(base, i + 1)] = char
 
 
+def _apply_ambiguous_defaults():
+    """Re-pin shared vowel glyphs to the preferred consonant row after registration."""
+    for char, preferred_base in AMBIGUOUS_VOWEL_DEFAULTS.items():
+        DEVOWELIZATION_MAP[char] = preferred_base
 _add_row('ሀ', ['ሀ', 'ሁ', 'ሂ', 'ሃ', 'ሄ', 'ህ', 'ሆ'])
 _add_row('ለ', ['ለ', 'ሉ', 'ሊ', 'ላ', 'ሌ', 'ል', 'ሎ'])
 _add_row('ሐ', ['ሐ', 'ሑ', 'ሒ', 'ሓ', 'ሔ', 'ሕ', 'ሖ'])
@@ -55,10 +68,14 @@ _add_row('ፀ', ['ፀ', 'ፁ', 'ጺ', 'ፃ', 'ፄ', 'ፅ', 'ፆ'])
 _add_row('ፈ', ['ፈ', 'ፉ', 'ፊ', 'ፋ', 'ፌ', 'ፍ', 'ፎ'])
 _add_row('ፐ', ['ፐ', 'ፑ', 'ፒ', 'ፓ', 'ፔ', 'ፕ', 'ፖ'])
 
+_apply_ambiguous_defaults()
 
 def devowelize(char: str) -> str:
     """
     Maps a Ge'ez character to its 1st order (consonant base).
+    
+    Shared glyphs listed in AMBIGUOUS_VOWELS resolve via AMBIGUOUS_VOWEL_DEFAULTS
+    (e.g. ጺ -> ጸ, not ፀ).
     
     Args:
         char: The input Ge'ez character.
