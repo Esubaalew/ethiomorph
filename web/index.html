@@ -277,7 +277,14 @@
         const RadialTreeSkeleton = () => {
             const { width, height, cx, cy, branchDist, itemDist, branches } = RADIAL_LAYOUT;
             return (
-                <svg width={width} height={height} className="mx-auto" aria-busy="true">
+                <svg
+                    viewBox={`0 0 ${width} ${height}`}
+                    width="100%"
+                    height="auto"
+                    preserveAspectRatio="xMidYMid meet"
+                    className="max-w-[700px] w-full"
+                    aria-busy="true"
+                >
                     <circle cx={cx} cy={cy} r={150} className="skeleton-fill" opacity="0.15" />
                     <circle cx={cx} cy={cy} r={180} fill="none" className="skeleton-stroke" strokeWidth="1" strokeDasharray="5,5" />
                     <circle cx={cx} cy={cy} r={50} className="skeleton-node" />
@@ -342,8 +349,8 @@
             </div>
         );
 
-        const RootInput = ({ value, onChange, onSubmit, loading, label = 'Root Input', submitLabel = 'Expand', submitIcon = 'play_arrow', showLabel = true }) => (
-            <div>
+        const RootInput = ({ value, onChange, onSubmit, loading, label = 'Root Input', submitLabel = 'Expand', submitIcon = 'play_arrow', showLabel = true, className = '' }) => (
+            <div className={className}>
                 {showLabel && <p className="text-xs text-muted/50 uppercase tracking-widest mb-2">{label}</p>}
                 <div className="flex gap-2 items-center">
                     <input
@@ -441,23 +448,24 @@
                 { id: 'matrix', label: 'Grid', icon: 'grid_view' },
                 { id: 'slider', label: 'Morph', icon: 'tune' },
                 { id: 'compare', label: 'Compare', icon: 'compare' },
+                { id: 'radial', label: 'Tree', icon: 'account_tree' },
                 { id: 'patterns', label: 'Patterns', icon: 'category' },
             ];
             return (
                 <nav className="md:hidden fixed bottom-0 left-0 right-0 bg-surface-dark border-t border-bronze z-50">
-                    <div className="flex justify-around items-center py-2">
+                    <div className="flex flex-nowrap justify-around items-center py-2 overflow-x-auto">
                         {tabs.map(tab => (
                             <button
                                 key={tab.id}
                                 onClick={() => setActiveTab(tab.id)}
-                                className={`flex flex-col items-center gap-0.5 px-3 py-1 rounded-lg transition-all ${
+                                className={`flex flex-col items-center gap-0.5 px-2 py-1 rounded-lg transition-all shrink-0 ${
                                     activeTab === tab.id 
                                         ? 'text-primary' 
                                         : 'text-muted'
                                 }`}
                             >
                                 <Icon name={tab.icon} className={`text-xl ${activeTab === tab.id ? 'text-primary' : ''}`} />
-                                <span className="text-[10px] font-medium">{tab.label}</span>
+                                <span className="text-[9px] font-medium">{tab.label}</span>
                             </button>
                         ))}
                 </div>
@@ -679,9 +687,9 @@
             useEffect(() => { expand(); }, []);
 
             return (
-                <div className="flex-1 flex overflow-hidden manuscript-bg">
+                <div className="flex-1 flex flex-col lg:flex-row overflow-hidden manuscript-bg">
                     {/* Left Sidebar - Subject Wheel */}
-                    <aside className="w-72 flex-none bg-surface-dark border-r border-bronze flex flex-col z-10">
+                    <aside className="w-full lg:w-72 flex-none bg-surface-dark border-b lg:border-b-0 lg:border-r border-bronze flex flex-col z-10">
                         <div className="p-5 border-b border-bronze">
                             <RootInput
                                 value={root}
@@ -699,7 +707,7 @@
                         </div>
                         
                         {/* Subject Wheel */}
-                        <div className="flex-1 flex flex-col items-center justify-center relative p-8">
+                        <div className="flex-1 flex flex-col items-center justify-center relative p-4 lg:p-8">
                             {/* Decorative rings */}
                             <div className="absolute inset-0 flex items-center justify-center opacity-10 pointer-events-none">
                                 <div className="w-56 h-56 rounded-full border border-primary border-dashed animate-spin-slow"></div>
@@ -858,9 +866,9 @@
                         <div className="ghost-skeleton absolute inset-0 flex items-center justify-center text-gray-900 dark:text-white font-ethiopic">{root}</div>
                     )}
                     
-                    <div className="relative z-10 h-full flex flex-col p-8">
+                    <div className="relative z-10 h-full flex flex-col p-4 sm:p-8">
                         {/* Top Controls */}
-                        <div className="flex justify-between items-start mb-auto">
+                        <div className="flex flex-col gap-4 sm:flex-row sm:justify-between sm:items-start mb-auto">
                             <RootInput
                                 value={root}
                                 onChange={(e) => setRoot(e.target.value)}
@@ -868,10 +876,11 @@
                                 loading={loading}
                                 submitLabel="Load"
                                 submitIcon="tune"
+                                className="w-full sm:w-auto"
                             />
 
                             {/* Tense Selector */}
-                            <div className="bg-surface/80 backdrop-blur border border-bronze rounded-xl p-4">
+                            <div className="bg-surface/80 backdrop-blur border border-bronze rounded-xl p-4 w-full sm:w-auto shrink-0">
                                 <p className="text-[10px] text-muted/50 uppercase tracking-widest mb-3">Tense</p>
                                 <div className="grid grid-cols-2 gap-2">
                                     {['perfective', 'imperfective', 'jussive', 'imperative'].map(t => (
@@ -910,14 +919,15 @@
                         {/* Bottom Subject Slider */}
                         <div className="mt-auto">
                             <p className="text-xs text-muted/50 uppercase tracking-widest text-center mb-4">Subject Selector</p>
-                            <div className="flex justify-center gap-2">
+                            <div className="overflow-x-auto -mx-2 px-2">
+                            <div className="flex flex-nowrap justify-start gap-2 min-w-max sm:justify-center sm:flex-wrap sm:min-w-0">
                                 {SUBJECTS.map((subj, i) => (
                                     <button
                                         key={subj.key}
                                         onClick={() => setSubjectIndex(i)}
-                                        className={`px-4 py-3 rounded-lg border transition-all ${
+                                        className={`px-3 py-2 sm:px-4 sm:py-3 rounded-lg border transition-all shrink-0 ${
                                             i === subjectIndex 
-                                                ? 'border-primary bg-primary/10 text-primary scale-110' 
+                                                ? 'border-primary bg-primary/10 text-primary sm:scale-110' 
                                                 : 'border-bronze/50 text-muted/50 hover:border-bronze hover:text-muted'
                                         }`}
                                     >
@@ -926,6 +936,7 @@
                                     </button>
                                             ))}
                                         </div>
+                            </div>
                                     </div>
                                                     </div>
                 </main>
@@ -1090,7 +1101,11 @@
                 };
 
                 d3.select(svgRef.current).selectAll("*").remove();
-                const svg = d3.select(svgRef.current).attr("width", width).attr("height", height);
+                const svg = d3.select(svgRef.current)
+                    .attr("viewBox", `0 0 ${width} ${height}`)
+                    .attr("width", "100%")
+                    .attr("preserveAspectRatio", "xMidYMid meet")
+                    .attr("class", "max-w-[700px] w-full");
 
                 const gradient = svg.append("defs").append("radialGradient").attr("id", "glow").attr("cx", "50%").attr("cy", "50%").attr("r", "50%");
                 gradient.append("stop").attr("offset", "0%").attr("stop-color", c.glow);
@@ -1168,7 +1183,8 @@
                                 showLabel={false}
                             />
                         </div>
-                        <div className="bg-surface-dark/50 rounded-xl border border-bronze p-8 flex justify-center items-center min-h-[500px]" aria-busy={loading}>
+                        <div className="bg-surface-dark/50 rounded-xl border border-bronze p-4 sm:p-8 flex justify-center items-center min-h-[500px] w-full" aria-busy={loading}>
+                            <div className="w-full overflow-x-auto flex justify-center">
                             {loading ? (
                                 <RadialTreeSkeleton />
                             ) : data && !data.error ? (
@@ -1179,6 +1195,7 @@
                                     <p>Enter a root and click Generate</p>
                                 </div>
                             )}
+                            </div>
                         </div>
                     </div>
                 </div>
