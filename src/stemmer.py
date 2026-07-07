@@ -62,12 +62,17 @@ class GeezStemmer:
                 norm = normalize_geez(lex_root)
                 if norm not in self.lexicon_normalized_lookup:
                     self.lexicon_normalized_lookup[norm] = lex_root
+            self.skeleton_lookup = {}
+            for lex_root in self.lexicon_roots:
+                skel = normalize_geez(get_consonant_skeleton(lex_root))
+                self.skeleton_lookup.setdefault(skel, []).append(lex_root)
                         
         except FileNotFoundError:
             print("Warning: lexicon.json not found. Using empty lexicon.")
             self.hollow_w_lookup = {}
             self.hollow_y_lookup = {}
             self.lexicon_normalized_lookup = {}
+            self.skeleton_lookup = {}
 
         self.nouns = {}
         try:
@@ -237,6 +242,35 @@ class GeezStemmer:
 
         return None, None
 
+    def _resolve_skeleton_citation(self, skeleton):
+        """
+        Map a devowelized skeleton back to a lexicon citation root.
+
+        Skeletonization collapses vowel order (ጣ/ጥ/ጠ → ጠ) and normalization
+        collapses homophone rows (ኀ/ሀ/ሐ → ሀ). The lexicon stores citation
+        spellings such as ኀጥአ; this resolver recovers them from ሀጠአ.
+        """
+        if not skeleton:
+            return None
+
+        norm = normalize_geez(get_consonant_skeleton(skeleton))
+        candidates = self.skeleton_lookup.get(norm, [])
+        if not candidates:
+            return None
+        if len(candidates) == 1:
+            return candidates[0]
+
+        for candidate in candidates:
+            if candidate in self.hollow_w_roots or candidate in self.hollow_y_roots:
+                return candidate
+
+        for candidate in candidates:
+            root_type = self.lexicon_roots[candidate].get("type", "")
+            if root_type and root_type not in ("type_a", "strong", "unknown"):
+                return candidate
+
+        return candidates[0]
+
     def _canonicalize_root(self, root):
         """
         Resolve a derived root to lexicon canonical orthography.
@@ -260,6 +294,10 @@ class GeezStemmer:
         canonical_y = self.hollow_y_lookup.get(norm)
         if canonical_y:
             return canonical_y
+
+        citation = self._resolve_skeleton_citation(root)
+        if citation:
+            return citation
 
         return root
 
@@ -772,13 +810,18 @@ class GeezStemmer:
         pattern = self.identify_verb_pattern(stem, prefixes)
         canonical_root = self._canonicalize_root(root)
         if canonical_root != root:
+            citation_via = (
+                "skeleton citation lookup"
+                if normalize_geez(get_consonant_skeleton(root)) in self.skeleton_lookup
+                else "homophone-normalized root mapped to lexicon citation form"
+            )
             derivation_steps.append({
                 "step": len(derivation_steps) + 1,
                 "action": "canonicalize_root",
                 "description": "Resolve to lexicon canonical orthography",
                 "before": root,
                 "after": canonical_root,
-                "rule": "Homophone-normalized root mapped to lexicon citation form"
+                "rule": citation_via
             })
             root = canonical_root
 

@@ -498,6 +498,8 @@ def canonicalize_root(root):
 
 \noindent Two-radical perfective stems such as \geez{ሐረ} and \geez{ቀመ} are expanded by inserting \geez{ወ} or \geez{የ} when the resulting triliteral appears in the typed hollow-verb lists. Vowel-order signals (3rd, 5th, or 7th order on C1) take precedence over bare lexicon matches for ambiguous two-letter forms such as \geez{ጌሰ} (collapsed \geez{ገየሰ}) versus the unrelated root \geez{ገሰ}.
 
+Skeletonization intentionally collapses vowel order and homophone rows for \emph{matching} (\geez{ጣ}/\geez{ጥ}/\geez{ጠ} $\rightarrow$ \geez{ጠ}; \geez{ኀ}/\geez{ሀ} $\rightarrow$ \geez{ሀ}). Citation recovery therefore uses a precomputed \texttt{skeleton\_lookup}: normalized skeleton \geez{ሀጠአ} maps back to lexicon entry \geez{ኀጥአ}, so an inflected form such as \geez{ወኢይትኀጣእ} yields root \geez{ኀጥአ} with meaning attached, not the bare skeleton string.
+
 \subsection{Checking Prefixes}
 
 You have to check longer prefixes first, or you'll make wrong matches:

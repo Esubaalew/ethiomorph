@@ -51,6 +51,15 @@ class TestAdvancedGeezRootAnalyzer(unittest.TestCase):
             self.assertIn("ሐ", result["root_consonants"])
             self.assertNotIn("ሀ", result["root_consonants"])
 
+    def test_skeleton_citation_lookup(self):
+        print("\n--- Testing skeleton citation lookup ---")
+        self.check_root("ወኢይትኀጣእ", "ኀጥአ", "Passive imp. of ኀጥአ")
+        self.check_root("ኀጣእ", "ኀጥአ", "Stem ኀጣእ")
+        self.check_root("ቅዳሴ", "ቀደሰ", "Participle/noun to ቀደሰ")
+        result = self.stemmer.extract_root("ወኢይትኀጣእ")
+        self.assertEqual(result["meaning"], "አጣ")
+        self.assertEqual(result["analysis"]["pattern"]["name"], "passive_imperfective")
+
     def test_prefix_lookalikes(self):
         print("\n--- Testing Prefix Look-Alikes ---")
         self.check_root("መሐረ", "መሀረ", "Root starts with Ma")
