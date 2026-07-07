@@ -48,6 +48,7 @@ class TestAdvancedGeezRootAnalyzer(unittest.TestCase):
         print("\n--- Testing Complex Cases ---")
         self.check_root("ቀተልከኒ", "ቀተለ", "Double Suffix Strip")
         self.check_root("ኄር", "ሀየረ", "Normalization + Weak Root")
+        self.check_root("ኢየሐውሩ", "ሐወረ", "Relative prefix ኢ + imperfective ይሐውር")
         
     def test_boss_level(self):
         print("\n--- Testing Boss Level (1-char) ---")

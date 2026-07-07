@@ -80,7 +80,7 @@ class GeezStemmer:
             'ይት', 'ትት', 'እት', 'ንት',  # Stem II passive imperfective
             # Basic subject prefixes
             'ወ', 'በ', 'ለ', 'ከ', 'የ',
-            'ይ', 'ት', 'እ', 'ን', 'ል',
+            'ይ', 'ት', 'እ', 'ኢ', 'ን', 'ል',
             # Stem prefixes
             'አን', 'አስ', 'አ', 'ተ', 'መ', 'ም', 'ሳ',
         ]
