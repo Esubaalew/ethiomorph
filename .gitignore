@@ -44,3 +44,7 @@ temp_*/
 # Environment
 .env
 .env.local
+
+# Generated codebase bundle for external tools (LLMs, reviewers, etc.)
+CODEBASE_EXPORT.md
+**/CODEBASE_EXPORT.md

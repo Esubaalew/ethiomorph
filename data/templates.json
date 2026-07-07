@@ -6785,6 +6785,143 @@
           }
         }
       }
+    },
+    "jussive": {
+      "template_name": "Reciprocal Jussive",
+      "geez_name": "ተሣሣቢ ሣልሳይ",
+      "cv_template": "yət-C1āC2äC3",
+      "subjects": {
+        "3sm": {
+          "prefix": "ይት",
+          "suffix": "",
+          "vowel_map": {
+            "C1": 4,
+            "C2": 1,
+            "C3": 6
+          },
+          "label": {
+            "geez": "ውእቱ",
+            "english": "he"
+          }
+        },
+        "3sf": {
+          "prefix": "ትት",
+          "suffix": "",
+          "vowel_map": {
+            "C1": 4,
+            "C2": 1,
+            "C3": 6
+          },
+          "label": {
+            "geez": "ይእቲ",
+            "english": "she"
+          }
+        },
+        "2sm": {
+          "prefix": "ትት",
+          "suffix": "",
+          "vowel_map": {
+            "C1": 4,
+            "C2": 1,
+            "C3": 6
+          },
+          "label": {
+            "geez": "አንተ",
+            "english": "you (m)"
+          }
+        },
+        "2sf": {
+          "prefix": "ትት",
+          "suffix": "ኢ",
+          "vowel_map": {
+            "C1": 4,
+            "C2": 1,
+            "C3": 6
+          },
+          "label": {
+            "geez": "አንቲ",
+            "english": "you (f)"
+          }
+        },
+        "1s": {
+          "prefix": "እት",
+          "suffix": "",
+          "vowel_map": {
+            "C1": 4,
+            "C2": 1,
+            "C3": 6
+          },
+          "label": {
+            "geez": "አነ",
+            "english": "I"
+          }
+        },
+        "1p": {
+          "prefix": "ንት",
+          "suffix": "",
+          "vowel_map": {
+            "C1": 4,
+            "C2": 1,
+            "C3": 6
+          },
+          "label": {
+            "geez": "ንሕነ",
+            "english": "we"
+          }
+        },
+        "3pm": {
+          "prefix": "ይት",
+          "suffix": "ኡ",
+          "vowel_map": {
+            "C1": 4,
+            "C2": 1,
+            "C3": 6
+          },
+          "label": {
+            "geez": "ውእቶሙ",
+            "english": "they (m)"
+          }
+        },
+        "3pf": {
+          "prefix": "ይት",
+          "suffix": "ኣ",
+          "vowel_map": {
+            "C1": 4,
+            "C2": 1,
+            "C3": 6
+          },
+          "label": {
+            "geez": "ውእቶን",
+            "english": "they (f)"
+          }
+        },
+        "2pm": {
+          "prefix": "ትት",
+          "suffix": "ኡ",
+          "vowel_map": {
+            "C1": 4,
+            "C2": 1,
+            "C3": 6
+          },
+          "label": {
+            "geez": "አንትሙ",
+            "english": "you (pl.m)"
+          }
+        },
+        "2pf": {
+          "prefix": "ትት",
+          "suffix": "ኣ",
+          "vowel_map": {
+            "C1": 4,
+            "C2": 1,
+            "C3": 6
+          },
+          "label": {
+            "geez": "አንትን",
+            "english": "you (pl.f)"
+          }
+        }
+      }
     }
   }
 }

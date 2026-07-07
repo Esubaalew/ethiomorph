@@ -28,20 +28,20 @@ class TestPrefixPreservation(unittest.TestCase):
     def test_type_a_prefix_lookalike_perfective(self):
         self.assertEqual(self._word("አመረ", "perfective"), "አመረ")
 
-    def test_tagedele_preserves_four_radicals(self):
-        result = self.generator.generate_word("ተጋደለ", "perfective", "3sm", verb_type="type_a")
+    def test_tagedele_reciprocal_perfective(self):
+        result = self.generator.generate_word("ተጋደለ", "perfective", "3sm")
         self.assertNotIn("error", result)
-        self.assertEqual(len(result["derivation"]["root"]), 4)
-        self.assertEqual(result["derivation"]["root"][0], "ተ")
+        self.assertEqual(result["derivation"]["verb_type"], "type_a_reciprocal")
+        self.assertEqual(result["word"], "ተጋደለ")
 
-    def test_tagedele_imperfective_not_broken_prefix_glue(self):
-        word = self._word("ተጋደለ", "imperfective")
-        self.assertEqual(word, "ይተግድለ")
-        self.assertNotEqual(word, "ይተገድል")
+    def test_tagedele_reciprocal_perfective_3sf(self):
+        self.assertEqual(self._word("ተጋደለ", "perfective", "3sf"), "ተጋደለት")
 
-    def test_tagedele_jussive_not_double_marked(self):
-        word = self._word("ተጋደለ", "jussive")
-        self.assertEqual(word, "ይትግድለ")
+    def test_tagedele_reciprocal_imperfective(self):
+        self.assertEqual(self._word("ተጋደለ", "imperfective"), "ይትጋደል")
+
+    def test_tagedele_reciprocal_jussive(self):
+        self.assertEqual(self._word("ተጋደለ", "jussive"), "ይትጋደል")
 
 
 class TestTypeDPerfective(unittest.TestCase):
@@ -78,6 +78,9 @@ class TestAmbiguousUnicode(unittest.TestCase):
 
 class TestVerbTypeMatrix(unittest.TestCase):
     TENSES = ("perfective", "imperfective", "jussive", "imperative")
+    OPTIONAL_TENSES = {
+        "type_a_reciprocal": ("perfective", "imperfective", "jussive"),
+    }
 
     SAMPLES = (
         ("ቀተለ", "type_a"),
@@ -86,7 +89,7 @@ class TestVerbTypeMatrix(unittest.TestCase):
         ("ጦመረ", "type_c_o"),
         ("ተንበለ", "type_tanbala"),
         ("አመረ", "type_a"),
-        ("ተጋደለ", "type_a"),
+        ("ተጋደለ", "type_a_reciprocal"),
     )
 
     def setUp(self):
@@ -94,7 +97,8 @@ class TestVerbTypeMatrix(unittest.TestCase):
 
     def test_verb_type_tense_matrix_smoke(self):
         for root, verb_type in self.SAMPLES:
-            for tense in self.TENSES:
+            tenses = self.OPTIONAL_TENSES.get(verb_type, self.TENSES)
+            for tense in tenses:
                 subject = "2sm" if tense == "imperative" else "3sm"
                 with self.subTest(root=root, verb_type=verb_type, tense=tense):
                     result = self.generator.generate_word(
