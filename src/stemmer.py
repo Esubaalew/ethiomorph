@@ -15,6 +15,60 @@ import json
 import os
 from src.normalizer import normalize_geez
 from src.decomposer import get_consonant_skeleton, get_char_order, devowelize, detect_verb_home
+from src.grammar_loader import GrammarIndex
+
+
+PARTICLE_LEXICON = {
+    'እም': {
+        'type': 'preposition',
+        'geez_type': 'መታያዥ',
+        'english_type': 'Preposition',
+        'meaning': 'from / out of',
+        'gloss': "'əm",
+    },
+    'ወ': {
+        'type': 'conjunction',
+        'geez_type': 'ስምመስር',
+        'english_type': 'Conjunction',
+        'meaning': 'and',
+        'gloss': 'wä',
+    },
+    'ዝ': {
+        'type': 'demonstrative',
+        'geez_type': 'አንጻራዊ ተውላጠ ስም',
+        'english_type': 'Demonstrative Pronoun',
+        'meaning': 'this',
+        'gloss': 'zə',
+    },
+    'በ': {
+        'type': 'preposition',
+        'geez_type': 'መታያዥ',
+        'english_type': 'Preposition',
+        'meaning': 'in / with',
+        'gloss': 'bä',
+    },
+    'ለ': {
+        'type': 'preposition',
+        'geez_type': 'መታያዥ',
+        'english_type': 'Preposition',
+        'meaning': 'to / for',
+        'gloss': 'lä',
+    },
+    'ከ': {
+        'type': 'preposition',
+        'geez_type': 'መታያዥ',
+        'english_type': 'Preposition',
+        'meaning': 'from / than',
+        'gloss': 'kä',
+    },
+    'የ': {
+        'type': 'preposition',
+        'geez_type': 'መታያዥ',
+        'english_type': 'Preposition',
+        'meaning': 'of',
+        'gloss': 'yä',
+    },
+}
 
 
 class GeezStemmer:
@@ -27,6 +81,8 @@ class GeezStemmer:
     
     def __init__(self):
         """Initialize the stemmer by loading the lexicon."""
+        self.particles = PARTICLE_LEXICON
+        self.particle_forms = sorted(self.particles.keys(), key=len, reverse=True)
         self.lexicon_roots = {}
         self.weak_initial_roots = set()
         self.hollow_w_roots = set()
@@ -83,6 +139,14 @@ class GeezStemmer:
                     self.nouns[entry['word']] = entry
         except Exception:
             pass
+
+        self.grammar = GrammarIndex()
+        if self.grammar.loaded:
+            for entry in self.grammar.roots.values():
+                root = entry["root"]
+                skel = normalize_geez(get_consonant_skeleton(root))
+                if root not in self.skeleton_lookup.get(skel, []):
+                    self.skeleton_lookup.setdefault(skel, []).append(root)
 
         self.prefixes = [
             # Stem IV (አስተሳሳቢ) - Causative-Passive fused prefixes (LONGEST FIRST)
@@ -151,6 +215,89 @@ class GeezStemmer:
             'ነ', 'ኒ', 'ና', 'ኩ', 'ከ', 'ኪ',
             'ክ', 'ን', 'ት', 'ም', 'አት', 'ተ', 'ዩ',
         ]
+
+    def _segment_particles(self, word):
+        """
+        Segment a token into a chain of known particles.
+
+        Uses longest-match backtracking so multi-character particles like እም
+        are preferred over single-character overlaps.
+        """
+        def helper(pos):
+            if pos == len(word):
+                return []
+            for form in self.particle_forms:
+                if word.startswith(form, pos):
+                    rest = helper(pos + len(form))
+                    if rest is not None:
+                        return [form] + rest
+            return None
+
+        segments = helper(0)
+        if not segments:
+            return None
+        return segments
+
+    def _build_particle_result(self, word, segments, derivation_steps):
+        """Build analysis output for an atomic particle phrase."""
+        particles = []
+        flow_parts = []
+        for index, form in enumerate(segments, start=1):
+            info = self.particles[form]
+            particles.append({
+                "form": form,
+                "type": info["type"],
+                "geez_type": info["geez_type"],
+                "english_type": info["english_type"],
+                "meaning": info["meaning"],
+                "gloss": info["gloss"],
+                "position": index,
+            })
+            flow_parts.append(f"{form} ({info['meaning']})")
+            derivation_steps.append({
+                "step": len(derivation_steps) + 1,
+                "action": "segment_particle",
+                "description": f"{info['english_type']}: {info['meaning']}",
+                "before": word if index == 1 else None,
+                "after": form,
+                "rule": f"{info['geez_type']} · {info['gloss']}",
+                "particle": form,
+                "particle_type": info["type"],
+            })
+
+        combined_meaning = " ".join(p["meaning"] for p in particles)
+        display_form = " + ".join(p["form"] for p in particles)
+
+        return {
+            "input": word,
+            "root": display_form,
+            "root_consonants": [],
+            "root_type": "particle_phrase",
+            "verb_home": None,
+            "meaning": combined_meaning,
+            "confidence": 0.98,
+            "analysis": {
+                "stem": word,
+                "pattern": {
+                    "name": "particle_phrase",
+                    "geez_name": "አካል ቃላት",
+                    "english_name": "Particle Phrase",
+                    "description": "Atomic function-word sequence",
+                },
+                "prefixes": [],
+                "suffixes": [],
+                "method": "particle_phrase",
+                "particles": particles,
+                "gloss": combined_meaning,
+                "flow": " → ".join(flow_parts),
+            },
+            "derivation_path": derivation_steps,
+            "research_notation": {
+                "root_display": " + ".join(p["form"] for p in particles),
+                "pattern_formula": "ParticlePhrase(" + " · ".join(p["type"] for p in particles) + ")",
+                "affix_formula": " ".join(p["form"] for p in particles),
+            },
+        }
 
     def _is_weak_root_candidate(self, stem):
         """
@@ -242,7 +389,7 @@ class GeezStemmer:
 
         return None, None
 
-    def _resolve_skeleton_citation(self, skeleton):
+    def _resolve_skeleton_citation(self, skeleton, source=None, stem=None, pattern_name=None):
         """
         Map a devowelized skeleton back to a lexicon citation root.
 
@@ -256,9 +403,28 @@ class GeezStemmer:
         norm = normalize_geez(get_consonant_skeleton(skeleton))
         candidates = self.skeleton_lookup.get(norm, [])
         if not candidates:
-            return None
+            grammar_pick = self.grammar.resolve_skeleton(
+                skeleton, source=source, pattern_name=pattern_name
+            )
+            return grammar_pick
         if len(candidates) == 1:
             return candidates[0]
+
+        if pattern_name in {"imperfective", "jussive"} and stem and get_char_order(stem[0]) == 6:
+            for candidate in candidates:
+                if self.lexicon_roots[candidate].get("type") == "type_a":
+                    return candidate
+
+        order_surface = source or stem
+        if order_surface:
+            c1_order = get_char_order(order_surface[0])
+            if c1_order:
+                order_matches = [
+                    candidate for candidate in candidates
+                    if get_char_order(candidate[0]) == c1_order
+                ]
+                if len(order_matches) == 1:
+                    return order_matches[0]
 
         for candidate in candidates:
             if candidate in self.hollow_w_roots or candidate in self.hollow_y_roots:
@@ -269,9 +435,15 @@ class GeezStemmer:
             if root_type and root_type not in ("type_a", "strong", "unknown"):
                 return candidate
 
+        grammar_pick = self.grammar.resolve_skeleton(
+            skeleton, source=source, pattern_name=pattern_name
+        )
+        if grammar_pick and grammar_pick in candidates:
+            return grammar_pick
+
         return candidates[0]
 
-    def _canonicalize_root(self, root):
+    def _canonicalize_root(self, root, source=None, stem=None, pattern_name=None):
         """
         Resolve a derived root to lexicon canonical orthography.
 
@@ -295,9 +467,17 @@ class GeezStemmer:
         if canonical_y:
             return canonical_y
 
-        citation = self._resolve_skeleton_citation(root)
+        citation = self._resolve_skeleton_citation(
+            root, source=source, stem=stem, pattern_name=pattern_name
+        )
         if citation:
             return citation
+
+        grammar_pick = self.grammar.resolve_skeleton(
+            root, source=source, pattern_name=pattern_name
+        )
+        if grammar_pick:
+            return grammar_pick
 
         return root
 
@@ -604,6 +784,10 @@ class GeezStemmer:
                 "rule": "Map phonetic variants to canonical forms"
             })
         
+        particle_segments = self._segment_particles(normalized)
+        if particle_segments:
+            return self._build_particle_result(word, particle_segments, derivation_steps)
+
         if len(normalized) == 1:
             one_char_map = {
                 'ፃ': ('ወጸአ', "Imperative of ወጸአ 'to go out'"),
@@ -648,7 +832,9 @@ class GeezStemmer:
                     word, hollow_root, normalized, [], [], derivation_steps, "derived"
                 )
 
-        canonical_initial = self._canonicalize_root(skeleton_initial)
+        canonical_initial = self._resolve_skeleton_citation(
+            skeleton_initial, source=normalized, stem=normalized
+        ) or self._canonicalize_root(skeleton_initial, source=normalized, stem=normalized)
         if canonical_initial in self.lexicon_roots and not (len(skeleton_initial) == 2 and has_order_signal):
             derivation_steps.append({
                 "step": 2,
@@ -808,7 +994,12 @@ class GeezStemmer:
         lexicon lookup. Also detects causative prefixes.
         """
         pattern = self.identify_verb_pattern(stem, prefixes)
-        canonical_root = self._canonicalize_root(root)
+        canonical_root = self._canonicalize_root(
+            root,
+            source=word,
+            stem=stem,
+            pattern_name=pattern.get("name"),
+        )
         if canonical_root != root:
             citation_via = (
                 "skeleton citation lookup"
@@ -829,6 +1020,11 @@ class GeezStemmer:
         
         lexicon_entry = self.lexicon_roots.get(root, {})
         meaning = lexicon_entry.get('meaning', None)
+        if not meaning:
+            meaning = self.grammar.primary_gloss(root)
+
+        grammar_ref = self.grammar.reference(root)
+        grammar_patterns = self.grammar.grammar_patterns(root)
         
         verb_home = detect_verb_home(root, stem)
         
@@ -861,7 +1057,9 @@ class GeezStemmer:
                 "prefixes": prefixes,
                 "suffixes": suffixes,
                 "method": method,
-                "is_causative": is_causative
+                "is_causative": is_causative,
+                "grammar_ref": grammar_ref,
+                "grammar_patterns": grammar_patterns,
             },
             "derivation_path": derivation_steps,
             "research_notation": {

@@ -1,0 +1,631 @@
+{
+  "giss_roots": 2290,
+  "zewadla_roots": 2090,
+  "overlap": 836,
+  "only_giss_count": 1454,
+  "only_zewadla_count": 1254,
+  "conflicts_count": 282,
+  "zewadla_fixes_noisy_giss_count": 144,
+  "key_roots": {
+    "ንገረ": {
+      "giss": "እሽኰኰ አለ",
+      "zewadla": "እሽኰኰ አለ",
+      "lexicon": "እሽኰኰ አለ",
+      "giss_zewadla_agree": true
+    },
+    "ነገረ": {
+      "giss": "ነገረ",
+      "zewadla": "ነገረ",
+      "lexicon": "ነገረ፣አወራ፣አቀረጠ",
+      "giss_zewadla_agree": true
+    },
+    "ሐወረ": {
+      "giss": "ሖረ",
+      "zewadla": "ሔደ",
+      "lexicon": "to go",
+      "giss_zewadla_agree": false
+    },
+    "ሀልሀ": {
+      "giss": "ወደረ",
+      "zewadla": "ወደረ",
+      "lexicon": "-ወደረ",
+      "giss_zewadla_agree": true
+    },
+    "ኀጥአ": {
+      "giss": null,
+      "zewadla": "አጣ",
+      "lexicon": "አጣ",
+      "giss_zewadla_agree": true
+    },
+    "ኰነነ": {
+      "giss": null,
+      "zewadla": "ገዛ",
+      "lexicon": "ገዛ(የሀገር፣የሰው)",
+      "giss_zewadla_agree": true
+    },
+    "ቃሕቅሐ": {
+      "giss": "ደ",
+      "zewadla": "ተቆራቆሰ",
+      "lexicon": null,
+      "giss_zewadla_agree": false
+    },
+    "ጠረሰ": {
+      "giss": "ተ",
+      "zewadla": "አፋጨ",
+      "lexicon": "አፋጨ(የጥርስ)",
+      "giss_zewadla_agree": false
+    },
+    "ሰርሐ": {
+      "giss": "ተ",
+      "zewadla": "ሠራ",
+      "lexicon": "ሠራ",
+      "giss_zewadla_agree": false
+    },
+    "ብህለ": {
+      "giss": null,
+      "zewadla": "አለ",
+      "lexicon": null,
+      "giss_zewadla_agree": true
+    },
+    "ሐንገረ": {
+      "giss": null,
+      "zewadla": null,
+      "lexicon": null,
+      "giss_zewadla_agree": true
+    },
+    "ሖረ": {
+      "giss": null,
+      "zewadla": null,
+      "lexicon": null,
+      "giss_zewadla_agree": true
+    }
+  },
+  "conflicts_sample": [
+    {
+      "root": "ሀለወ",
+      "giss": "ተ",
+      "zewadla": "ኖረ",
+      "lexicon": "ኖረ"
+    },
+    {
+      "root": "ሀየደ",
+      "giss": "ቀማ",
+      "zewadla": "አንጸባረቀ",
+      "lexicon": "ቀማ፣ነጠቀ"
+    },
+    {
+      "root": "ሀይመነ",
+      "giss": "አመነ",
+      "zewadla": "አሳመነ",
+      "lexicon": "አመነ፣አሳመነ"
+    },
+    {
+      "root": "ሀድአ",
+      "giss": "ጸጥአለ",
+      "zewadla": "ፀጥ አለ",
+      "lexicon": "ጸጥ አለ"
+    },
+    {
+      "root": "ለሐሰ",
+      "giss": "ተ",
+      "zewadla": "ላሰ",
+      "lexicon": "ላሰ"
+    },
+    {
+      "root": "ለሐወ",
+      "giss": "ተ",
+      "zewadla": "አለቀሰ",
+      "lexicon": null
+    },
+    {
+      "root": "ለምአ",
+      "giss": "ተ",
+      "zewadla": "ለማ",
+      "lexicon": "ለማ፣ቦገ አለ፣በራ"
+    },
+    {
+      "root": "ለሰነ",
+      "giss": "ደ",
+      "zewadla": "ተናገረ",
+      "lexicon": "ተናገረ(የልሳን)"
+    },
+    {
+      "root": "ለበጠ",
+      "giss": "ለበጠ",
+      "zewadla": "ሸለመ",
+      "lexicon": "ለበጠ፣ሸለመ"
+    },
+    {
+      "root": "ለተተ",
+      "giss": "ጻፈ",
+      "zewadla": "ዲዳ ሆነ",
+      "lexicon": "ዲዳ ኾነ"
+    },
+    {
+      "root": "ለወወ",
+      "giss": "ቀራ",
+      "zewadla": "አፈጠጠ",
+      "lexicon": "ተኮረ፣ደፈረ(የማየት)"
+    },
+    {
+      "root": "ለፈፈ",
+      "giss": "ሰደበደሐፈቀተ",
+      "zewadla": "ጻፈ",
+      "lexicon": "ጻፈ"
+    },
+    {
+      "root": "ልህቀ",
+      "giss": "ህ",
+      "zewadla": "አደገ",
+      "lexicon": "አደገ"
+    },
+    {
+      "root": "ልህበ",
+      "giss": "ህ",
+      "zewadla": "ወዛ",
+      "lexicon": "ወዛ፣ላበ፣ሞቀ፣ተኮሰ"
+    },
+    {
+      "root": "ሐለበ",
+      "giss": "ተ",
+      "zewadla": "አለበ",
+      "lexicon": "አለበ"
+    },
+    {
+      "root": "ሐለተ",
+      "giss": "ደ",
+      "zewadla": "መለመለ",
+      "lexicon": "መለመለ"
+    },
+    {
+      "root": "ሐልየነ",
+      "giss": "ን",
+      "zewadla": "መማለጃ ሰጠ",
+      "lexicon": "መማለጃ ሰጠ"
+    },
+    {
+      "root": "ሐመመ",
+      "giss": "ታመመ",
+      "zewadla": "ተመቀኘ",
+      "lexicon": "ተመቀኘ"
+    },
+    {
+      "root": "ሐርበተ",
+      "giss": "ተስበደበደ",
+      "zewadla": "ተብረከረከ",
+      "lexicon": "ተስበደበደ/ተንበደበደ(የፍርሀት)"
+    },
+    {
+      "root": "ሐርተመ",
+      "giss": "ጐሰቆለኀተመተን",
+      "zewadla": "ጐሠቆለ",
+      "lexicon": "ጐሰቆለ"
+    },
+    {
+      "root": "ሐበበ",
+      "giss": "ሀብሀብአለከዚያምከዚያምረገጠ",
+      "zewadla": "ወዳጅ ሆነ",
+      "lexicon": "ሀብሀብ አለ ከዚያም ከዚያም ረገጠ፣ወዳጅ ኾነ"
+    },
+    {
+      "root": "ሐብቈቀ",
+      "giss": "አረከሰ",
+      "zewadla": "አረካከሰ",
+      "lexicon": null
+    },
+    {
+      "root": "ሐብቈቈ",
+      "giss": "ሣሣ",
+      "zewadla": "ሳሳ",
+      "lexicon": null
+    },
+    {
+      "root": "ሐነከ",
+      "giss": "ተ",
+      "zewadla": "ሰጠ",
+      "lexicon": "ሰጠ፣አደቀቀ፣ፈጨ"
+    },
+    {
+      "root": "ሐወረ",
+      "giss": "ሖረ",
+      "zewadla": "ሔደ",
+      "lexicon": "to go"
+    },
+    {
+      "root": "ሐወጸ",
+      "giss": "ጐበኘ",
+      "zewadla": "ጎበኘ",
+      "lexicon": "ጐበኘ፣ሰለለ"
+    },
+    {
+      "root": "ሐውከተ",
+      "giss": "ግርግርአለ",
+      "zewadla": "ግርግር አለ",
+      "lexicon": "ግርግር አለ"
+    },
+    {
+      "root": "ሐዘበ",
+      "giss": "ታዘበ",
+      "zewadla": "ጠረጠረ",
+      "lexicon": "ጠረጠረ"
+    },
+    {
+      "root": "ሐደሰ",
+      "giss": "አዲስአደረገ",
+      "zewadla": "አደሰ",
+      "lexicon": "አዲስ አደረገ"
+    },
+    {
+      "root": "ሐጸጸ",
+      "giss": "ጐደለ",
+      "zewadla": "ጎደለ",
+      "lexicon": "ጐደለ"
+    },
+    {
+      "root": "መለለ",
+      "giss": "ለቀመ",
+      "zewadla": "ላገ",
+      "lexicon": null
+    },
+    {
+      "root": "መልአ",
+      "giss": "ተ",
+      "zewadla": "መላ",
+      "lexicon": "መላ"
+    },
+    {
+      "root": "መልዐ",
+      "giss": "ጭልጥብሎኼደ",
+      "zewadla": "ጭልጥ ብሎ ሔደ",
+      "lexicon": "እግር መንገድ ኼደ"
+    },
+    {
+      "root": "መሐለ",
+      "giss": "ተ",
+      "zewadla": "ማለ",
+      "lexicon": null
+    },
+    {
+      "root": "መሐረ",
+      "giss": "ተ",
+      "zewadla": "ይቅር አለ",
+      "lexicon": "አስተማረ"
+    },
+    {
+      "root": "መሐሰ",
+      "giss": "ተ",
+      "zewadla": "ቆፈረ",
+      "lexicon": "ቆፈረ፣ነቀለ፣አፈለሰ"
+    },
+    {
+      "root": "መሐከ",
+      "giss": "ህ",
+      "zewadla": "ራራ",
+      "lexicon": "ራራ"
+    },
+    {
+      "root": "መሐወ",
+      "giss": "ተ",
+      "zewadla": "አሸ",
+      "lexicon": "አሸ(የሸት)"
+    },
+    {
+      "root": "መመተ",
+      "giss": "ደ",
+      "zewadla": "አፈገፈገ",
+      "lexicon": "አፈገፈገ፣ፈርቶ ሸሸ፤"
+    },
+    {
+      "root": "መረረ",
+      "giss": "ምሩር",
+      "zewadla": "መረረ",
+      "lexicon": "ምሩር፣መራር"
+    }
+  ],
+  "zewadla_fixes_sample": [
+    {
+      "root": "ሀውከ",
+      "giss_gloss": null,
+      "zewadla_gloss": "አወከ",
+      "lexicon": "አወከ"
+    },
+    {
+      "root": "ሀየደ",
+      "giss_gloss": "ቀማ",
+      "zewadla_gloss": "አንጸባረቀ",
+      "lexicon": "ቀማ፣ነጠቀ"
+    },
+    {
+      "root": "ሀይጰ",
+      "giss_gloss": null,
+      "zewadla_gloss": "ነደፈ",
+      "lexicon": "ነደፈ"
+    },
+    {
+      "root": "ለሐወ",
+      "giss_gloss": "ተ",
+      "zewadla_gloss": "አለቀሰ",
+      "lexicon": null
+    },
+    {
+      "root": "ለሰነ",
+      "giss_gloss": "ደ",
+      "zewadla_gloss": "ተናገረ",
+      "lexicon": "ተናገረ(የልሳን)"
+    },
+    {
+      "root": "ለተተ",
+      "giss_gloss": "ጻፈ",
+      "zewadla_gloss": "ዲዳ ሆነ",
+      "lexicon": "ዲዳ ኾነ"
+    },
+    {
+      "root": "ለወወ",
+      "giss_gloss": "ቀራ",
+      "zewadla_gloss": "አፈጠጠ",
+      "lexicon": "ተኮረ፣ደፈረ(የማየት)"
+    },
+    {
+      "root": "ለውዘ",
+      "giss_gloss": null,
+      "zewadla_gloss": "ጠመዘዘ",
+      "lexicon": "ጠመዘዘ"
+    },
+    {
+      "root": "ለውየ",
+      "giss_gloss": null,
+      "zewadla_gloss": "ጠመጠመ",
+      "lexicon": "ጠመጠመ፣ጠቀለለ"
+    },
+    {
+      "root": "ለውገ",
+      "giss_gloss": null,
+      "zewadla_gloss": "ጠመዘዘ",
+      "lexicon": "ጠመዘዘ፣ሠራ"
+    },
+    {
+      "root": "ለውጠ",
+      "giss_gloss": null,
+      "zewadla_gloss": "ለወጠ",
+      "lexicon": "ለወጠ፣ልውጥ"
+    },
+    {
+      "root": "ለይቀ",
+      "giss_gloss": null,
+      "zewadla_gloss": "አለቃ ሆነ",
+      "lexicon": "አለቃ ኾነ"
+    },
+    {
+      "root": "ልህቀ",
+      "giss_gloss": "ህ",
+      "zewadla_gloss": "አደገ",
+      "lexicon": "አደገ"
+    },
+    {
+      "root": "ሐለበ",
+      "giss_gloss": "ተ",
+      "zewadla_gloss": "አለበ",
+      "lexicon": "አለበ"
+    },
+    {
+      "root": "ሐለተ",
+      "giss_gloss": "ደ",
+      "zewadla_gloss": "መለመለ",
+      "lexicon": "መለመለ"
+    },
+    {
+      "root": "ሐልየነ",
+      "giss_gloss": "ን",
+      "zewadla_gloss": "መማለጃ ሰጠ",
+      "lexicon": "መማለጃ ሰጠ"
+    },
+    {
+      "root": "ሐወዘ",
+      "giss_gloss": null,
+      "zewadla_gloss": "አማረ",
+      "lexicon": "አማረ"
+    },
+    {
+      "root": "ሐይከ",
+      "giss_gloss": null,
+      "zewadla_gloss": "አላመጠ",
+      "lexicon": "አላመጠ"
+    },
+    {
+      "root": "መሐረ",
+      "giss_gloss": "ተ",
+      "zewadla_gloss": "ይቅር አለ",
+      "lexicon": "አስተማረ"
+    },
+    {
+      "root": "መሐሰ",
+      "giss_gloss": "ተ",
+      "zewadla_gloss": "ቆፈረ",
+      "lexicon": "ቆፈረ፣ነቀለ፣አፈለሰ"
+    },
+    {
+      "root": "መመተ",
+      "giss_gloss": "ደ",
+      "zewadla_gloss": "አፈገፈገ",
+      "lexicon": "አፈገፈገ፣ፈርቶ ሸሸ፤"
+    },
+    {
+      "root": "መርዐ",
+      "giss_gloss": "ተ",
+      "zewadla_gloss": "ተዳራ",
+      "lexicon": null
+    },
+    {
+      "root": "መይጠ",
+      "giss_gloss": null,
+      "zewadla_gloss": "መለሰ",
+      "lexicon": "መለሰ፣ቀለሰ"
+    },
+    {
+      "root": "ሠለሰ",
+      "giss_gloss": "ደ",
+      "zewadla_gloss": "ሦስት አደረገ",
+      "lexicon": "ሦስት አደረገ"
+    },
+    {
+      "root": "ሠምረ",
+      "giss_gloss": "ተ",
+      "zewadla_gloss": "ወደደ",
+      "lexicon": "ወደደ"
+    },
+    {
+      "root": "ሠውዐ",
+      "giss_gloss": "ሠዋ",
+      "zewadla_gloss": "አረደ",
+      "lexicon": "ሠዋ፣አረደ"
+    },
+    {
+      "root": "ሠውጠ",
+      "giss_gloss": null,
+      "zewadla_gloss": "ገረፈ",
+      "lexicon": "ገረፈ"
+    },
+    {
+      "root": "ረመለ",
+      "giss_gloss": "ተ",
+      "zewadla_gloss": "ጠነቆለ",
+      "lexicon": "ጠነቆለ"
+    },
+    {
+      "root": "ረመቀተ",
+      "giss_gloss": "ተ",
+      "zewadla_gloss": "ራመመ",
+      "lexicon": null
+    },
+    {
+      "root": "ረሰወ",
+      "giss_gloss": "ተ",
+      "zewadla_gloss": "መልሕቅ ጣለ",
+      "lexicon": "መልሕቅ ጣለ፣ገታ፣አቆመ"
+    },
+    {
+      "root": "ረአተ",
+      "giss_gloss": "ተ",
+      "zewadla_gloss": "ጋገረ",
+      "lexicon": "ጋገረ(የራት)"
+    },
+    {
+      "root": "ረውዘ",
+      "giss_gloss": null,
+      "zewadla_gloss": "ወለወለ",
+      "lexicon": "ወለወለ"
+    },
+    {
+      "root": "ርሕቀ",
+      "giss_gloss": "ህ",
+      "zewadla_gloss": "ረቀቀ",
+      "lexicon": "ራቀ"
+    },
+    {
+      "root": "ሰሐበ",
+      "giss_gloss": "ተ",
+      "zewadla_gloss": "ጐተተ",
+      "lexicon": "ጐተተ፣ሳበ"
+    },
+    {
+      "root": "ሰበከ",
+      "giss_gloss": "ተ",
+      "zewadla_gloss": "አስተማረ",
+      "lexicon": "አስተማረ"
+    },
+    {
+      "root": "ሰኮተ",
+      "giss_gloss": null,
+      "zewadla_gloss": "ወለወለ",
+      "lexicon": "ወለወለ፣ሰራ(የመንገድ)"
+    },
+    {
+      "root": "ሰወቀ",
+      "giss_gloss": null,
+      "zewadla_gloss": "ደገፈ",
+      "lexicon": "ደገፈ(የሚያዝ ነገር)"
+    },
+    {
+      "root": "ሰውጠ",
+      "giss_gloss": null,
+      "zewadla_gloss": "ጨመረ",
+      "lexicon": "ጨመረ፣ደባለቀ"
+    },
+    {
+      "root": "ስሕከ",
+      "giss_gloss": "ህ",
+      "zewadla_gloss": "ሻከረ",
+      "lexicon": "ሻከረ"
+    },
+    {
+      "root": "ስሕወ",
+      "giss_gloss": "ህ",
+      "zewadla_gloss": "ጐተተ",
+      "lexicon": "ተሳበ፣ተጐተተ"
+    }
+  ],
+  "only_zewadla_sample": [
+    "ሀበወ",
+    "ሀንጰጰ",
+    "ሀውለየ",
+    "ሀደመ",
+    "ሀጒለ",
+    "ሀፈወ",
+    "ሃልሀ",
+    "ሄደቀተ",
+    "ለሀበ",
+    "ለሐኰ",
+    "ለሐየ",
+    "ለሐጸ",
+    "ለሕልሐ",
+    "ለሕሐ",
+    "ለመደ",
+    "ለምለመ",
+    "ለምሐ",
+    "ለምጸ",
+    "ለቀመ",
+    "ለቀወ",
+    "ለቀየ",
+    "ለቅሐ",
+    "ለበየ",
+    "ለብሐ",
+    "ለብሰ",
+    "ለተመ",
+    "ለአፈ",
+    "ለከወ",
+    "ለክአ",
+    "ለወለ"
+  ],
+  "only_giss_sample": [
+    "ሀሀልሀ",
+    "ሀርሀሀ",
+    "ሀቅሀሀ",
+    "ሀትሀሀ",
+    "ሀውሀሀ",
+    "ሀዝሀሀ",
+    "ሀየየ",
+    "ሀግሀሀ",
+    "ሀጕለ",
+    "ህለለ",
+    "ህውኀ",
+    "ለለለ",
+    "ለለለለ",
+    "ለሐቀፈ",
+    "ለሐፈ",
+    "ለሕለለ",
+    "ለመለለ",
+    "ለመመ",
+    "ለመድሐ",
+    "ለማረየ",
+    "ለረቅሐ",
+    "ለርሕየ",
+    "ለሰለለ",
+    "ለሰመዘ",
+    "ለሰሰ",
+    "ለሰቀየ",
+    "ለስለለ",
+    "ለቀለለ",
+    "ለቈለለ",
+    "ለቈቈ"
+  ]
+}

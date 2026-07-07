@@ -98,5 +98,57 @@ class TestAdvancedGeezRootAnalyzer(unittest.TestCase):
         self.assertIn("ጸ", result["root_consonants"])
         self.assertNotIn("ፀ", result["root_consonants"])
 
+    def test_particle_phrase_wemz(self):
+        result = self.stemmer.extract_root("ወእምዝ")
+        self.assertEqual(result["analysis"]["method"], "particle_phrase")
+        self.assertEqual(result["root_type"], "particle_phrase")
+        self.assertEqual(result["meaning"], "and from / out of this")
+        particles = result["analysis"]["particles"]
+        self.assertEqual([p["form"] for p in particles], ["ወ", "እም", "ዝ"])
+        self.assertEqual(particles[0]["type"], "conjunction")
+        self.assertEqual(particles[1]["type"], "preposition")
+        self.assertEqual(particles[2]["type"], "demonstrative")
+
+    def test_particle_phrase_does_not_break_verbs(self):
+        result = self.stemmer.extract_root("ወኢይትኀጣእ")
+        self.assertNotEqual(result["analysis"]["method"], "particle_phrase")
+        self.assertEqual(normalize_geez(result["root"]), normalize_geez("ኀጥአ"))
+
+    def test_particle_phrase_emz(self):
+        result = self.stemmer.extract_root("እምዝ")
+        self.assertEqual(result["analysis"]["method"], "particle_phrase")
+        self.assertEqual([p["form"] for p in result["analysis"]["particles"]], ["እም", "ዝ"])
+        self.assertEqual(result["meaning"], "from / out of this")
+
+    def test_nagera_tell_not_stumble(self):
+        result = self.stemmer.extract_root("ነገረ")
+        self.assertEqual(result["root"], "ነገረ")
+        self.assertIn("ነገረ", result["meaning"])
+
+        result = self.stemmer.extract_root("ትንግር")
+        self.assertEqual(result["root"], "ነገረ")
+        self.assertIn("ነገረ", result["meaning"])
+        self.assertEqual(result["analysis"]["pattern"]["name"], "imperfective")
+
+        result = self.stemmer.extract_root("ንገረ")
+        self.assertEqual(result["root"], "ንገረ")
+        self.assertIn("እሽኰኰ", result["meaning"])
+
+    def test_kwanente_spelling_variant(self):
+        result = self.stemmer.extract_root("መኳንንተ")
+        self.assertEqual(result["root"], "ኰነነ")
+        self.assertIn("ገዛ", result["meaning"])
+
+    def test_grammar_reference_attached(self):
+        result = self.stemmer.extract_root("ንገረ")
+        self.assertIsNotNone(result["analysis"].get("grammar_ref"))
+        self.assertEqual(result["analysis"]["grammar_ref"]["source"], "ግስ ከሀ-ፐ")
+        patterns = result["analysis"].get("grammar_patterns", [])
+        self.assertTrue(any(p.get("name") == "noun_agent" for p in patterns))
+
+        result = self.stemmer.extract_root("ሖ")
+        self.assertIsNotNone(result["analysis"].get("grammar_ref"))
+        self.assertEqual(result["root"], "ሐወረ")
+
 if __name__ == '__main__':
     unittest.main()

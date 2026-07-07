@@ -558,6 +558,34 @@
                                             </div>
                                         </div>
 
+                                        {/* Particle Breakdown */}
+                                        {result.analysis?.method === 'particle_phrase' && result.analysis?.particles?.length > 0 && (
+                                            <div className="flex gap-6 mb-6 relative">
+                                                <div className="size-10 rounded-full bg-surface border-2 border-cyan-400/50 flex items-center justify-center z-10">
+                                                    <Icon name="segment" className="text-cyan-400" />
+                                                </div>
+                                                <div className="flex-1">
+                                                    <p className="text-xs font-mono text-muted/50 mb-2">STAGE 02: PARTICLE BREAKDOWN</p>
+                                                    <div className="space-y-2">
+                                                        {result.analysis.particles.map((particle, i) => (
+                                                            <div key={i} className="bg-surface-dark border border-bronze rounded-lg p-3 flex justify-between items-center hover:border-cyan-400/30 transition-colors">
+                                                                <div className="flex items-center gap-3">
+                                                                    <span className="font-bold font-ethiopic text-lg text-cyan-400">{particle.form}</span>
+                                                                    <span className="text-sm text-muted/50">{particle.meaning}</span>
+                                                                </div>
+                                                                <span className="text-[10px] font-bold uppercase px-2 py-1 rounded bg-bronze/50 text-muted">
+                                                                    {particle.english_type}
+                                                                </span>
+                                                            </div>
+                                                        ))}
+                                                    </div>
+                                                    {result.analysis.flow && (
+                                                        <p className="text-xs text-muted/60 mt-3 font-mono">{result.analysis.flow}</p>
+                                                    )}
+                                                </div>
+                                            </div>
+                                        )}
+
                                         {/* Affix Stripping */}
                                         {result.derivation_path?.filter(s => s.action?.includes('strip')).length > 0 && (
                                             <div className="flex gap-6 mb-6 relative">
@@ -591,13 +619,19 @@
                                                 <Icon name="diamond" className="text-primary" />
                                             </div>
                                             <div className="flex-1">
-                                                <p className="text-xs font-mono text-primary mb-2">STAGE 03: ROOT IDENTIFIED</p>
+                                                <p className="text-xs font-mono text-primary mb-2">
+                                                    {result.analysis?.method === 'particle_phrase' ? 'STAGE 03: PHRASE IDENTIFIED' : 'STAGE 03: ROOT IDENTIFIED'}
+                                                </p>
                                                 <div className="bg-surface-dark border-2 border-primary/50 rounded-xl p-5 glow-box relative overflow-hidden">
                                                     <div className="absolute inset-0 opacity-5" style={{backgroundImage: 'radial-gradient(#000000 1px, transparent 1px)', backgroundSize: '10px 10px'}}></div>
                                                     <div className="relative flex justify-between items-center">
                                                         <div>
                                                             <p className="text-3xl font-bold font-ethiopic text-primary">{result.root}</p>
-                                                            <p className="text-sm text-gray-900 dark:text-white mt-1">{result.root_type?.replace(/_/g, ' ')} ({result.root?.split('').join('-')})</p>
+                                                            <p className="text-sm text-gray-900 dark:text-white mt-1">
+                                                                {result.analysis?.method === 'particle_phrase'
+                                                                    ? `${result.analysis?.pattern?.english_name} (${result.analysis?.particles?.map(p => p.form).join(' · ')})`
+                                                                    : `${result.root_type?.replace(/_/g, ' ')} (${result.root?.split('').join('-')})`}
+                                                            </p>
                                                         </div>
                                                         <div className="size-12 rounded-full bg-primary/10 flex items-center justify-center">
                                                             <Icon name="check_circle" className="text-primary text-2xl" />
