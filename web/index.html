@@ -801,6 +801,11 @@
                                                                 <span className="font-ethiopic text-xl text-gray-900 dark:text-white">
                                                                     {data?.[t.key]?.[subj.key] || '—'}
                                                                 </span>
+                                                                {data?.variants?.[t.key]?.[subj.key]?.length > 0 && (
+                                                                    <span className="block font-ethiopic text-sm text-muted/60 mt-1">
+                                                                        {data.variants[t.key][subj.key].join(' · ')}
+                                                                    </span>
+                                                                )}
                                                             </td>
                                                         ))}
                                                     </tr>
@@ -859,6 +864,7 @@
 
             const currentSubject = SUBJECTS[subjectIndex];
             const currentWord = data?.[tense]?.[currentSubject.key] || '—';
+            const currentVariants = data?.variants?.[tense]?.[currentSubject.key] || [];
 
             return (
                 <main className="flex-1 relative overflow-hidden manuscript-bg">
@@ -907,6 +913,16 @@
                                 <div className="text-7xl md:text-8xl lg:text-9xl font-bold font-ethiopic text-primary transition-all duration-300">
                                     {currentWord}
                                 </div>
+                                {currentVariants.length > 0 && (
+                                    <div className="mt-4">
+                                        <p className="text-[10px] text-muted/50 uppercase tracking-widest mb-2">collapsed</p>
+                                        <div className="flex flex-wrap justify-center gap-3">
+                                            {currentVariants.map((variant) => (
+                                                <span key={variant} className="font-ethiopic text-2xl md:text-3xl text-muted/80">{variant}</span>
+                                            ))}
+                                        </div>
+                                    </div>
+                                )}
                                 <div className="mt-8">
                                     <span className="inline-block px-6 py-3 rounded-full border border-bronze bg-surface/50 backdrop-blur text-sm uppercase tracking-widest">
                                         {tense} • <span className="text-gray-900 dark:text-white font-bold">{currentSubject.en}</span> • <span className="font-ethiopic text-primary">{currentSubject.geez}</span>
@@ -965,6 +981,8 @@
                 { key: 'perfective.he', label: 'Perfect (He)', get: d => d?.perfective?.he },
                 { key: 'imperfective.he', label: 'Imperfect (He)', get: d => d?.imperfective?.he },
                 { key: 'jussive.he', label: 'Jussive (He)', get: d => d?.jussive?.he },
+                { key: 'imperative.you_m', label: 'Imperative (You M)', get: d => d?.imperative?.you_m },
+                { key: 'imperative_collapsed.you_m', label: 'Imperative collapsed', get: d => d?.variants?.imperative?.you_m?.join(' · ') },
                 { key: 'derived.infinitive', label: 'Infinitive', get: d => d?.derived?.infinitive },
                 { key: 'derived.active_participle', label: 'Active Part.', get: d => d?.derived?.active_participle },
                 { key: 'derived.passive_participle', label: 'Passive Part.', get: d => d?.derived?.passive_participle },
@@ -1129,6 +1147,16 @@
 
                 if (data.perfective?.conjugations?.['3sm']) branches[0].items.push({ label: "Perfect", word: data.perfective.conjugations['3sm'].word });
                 if (data.imperfective?.conjugations?.['3sm']) branches[0].items.push({ label: "Imperfect", word: data.imperfective.conjugations['3sm'].word });
+                if (data.imperative?.conjugations?.['2sm']) {
+                    branches[0].items.push({ label: "Imperative", word: data.imperative.conjugations['2sm'].word });
+                    const collapsed = data.imperative.conjugations['2sm'].variants || [];
+                    collapsed.forEach((variant, i) => {
+                        branches[0].items.push({
+                            label: i === 0 ? "Imp. collapsed" : "collapsed",
+                            word: variant
+                        });
+                    });
+                }
                 if (data.derived?.infinitive) branches[1].items.push({ label: "Infinitive", word: data.derived.infinitive.word });
                 if (data.derived?.active_participle) branches[1].items.push({ label: "Participle", word: data.derived.active_participle.word });
                 if (data.derived?.verbal_noun) branches[2].items.push({ label: "Verbal Noun", word: data.derived.verbal_noun.word });

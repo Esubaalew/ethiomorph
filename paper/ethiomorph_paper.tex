@@ -444,6 +444,23 @@ Type~D verbs (\geez{ክህለ} ``be able'', \geez{ፈጸመ} ``finish'') use a d
 
 Guttural roots often store C1 at 6th order in the lexicon (\geez{ክ} in \geez{ክህለ}). The conjugator preserves that input order when C1 is already bare, so (\geez{ክህለ}, perfective) $\rightarrow$ \geez{ክህለ} while (\geez{ፈጸመ}, perfective, 3sf) $\rightarrow$ \geez{ፈጽመት} (C2 \geez{ጸ} $\rightarrow$ \geez{ፅ}).
 
+\subsection{Hollow Verb Surface Variants}
+
+Hollow verbs (\texttt{hollow\_w}, \texttt{hollow\_y}) admit \emph{collapsed} imperative surfaces where the middle weak radical disappears and C1 carries a distinctive vowel order. For \geez{ሐወረ} ``to go,'' the full imperative is \geez{ሕወር}, but collapsed forms \geez{ሖር} and the ultra-short \geez{ሖ} also occur (C1 at 7th order signals the hidden \geez{ወ}).
+
+The conjugator emits these as non-destructive \texttt{variants} alongside the primary generated word:
+\begin{lstlisting}[language=Python]
+{
+  "word": "<ho-wer>",           # primary imperative (full surface)
+  "variants": ["<hor>", "<ho>"],  # collapsed alternates
+  "derivation": { ... }
+}
+\end{lstlisting}
+
+\noindent The simple expand API mirrors this as \texttt{result["variants"][tense][person]}. The UI (Morpher, Matrix, Compare, Root Tree) renders primary and collapsed forms together so users see both the template output and attested short surfaces.
+
+Perfective hollow verbs collapse differently: (\geez{ሐወረ}, perfective, 3sm) $\rightarrow$ \geez{ሐረ} with C2 dropped and C1 at 1st order. The stemmer reconstructs such two-radical skeletons back to the lexicon root by inserting the middle weak consonant when the expanded form is listed as \texttt{hollow\_w} or \texttt{hollow\_y}.
+
 \section{Stemmer: Going Backwards}
 
 The Stemmer takes a conjugated word and figures out its root. It's the reverse of generation. Prefix stripping here applies to \emph{tense and stem markers on inflected forms}, not to the inherent root-initial radicals guarded during generation.
@@ -456,9 +473,30 @@ The Stemmer takes a conjugated word and figures out its root. It's the reverse o
     \item Strip suffixes (\geez{ኡ}, \geez{ከ}, etc.)
     \item Get the consonant skeleton
     \item Restore any weak consonants that disappeared
+    \item Resolve to lexicon canonical orthography
     \item Figure out tense/person from what you stripped
     \item Classify the verb type
 \end{enumerate}
+
+\subsection{Canonical Root Resolution}
+
+Homophone normalization maps variant spellings to a single row for matching (\geez{ሐ} $\rightarrow$ \geez{ሀ}, \geez{ሕ} $\rightarrow$ \geez{ህ}, etc.). That aids reconstruction, but the \emph{reported} root should use the lexicon citation form when one exists. For example, \geez{ሖ}, \geez{ሖር}, and \geez{ሕወር} all analyze to \geez{ሐወረ}---not \geez{ሀወረ}---because the lexicon lists the \geez{ሐ}-row root and surface imperatives use \geez{ሖ} (7th order on \geez{ሐ}), not \geez{ሆ} (7th order on \geez{ሀ}).
+
+\begin{lstlisting}[language=Python]
+def canonicalize_root(root):
+    if root in LEXICON:
+        return root
+    norm = normalize_geez(root)
+    if norm in LEXICON_NORMALIZED:
+        return LEXICON_NORMALIZED[norm]
+    if norm in HOLLOW_W_LOOKUP:
+        return HOLLOW_W_LOOKUP[norm]
+    if norm in HOLLOW_Y_LOOKUP:
+        return HOLLOW_Y_LOOKUP[norm]
+    return root
+\end{lstlisting}
+
+\noindent Two-radical perfective stems such as \geez{ሐረ} and \geez{ቀመ} are expanded by inserting \geez{ወ} or \geez{የ} when the resulting triliteral appears in the typed hollow-verb lists. Vowel-order signals (3rd, 5th, or 7th order on C1) take precedence over bare lexicon matches for ambiguous two-letter forms such as \geez{ጌሰ} (collapsed \geez{ገየሰ}) versus the unrelated root \geez{ገሰ}.
 
 \subsection{Checking Prefixes}
 

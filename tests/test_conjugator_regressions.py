@@ -108,5 +108,41 @@ class TestVerbTypeMatrix(unittest.TestCase):
                     self.assertTrue(result.get("word"))
 
 
+class TestHollowVerbVariants(unittest.TestCase):
+    def setUp(self):
+        self.generator = EthioMorphGenerator()
+
+    def _result(self, root, tense="imperative", subject="2sm"):
+        result = self.generator.generate_word(root, tense, subject)
+        self.assertNotIn("error", result, msg=str(result))
+        return result
+
+    def test_hawara_imperative_variants(self):
+        result = self._result("ሐወረ")
+        self.assertEqual(result["word"], "ሕወር")
+        self.assertIn("variants", result)
+        self.assertIn("ሖር", result["variants"])
+        self.assertIn("ሖ", result["variants"])
+
+    def test_qawama_imperative_variants(self):
+        result = self._result("ቀወመ")
+        self.assertEqual(result["word"], "ቅወም")
+        self.assertIn("variants", result)
+        self.assertIn("ቆም", result["variants"])
+
+    def test_giesa_imperative_variants(self):
+        result = self._result("ገየሰ")
+        self.assertEqual(result["word"], "ግየስ")
+        self.assertIn("variants", result)
+        self.assertIn("ጌስ", result["variants"])
+
+    def test_expand_root_simple_includes_variants(self):
+        expanded = self.generator.expand_root_simple("ሐወረ")
+        self.assertIn("variants", expanded)
+        self.assertIn("imperative", expanded["variants"])
+        self.assertIn("you_m", expanded["variants"]["imperative"])
+        self.assertIn("ሖር", expanded["variants"]["imperative"]["you_m"])
+
+
 if __name__ == "__main__":
     unittest.main()

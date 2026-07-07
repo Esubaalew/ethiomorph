@@ -50,9 +50,24 @@ class GeezStemmer:
                         self.hollow_w_roots.add(root)
                     elif root_type == 'hollow_y':
                         self.hollow_y_roots.add(root)
+
+            self.hollow_w_lookup = {
+                normalize_geez(root): root for root in self.hollow_w_roots
+            }
+            self.hollow_y_lookup = {
+                normalize_geez(root): root for root in self.hollow_y_roots
+            }
+            self.lexicon_normalized_lookup = {}
+            for lex_root in self.lexicon_roots:
+                norm = normalize_geez(lex_root)
+                if norm not in self.lexicon_normalized_lookup:
+                    self.lexicon_normalized_lookup[norm] = lex_root
                         
         except FileNotFoundError:
             print("Warning: lexicon.json not found. Using empty lexicon.")
+            self.hollow_w_lookup = {}
+            self.hollow_y_lookup = {}
+            self.lexicon_normalized_lookup = {}
 
         self.nouns = {}
         try:
@@ -199,6 +214,54 @@ class GeezStemmer:
             return 'ብህለ', 'ህ'
         
         return None, None
+
+    def _try_hollow_middle_restore(self, skeleton):
+        """
+        Restore a hollow middle radical from a 2-consonant skeleton.
+
+        Checks hollow-W before hollow-Y. Uses normalized lexicon matching so
+        ሀወረ matches lexicon entry ሐወረ.
+        """
+        if len(skeleton) != 2:
+            return None, None
+
+        candidate_w = skeleton[0] + 'ወ' + skeleton[1]
+        restored_w = self.hollow_w_lookup.get(normalize_geez(candidate_w))
+        if restored_w:
+            return restored_w, "hollow_w"
+
+        candidate_y = skeleton[0] + 'የ' + skeleton[1]
+        restored_y = self.hollow_y_lookup.get(normalize_geez(candidate_y))
+        if restored_y:
+            return restored_y, "hollow_y"
+
+        return None, None
+
+    def _canonicalize_root(self, root):
+        """
+        Resolve a derived root to lexicon canonical orthography.
+
+        Internal normalization maps homophones (e.g. ሐ→ሀ) for matching, but
+        user-facing output should use the lexicon citation form when known.
+        """
+        if not root:
+            return root
+        if root in self.lexicon_roots:
+            return root
+
+        norm = normalize_geez(root)
+        if norm in self.lexicon_normalized_lookup:
+            return self.lexicon_normalized_lookup[norm]
+
+        canonical_w = self.hollow_w_lookup.get(norm)
+        if canonical_w:
+            return canonical_w
+
+        canonical_y = self.hollow_y_lookup.get(norm)
+        if canonical_y:
+            return canonical_y
+
+        return root
 
     def strip_affixes(self, word):
         """
@@ -507,8 +570,8 @@ class GeezStemmer:
             one_char_map = {
                 'ፃ': ('ወጸአ', "Imperative of ወጸአ 'to go out'"),
                 'ጻ': ('ወጸአ', "Imperative of ወጸአ 'to go out'"),
-                'ሖ': ('ሀወረ', "Imperative of ሀወረ 'to go'"),
-                'ሆ': ('ሀወረ', "Imperative of ሀወረ 'to go'")
+                'ሖ': ('ሐወረ', "Imperative of ሐወረ 'to go'"),
+                'ሆ': ('ሐወረ', "Imperative of ሐወረ 'to go'")
             }
             if normalized in one_char_map:
                 root, explanation = one_char_map[normalized]
@@ -523,16 +586,41 @@ class GeezStemmer:
                 return self._build_result(word, root, normalized, [], [], derivation_steps, "irregular")
 
         skeleton_initial = get_consonant_skeleton(normalized)
-        if skeleton_initial in self.lexicon_roots:
+        order_signal = get_char_order(normalized[0]) if normalized else 0
+        has_order_signal = order_signal in [3, 5, 7]
+
+        if len(skeleton_initial) == 2 and not has_order_signal:
+            hollow_root, hollow_type = self._try_hollow_middle_restore(skeleton_initial)
+            if hollow_root:
+                action = (
+                    "reconstruct_hollow_w_lexicon"
+                    if hollow_type == "hollow_w"
+                    else "reconstruct_hollow_y_lexicon"
+                )
+                radical = "ወ" if hollow_type == "hollow_w" else "የ"
+                derivation_steps.append({
+                    "step": 2,
+                    "action": action,
+                    "description": f"Reconstruct hollow-{radical} middle radical",
+                    "before": normalized,
+                    "after": hollow_root,
+                    "rule": f"2-letter stem matches known {hollow_type} root. Restored {radical} as C2."
+                })
+                return self._build_result(
+                    word, hollow_root, normalized, [], [], derivation_steps, "derived"
+                )
+
+        canonical_initial = self._canonicalize_root(skeleton_initial)
+        if canonical_initial in self.lexicon_roots and not (len(skeleton_initial) == 2 and has_order_signal):
             derivation_steps.append({
                 "step": 2,
                 "action": "lexicon_match",
                 "description": "Direct lexicon lookup",
                 "before": normalized,
-                "after": skeleton_initial,
-                "rule": f"Found in lexicon: {self.lexicon_roots[skeleton_initial].get('meaning', 'N/A')}"
+                "after": canonical_initial,
+                "rule": f"Found in lexicon: {self.lexicon_roots[canonical_initial].get('meaning', 'N/A')}"
             })
-            return self._build_result(word, skeleton_initial, normalized, [], [], derivation_steps, "lexicon")
+            return self._build_result(word, canonical_initial, normalized, [], [], derivation_steps, "lexicon")
 
         if normalized in self.nouns:
             noun_entry = self.nouns[normalized]
@@ -629,31 +717,47 @@ class GeezStemmer:
                     root = laryngeal_root
                 
         if len(root) == 2:
-            # Try laryngeal middle reconstruction if still 2 letters
-            laryngeal_root, laryngeal_char = self._reconstruct_laryngeal_middle(root)
-            if laryngeal_root:
+            hollow_root, hollow_type = self._try_hollow_middle_restore(root)
+            if hollow_root:
+                action = (
+                    "reconstruct_hollow_w_lexicon"
+                    if hollow_type == "hollow_w"
+                    else "reconstruct_hollow_y_lexicon"
+                )
+                radical = "ወ" if hollow_type == "hollow_w" else "የ"
                 derivation_steps.append({
                     "step": len(derivation_steps) + 1,
-                    "action": "reconstruct_laryngeal_middle",
-                    "description": "Reconstruct laryngeal middle radical",
+                    "action": action,
+                    "description": f"Reconstruct hollow-{radical} middle radical",
                     "before": root,
-                    "after": laryngeal_root,
-                    "rule": f"2-letter stem matches laryngeal-middle pattern. Restored '{laryngeal_char}' as C2."
+                    "after": hollow_root,
+                    "rule": f"2-letter stem matches known {hollow_type} root. Restored {radical} as C2."
                 })
-                root = laryngeal_root
+                root = hollow_root
             else:
-                # Try weak initial reconstruction
-                candidate = 'ወ' + root
-                if candidate in self.weak_initial_roots:
+                laryngeal_root, laryngeal_char = self._reconstruct_laryngeal_middle(root)
+                if laryngeal_root:
                     derivation_steps.append({
                         "step": len(derivation_steps) + 1,
-                        "action": "reconstruct_weak_initial",
-                        "description": "Reconstruct assimilated initial ወ",
+                        "action": "reconstruct_laryngeal_middle",
+                        "description": "Reconstruct laryngeal middle radical",
                         "before": root,
-                        "after": candidate,
-                        "rule": f"2-letter stem matches weak-initial pattern. Restored ወ prefix."
+                        "after": laryngeal_root,
+                        "rule": f"2-letter stem matches laryngeal-middle pattern. Restored '{laryngeal_char}' as C2."
                     })
-                    root = candidate
+                    root = laryngeal_root
+                else:
+                    candidate = 'ወ' + root
+                    if candidate in self.weak_initial_roots:
+                        derivation_steps.append({
+                            "step": len(derivation_steps) + 1,
+                            "action": "reconstruct_weak_initial",
+                            "description": "Reconstruct assimilated initial ወ",
+                            "before": root,
+                            "after": candidate,
+                            "rule": "2-letter stem matches weak-initial pattern. Restored ወ prefix."
+                        })
+                        root = candidate
 
         return self._build_result(word, root, stem, prefixes, suffixes, derivation_steps, "derived")
 
@@ -666,6 +770,18 @@ class GeezStemmer:
         lexicon lookup. Also detects causative prefixes.
         """
         pattern = self.identify_verb_pattern(stem, prefixes)
+        canonical_root = self._canonicalize_root(root)
+        if canonical_root != root:
+            derivation_steps.append({
+                "step": len(derivation_steps) + 1,
+                "action": "canonicalize_root",
+                "description": "Resolve to lexicon canonical orthography",
+                "before": root,
+                "after": canonical_root,
+                "rule": "Homophone-normalized root mapped to lexicon citation form"
+            })
+            root = canonical_root
+
         root_type = self._get_root_type(root)
         
         lexicon_entry = self.lexicon_roots.get(root, {})
@@ -691,7 +807,7 @@ class GeezStemmer:
         return {
             "input": word,
             "root": root,
-            "root_consonants": list(root),
+            "root_consonants": list(get_consonant_skeleton(root)),
             "root_type": root_type,
             "verb_home": verb_home,
             "meaning": meaning,

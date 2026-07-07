@@ -24,14 +24,32 @@ class TestAdvancedGeezRootAnalyzer(unittest.TestCase):
         root = result['root']
         # Normalize expectation just in case
         normalized_expected = normalize_geez(expected_root)
+        normalized_root = normalize_geez(root)
         print(f"[{description}] Word: {word} -> Got: {root}, Expected: {normalized_expected}")
-        self.assertEqual(root, normalized_expected, f"Failed for {word} ({description})")
+        self.assertEqual(normalized_root, normalized_expected, f"Failed for {word} ({description})")
 
     def test_hollow_verbs(self):
         print("\n--- Testing Hollow Verbs ---")
         self.check_root("ቆመ", "ቀወመ", "Middle W hidden")
         self.check_root("ጌሠ", "ገየሰ", "Middle Y hidden (Giesa)")
         self.check_root("ቤተ", "በየተ", "Middle Y hidden (Beta)")
+
+    def test_hollow_round_trip(self):
+        print("\n--- Testing Hollow Verb Round-Trip ---")
+        self.check_root("ሐረ", "ሐወረ", "Hollow-W perfective collapse")
+        self.check_root("ቀመ", "ቀወመ", "Hollow-W perfective collapse (ቀወመ)")
+        self.check_root("ገሰ", "ገየሰ", "Hollow-Y perfective collapse")
+        self.check_root("ሕወር", "ሐወረ", "Hollow-W imperative full form")
+        self.check_root("ሖር", "ሐወረ", "Hollow-W imperative collapsed")
+        self.check_root("ቆም", "ቀወመ", "Hollow-W imperative collapsed (ቀወመ)")
+
+    def test_hawara_canonical_orthography(self):
+        print("\n--- Testing ሐ canonical orthography ---")
+        for word in ("ሖ", "ሖር", "ሕወር", "ሐረ", "ሐወረ"):
+            result = self.stemmer.extract_root(word)
+            self.assertEqual(result["root"], "ሐወረ", f"{word} should resolve to lexicon form ሐወረ")
+            self.assertIn("ሐ", result["root_consonants"])
+            self.assertNotIn("ሀ", result["root_consonants"])
 
     def test_prefix_lookalikes(self):
         print("\n--- Testing Prefix Look-Alikes ---")

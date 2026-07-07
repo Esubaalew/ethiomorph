@@ -308,6 +308,37 @@ class EthioMorphGenerator:
              
         return order
 
+    def _generate_hollow_collapsed_variants(self, root_chars, weak_info, suffix, features):
+        """
+        Build collapsed imperative surface forms for hollow verbs.
+
+        Hollow-W: C1 at 7th order, middle radical dropped, C3 at 6th order.
+        Hollow-Y: C1 at 5th order, middle radical dropped, C3 at 6th order.
+        Laryngeal hollow-W also emits a C1-only ultra-short imperative.
+        """
+        if not weak_info or len(root_chars) != 3:
+            return []
+
+        c1, c3 = root_chars[0], root_chars[2]
+        variants = []
+
+        if weak_info["type"] == "hollow_w":
+            c1_out = self.change_order(c1, 7)
+            c3_out, suffix_out, _ = self._apply_fusion(c3, 6, suffix)
+            variants.append(c1_out + c3_out + suffix_out)
+
+            if features.get("has_laryngeal"):
+                ultra = self.change_order(c1, 7)
+                if ultra:
+                    variants.append(ultra)
+
+        elif weak_info["type"] == "hollow_y":
+            c1_out = self.change_order(c1, 5)
+            c3_out, suffix_out, _ = self._apply_fusion(c3, 6, suffix)
+            variants.append(c1_out + c3_out + suffix_out)
+
+        return variants
+
     def generate_word(self, root, tense, subject_key, verb_type=None, verb_home=None):
         """
         Generate a conjugated Ge'ez word with full derivation metadata.
@@ -572,10 +603,26 @@ class EthioMorphGenerator:
             }
         }
         
-        return {
+        result = {
             "word": word,
             "derivation": derivation
         }
+
+        if (
+            weak_info
+            and weak_info["type"] in ("hollow_w", "hollow_y")
+            and tense == "imperative"
+        ):
+            variants = [
+                v for v in self._generate_hollow_collapsed_variants(
+                    root_chars, weak_info, suffix, features
+                )
+                if v and v != word
+            ]
+            if variants:
+                result["variants"] = variants
+
+        return result
     
     def generate_derived(self, root, derived_class, verb_type=None):
         """
@@ -844,6 +891,8 @@ class EthioMorphGenerator:
         if not type_data:
              return {"error": f"Unknown verb type '{verb_type}'"}
 
+        result["variants"] = {}
+
         for tense in ["perfective", "imperfective", "jussive", "imperative"]:
             tense_data = type_data.get(tense)
             if not tense_data:
@@ -857,7 +906,12 @@ class EthioMorphGenerator:
                 if "error" not in gen_result:
                     old_key = key_map.get(subject_key, subject_key)
                     result[tense][old_key] = gen_result["word"]
+                    if gen_result.get("variants"):
+                        result["variants"].setdefault(tense, {})[old_key] = gen_result["variants"]
         
+        if not result["variants"]:
+            del result["variants"]
+
         result['derived'] = {}
         derived_keys = [
             "infinitive", "active_participle", "passive_participle", 
