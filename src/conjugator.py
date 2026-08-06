@@ -50,6 +50,7 @@ class EthioMorphGenerator:
         self.templates = {}
         self.lexicon = {}
         self.lexicon_full = {}
+        self.nouns_by_root = {}
         self._load_data()
     
     def _load_data(self):
@@ -68,6 +69,10 @@ class EthioMorphGenerator:
                 for entry in lex_data.get('roots', []):
                     self.lexicon[entry['root']] = entry.get('type', 'type_a')
                     self.lexicon_full[entry['root']] = entry
+                for entry in lex_data.get('nouns', []):
+                    noun_root = entry.get('root')
+                    if noun_root:
+                        self.nouns_by_root.setdefault(noun_root, []).append(entry)
                     
         except FileNotFoundError:
             print("Warning: Data files (templates, stems, or lexicon) not found.")
@@ -802,6 +807,7 @@ class EthioMorphGenerator:
             if "error" not in gen_result:
                 result["derived"][key] = gen_result
 
+        self._attach_lexicon_nominals(result, root)
         return result
     
     def generate_stem(self, root, stem_code):
@@ -853,6 +859,26 @@ class EthioMorphGenerator:
         for code in self.stems_data:
             results[code] = self.generate_stem(root, code)
         return results
+
+    def _attach_lexicon_nominals(self, result, root):
+        """Attach lexicon-derived nominals (ስምዕ) linked to this verbal root."""
+        nominals = self.nouns_by_root.get(root, [])
+        if not nominals:
+            return
+        result["nominals"] = [
+            {"word": entry["word"], "meaning": entry.get("meaning", "")}
+            for entry in nominals
+        ]
+        derived_words = {
+            v.get("word") if isinstance(v, dict) else v
+            for v in result.get("derived", {}).values()
+        }
+        for i, entry in enumerate(nominals):
+            word = entry["word"]
+            if word in derived_words:
+                continue
+            key = "ስምዕ" if len(nominals) == 1 else f"ስምዕ_{word}"
+            result.setdefault("derived", {})[key] = word
 
     def expand_root_simple(self, root, verb_type=None):
         """
@@ -924,6 +950,7 @@ class EthioMorphGenerator:
             if "error" not in gen_result:
                 result['derived'][key] = gen_result['word']
 
+        self._attach_lexicon_nominals(result, root)
         return result
 
 

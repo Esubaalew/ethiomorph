@@ -150,5 +150,21 @@ class TestAdvancedGeezRootAnalyzer(unittest.TestCase):
         self.assertIsNotNone(result["analysis"].get("grammar_ref"))
         self.assertEqual(result["root"], "ሐወረ")
 
+    def test_serha_qete_perfective(self):
+        result = self.stemmer.extract_root("ሰርሐቀተ")
+        self.assertEqual(normalize_geez(result["root"]), normalize_geez("ሰርሐ"))
+        self.assertIn("ሠራ", result["meaning"])
+        self.assertEqual(result["analysis"]["pattern"]["name"], "perfective")
+        self.assertIn("ቀተ", result["analysis"]["suffixes"])
+
+    def test_amlak_noun_suffix(self):
+        result = self.stemmer.extract_root("አምላክነ")
+        self.assertEqual(result["root"], "መለከ")
+        self.assertEqual(result["analysis"]["stem"], "አምላክ")
+        self.assertEqual(result["analysis"]["pattern"]["name"], "derived_noun")
+        self.assertEqual(result["analysis"]["suffixes"], ["ነ"])
+        self.assertIn("God", result["meaning"])
+        self.assertNotIn("ለከነ", result["root"])
+
 if __name__ == '__main__':
     unittest.main()

@@ -215,6 +215,22 @@ class GeezStemmer:
             'ነ', 'ኒ', 'ና', 'ኩ', 'ከ', 'ኪ',
             'ክ', 'ን', 'ት', 'ም', 'አት', 'ተ', 'ዩ',
         ]
+        # Classical grammar pattern endings (longer entries first).
+        self.grammar_pattern_suffixes = [
+            ('ቀተ', 'perfective'),
+            ('ቀደ', 'perfective_alt'),
+            ('ጦመ', 'participle'),
+            ('ተን', 'noun_agent'),
+            ('ባረ', 'adjective'),
+            ('ማህ', 'adverb'),
+            ('ሴሰ', 'noun'),
+            ('ክህ', 'conjugation_grid'),
+            ('ርዕስ', 'topic'),
+        ]
+        # Consonant clusters that begin integral roots/nouns, not detachable prefixes.
+        self.prefix_block_starts = (
+            'አም', 'አመ', 'አምላ', 'አምነ',
+        )
 
     def _segment_particles(self, word):
         """
@@ -481,6 +497,88 @@ class GeezStemmer:
 
         return root
 
+    def _blocked_prefix_strip(self, word, prefix):
+        """Prevent peeling verbal prefixes off integral root-initial clusters."""
+        if prefix in {'አ', 'ም', 'መ'} and any(word.startswith(block) for block in self.prefix_block_starts):
+            return True
+        return False
+
+    def _resolve_verbal_root(self, stem_or_root: str) -> tuple[str, str | None]:
+        """Map a derived stem to its verbal ግስ root when known."""
+        if stem_or_root in self.lexicon_roots:
+            return stem_or_root, self.lexicon_roots[stem_or_root].get("meaning")
+
+        citation = self._canonicalize_root(stem_or_root, source=stem_or_root, stem=stem_or_root)
+        if citation in self.lexicon_roots:
+            return citation, self.lexicon_roots[citation].get("meaning")
+
+        skel = normalize_geez(get_consonant_skeleton(stem_or_root))
+        for candidate in self.skeleton_lookup.get(skel, []):
+            if candidate in self.lexicon_roots:
+                return candidate, self.lexicon_roots[candidate].get("meaning")
+
+        grammar_pick = self.grammar.resolve_skeleton(stem_or_root, source=stem_or_root)
+        if grammar_pick:
+            gloss = self.grammar.primary_gloss(grammar_pick)
+            return grammar_pick, gloss
+
+        return stem_or_root, None
+
+    def _try_noun_with_suffix(self, word, derivation_steps):
+        """Match derived nominal forms with suffixes back to their verbal roots."""
+        for noun_word in sorted(self.nouns.keys(), key=len, reverse=True):
+            if not word.startswith(noun_word) or len(word) <= len(noun_word):
+                continue
+            suffix_part = word[len(noun_word):]
+            if suffix_part not in self.suffixes:
+                continue
+            noun_entry = self.nouns[noun_word]
+            verbal_root, verbal_gloss = self._resolve_verbal_root(
+                noun_entry.get("root", noun_word)
+            )
+            skeleton = get_consonant_skeleton(verbal_root)
+            derivation_steps.append({
+                "step": len(derivation_steps) + 1,
+                "action": "derived_noun_suffix",
+                "description": "Derived nominal form with suffix → verbal root",
+                "before": word,
+                "after": verbal_root,
+                "rule": (
+                    f"ስምዕ '{noun_word}' ({noun_entry.get('meaning', 'Noun')}) "
+                    f"+ suffix '{suffix_part}' → ግስ '{verbal_root}'"
+                ),
+            })
+            return {
+                "input": word,
+                "root": verbal_root,
+                "root_consonants": list(skeleton),
+                "root_type": "derived_noun",
+                "verb_home": detect_verb_home(skeleton, verbal_root),
+                "meaning": noun_entry.get("meaning") or verbal_gloss or verbal_root,
+                "confidence": 0.97,
+                "analysis": {
+                    "stem": noun_word,
+                    "pattern": {
+                        "name": "derived_noun",
+                        "geez_name": "ስምዕ",
+                        "english_name": "Derived Noun",
+                        "description": "Nominal form derived from a verbal root",
+                    },
+                    "prefixes": [],
+                    "suffixes": [suffix_part],
+                    "method": "derived_noun_suffix",
+                    "surface_form": noun_word,
+                    "verbal_gloss": verbal_gloss,
+                },
+                "derivation_path": derivation_steps,
+                "research_notation": {
+                    "root_display": "{" + ", ".join(list(skeleton)) + "}",
+                    "pattern_formula": f"ስምዕ({noun_word}) + Suffix({suffix_part})",
+                    "affix_formula": f"Stem({noun_word}) + Suffix({suffix_part})",
+                },
+            }
+        return None
+
     def strip_affixes(self, word):
         """
         Recursively strips prefixes and suffixes with derivation tracking.
@@ -502,6 +600,8 @@ class GeezStemmer:
             
             for prefix in self.prefixes:
                 if current_word.startswith(prefix):
+                    if self._blocked_prefix_strip(current_word, prefix):
+                        continue
                     remaining = current_word[len(prefix):]
                     remaining_skeleton = get_consonant_skeleton(remaining)
                     
@@ -541,6 +641,35 @@ class GeezStemmer:
                         changed = True
                         break
             
+            if changed:
+                continue
+
+            for pattern_suffix, pattern_label in self.grammar_pattern_suffixes:
+                if current_word.endswith(pattern_suffix) and len(current_word) > len(pattern_suffix):
+                    remaining = current_word[:-len(pattern_suffix)]
+                    remaining_skeleton = get_consonant_skeleton(remaining)
+                    if len(remaining_skeleton) == 3 or (
+                        len(remaining_skeleton) == 4
+                        and (
+                            remaining in self.lexicon_roots
+                            or self.grammar.get_root(remaining)
+                        )
+                    ):
+                        derivation_steps.append({
+                            "action": "strip_pattern_suffix",
+                            "affix": pattern_suffix,
+                            "before": current_word,
+                            "after": remaining,
+                            "rule": (
+                                f"Grammar pattern suffix '{pattern_suffix}' "
+                                f"({pattern_label}) stripped"
+                            ),
+                        })
+                        found_suffixes.append(pattern_suffix)
+                        current_word = remaining
+                        changed = True
+                        break
+
             if changed:
                 continue
 
@@ -584,7 +713,7 @@ class GeezStemmer:
         
         return current_word, found_prefixes, found_suffixes, derivation_steps
 
-    def identify_verb_pattern(self, stem, prefixes):
+    def identify_verb_pattern(self, stem, prefixes, suffixes=None):
         """
         Identifies the grammatical pattern (Anqets/binyan) and stem number.
         
@@ -602,6 +731,7 @@ class GeezStemmer:
             Pattern info dict with geez name, stem number, and description.
         """
         skeleton = get_consonant_skeleton(stem)
+        suffixes = suffixes or []
         
         # =================================================================
         # STEM IV: Causative-Passive (አስተሳሳቢ) - Check first (longest)
@@ -724,6 +854,14 @@ class GeezStemmer:
             }
         
         # Perfective: default citation form
+        if 'ቀተ' in suffixes or 'ቀደ' in suffixes:
+            return {
+                "name": "perfective",
+                "geez_name": "ቀዳማይ አንቀጽ",
+                "english_name": "Perfective",
+                "stem_number": 1,
+                "description": "Stem I: Basic completed action (classical ቀተ/ቀደ form)",
+            }
         if len(skeleton) >= 3 and len(stem) > 0 and get_char_order(stem[-1]) == 1:
             return {
                 "name": "perfective",
@@ -832,10 +970,68 @@ class GeezStemmer:
                     word, hollow_root, normalized, [], [], derivation_steps, "derived"
                 )
 
+        if normalized in self.nouns:
+            noun_entry = self.nouns[normalized]
+            verbal_root, verbal_gloss = self._resolve_verbal_root(
+                noun_entry.get("root", normalized)
+            )
+            root_type = "derived_noun" if noun_entry.get("root") else "noun"
+            skeleton = get_consonant_skeleton(verbal_root)
+            verb_home = detect_verb_home(skeleton, verbal_root)
+            
+            return {
+                "input": word,
+                "root": verbal_root,
+                "root_consonants": list(skeleton),
+                "root_type": root_type,
+                "verb_home": verb_home,
+                "meaning": noun_entry.get("meaning", verbal_gloss or "Noun"),
+                "confidence": 1.0,
+                "analysis": {
+                    "stem": normalized,
+                    "pattern": {
+                        "name": "derived_noun" if root_type == "derived_noun" else "noun",
+                        "geez_name": "ስምዕ" if root_type == "derived_noun" else "ስም",
+                        "english_name": "Derived Noun" if root_type == "derived_noun" else "Noun",
+                        "description": "Nominal form derived from verbal root" if root_type == "derived_noun" else "Protected Noun",
+                    },
+                    "prefixes": [],
+                    "suffixes": [],
+                    "method": "lexicon_noun",
+                    "surface_form": normalized,
+                    "verbal_gloss": verbal_gloss,
+                },
+                "derivation_path": [{
+                    "step": len(derivation_steps) + 1,
+                    "action": "noun_match",
+                    "description": "Derived nominal → verbal root",
+                    "before": normalized,
+                    "after": verbal_root,
+                    "rule": f"ስምዕ '{normalized}' → ግስ '{verbal_root}' ({verbal_gloss or 'N/A'})",
+                }],
+                "research_notation": {
+                    "root_display": "{" + ", ".join(list(skeleton)) + "}",
+                    "pattern_formula": "ስምዕ" if root_type == "derived_noun" else "Noun",
+                    "affix_formula": "Stem",
+                }
+            }
+
+        noun_suffix_result = self._try_noun_with_suffix(normalized, derivation_steps)
+        if noun_suffix_result:
+            noun_suffix_result["input"] = word
+            return noun_suffix_result
+
         canonical_initial = self._resolve_skeleton_citation(
             skeleton_initial, source=normalized, stem=normalized
         ) or self._canonicalize_root(skeleton_initial, source=normalized, stem=normalized)
-        if canonical_initial in self.lexicon_roots and not (len(skeleton_initial) == 2 and has_order_signal):
+        ends_with_pattern_suffix = any(
+            normalized.endswith(ps) for ps, _ in self.grammar_pattern_suffixes
+        )
+        if (
+            canonical_initial in self.lexicon_roots
+            and not (len(skeleton_initial) == 2 and has_order_signal)
+            and not ends_with_pattern_suffix
+        ):
             derivation_steps.append({
                 "step": 2,
                 "action": "lexicon_match",
@@ -846,47 +1042,25 @@ class GeezStemmer:
             })
             return self._build_result(word, canonical_initial, normalized, [], [], derivation_steps, "lexicon")
 
-        if normalized in self.nouns:
-            noun_entry = self.nouns[normalized]
-            root = noun_entry.get('root', normalized)
-            root_type = "derived_noun" if 'root' in noun_entry else "noun"
-            skeleton = get_consonant_skeleton(root)
-            verb_home = detect_verb_home(skeleton, root)
-            
-            return {
-                "input": word,
-                "root": root,
-                "root_consonants": list(skeleton),
-                "root_type": root_type,
-                "verb_home": verb_home,
-                "meaning": noun_entry.get('meaning', "Noun"),
-                "confidence": 1.0,
-                "analysis": {
-                    "stem": normalized,
-                    "pattern": {"name": "noun", "geez_name": "ስም", "english_name": "Noun", "description": "Protected Noun"},
-                    "prefixes": [],
-                    "suffixes": [],
-                    "method": "lexicon_noun"
-                },
-                "derivation_path": [{
-                    "step": 1,
-                    "action": "noun_match",
-                    "description": "Protected Noun Lookup",
-                    "before": normalized,
-                    "after": root,
-                    "rule": f"Derived from root '{root}' (Lexicon)"
-                }],
-                "research_notation": {
-                    "root_display": "{" + ", ".join(list(skeleton)) + "}",
-                    "pattern_formula": "Noun",
-                    "affix_formula": "Stem"
-                }
-            }
-
         stem, prefixes, suffixes, affix_steps = self.strip_affixes(normalized)
         for i, step in enumerate(affix_steps):
             step["step"] = len(derivation_steps) + 1 + i
             derivation_steps.append(step)
+
+        grammar_roots = self.grammar.lookup_form(normalized)
+        if grammar_roots:
+            root = grammar_roots[0]
+            derivation_steps.append({
+                "step": len(derivation_steps) + 1,
+                "action": "grammar_form_lookup",
+                "description": "Classical grammar form match",
+                "before": normalized,
+                "after": root,
+                "rule": f"Grammar dictionary maps conjugated form to root '{root}'",
+            })
+            return self._build_result(
+                word, root, stem, prefixes, suffixes, derivation_steps, "grammar_form"
+            )
         
         skeleton = get_consonant_skeleton(stem)
         derivation_steps.append({
@@ -898,7 +1072,7 @@ class GeezStemmer:
             "rule": "Remove vowel orders to get base consonants"
         })
         
-        root = skeleton
+        root = stem if len(skeleton) == 3 and stem in self.lexicon_roots else skeleton
         
         if len(root) == 2 and len(stem) >= 1:
             first_char_stem = stem[0]
@@ -993,7 +1167,7 @@ class GeezStemmer:
         based on radical count and vowel quality (C1 order), without requiring 
         lexicon lookup. Also detects causative prefixes.
         """
-        pattern = self.identify_verb_pattern(stem, prefixes)
+        pattern = self.identify_verb_pattern(stem, prefixes, suffixes)
         canonical_root = self._canonicalize_root(
             root,
             source=word,

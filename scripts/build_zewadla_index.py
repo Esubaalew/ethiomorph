@@ -132,6 +132,13 @@ def parse_page(text: str, page_num: int, roots: dict, form_lookup: dict) -> None
             continue
         primary_root, primary_pattern = parsed_forms[0]
         all_forms = [f for f, _ in parsed_forms]
+        for chunk in FORM_SPLIT_RE.split(forms_blob):
+            chunk = chunk.strip()
+            if not chunk:
+                continue
+            form_lookup.setdefault(chunk, [])
+            if primary_root not in form_lookup[chunk]:
+                form_lookup[chunk].append(primary_root)
         add_root(
             roots,
             form_lookup,
