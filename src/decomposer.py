@@ -7,6 +7,8 @@ base consonant and vowel order.
 Esubalew Chekol
 """
 
+import unicodedata
+
 DEVOWELIZATION_MAP = {}
 ORDER_MAP = {}
 REVOWELIZATION_MAP = {}
@@ -69,6 +71,30 @@ _add_row('ፈ', ['ፈ', 'ፉ', 'ፊ', 'ፋ', 'ፌ', 'ፍ', 'ፎ'])
 _add_row('ፐ', ['ፐ', 'ፑ', 'ፒ', 'ፓ', 'ፔ', 'ፕ', 'ፖ'])
 
 _apply_ambiguous_defaults()
+
+def _add_order8_row(base_cp: int) -> None:
+    """Labiovelar row: order(c) = ((c - base) mod 8) + 1.
+
+    Ethiopic labiovelars sit on an 8-slot stride (paper vowel arithmetic),
+    with holes where a vowel was never cut. The order-1 glyph is the base,
+    so ኳ (4th, a) devowelizes to ኰ, not to itself.
+    """
+    base_char = chr(base_cp)
+    for delta in range(8):
+        char = chr(base_cp + delta)
+        if unicodedata.category(char) != "Lo":
+            continue
+        DEVOWELIZATION_MAP[char] = base_char
+        ORDER_MAP[char] = delta + 1
+        REVOWELIZATION_MAP[(base_char, delta + 1)] = char
+
+
+# ቈ ኈ ኰ ጐ rows. Not a word list: every consonant in the stride.
+_add_order8_row(0x1248)  # ቈ
+_add_order8_row(0x1288)  # ኈ
+_add_order8_row(0x12B0)  # ኰ
+_add_order8_row(0x1310)  # ጐ
+
 
 def devowelize(char: str) -> str:
     """

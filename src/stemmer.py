@@ -798,7 +798,13 @@ class GeezStemmer:
                     if prefix == 'መ':
                         if current_word in self.nouns:
                             continue
-                            
+                        # All-Ge'ez quadriliteral (መነገነ): መ is C1, not mä-.
+                        if (
+                            len(current_word) == 4
+                            and all(get_char_order(c) == 1 for c in current_word)
+                        ):
+                            continue
+
                         if len(remaining) > 0:
                             last_char = remaining[-1]
                             if get_char_order(last_char) == 1 and len(remaining_skeleton) >= 3:
@@ -1318,55 +1324,13 @@ class GeezStemmer:
             noun_suffix_result["input"] = word
             return noun_suffix_result
 
-        # Prefer citation-form hits before skeleton disambiguation.
-        # Homophone normalization may rewrite ሰርሐ→ሰርሀ; recover the first
-        # lexicon citation (ሰርሐ) rather than a later skeleton twin (ሠርሐ).
-        citation_hit = None
-        # Raw lexicon key before normalize_geez, so homophones do not collapse
-        # (ሠርሐ stays ሠርሐ, not ሰርሐ).
-        if word in self.lexicon_roots:
-            citation_hit = word
-        elif normalized in self.lexicon_roots:
-            citation_hit = normalized
-        elif word == normalized and normalized in self.lexicon_normalized_lookup:
-            citation_hit = self.lexicon_normalized_lookup[normalized]
-        if citation_hit and not (len(skeleton_initial) == 2 and has_order_signal):
-            derivation_steps.append({
-                "step": 2,
-                "action": "lexicon_match",
-                "description": "Direct lexicon lookup",
-                "before": normalized,
-                "after": citation_hit,
-                "rule": f"Found in lexicon: {self.lexicon_roots[citation_hit].get('meaning', 'N/A')}"
-            })
-            return self._build_result(word, citation_hit, citation_hit, [], [], derivation_steps, "lexicon")
-
-        canonical_initial = self._resolve_skeleton_citation(
-            skeleton_initial, source=word, stem=word
-        )
-        if not canonical_initial:
-            canon_alt = self._canonicalize_root(skeleton_initial, source=word, stem=word)
-            if canon_alt and self._c1_compatible(canon_alt, word):
-                # Skeleton string ለበ is itself a lexicon key; do not accept it
-                # when the surface C1 order disagrees.
-                if not (
-                    canon_alt == skeleton_initial
-                    and get_char_order(word[0]) != get_char_order(canon_alt[0])
-                ):
-                    canonical_initial = canon_alt
-        if (
-            canonical_initial in self.lexicon_roots
-            and not (len(skeleton_initial) == 2 and has_order_signal)
-        ):
-            derivation_steps.append({
-                "step": 2,
-                "action": "lexicon_match",
-                "description": "Direct lexicon lookup",
-                "before": normalized,
-                "after": canonical_initial,
-                "rule": f"Found in lexicon: {self.lexicon_roots[canonical_initial].get('meaning', 'N/A')}"
-            })
-            return self._build_result(word, canonical_initial, normalized, [], [], derivation_steps, "lexicon")
+        # Math-first: no lexicon-first shortcuts. The old citation_hit and
+        # skeleton-citation blocks returned method="lexicon" here, skipping
+        # the order/base/revowelize math entirely. Every form now flows
+        # through strip_affixes + restore_citation_root below; the lexicon
+        # only annotates gloss and verb type afterwards in _build_result.
+        # (Raw homophones like ሠርሐ are preserved because the math operates
+        # on the raw character bases, not normalized forms.)
 
         # Weak-initial imperfective/jussive: ይ/ት/እ + 2-char stem where
         # 'ወ' + stem skeleton is a known weak-initial root (e.g. ይሃብ ->
@@ -1449,7 +1413,12 @@ class GeezStemmer:
                 },
             )
 
-        stem, prefixes, suffixes, affix_steps = self.strip_affixes(normalized)
+        # Math-first: strip affixes from the RAW word, not the normalized form.
+        # normalize_geez collapses homophones (ሠ→ሰ, ሐ→ሀ), which would lose
+        # the raw spelling that the math must preserve (Bug 2: ሠርሐ stays
+        # ሠርሐ). The order/base/revowelize math operates correctly on raw
+        # characters; devowelize(ሠ)=ሠ, not ሰ.
+        stem, prefixes, suffixes, affix_steps = self.strip_affixes(word)
         for i, step in enumerate(affix_steps):
             step["step"] = len(derivation_steps) + 1 + i
             derivation_steps.append(step)
@@ -1581,7 +1550,23 @@ class GeezStemmer:
                         })
                         root = candidate
 
-        return self._build_result(word, root, stem, prefixes, suffixes, derivation_steps, "derived")
+        nonverbal = (
+            restored.get("by") == "keep_surface_nonverbal"
+            and not prefixes
+            and not suffixes
+        )
+        if nonverbal and root not in self.lexicon_roots:
+            return self._build_result(
+                word, root, stem, prefixes, suffixes, derivation_steps, "order_math",
+                pattern_override={
+                    "name": "unknown",
+                    "geez_name": "ያልታወቀ",
+                    "english_name": "Unknown/Noun",
+                    "stem_number": 0,
+                    "description": "Order math found no verb pattern",
+                },
+            )
+        return self._build_result(word, root, stem, prefixes, suffixes, derivation_steps, "order_math")
 
     def _build_nonverbal(self, word, root, kind, derivation_steps):
         """Closed-class pronoun or citation noun: not a pdf_anqets verb."""
@@ -1694,48 +1679,25 @@ class GeezStemmer:
             pattern = pattern_override
         else:
             pattern = self.identify_verb_pattern(stem, prefixes, suffixes)
-        canonical_root = self._canonicalize_root(
-            root,
-            source=word,
-            stem=stem,
-            pattern_name=pattern.get("name"),
-        )
-        if canonical_root != root:
-            citation_via = (
-                "skeleton citation lookup"
-                if normalize_geez(get_consonant_skeleton(root)) in self.skeleton_lookup
-                else "homophone-normalized root mapped to lexicon citation form"
-            )
-            derivation_steps.append({
-                "step": len(derivation_steps) + 1,
-                "action": "canonicalize_root",
-                "description": "Resolve to lexicon canonical orthography",
-                "before": root,
-                "after": canonical_root,
-                "rule": citation_via
-            })
-            root = canonical_root
-
-        # Curated base_root annotation (2026-10-01 lexicon curation): if the
-        # resolved root is a derived stem kept for coverage, map to its
-        # annotated base root. The analyzer cannot strip these itself.
-        base_entry = self.lexicon_roots.get(root, {})
-        base_root = base_entry.get("base_root")
-        if base_root and base_root in self.lexicon_roots:
-            derivation_steps.append({
-                "step": len(derivation_steps) + 1,
-                "action": "base_root_remap",
-                "description": "Derived stem mapped to curated base root",
-                "before": root,
-                "after": base_root,
-                "rule": base_entry.get("derivation_note", "base_root annotation")
-            })
-            root = base_root
+        # Math-first: the root derived by restore_citation_root (order/base/
+        # revowelize) is final. The lexicon must not decide the root; it only
+        # attaches gloss and verb type afterwards (see lexicon_entry below).
+        # The old _canonicalize_root override (skeleton citation lookup,
+        # homophone-normalized mapping) is removed: it let the dictionary
+        # pick the root, skipping the math.
 
         root_type = self._get_root_type(root)
+        if (
+            pattern_override is not None
+            and pattern_override.get("name") == "unknown"
+            and root not in self.lexicon_roots
+        ):
+            root_type = "unknown"
         
+        # Post-hoc lexicon annotation: gloss and verb type only.
         lexicon_entry = self.lexicon_roots.get(root, {})
         meaning = lexicon_entry.get('meaning', None)
+        lexicon_verb_type = lexicon_entry.get('type', None)
         if method == "pattern_code":
             grammar_gloss = self.grammar.primary_gloss(root)
             if grammar_gloss:
@@ -1746,7 +1708,20 @@ class GeezStemmer:
         grammar_ref = self.grammar.reference(root)
         grammar_patterns = self.grammar.grammar_patterns(root)
         
-        verb_home = detect_verb_home(root, stem)
+        # Classify from the citation, not the inflected surface.
+        # If the lexicon disagrees, keep the lexicon class.
+        verb_home = detect_verb_home(get_consonant_skeleton(root), root)
+        detected_type = verb_home.get("type")
+        if lexicon_verb_type and lexicon_verb_type != "unknown":
+            verb_home = dict(verb_home)
+            verb_home["type"] = lexicon_verb_type
+            verb_home["detected_type"] = detected_type
+            verb_home["lexicon_type"] = lexicon_verb_type
+            if detected_type != lexicon_verb_type:
+                verb_home["evidence"] = (
+                    f"Lexicon class {lexicon_verb_type} kept; "
+                    f"citation detect was {detected_type}"
+                )
         
         # Detect causative prefix (ያ, ታ, ና, አ)
         is_causative = any(p in self.causative_prefixes for p in prefixes)
@@ -1762,7 +1737,24 @@ class GeezStemmer:
             "after": verb_home['type'],
             "rule": verb_home['evidence']
         })
-        
+        if lexicon_verb_type:
+            derivation_steps.append({
+                "step": len(derivation_steps) + 1,
+                "action": "lexicon_type_annotation",
+                "description": "Lexicon verb type attached after math derivation",
+                "before": verb_home['type'],
+                "after": lexicon_verb_type,
+                "rule": "Lexicon annotates type; it does not decide the root"
+            })
+
+        # Confidence reflects math derivation, not lexicon hits.
+        # method="lexicon" no longer occurs (it meant the math was skipped).
+        has_gloss = bool(meaning)
+        if method in ("derived", "order_math", "pattern_code", "grammar_form"):
+            confidence = 0.90 if has_gloss else 0.85
+        else:
+            confidence = 0.70
+
         result = {
             "input": word,
             "root": root,
@@ -1770,7 +1762,7 @@ class GeezStemmer:
             "root_type": root_type,
             "verb_home": verb_home,
             "meaning": meaning,
-            "confidence": 0.95 if method == "lexicon" else 0.85 if method == "derived" else 0.70,
+            "confidence": confidence,
             "analysis": {
                 "stem": stem,
                 "pattern": pattern,

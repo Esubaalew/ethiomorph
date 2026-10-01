@@ -348,9 +348,41 @@ def restore_citation_root(stem: str) -> dict:
         # biliteral: ይቤ, ሕግ, ንግ must not gain a spurious ሀ.
         citation = _revowel_orders([bases[0], "ሀ", bases[1]], [6, 6, 1])
         return {"citation": citation, "by": "bihla_from_dropped_c2", "source_rule": "fere_geez.ch4.citation_restore.bihla_drop"}
+
+    if n == 3 and bases[1] in {"ወ", "የ"} and orders != [1, 1, 1]:
+        citation = _revowel_orders(bases, [1, 1, 1])
+        kind = "hollow_w_full" if bases[1] == "ወ" else "hollow_y_full"
+        return {
+            "citation": citation,
+            "by": kind,
+            "source_rule": "fere_geez.ch4.citation_restore." + kind,
+        }
+    if n == 2 and orders[-1] == 1 and orders[0] not in {1, 3, 5, 6, 7}:
+        citation = _revowel_orders(bases, [1, 1])
+        return {
+            "citation": citation,
+            "by": "biliteral_geez_citation",
+            "source_rule": "fere_geez.ch4.citation_restore.biliteral",
+        }
     # ብህለ house (fere_geez nǝʿus / ocrpage-045):
     # C2 laryngeal stays in አንቀጽ stems (ብህል → citation).
-    if n == 3 and bases[1] in LARYNGEALS:
+    # Bug 5 guard: do NOT apply bihla reconstruction to stems already in
+    # citation form [1,1,1] (e.g. መሐረ). The bihla pattern is for anqets
+    # stems, not for mangling valid laryngeal-middle citations.
+    if n == 3 and bases[1] in LARYNGEALS and orders != [1, 1, 1]:
+        # Weak-final (C3 ወ/የ) already in Ge'ez on C1 and C2: ጸሐይ → ጸሐየ.
+        # Bihla teizaz (በሀል) has a strong C3, so it still falls through.
+        if (
+            bases[2] in WEAK_CONSONANTS
+            and orders[0] == 1
+            and orders[1] == 1
+            and orders[2] == 6
+        ):
+            return {
+                "citation": _revowel_orders(bases, [1, 1, 1]),
+                "by": "weak_final_from_sadis_c3",
+                "source_rule": "fere_geez.ch4.citation_restore.weak_final",
+            }
         citation = _revowel_orders(bases, [6, 6, 1])
         if stem == citation or orders == [6, 6, 1]:
             return {
@@ -376,27 +408,114 @@ def restore_citation_root(stem: str) -> dict:
         if orders == [1, 1, 1]:
             return {"citation": stem, "by": "keep_geez_citation", "source_rule": "fere_geez.ch4.citation_restore.halafi"}
         # Derived/imperfect stem with sadis radicals → type-A CaCaCa
-        if orders[0] == 6 or orders[1] == 6:
+        if orders[1] == 6:
             citation = _revowel_orders(bases, [1, 1, 1])
             return {"citation": citation, "by": "type_a_from_sadis_stem", "source_rule": "fere_geez.ch4.citation_restore.type_a"}
         return {"citation": stem, "by": "keep_ends_geez", "source_rule": "fere_geez.ch4.citation_restore"}
 
-    if n == 3 and orders == [1, 6, 6]:
-        return {"citation": _revowel_orders(bases, [1, 1, 1]), "by": "type_a_from_kalay_stem", "source_rule": "fere_geez.ch4.citation_restore.kalay"}
-    if n == 3 and orders == [6, 6, 6]:
-        return {"citation": _revowel_orders(bases, [1, 1, 1]), "by": "type_a_from_zend_stem", "source_rule": "fere_geez.ch4.citation_restore.zend"}
-    # Perfective stem before object clitic: CaCaC (C3 sadis) → CaCaCa
-    if n == 3 and orders == [1, 1, 6]:
-        return {"citation": _revowel_orders(bases, [1, 1, 1]), "by": "type_a_from_perfective_stem", "source_rule": "fere_geez.ch4.citation_restore.perfective_stem"}
-    # Causative/passive stem with C2=C3 sadis (ጋብር) → gabra citation CaCəCa
+    # Triliteral stems that are not already a Ge'ez-final citation.
+    # Classes are vowel-order patterns, not lemma lists.
+
+    # qitāl / qital noun: C1 salis (i-vowel) and C3 sadis.
+    # ፊደል [3, 1, 6] and any other consonants in that class → CaCaCa.
+    if n == 3 and orders[0] == 3 and orders[2] == 6 and orders[1] in {1, 4}:
+        return {
+            "citation": _revowel_orders(bases, [1, 1, 1]),
+            "by": "qital_noun",
+            "source_rule": "fere_geez.ch4.citation_restore.qital",
+        }
+
+    # III-laryngeal imperfect: C2 rabəʿ (a) and C3 a bare laryngeal.
+    # ኀጣእ → ኀጥአ (guttural perfect: C2 sadis, laryngeal in Ge'ez order).
+    if (
+        n == 3
+        and orders[1] == 4
+        and orders[2] == 6
+        and bases[2] in LARYNGEALS
+    ):
+        return {
+            "citation": _revowel_orders(bases, [1, 6, 1]),
+            "by": "laryngeal_final_from_a_stem",
+            "source_rule": "fere_geez.ch4.citation_restore.laryngeal_final",
+        }
+
+    # qəddāse abstract noun: C1 sadis, C3 ḥams (-e). ቅዳሴ → CaCaCa.
+    if n == 3 and orders[0] == 6 and orders[2] == 5:
+        return {
+            "citation": _revowel_orders(bases, [1, 1, 1]),
+            "by": "qiddase_noun",
+            "source_rule": "fere_geez.ch4.citation_restore.qiddase",
+        }
+
+    # qətul participle: C1 sadis, C2 kaʿeb (u), C3 sadis. ዝሙር → CaCaCa.
+    if n == 3 and orders[0] == 6 and orders[1] == 2 and orders[2] == 6:
+        return {
+            "citation": _revowel_orders(bases, [1, 1, 1]),
+            "by": "qatul_participle",
+            "source_rule": "fere_geez.ch4.citation_restore.qatul",
+        }
+
+    # Final kaʿeb (u) is a fused plural vowel, not a lexical order.
+    # ቀተሉ [1, 1, 2] and ወርዱ [1, 6, 2]. Type-C C1 (4 or 7) is not this class.
+    if n == 3 and orders[2] == 2 and orders[0] not in {4, 7}:
+        return {
+            "citation": _revowel_orders(bases, [1, 1, 1]),
+            "by": "citation_from_imperfective_u",
+            "source_rule": "fere_geez.ch4.citation_restore.revowelize",
+        }
+
+    # C2 and C3 both sadis: split by C1 order and gemination, not by a tuple.
     if n == 3 and orders[1] == 6 and orders[2] == 6:
-        citation = _revowel_orders(bases, [1, 6, 1])
-        return {"citation": citation, "by": "gabra_from_cc_sadis_stem", "source_rule": "fere_geez.ch4.citation_restore.gabra_stem"}
+        if bases[1] == bases[2]:
+            # Type-B geminate written twice (ኳንን). Citation vowels are Ge'ez;
+            # a 4th-order labiovelar C1 falls back to its order-1 base (ኰ).
+            return {
+                "citation": _revowel_orders(bases, [1, 1, 1]),
+                "by": "geminate_from_sadis_stem",
+                "source_rule": "fere_geez.ch4.citation_restore.geminate",
+            }
+        if orders[0] in {1, 2, 3, 5, 6}:
+            # ካልዓይ [1, 6, 6], ዘንድ [6, 6, 6], and other non-a C1.
+            return {
+                "citation": _revowel_orders(bases, [1, 1, 1]),
+                "by": "type_a_from_sadis_pair",
+                "source_rule": "fere_geez.ch4.citation_restore.kalay",
+            }
+        # C1 rabəʿ or sābəʿ, distinct radicals: gabra stem (ጋብር → ገብረ).
+        return {
+            "citation": _revowel_orders(bases, [1, 6, 1]),
+            "by": "gabra_from_cc_sadis_stem",
+            "source_rule": "fere_geez.ch4.citation_restore.gabra_stem",
+        }
+
+    # Perfective before an object clitic: C1 and C2 Ge'ez, C3 sadis (ቀተል).
+    if n == 3 and orders[0] == 1 and orders[1] == 1 and orders[2] == 6:
+        return {
+            "citation": _revowel_orders(bases, [1, 1, 1]),
+            "by": "type_a_from_perfective_stem",
+            "source_rule": "fere_geez.ch4.citation_restore.perfective_stem",
+        }
+
+    # Quadriliteral with medial sadis pair (C2 and C3). The last radical may
+    # carry any real vowel, not only Ge'ez order (ደንግጸ, ደንግጺ). A final sadis
+    # is a consonant-final noun (መንግስ), not this stem.
+    if (
+        n == 4
+        and orders[1] == 6
+        and orders[2] == 6
+        and orders[3] in {1, 2, 3, 4, 5, 7}
+    ):
+        return {
+            "citation": _revowel_orders(bases, [1, 1, 1, 1]),
+            "by": "quadriliteral_from_sadis_stem",
+            "source_rule": "fere_geez.ch4.citation_restore.quadriliteral",
+        }
 
     if constraints["length_ok"] and constraints["ends_in_geez_order"]:
         return {"citation": stem, "by": "keep_citation_constraints", "source_rule": "fere_geez.ch4.citation_restore"}
 
     # Non-citation surfaces (e.g. integral ስም): keep form; never invent a fake verbal root.
+
     return {
         "citation": stem,
         "by": "keep_surface_nonverbal",
@@ -472,6 +591,17 @@ def suffix_strip_allowed(
         and looks_like_verbal_citation(current_word[1:])
     ):
         return False
+    # Quadriliteral citation of shape 1-2-3-2 (all Ge'ez orders, C4 repeats C2).
+    # The final letter is a radical (መነገነ), not an object clitic (ቀተለነ).
+    if current_word and len(current_word) == 4:
+        word_orders = [get_char_order(c) for c in current_word]
+        word_bases = [devowelize(c) for c in current_word]
+        if (
+            all(o == 1 for o in word_orders)
+            and word_bases[3] == word_bases[1]
+            and word_bases[1] not in {word_bases[0], word_bases[2]}
+        ):
+            return False
     # Bare perfective/gabra + object (ሀውጸ+ነ, ቀተለ+ከ).
     if looks_like_verbal_citation(remaining):
         return True
