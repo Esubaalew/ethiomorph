@@ -31,7 +31,7 @@ VOWEL_SUFFIX_MAP = {
     'ኢ': 3,
 }
 
-LARYNGEALS = set(['ሀ', 'ሐ', 'ኀ', 'አ', 'ዐ'])
+LARYNGEALS = set(['ሀ', 'ሐ', 'ኀ', 'አ', 'ዐ', 'ዓ'])
 
 DERIVED_TYPE_SUFFIXES = ("_passive", "_causative", "_aste", "_reciprocal")
 PREFIX_LOOKALIKES = ("አን", "አስተ", "ተ", "አ", "ነ")
@@ -51,19 +51,35 @@ class EthioMorphGenerator:
         self.lexicon = {}
         self.lexicon_full = {}
         self.nouns_by_root = {}
+        self.stems_data = {}
         self._load_data()
-    
+
     def _load_data(self):
-        """Load templates, stems, and lexicon from the data directory."""
+        """Load templates, stems, and lexicon from the data directory.
+
+        Each file loads independently: a missing stems.json (derived-stem
+        definitions, never shipped with the data directory) no longer
+        blocks templates or the lexicon from loading, and can no longer
+        leave self.stems_data unset (AttributeError on generate_stem).
+        """
+        base_dir = os.path.join(os.path.dirname(__file__), '..', 'data')
+
         try:
-            base_dir = os.path.join(os.path.dirname(__file__), '..', 'data')
-            
             with open(os.path.join(base_dir, 'templates.json'), 'r', encoding='utf-8') as f:
                 self.templates = json.load(f)
-                
+        except FileNotFoundError:
+            print("Warning: data/templates.json not found; conjugation templates unavailable.")
+
+        try:
             with open(os.path.join(base_dir, 'stems.json'), 'r', encoding='utf-8') as f:
                 self.stems_data = json.load(f).get('stems', {})
-                
+        except FileNotFoundError:
+            # Derived-stem definitions were never shipped; generate_stem /
+            # expand_stems return clean error dicts instead of raising.
+            self.stems_data = {}
+            print("Warning: data/stems.json not found; derived-stem generation disabled.")
+
+        try:
             with open(os.path.join(base_dir, 'lexicon.json'), 'r', encoding='utf-8') as f:
                 lex_data = json.load(f)
                 for entry in lex_data.get('roots', []):
@@ -73,9 +89,8 @@ class EthioMorphGenerator:
                     noun_root = entry.get('root')
                     if noun_root:
                         self.nouns_by_root.setdefault(noun_root, []).append(entry)
-                    
         except FileNotFoundError:
-            print("Warning: Data files (templates, stems, or lexicon) not found.")
+            print("Warning: data/lexicon.json not found; conjugator lexicon is empty.")
     
     @staticmethod
     def change_order(char, target_order):
@@ -189,13 +204,20 @@ class EthioMorphGenerator:
         prefixes = list(PREFIX_LOOKALIKES)
         prefixes.sort(key=len, reverse=True)
         
-        for p in prefixes:
-            if root.startswith(p) and len(root) > len(p):
-                remaining = root[len(p):]
+        longer_prefix_blocked = False
+        for pfx in prefixes:
+            if root.startswith(pfx) and len(root) > len(pfx):
+                remaining = root[len(pfx):]
                 # Only strip if remaining has at least 3 characters (radicals)
                 remaining_consonants = [devowelize(c) for c in remaining]
                 if len(remaining_consonants) >= 3:
-                    return remaining, p
+                    return remaining, pfx
+                if len(pfx) > 1:
+                    # አስተማረ: አስተ is the prefix, but ማረ is only 2 letters.
+                    # Do not then strip the shorter አ and double it.
+                    longer_prefix_blocked = True
+        if longer_prefix_blocked:
+            return root, ""
                 
         return root, ""
     
@@ -409,7 +431,46 @@ class EthioMorphGenerator:
         
         subject_prefix = subject_data.get("prefix", "")
         suffix = subject_data.get("suffix", "")
-        vowel_map = subject_data.get("vowel_map", {})
+        vowel_map = dict(subject_data.get("vowel_map", {}))
+
+        # አስተ-initial citation is already the 3sm perfective. Applying a
+        # 3/4-radical template drops the 5th radical (አስተማረ → አሰተመ) or,
+        # for type_a_aste, doubles the prefix (አስተሳተመረ).
+        if (
+            tense == "perfective"
+            and subject_key == "3sm"
+            and not suffix
+            and root.startswith("አስተ")
+        ):
+            return {
+                "word": root,
+                "derivation": {
+                    "root": [devowelize(c) for c in root],
+                    "root_display": "{" + ", ".join(devowelize(c) for c in root) + "}",
+                    "root_type": "strong",
+                    "verb_type": verb_type,
+                    "verb_home": verb_home,
+                    "tense": {
+                        "name": tense,
+                        "template_name": template_name,
+                        "geez_name": geez_name,
+                        "cv_template": cv_template,
+                        "gemination": gemination,
+                    },
+                    "subject": {
+                        "key": subject_key,
+                        "geez": (subject_data.get("label") or {}).get("geez", ""),
+                        "english": (subject_data.get("label") or {}).get("english", ""),
+                    },
+                    "vowel_shifts": [],
+                    "morphological_rule": "አስተ citation kept for 3sm perfective",
+                    "applied_pattern": "keep",
+                    "prefix": "",
+                    "suffix": "",
+                    "fusion": None,
+                    "features_applied": {"aste_citation_kept": True},
+                },
+            }
         morphological_rule = subject_data.get("morphological_rule", "")
         subject_label = subject_data.get("label", {})
         
@@ -462,6 +523,18 @@ class EthioMorphGenerator:
         radicals = ["C1", "C2", "C3"]
         if len(root_chars) >= 4:
             radicals.append("C4")
+        for extra in range(4, len(root_chars)):
+            radicals.append(f"C{extra + 1}")
+
+        # Gabra citations keep 6th-order C2 (ሰርሐ, ገብረ). ቀተለ (C2=1) is unchanged.
+        # Do not special-case individual roots: any perfective C2 in 6th order.
+        if (
+            tense == "perfective"
+            and len(surface_root) > 1
+            and get_vowel_order(surface_root[1]) == 6
+            and vowel_map.get("C2", 1) == 1
+        ):
+            vowel_map["C2"] = 6
             
         last_radical_key = radicals[-1]
 
@@ -508,7 +581,13 @@ class EthioMorphGenerator:
             for i, key in enumerate(radicals):
                 if i < len(root_chars):
                     base = root_chars[i]
-                    order = vowel_map.get(key, 1)
+                    if key in vowel_map:
+                        order = vowel_map[key]
+                    elif i >= 4 and i < len(surface_root):
+                        # Radicals past the template (5th+) keep their citation vowel.
+                        order = get_vowel_order(surface_root[i]) or 1
+                    else:
+                        order = 1
 
                     if (
                         verb_type == "type_d"

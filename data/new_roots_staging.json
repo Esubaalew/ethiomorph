@@ -1,0 +1,245 @@
+{
+ "staging_note": "Candidate roots for later review. NOT merged into data/lexicon.json. Type is 'unknown' for all entries: the sources give citation forms but no pattern-class evidence, and no type was guessed.",
+ "created": "2026-09-30",
+ "count": 17,
+ "roots": [
+  {
+   "root": "ሐመረ",
+   "type": "unknown",
+   "meaning": null,
+   "attestation": "dictionary",
+   "method": "human_curated_wordlist_citation_form",
+   "provenance": {
+    "source": "hailaykidu/movoc_with-moredata data/geez_wordlist_hailay_annotated.txt",
+    "url": "https://github.com/hailaykidu/movoc_with-moredata/blob/main/data/geez_wordlist_hailay_annotated.txt",
+    "date_found": "2026-09-30",
+    "note": "human-provided Ge'ez verb-paradigm wordlist; bare triliteral citation form, geezRPA analyzes as bare root",
+    "example_form": "ሐመረ"
+   }
+  },
+  {
+   "root": "ሐመወ",
+   "type": "unknown",
+   "meaning": null,
+   "attestation": "dictionary",
+   "method": "human_curated_wordlist_citation_form",
+   "provenance": {
+    "source": "hailaykidu/movoc_with-moredata data/geez_wordlist_hailay_annotated.txt",
+    "url": "https://github.com/hailaykidu/movoc_with-moredata/blob/main/data/geez_wordlist_hailay_annotated.txt",
+    "date_found": "2026-09-30",
+    "note": "human-provided Ge'ez verb-paradigm wordlist; bare triliteral citation form, geezRPA analyzes as bare root",
+    "example_form": "ሐመወ"
+   }
+  },
+  {
+   "root": "ሐረገ",
+   "type": "unknown",
+   "meaning": null,
+   "attestation": "dictionary",
+   "method": "human_curated_wordlist_citation_form",
+   "provenance": {
+    "source": "hailaykidu/movoc_with-moredata data/geez_wordlist_hailay_annotated.txt",
+    "url": "https://github.com/hailaykidu/movoc_with-moredata/blob/main/data/geez_wordlist_hailay_annotated.txt",
+    "date_found": "2026-09-30",
+    "note": "human-provided Ge'ez verb-paradigm wordlist; bare triliteral citation form, geezRPA analyzes as bare root",
+    "example_form": "ሐረገ"
+   }
+  },
+  {
+   "root": "ሐረፈ",
+   "type": "unknown",
+   "meaning": null,
+   "attestation": "dictionary",
+   "method": "human_curated_wordlist_citation_form",
+   "provenance": {
+    "source": "hailaykidu/movoc_with-moredata data/geez_wordlist_hailay_annotated.txt",
+    "url": "https://github.com/hailaykidu/movoc_with-moredata/blob/main/data/geez_wordlist_hailay_annotated.txt",
+    "date_found": "2026-09-30",
+    "note": "human-provided Ge'ez verb-paradigm wordlist; bare triliteral citation form, geezRPA analyzes as bare root",
+    "example_form": "ሐረፈ"
+   }
+  },
+  {
+   "root": "ሐነወ",
+   "type": "unknown",
+   "meaning": null,
+   "attestation": "dictionary",
+   "method": "human_curated_wordlist_citation_form",
+   "provenance": {
+    "source": "hailaykidu/movoc_with-moredata data/geez_wordlist_hailay_annotated.txt",
+    "url": "https://github.com/hailaykidu/movoc_with-moredata/blob/main/data/geez_wordlist_hailay_annotated.txt",
+    "date_found": "2026-09-30",
+    "note": "human-provided Ge'ez verb-paradigm wordlist; bare triliteral citation form, geezRPA analyzes as bare root",
+    "example_form": "ሐነወ"
+   }
+  },
+  {
+   "root": "ሐገፈ",
+   "type": "unknown",
+   "meaning": null,
+   "attestation": "dictionary",
+   "method": "human_curated_wordlist_citation_form",
+   "provenance": {
+    "source": "hailaykidu/movoc_with-moredata data/geez_wordlist_hailay_annotated.txt",
+    "url": "https://github.com/hailaykidu/movoc_with-moredata/blob/main/data/geez_wordlist_hailay_annotated.txt",
+    "date_found": "2026-09-30",
+    "note": "human-provided Ge'ez verb-paradigm wordlist; bare triliteral citation form, geezRPA analyzes as bare root",
+    "example_form": "ሐገፈ"
+   }
+  },
+  {
+   "root": "መለጸ",
+   "type": "unknown",
+   "meaning": null,
+   "attestation": "dictionary",
+   "method": "human_curated_wordlist_citation_form",
+   "provenance": {
+    "source": "hailaykidu/movoc_with-moredata data/geez_wordlist_hailay_annotated.txt",
+    "url": "https://github.com/hailaykidu/movoc_with-moredata/blob/main/data/geez_wordlist_hailay_annotated.txt",
+    "date_found": "2026-09-30",
+    "note": "human-provided Ge'ez verb-paradigm wordlist; bare triliteral citation form, geezRPA analyzes as bare root",
+    "example_form": "መለጸ"
+   }
+  },
+  {
+   "root": "መተነ",
+   "type": "unknown",
+   "meaning": null,
+   "attestation": "dictionary",
+   "method": "human_curated_wordlist_citation_form",
+   "provenance": {
+    "source": "hailaykidu/movoc_with-moredata data/geez_wordlist_hailay_annotated.txt",
+    "url": "https://github.com/hailaykidu/movoc_with-moredata/blob/main/data/geez_wordlist_hailay_annotated.txt",
+    "date_found": "2026-09-30",
+    "note": "human-provided Ge'ez verb-paradigm wordlist; bare triliteral citation form, geezRPA analyzes as bare root",
+    "example_form": "መተነ"
+   }
+  },
+  {
+   "root": "መአነ",
+   "type": "unknown",
+   "meaning": null,
+   "attestation": "dictionary",
+   "method": "human_curated_wordlist_citation_form",
+   "provenance": {
+    "source": "hailaykidu/movoc_with-moredata data/geez_wordlist_hailay_annotated.txt",
+    "url": "https://github.com/hailaykidu/movoc_with-moredata/blob/main/data/geez_wordlist_hailay_annotated.txt",
+    "date_found": "2026-09-30",
+    "note": "human-provided Ge'ez verb-paradigm wordlist; bare triliteral citation form (weak middle radical), geezRPA analyzes as bare root",
+    "example_form": "መአነ"
+   }
+  },
+  {
+   "root": "መክሐ",
+   "type": "unknown",
+   "meaning": null,
+   "attestation": "dictionary",
+   "method": "human_curated_wordlist_citation_form",
+   "provenance": {
+    "source": "hailaykidu/movoc_with-moredata data/geez_wordlist_hailay_annotated.txt",
+    "url": "https://github.com/hailaykidu/movoc_with-moredata/blob/main/data/geez_wordlist_hailay_annotated.txt",
+    "date_found": "2026-09-30",
+    "note": "human-provided Ge'ez verb-paradigm wordlist; bare triliteral citation form, geezRPA analyzes as bare root",
+    "example_form": "መክሐ"
+   }
+  },
+  {
+   "root": "መዘነ",
+   "type": "unknown",
+   "meaning": null,
+   "attestation": "dictionary",
+   "method": "human_curated_wordlist_citation_form",
+   "provenance": {
+    "source": "hailaykidu/movoc_with-moredata data/geez_wordlist_hailay_annotated.txt",
+    "url": "https://github.com/hailaykidu/movoc_with-moredata/blob/main/data/geez_wordlist_hailay_annotated.txt",
+    "date_found": "2026-09-30",
+    "note": "human-provided Ge'ez verb-paradigm wordlist; bare triliteral citation form, geezRPA analyzes as bare root",
+    "example_form": "መዘነ"
+   }
+  },
+  {
+   "root": "መየነ",
+   "type": "unknown",
+   "meaning": null,
+   "attestation": "dictionary",
+   "method": "human_curated_wordlist_citation_form",
+   "provenance": {
+    "source": "hailaykidu/movoc_with-moredata data/geez_wordlist_hailay_annotated.txt",
+    "url": "https://github.com/hailaykidu/movoc_with-moredata/blob/main/data/geez_wordlist_hailay_annotated.txt",
+    "date_found": "2026-09-30",
+    "note": "human-provided Ge'ez verb-paradigm wordlist; bare triliteral citation form (weak middle radical), geezRPA analyzes as bare root",
+    "example_form": "መየነ"
+   }
+  },
+  {
+   "root": "መገለ",
+   "type": "unknown",
+   "meaning": null,
+   "attestation": "dictionary",
+   "method": "human_curated_wordlist_citation_form",
+   "provenance": {
+    "source": "hailaykidu/movoc_with-moredata data/geez_wordlist_hailay_annotated.txt",
+    "url": "https://github.com/hailaykidu/movoc_with-moredata/blob/main/data/geez_wordlist_hailay_annotated.txt",
+    "date_found": "2026-09-30",
+    "note": "human-provided Ge'ez verb-paradigm wordlist; bare triliteral citation form, geezRPA analyzes as bare root",
+    "example_form": "መገለ"
+   }
+  },
+  {
+   "root": "ሠገወ",
+   "type": "unknown",
+   "meaning": null,
+   "attestation": "dictionary",
+   "method": "human_curated_wordlist_citation_form",
+   "provenance": {
+    "source": "hailaykidu/movoc_with-moredata data/geez_wordlist_hailay_annotated.txt",
+    "url": "https://github.com/hailaykidu/movoc_with-moredata/blob/main/data/geez_wordlist_hailay_annotated.txt",
+    "date_found": "2026-09-30",
+    "note": "human-provided Ge'ez verb-paradigm wordlist; bare triliteral citation form, geezRPA analyzes as bare root",
+    "example_form": "ሠገወ"
+   }
+  },
+  {
+   "root": "ሠጠየ",
+   "type": "unknown",
+   "meaning": null,
+   "attestation": "dictionary",
+   "method": "human_curated_wordlist_citation_form",
+   "provenance": {
+    "source": "hailaykidu/movoc_with-moredata data/geez_wordlist_hailay_annotated.txt",
+    "url": "https://github.com/hailaykidu/movoc_with-moredata/blob/main/data/geez_wordlist_hailay_annotated.txt",
+    "date_found": "2026-09-30",
+    "note": "human-provided Ge'ez verb-paradigm wordlist; bare triliteral citation form (weak final radical), geezRPA analyzes as bare root",
+    "example_form": "ሠጠየ"
+   }
+  },
+  {
+   "root": "ሠርገወ",
+   "type": "unknown",
+   "meaning": null,
+   "attestation": "dictionary",
+   "method": "human_curated_wordlist_citation_form",
+   "provenance": {
+    "source": "hailaykidu/movoc_with-moredata data/geez_wordlist_hailay_annotated.txt",
+    "url": "https://github.com/hailaykidu/movoc_with-moredata/blob/main/data/geez_wordlist_hailay_annotated.txt",
+    "date_found": "2026-09-30",
+    "note": "human-provided Ge'ez verb-paradigm wordlist; bare quadriliteral citation form, geezRPA analyzes as bare root",
+    "example_form": "ሠርገወ"
+   }
+  },
+  {
+   "root": "ማዕጾ",
+   "type": "unknown",
+   "meaning": null,
+   "attestation": "dictionary",
+   "method": "human_curated_wordlist_citation_form",
+   "provenance": {
+    "source": "hailaykidu/movoc_with-moredata data/Geez_Hailay_Morphem.json",
+    "url": "https://github.com/hailaykidu/movoc_with-moredata/blob/main/data/Geez_Hailay_Morphem.json",
+    "date_found": "2026-09-30",
+    "note": "human-annotated prefix/root/suffix segmentation (193 entries, cross-validated); root column value",
+    "example_form": "ማዕጾ"
+   }
+  }
+ ]
+}

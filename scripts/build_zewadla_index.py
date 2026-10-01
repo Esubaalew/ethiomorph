@@ -132,9 +132,14 @@ def parse_page(text: str, page_num: int, roots: dict, form_lookup: dict) -> None
             continue
         primary_root, primary_pattern = parsed_forms[0]
         all_forms = [f for f, _ in parsed_forms]
+        # Index citation roots / real alternates only. Never treat dictionary
+        # section labels like ሰርሐቀተ (root + ቀተ code) as surface conjugations.
         for chunk in FORM_SPLIT_RE.split(forms_blob):
             chunk = chunk.strip()
             if not chunk:
+                continue
+            peeled, pattern = peel_form(chunk)
+            if peeled and pattern and chunk == f"{peeled}{pattern}":
                 continue
             form_lookup.setdefault(chunk, [])
             if primary_root not in form_lookup[chunk]:

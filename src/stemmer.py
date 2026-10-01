@@ -15,7 +15,19 @@ import json
 import os
 from src.normalizer import normalize_geez
 from src.decomposer import get_consonant_skeleton, get_char_order, devowelize, detect_verb_home
-from src.grammar_loader import GrammarIndex
+from src.grammar_loader import GrammarIndex, PATTERN_CODE_MAP
+from src.classical_rules import (
+    CITATION_NOUNS,
+    NOMINAL_FEMININE_ENDINGS,
+    build_classical_analysis,
+    classify_army_head,
+    grammar_root_compatible,
+    analyze_surface_pdf,
+    is_merahiyan,
+    looks_like_verbal_citation,
+    restore_citation_root,
+    suffix_strip_allowed,
+)
 
 
 PARTICLE_LEXICON = {
@@ -192,7 +204,7 @@ class GeezStemmer:
         self.causative_prefixes = {'ያ', 'ታ', 'ና', 'አ', 'ያስተ', 'ታስተ', 'ናስተ', 'አስተ'}
         
         # Laryngeal consonants (ላሪንጅያል) - can disappear in certain conjugations
-        self.laryngeals = {'ሀ', 'ሐ', 'ኀ', 'አ', 'ዐ', 'ህ', 'ሕ', 'ኅ', 'ዕ'}
+        self.laryngeals = {'ሀ', 'ሐ', 'ኀ', 'አ', 'ዐ', 'ዓ', 'ህ', 'ሕ', 'ኅ', 'ዕ'}
         
         # Known laryngeal-middle roots (C2 is laryngeal) for reconstruction
         self.laryngeal_middle_roots = {
@@ -210,26 +222,18 @@ class GeezStemmer:
         self.suffixes = [
             # Object suffixes (longer first)
             'ክሙ', 'ክን', 'ኦሙ', 'ኦን', 'ዎሙ', 'ዎን',
-            # Simple object/subject suffixes  
+            # Simple object/subject suffixes
             'ሙ', 'ማ', 'ዎ', 'ዮ', 'ኡ', 'ኣ',
             'ነ', 'ኒ', 'ና', 'ኩ', 'ከ', 'ኪ',
-            'ክ', 'ን', 'ት', 'ም', 'አት', 'ተ', 'ዩ',
-        ]
-        # Classical grammar pattern endings (longer entries first).
-        self.grammar_pattern_suffixes = [
-            ('ቀተ', 'perfective'),
-            ('ቀደ', 'perfective_alt'),
-            ('ጦመ', 'participle'),
-            ('ተን', 'noun_agent'),
-            ('ባረ', 'adjective'),
-            ('ማህ', 'adverb'),
-            ('ሴሰ', 'noun'),
-            ('ክህ', 'conjugation_grid'),
-            ('ርዕስ', 'topic'),
+            'ክ', 'ን', 'ም', 'ዩ',
+            # Feminine / derived-noun endings: ት and ታ are the same operator
+            # at 6th vs 4th order, not a fourth radical.
+            *sorted(NOMINAL_FEMININE_ENDINGS, key=len, reverse=True),
         ]
         # Consonant clusters that begin integral roots/nouns, not detachable prefixes.
+        # Keep these long enough that አመለከ (causative of መለከ) is not blocked.
         self.prefix_block_starts = (
-            'አም', 'አመ', 'አምላ', 'አምነ',
+            'አምላ', 'አምነ', 'አምላክ',
         )
 
     def _segment_particles(self, word):
@@ -284,36 +288,38 @@ class GeezStemmer:
         combined_meaning = " ".join(p["meaning"] for p in particles)
         display_form = " + ".join(p["form"] for p in particles)
 
-        return {
-            "input": word,
-            "root": display_form,
-            "root_consonants": [],
-            "root_type": "particle_phrase",
-            "verb_home": None,
-            "meaning": combined_meaning,
-            "confidence": 0.98,
-            "analysis": {
-                "stem": word,
-                "pattern": {
-                    "name": "particle_phrase",
-                    "geez_name": "አካል ቃላት",
-                    "english_name": "Particle Phrase",
-                    "description": "Atomic function-word sequence",
+        return self._attach_classical_fields(
+            {
+                "input": word,
+                "root": display_form,
+                "root_consonants": [],
+                "root_type": "particle_phrase",
+                "verb_home": None,
+                "meaning": combined_meaning,
+                "confidence": 0.98,
+                "analysis": {
+                    "stem": word,
+                    "pattern": {
+                        "name": "particle_phrase",
+                        "geez_name": "አካል ቃላት",
+                        "english_name": "Particle Phrase",
+                        "description": "Atomic function-word sequence",
+                    },
+                    "prefixes": [],
+                    "suffixes": [],
+                    "method": "particle_phrase",
+                    "particles": particles,
+                    "gloss": combined_meaning,
+                    "flow": " → ".join(flow_parts),
                 },
-                "prefixes": [],
-                "suffixes": [],
-                "method": "particle_phrase",
-                "particles": particles,
-                "gloss": combined_meaning,
-                "flow": " → ".join(flow_parts),
-            },
-            "derivation_path": derivation_steps,
-            "research_notation": {
-                "root_display": " + ".join(p["form"] for p in particles),
-                "pattern_formula": "ParticlePhrase(" + " · ".join(p["type"] for p in particles) + ")",
-                "affix_formula": " ".join(p["form"] for p in particles),
-            },
-        }
+                "derivation_path": derivation_steps,
+                "research_notation": {
+                    "root_display": " + ".join(p["form"] for p in particles),
+                    "pattern_formula": "ParticlePhrase(" + " · ".join(p["type"] for p in particles) + ")",
+                    "affix_formula": " ".join(p["form"] for p in particles),
+                },
+            }
+        )
 
     def _is_weak_root_candidate(self, stem):
         """
@@ -340,47 +346,92 @@ class GeezStemmer:
                 return True
                 
         return False
+
+    def _try_weak_initial_imperfective(self, word):
+        """Detect ይ/ት/እ-prefixed imperfective of a weak-initial (ወ) verb.
+
+        E.g. ይሃብ -> (ወሀበ, 'ይ'). Returns (root, prefix) or None.
+        The restored root must be a known weak-initial root; this keeps
+        the rule from firing on genuine bihla-house stems.
+        """
+        if len(word) != 3 or word[0] not in ("ይ", "ት", "እ"):
+            return None
+        stem = word[1:]
+        candidate = "ወ" + get_consonant_skeleton(stem)
+        if candidate in getattr(self, "weak_initial_roots", set()):
+            return candidate, word[0]
+        cand_norm = normalize_geez(candidate)
+        if cand_norm in getattr(self, "lexicon_normalized_lookup", {}):
+            return self.lexicon_normalized_lookup[cand_norm], word[0]
+        return None
+
+    def _is_laryngeal_drop_candidate(self, stem):
+        """True when a 2-radical stem looks like ብህለ-house C2 drop (C1 sadis)."""
+        if not stem:
+            return False
+        skeleton = get_consonant_skeleton(stem)
+        if len(skeleton) != 2:
+            return False
+        # Hollow uses 7/3/5 on C1. Bihla drop is only the ብህለ template
+        # (ብሉ / ብል), not every sadis-initial pair.
+        if get_char_order(stem[0]) != 6 or len(stem) < 2:
+            return False
+        return devowelize(stem[0]) == "በ" and devowelize(stem[1]) == "ለ"
+
+    def _match_pattern_code_label(self, word):
+        """
+        Match Zewadla dictionary labels: citation + pattern section code.
+
+        E.g. ሰርሐቀተ = ሰርሐ (root) + ቀተ (perfective pattern code).
+        These are dictionary metadata, not morphological suffixes, so they
+        must be recognized before affix stripping (which would peel ተ as a
+        feminine ending). Returns (base, code, pattern_info) or None.
+
+        The base must be a valid root: a lexicon hit or a valid verbal
+        citation shape. This guards against false positives on natural words
+        that happen to end with a code sequence.
+        """
+        for code in sorted(PATTERN_CODE_MAP, key=len, reverse=True):
+            if not word.endswith(code):
+                continue
+            base = word[: -len(code)]
+            if not base:
+                continue
+            # Base must be a known root or valid citation shape.
+            base_norm = normalize_geez(base)
+            is_lexicon_root = (
+                base in self.lexicon_roots
+                or base_norm in self.lexicon_roots
+                or base in self.lexicon_normalized_lookup
+                or base_norm in self.lexicon_normalized_lookup
+            )
+            if is_lexicon_root or looks_like_verbal_citation(base_norm):
+                return base, code, PATTERN_CODE_MAP[code]
+        return None
     
     def _reconstruct_laryngeal_middle(self, skeleton):
         """
-        Reconstruct a laryngeal middle root from a 2-consonant skeleton.
-        
-        When C2 is a laryngeal (ሀ, ሐ, ኀ, etc.), it often disappears in certain
-        conjugations (Jussive, Imperative). This method attempts to find the
-        full root by checking against known laryngeal-middle roots.
-        
-        Example: ብለ → ብህለ (ብ + ህ + ለ)
-        
-        Args:
-            skeleton: 2-consonant skeleton (e.g., "ብለ")
-            
-        Returns:
-            Tuple of (reconstructed_root, laryngeal_char) or (None, None)
+        Reconstruct a laryngeal-middle citation from a 2-consonant stem/skeleton.
+
+        Rule (ብህለ house): dropped C2 is restored as laryngeal at sadis,
+        yielding C1ə-Hə-C3a (ብሉ → ብህለ). Order math only, no lemma list.
         """
-        if len(skeleton) != 2:
+        from src.decomposer import get_char_by_order
+        if not skeleton:
             return None, None
-        
-        c1 = devowelize(skeleton[0])
-        c3 = devowelize(skeleton[1]) if len(skeleton) > 1 else ''
-        
-        # Try each laryngeal as potential C2
-        laryngeal_bases = ['ሀ', 'ሐ', 'ኀ', 'አ', 'ዐ']
-        
-        for laryngeal in laryngeal_bases:
-            candidate = c1 + laryngeal + c3
-            if candidate in self.laryngeal_middle_roots:
-                return candidate, laryngeal
-            # Also check lexicon
-            if candidate in self.lexicon_roots:
-                root_info = self.lexicon_roots[candidate]
-                if root_info.get('type') in ['laryngeal_middle', 'laryngeal']:
-                    return candidate, laryngeal
-        
-        # Heuristic: if no match found but pattern suggests laryngeal
-        # Common laryngeal-middle pattern: ብለ → ብህለ
-        if c1 == 'ብ' and c3 == 'ለ':
-            return 'ብህለ', 'ህ'
-        
+        stem = skeleton
+        if len(get_consonant_skeleton(stem)) != 2:
+            return None, None
+        # Normalize to a 2-letter stem for restore_citation_root.
+        if len(stem) != 2:
+            sk = get_consonant_skeleton(stem)
+            stem = get_char_by_order(devowelize(sk[0]), 6) + get_char_by_order(
+                devowelize(sk[1]), 1
+            )
+        from src.classical_rules import restore_citation_root
+        restored = restore_citation_root(stem)
+        if restored.get("by") == "bihla_from_dropped_c2":
+            return restored["citation"], "ህ"
         return None, None
 
     def _try_hollow_middle_restore(self, skeleton):
@@ -405,6 +456,55 @@ class GeezStemmer:
 
         return None, None
 
+    def _c1_compatible(self, candidate, source):
+        """True when candidate and source share C1 vowel order.
+
+        Short surfaces (ልብ, ስም) must not match a different C1 order.
+        Triliteral imperatives (ሕወር, C1=6th) may still cite a 1st-order root.
+        """
+        if not candidate or not source:
+            return False
+        source_order = get_char_order(source[0])
+        cand_order = get_char_order(candidate[0])
+        if not source_order or not cand_order:
+            return False
+        if source_order == cand_order:
+            return True
+        if len(source) >= 3 and source_order == 6 and cand_order == 1:
+            return True
+        return False
+
+    def _prefer_citation_orthography(self, candidates, source):
+        """Prefer a Ge'ez-order citation, then the spelling closest to the surface.
+
+        Inflected sadis (ደንግጸ) must not beat ደነገጸ. Among real citations,
+        መሓረ prefers መሐረ over the fully normalized መሃረ/መሀረ.
+        """
+        if not candidates:
+            return []
+        if len(candidates) == 1:
+            return list(candidates)
+
+        def score(candidate):
+            geez = sum(1 for ch in candidate if get_char_order(ch) == 1)
+            ortho = 0
+            if source:
+                for a, b in zip(candidate, source):
+                    if a == b:
+                        ortho += 3
+                    elif devowelize(a) == devowelize(b):
+                        ortho += 1
+                if (
+                    len(candidate) > 1
+                    and len(source) > 1
+                    and devowelize(candidate[1]) == devowelize(source[1])
+                ):
+                    ortho += 2
+            return (geez, ortho)
+
+        best = max(score(c) for c in candidates)
+        return [c for c in candidates if score(c) == best]
+
     def _resolve_skeleton_citation(self, skeleton, source=None, stem=None, pattern_name=None):
         """
         Map a devowelized skeleton back to a lexicon citation root.
@@ -424,14 +524,29 @@ class GeezStemmer:
             )
             return grammar_pick
         if len(candidates) == 1:
+            # A lone skeleton hit is not a citation unless C1 order agrees
+            # (ልብ skeleton ለበ must not become ለበ).
+            surface = source or stem
+            if (
+                surface
+                and len(surface) < 3
+                and not self._c1_compatible(candidates[0], surface)
+            ):
+                return None
             return candidates[0]
+
+        # Exact surface / citation match wins among homophonous skeletons.
+        if source in candidates:
+            return source
+        if stem in candidates:
+            return stem
 
         if pattern_name in {"imperfective", "jussive"} and stem and get_char_order(stem[0]) == 6:
             for candidate in candidates:
-                if self.lexicon_roots[candidate].get("type") == "type_a":
+                if self.lexicon_roots.get(candidate, {}).get("type") == "type_a":
                     return candidate
 
-        order_surface = source or stem
+        order_surface = stem or source
         if order_surface:
             c1_order = get_char_order(order_surface[0])
             if c1_order:
@@ -439,15 +554,17 @@ class GeezStemmer:
                     candidate for candidate in candidates
                     if get_char_order(candidate[0]) == c1_order
                 ]
-                if len(order_matches) == 1:
-                    return order_matches[0]
+                if order_matches:
+                    candidates = self._prefer_citation_orthography(order_matches, order_surface)
+                    if len(candidates) == 1:
+                        return candidates[0]
 
         for candidate in candidates:
             if candidate in self.hollow_w_roots or candidate in self.hollow_y_roots:
                 return candidate
 
         for candidate in candidates:
-            root_type = self.lexicon_roots[candidate].get("type", "")
+            root_type = self.lexicon_roots.get(candidate, {}).get("type", "")
             if root_type and root_type not in ("type_a", "strong", "unknown"):
                 return candidate
 
@@ -457,7 +574,13 @@ class GeezStemmer:
         if grammar_pick and grammar_pick in candidates:
             return grammar_pick
 
-        return candidates[0]
+        # Prefer candidates that actually exist in the lexicon,
+        # ranked toward the raw surface spelling.
+        ranked = self._prefer_citation_orthography(
+            [c for c in candidates if c in self.lexicon_roots] or list(candidates),
+            stem or source,
+        )
+        return ranked[0] if ranked else None
 
     def _canonicalize_root(self, root, source=None, stem=None, pattern_name=None):
         """
@@ -501,12 +624,27 @@ class GeezStemmer:
         """Prevent peeling verbal prefixes off integral root-initial clusters."""
         if prefix in {'አ', 'ም', 'መ'} and any(word.startswith(block) for block in self.prefix_block_starts):
             return True
+        # Army-head template identity (አእመረ, ባረከ, …) is citation, not አ+stem.
+        army = classify_army_head(word)
+        if army and army.get("by") == "template_identity":
+            return True
+        # Bare triliteral/biliteral citations whose radicals equal prefix letters.
+        if looks_like_verbal_citation(word) and len(word) <= 3:
+            return True
         return False
 
     def _resolve_verbal_root(self, stem_or_root: str) -> tuple[str, str | None]:
         """Map a derived stem to its verbal ግስ root when known."""
         if stem_or_root in self.lexicon_roots:
-            return stem_or_root, self.lexicon_roots[stem_or_root].get("meaning")
+            entry = self.lexicon_roots[stem_or_root]
+            # Curated base_root annotation (2026-10-01 lexicon curation):
+            # this entry is a derived stem kept for coverage; the analyzer
+            # cannot strip it to its base, so map to the annotated base root.
+            base = entry.get("base_root")
+            if base:
+                base_entry = self.lexicon_roots.get(base, {})
+                return base, base_entry.get("meaning") or entry.get("meaning")
+            return stem_or_root, entry.get("meaning")
 
         citation = self._canonicalize_root(stem_or_root, source=stem_or_root, stem=stem_or_root)
         if citation in self.lexicon_roots:
@@ -548,35 +686,39 @@ class GeezStemmer:
                     f"+ suffix '{suffix_part}' → ግስ '{verbal_root}'"
                 ),
             })
-            return {
-                "input": word,
-                "root": verbal_root,
-                "root_consonants": list(skeleton),
-                "root_type": "derived_noun",
-                "verb_home": detect_verb_home(skeleton, verbal_root),
-                "meaning": noun_entry.get("meaning") or verbal_gloss or verbal_root,
-                "confidence": 0.97,
-                "analysis": {
-                    "stem": noun_word,
-                    "pattern": {
-                        "name": "derived_noun",
-                        "geez_name": "ስምዕ",
-                        "english_name": "Derived Noun",
-                        "description": "Nominal form derived from a verbal root",
+            return self._attach_classical_fields(
+                {
+                    "input": word,
+                    "root": verbal_root,
+                    "root_consonants": list(skeleton),
+                    "root_type": "derived_noun",
+                    "verb_home": detect_verb_home(skeleton, verbal_root),
+                    "meaning": noun_entry.get("meaning") or verbal_gloss or verbal_root,
+                    "confidence": 0.97,
+                    "analysis": {
+                        "stem": noun_word,
+                        "pattern": {
+                            "name": "derived_noun",
+                            "geez_name": "ስምዕ",
+                            "english_name": "Derived Noun",
+                            "description": "Nominal form derived from a verbal root",
+                        },
+                        "prefixes": [],
+                        "suffixes": [suffix_part],
+                        "method": "derived_noun_suffix",
+                        "surface_form": noun_word,
+                        "verbal_gloss": verbal_gloss,
                     },
-                    "prefixes": [],
-                    "suffixes": [suffix_part],
-                    "method": "derived_noun_suffix",
-                    "surface_form": noun_word,
-                    "verbal_gloss": verbal_gloss,
+                    "derivation_path": derivation_steps,
+                    "research_notation": {
+                        "root_display": "{" + ", ".join(list(skeleton)) + "}",
+                        "pattern_formula": f"ስምዕ({noun_word}) + Suffix({suffix_part})",
+                        "affix_formula": f"Stem({noun_word}) + Suffix({suffix_part})",
+                    },
                 },
-                "derivation_path": derivation_steps,
-                "research_notation": {
-                    "root_display": "{" + ", ".join(list(skeleton)) + "}",
-                    "pattern_formula": f"ስምዕ({noun_word}) + Suffix({suffix_part})",
-                    "affix_formula": f"Stem({noun_word}) + Suffix({suffix_part})",
-                },
-            }
+                in_nouns=True,
+                noun_has_verbal_root=True,
+            )
         return None
 
     def strip_affixes(self, word):
@@ -597,11 +739,59 @@ class GeezStemmer:
         changed = True
         while changed:
             changed = False
+
+            # Feminine/nominal endings before asraw prefixes so ንግረት
+            # peels ት (operator) rather than ን (false አሥራው).
+            # Skip bare verbal citations (ሐተተ must not lose final ተ radical).
+            if not looks_like_verbal_citation(current_word):
+                for suffix in sorted(NOMINAL_FEMININE_ENDINGS, key=len, reverse=True):
+                    if not current_word.endswith(suffix):
+                        continue
+                    remaining = current_word[: -len(suffix)]
+                    remaining_skeleton = get_consonant_skeleton(remaining)
+                    if len(remaining_skeleton) < 2:
+                        continue
+                    derivation_steps.append({
+                        "action": "strip_suffix",
+                        "affix": suffix,
+                        "before": current_word,
+                        "after": remaining,
+                        "rule": (
+                            f"Feminine/nominal ending '{suffix}' stripped "
+                            f"(fere_geez.ch4.tire_zer.feminine_ending; "
+                            f"ት/ታ are ending orders, not radicals)"
+                        ),
+                    })
+                    found_suffixes.append(suffix)
+                    current_word = remaining
+                    changed = True
+                    break
+            if changed:
+                continue
             
+            had_feminine = any(
+                s in NOMINAL_FEMININE_ENDINGS for s in found_suffixes
+            )
             for prefix in self.prefixes:
                 if current_word.startswith(prefix):
                     if self._blocked_prefix_strip(current_word, prefix):
                         continue
+                    # After feminine ending: block false asraw peels on nouns,
+                    # but allow causative A and agentive ma+geminate stems.
+                    if had_feminine:
+                        if prefix in {'ን', 'ይ', 'ት', 'እ', 'ና', 'ያ', 'ታ', 'ላ'}:
+                            continue
+                        if prefix == 'መ':
+                            rem = current_word[len(prefix):]
+                            rem_orders = [get_char_order(c) for c in rem]
+                            geminate_stem = (
+                                len(rem) >= 3
+                                and rem_orders[0] != 6
+                                and rem_orders[-1] == 6
+                                and rem_orders[-2] == 6
+                            )
+                            if not geminate_stem:
+                                continue
                     remaining = current_word[len(prefix):]
                     remaining_skeleton = get_consonant_skeleton(remaining)
                     
@@ -616,7 +806,13 @@ class GeezStemmer:
                                 if skeleton_full in self.quadriliterals:
                                     continue
 
-                    if len(remaining_skeleton) >= 3:
+                    # አስተ/ታስተ stay intact even when the remainder is only
+                    # two radicals (አስተማረ). A shorter prefix must not eat them.
+                    stem4_prefix = prefix in {
+                        "ያስተ", "ታስተ", "ናስተ", "ላስተ", "መስተ", "አስተ",
+                    }
+                    min_skeleton = 2 if stem4_prefix else 3
+                    if len(remaining_skeleton) >= min_skeleton and remaining:
                         derivation_steps.append({
                             "action": "strip_prefix",
                             "affix": prefix,
@@ -628,13 +824,46 @@ class GeezStemmer:
                         current_word = remaining
                         changed = True
                         break
-                    elif len(remaining_skeleton) == 2 and self._is_weak_root_candidate(remaining):
+                    elif len(remaining_skeleton) == 2 and (
+                        self._is_weak_root_candidate(remaining)
+                        or self._is_laryngeal_drop_candidate(remaining)
+                    ):
+                        # Do not strip ወ when it is the weak-initial radical:
+                        # if 'ወ' + skeleton(remaining) is a known weak-initial
+                        # root, the ወ belongs to the root (e.g. ወርዱ <- ወረደ).
+                        if prefix == "ወ" and self._is_weak_root_candidate(remaining):
+                            continue
+                        # Do not peel the first letter off a complete triliteral
+                        # zend/kalay stem (ንግር, ከትም). Exception: asraw ይ/ት/እ
+                        # before bihla drop (ይብል looks like [6,6,6] but ይ is asraw).
+                        cur_orders = [get_char_order(c) for c in current_word]
+                        if len(current_word) == 3 and tuple(cur_orders) in {
+                            (6, 6, 6), (1, 6, 6)
+                        }:
+                            if not (
+                                prefix in {"ይ", "ት", "እ"}
+                                and self._is_laryngeal_drop_candidate(remaining)
+                            ):
+                                continue
+                        # Laryngeal-drop peel is only valid for asraw letters.
+                        asraw_forms = {"ይ", "ት", "እ", "ን"}
+                        if (
+                            self._is_laryngeal_drop_candidate(remaining)
+                            and not self._is_weak_root_candidate(remaining)
+                            and prefix not in asraw_forms
+                        ):
+                            continue
+                        why = (
+                            "laryngeal-drop candidate"
+                            if self._is_laryngeal_drop_candidate(remaining)
+                            else "weak root candidate"
+                        )
                         derivation_steps.append({
                             "action": "strip_prefix",
                             "affix": prefix,
                             "before": current_word,
                             "after": remaining,
-                            "rule": f"Prefix '{prefix}' stripped (weak root candidate)"
+                            "rule": f"Prefix '{prefix}' stripped ({why})"
                         })
                         found_prefixes.append(prefix)
                         current_word = remaining
@@ -644,53 +873,32 @@ class GeezStemmer:
             if changed:
                 continue
 
-            for pattern_suffix, pattern_label in self.grammar_pattern_suffixes:
-                if current_word.endswith(pattern_suffix) and len(current_word) > len(pattern_suffix):
-                    remaining = current_word[:-len(pattern_suffix)]
-                    remaining_skeleton = get_consonant_skeleton(remaining)
-                    if len(remaining_skeleton) == 3 or (
-                        len(remaining_skeleton) == 4
-                        and (
-                            remaining in self.lexicon_roots
-                            or self.grammar.get_root(remaining)
-                        )
-                    ):
-                        derivation_steps.append({
-                            "action": "strip_pattern_suffix",
-                            "affix": pattern_suffix,
-                            "before": current_word,
-                            "after": remaining,
-                            "rule": (
-                                f"Grammar pattern suffix '{pattern_suffix}' "
-                                f"({pattern_label}) stripped"
-                            ),
-                        })
-                        found_suffixes.append(pattern_suffix)
-                        current_word = remaining
-                        changed = True
-                        break
-
-            if changed:
-                continue
-
             for suffix in self.suffixes:
                 if current_word.endswith(suffix):
+                    if suffix in NOMINAL_FEMININE_ENDINGS:
+                        # Already handled above (priority pass).
+                        continue
                     remaining = current_word[:-len(suffix)]
                     remaining_skeleton = get_consonant_skeleton(remaining)
                     
                     if len(remaining_skeleton) >= 3:
+                        if not suffix_strip_allowed(suffix, prefixes=found_prefixes, remaining=remaining, current_word=current_word):
+                            continue
+                        rule = f"Suffix '{suffix}' stripped (skeleton >= 3)"
                         derivation_steps.append({
                             "action": "strip_suffix",
                             "affix": suffix,
                             "before": current_word,
                             "after": remaining,
-                            "rule": f"Suffix '{suffix}' stripped (skeleton >= 3)"
+                            "rule": rule,
                         })
                         found_suffixes.append(suffix)
                         current_word = remaining
                         changed = True
                         break
                     elif len(remaining_skeleton) == 2:
+                        if not suffix_strip_allowed(suffix, prefixes=found_prefixes, remaining=remaining, current_word=current_word):
+                            continue
                         # Check for weak root or laryngeal middle
                         is_reconstructable = self._is_weak_root_candidate(remaining)
                         if not is_reconstructable:
@@ -732,7 +940,17 @@ class GeezStemmer:
         """
         skeleton = get_consonant_skeleton(stem)
         suffixes = suffixes or []
-        
+
+        # Feminine/nominal ending => tire zer / sim'e, not a verbal anqets.
+        if any(s in NOMINAL_FEMININE_ENDINGS for s in suffixes):
+            return {
+                "name": "derived_noun",
+                "geez_name": "ጥሬ ዘር / ስምዕ",
+                "english_name": "Derived Noun",
+                "stem_number": 0,
+                "description": "Nominal form with feminine/noun ending",
+            }
+
         # =================================================================
         # STEM IV: Causative-Passive (አስተሳሳቢ) - Check first (longest)
         # =================================================================
@@ -837,10 +1055,10 @@ class GeezStemmer:
         if any(p in imperfect_prefixes for p in prefixes):
             return {
                 "name": "imperfective",
-                "geez_name": "ካልኣይ አንቀጽ",
+                "geez_name": "ካልዓይ / ትንቢት አንቀጽ",
                 "english_name": "Imperfective",
                 "stem_number": 1,
-                "description": "Stem I: Basic ongoing/habitual action"
+                "description": "Stem I: Basic ongoing/habitual action (ፍሬ ግእዝ አንቀጽ)",
             }
         
         # Imperative: C1 is 6th order (Sādis)
@@ -853,22 +1071,14 @@ class GeezStemmer:
                 "description": "Stem I: Direct command"
             }
         
-        # Perfective: default citation form
-        if 'ቀተ' in suffixes or 'ቀደ' in suffixes:
-            return {
-                "name": "perfective",
-                "geez_name": "ቀዳማይ አንቀጽ",
-                "english_name": "Perfective",
-                "stem_number": 1,
-                "description": "Stem I: Basic completed action (classical ቀተ/ቀደ form)",
-            }
+        # Perfective: citation form ends in Ge'ez order (ፍሬ ግእዝ §4.2)
         if len(skeleton) >= 3 and len(stem) > 0 and get_char_order(stem[-1]) == 1:
             return {
                 "name": "perfective",
-                "geez_name": "ቀዳማይ አንቀጽ",
+                "geez_name": "ኃላፊ / ቀዳማይ አንቀጽ",
                 "english_name": "Perfective",
                 "stem_number": 1,
-                "description": "Stem I: Basic completed action"
+                "description": "Stem I: Basic completed action (ፍሬ ግእዝ ኃላፊ)",
             }
             
         return {
@@ -921,7 +1131,45 @@ class GeezStemmer:
                 "after": normalized,
                 "rule": "Map phonetic variants to canonical forms"
             })
-        
+
+        # Non-lexical input: no Ethiopic syllable letters (punctuation, digits,
+        # Latin, ...). Ethiopic letters are U+1200-U+135F; U+1360-U+137F is
+        # punctuation and numerals. Must not be assigned a root; these pollute
+        # the root inventory.
+        if not any('\u1200' <= c <= '\u135F' for c in normalized):
+            derivation_steps.append({
+                "step": len(derivation_steps) + 1,
+                "action": "non_lexical",
+                "description": "Input has no Ethiopic letters; not a valid root",
+                "before": word,
+                "after": normalized,
+                "rule": "Non-lexical tokens (punctuation, digits, foreign script) are rejected, not rooted",
+            })
+            return {
+                "input": word,
+                "root": None,
+                "root_consonants": [],
+                "root_type": "non_lexical",
+                "verb_home": None,
+                "meaning": None,
+                "confidence": 1.0,
+                "word_class": "non_lexical",
+                "word_class_geez": "ያልሆነ",
+                "analysis": {
+                    "stem": normalized,
+                    "pattern": {"name": "non_lexical", "english_name": "Non-lexical token"},
+                    "prefixes": [],
+                    "suffixes": [],
+                    "method": "non_lexical",
+                },
+                "derivation_path": derivation_steps,
+                "research_notation": {
+                    "root_display": "{}",
+                    "pattern_formula": "NonLexical",
+                    "affix_formula": "ø",
+                },
+            }
+
         particle_segments = self._segment_particles(normalized)
         if particle_segments:
             return self._build_particle_result(word, particle_segments, derivation_steps)
@@ -944,6 +1192,47 @@ class GeezStemmer:
                     "rule": explanation
                 })
                 return self._build_result(word, root, normalized, [], [], derivation_steps, "irregular")
+
+        # Zewadla labels on the raw spelling, before homophone normalization
+        # collapses ሠርሐቀደ onto the type-A twin ሰርሐ.
+        code_hit = self._match_pattern_code_label(word)
+        if code_hit:
+            base, code, pattern_info = code_hit
+            if base in self.lexicon_roots or base in self.lexicon_normalized_lookup:
+                # Prefer the raw lexicon key over its normalized twin.
+                if base not in self.lexicon_roots:
+                    base = self.lexicon_normalized_lookup.get(normalize_geez(base), base)
+                derivation_steps.append({
+                    "step": len(derivation_steps) + 1,
+                    "action": "pattern_code_label",
+                    "description": "Dictionary label: citation + Zewadla pattern code",
+                    "before": word,
+                    "after": base,
+                    "rule": (
+                        f"Pattern code '{code}' ({pattern_info['english_name']}); "
+                        f"base '{base}' kept from the raw spelling"
+                    ),
+                })
+                return self._build_result(
+                    word, base, base, [], [code], derivation_steps, "pattern_code",
+                    pattern_override={
+                        "name": pattern_info["name"],
+                        "geez_name": pattern_info["geez_name"],
+                        "english_name": pattern_info["english_name"],
+                        "stem_number": 1,
+                        "description": f"Zewadla pattern code '{code}'",
+                    },
+                )
+
+        if is_merahiyan(word) or is_merahiyan(normalized):
+            return self._build_nonverbal(word, word, "pronoun", derivation_steps)
+        if (
+            self.lexicon_roots
+            and word not in self.lexicon_roots
+            and normalized not in self.lexicon_roots
+            and (word in CITATION_NOUNS or normalized in CITATION_NOUNS)
+        ):
+            return self._build_nonverbal(word, word, "noun", derivation_steps)
 
         skeleton_initial = get_consonant_skeleton(normalized)
         order_signal = get_char_order(normalized[0]) if normalized else 0
@@ -979,58 +1268,95 @@ class GeezStemmer:
             skeleton = get_consonant_skeleton(verbal_root)
             verb_home = detect_verb_home(skeleton, verbal_root)
             
-            return {
-                "input": word,
-                "root": verbal_root,
-                "root_consonants": list(skeleton),
-                "root_type": root_type,
-                "verb_home": verb_home,
-                "meaning": noun_entry.get("meaning", verbal_gloss or "Noun"),
-                "confidence": 1.0,
-                "analysis": {
-                    "stem": normalized,
-                    "pattern": {
-                        "name": "derived_noun" if root_type == "derived_noun" else "noun",
-                        "geez_name": "ስምዕ" if root_type == "derived_noun" else "ስም",
-                        "english_name": "Derived Noun" if root_type == "derived_noun" else "Noun",
-                        "description": "Nominal form derived from verbal root" if root_type == "derived_noun" else "Protected Noun",
+            return self._attach_classical_fields(
+                {
+                    "input": word,
+                    "root": verbal_root,
+                    "root_consonants": list(skeleton),
+                    "root_type": root_type,
+                    "verb_home": verb_home,
+                    "meaning": noun_entry.get("meaning", verbal_gloss or "Noun"),
+                    "confidence": 1.0,
+                    "analysis": {
+                        "stem": normalized,
+                        "pattern": {
+                            "name": "derived_noun" if root_type == "derived_noun" else "noun",
+                            "geez_name": "ስምዕ" if root_type == "derived_noun" else "ስም",
+                            "english_name": "Derived Noun" if root_type == "derived_noun" else "Noun",
+                            "description": (
+                                "Nominal form derived from verbal root"
+                                if root_type == "derived_noun"
+                                else "Protected Noun"
+                            ),
+                        },
+                        "prefixes": [],
+                        "suffixes": [],
+                        "method": "lexicon_noun",
+                        "surface_form": normalized,
+                        "verbal_gloss": verbal_gloss,
                     },
-                    "prefixes": [],
-                    "suffixes": [],
-                    "method": "lexicon_noun",
-                    "surface_form": normalized,
-                    "verbal_gloss": verbal_gloss,
+                    "derivation_path": [{
+                        "step": len(derivation_steps) + 1,
+                        "action": "noun_match",
+                        "description": "Derived nominal → verbal root",
+                        "before": normalized,
+                        "after": verbal_root,
+                        "rule": f"ስምዕ '{normalized}' → ግስ '{verbal_root}' ({verbal_gloss or 'N/A'})",
+                    }],
+                    "research_notation": {
+                        "root_display": "{" + ", ".join(list(skeleton)) + "}",
+                        "pattern_formula": "ስምዕ" if root_type == "derived_noun" else "Noun",
+                        "affix_formula": "Stem",
+                    },
                 },
-                "derivation_path": [{
-                    "step": len(derivation_steps) + 1,
-                    "action": "noun_match",
-                    "description": "Derived nominal → verbal root",
-                    "before": normalized,
-                    "after": verbal_root,
-                    "rule": f"ስምዕ '{normalized}' → ግስ '{verbal_root}' ({verbal_gloss or 'N/A'})",
-                }],
-                "research_notation": {
-                    "root_display": "{" + ", ".join(list(skeleton)) + "}",
-                    "pattern_formula": "ስምዕ" if root_type == "derived_noun" else "Noun",
-                    "affix_formula": "Stem",
-                }
-            }
+                in_nouns=True,
+                noun_has_verbal_root=bool(noun_entry.get("root")),
+            )
 
         noun_suffix_result = self._try_noun_with_suffix(normalized, derivation_steps)
         if noun_suffix_result:
             noun_suffix_result["input"] = word
             return noun_suffix_result
 
+        # Prefer citation-form hits before skeleton disambiguation.
+        # Homophone normalization may rewrite ሰርሐ→ሰርሀ; recover the first
+        # lexicon citation (ሰርሐ) rather than a later skeleton twin (ሠርሐ).
+        citation_hit = None
+        # Raw lexicon key before normalize_geez, so homophones do not collapse
+        # (ሠርሐ stays ሠርሐ, not ሰርሐ).
+        if word in self.lexicon_roots:
+            citation_hit = word
+        elif normalized in self.lexicon_roots:
+            citation_hit = normalized
+        elif word == normalized and normalized in self.lexicon_normalized_lookup:
+            citation_hit = self.lexicon_normalized_lookup[normalized]
+        if citation_hit and not (len(skeleton_initial) == 2 and has_order_signal):
+            derivation_steps.append({
+                "step": 2,
+                "action": "lexicon_match",
+                "description": "Direct lexicon lookup",
+                "before": normalized,
+                "after": citation_hit,
+                "rule": f"Found in lexicon: {self.lexicon_roots[citation_hit].get('meaning', 'N/A')}"
+            })
+            return self._build_result(word, citation_hit, citation_hit, [], [], derivation_steps, "lexicon")
+
         canonical_initial = self._resolve_skeleton_citation(
-            skeleton_initial, source=normalized, stem=normalized
-        ) or self._canonicalize_root(skeleton_initial, source=normalized, stem=normalized)
-        ends_with_pattern_suffix = any(
-            normalized.endswith(ps) for ps, _ in self.grammar_pattern_suffixes
+            skeleton_initial, source=word, stem=word
         )
+        if not canonical_initial:
+            canon_alt = self._canonicalize_root(skeleton_initial, source=word, stem=word)
+            if canon_alt and self._c1_compatible(canon_alt, word):
+                # Skeleton string ለበ is itself a lexicon key; do not accept it
+                # when the surface C1 order disagrees.
+                if not (
+                    canon_alt == skeleton_initial
+                    and get_char_order(word[0]) != get_char_order(canon_alt[0])
+                ):
+                    canonical_initial = canon_alt
         if (
             canonical_initial in self.lexicon_roots
             and not (len(skeleton_initial) == 2 and has_order_signal)
-            and not ends_with_pattern_suffix
         ):
             derivation_steps.append({
                 "step": 2,
@@ -1042,37 +1368,135 @@ class GeezStemmer:
             })
             return self._build_result(word, canonical_initial, normalized, [], [], derivation_steps, "lexicon")
 
+        # Weak-initial imperfective/jussive: ይ/ት/እ + 2-char stem where
+        # 'ወ' + stem skeleton is a known weak-initial root (e.g. ይሃብ ->
+        # ወሀበ). Must precede the PDF bihla path, which would otherwise
+        # claim the whole form as a bihla-house stem (ይህበ).
+        weak_imp = self._try_weak_initial_imperfective(normalized)
+        if weak_imp:
+            root_w, pref_w = weak_imp
+            derivation_steps.append({
+                "step": len(derivation_steps) + 1,
+                "action": "strip_prefix",
+                "affix": pref_w,
+                "before": normalized,
+                "after": normalized[len(pref_w):],
+                "rule": "Imperfective/jussive prefix stripped; weak-initial ወ restored",
+            })
+            return self._build_result(
+                word,
+                root_w,
+                normalized[len(pref_w):],
+                [pref_w],
+                [],
+                derivation_steps,
+                "weak_initial_imperfective",
+            )
+
+        pdf_hit = analyze_surface_pdf(normalized)
+        if pdf_hit:
+            derivation_steps.append({
+                "step": len(derivation_steps) + 1,
+                "action": "pdf_anqets_analysis",
+                "description": "fere_geez asraw/anqets table path",
+                "before": normalized,
+                "after": pdf_hit["citation"],
+                "rule": f"{pdf_hit['source_rule']} ({pdf_hit['by']})",
+            })
+            for pref in pdf_hit.get("prefixes") or []:
+                derivation_steps.append({
+                    "step": len(derivation_steps) + 1,
+                    "action": "strip_prefix",
+                    "affix": pref,
+                    "before": normalized,
+                    "after": pdf_hit["stem"],
+                    "rule": f"asraw '{pref}' (fere_geez.ch4.asraw)",
+                })
+            return self._build_result(
+                word,
+                pdf_hit["citation"],
+                pdf_hit["stem"],
+                pdf_hit.get("prefixes") or [],
+                pdf_hit.get("suffixes") or [],
+                derivation_steps,
+                "pdf_anqets",
+            )
+
+        # Zewadla pattern-code dictionary labels (e.g. ሰርሐቀተ = ሰርሐ + ቀተ).
+        # Must precede affix stripping so ተ is not peeled as a feminine ending.
+        code_hit = self._match_pattern_code_label(normalized)
+        if code_hit:
+            base, code, pattern_info = code_hit
+            derivation_steps.append({
+                "step": len(derivation_steps) + 1,
+                "action": "pattern_code_label",
+                "description": "Dictionary label: citation + Zewadla pattern code",
+                "before": normalized,
+                "after": base,
+                "rule": (
+                    f"Pattern code '{code}' ({pattern_info['english_name']}); "
+                    f"base '{base}' is a lexicon root or valid citation shape"
+                ),
+            })
+            return self._build_result(
+                word, base, base, [], [code], derivation_steps, "pattern_code",
+                pattern_override={
+                    "name": pattern_info["name"],
+                    "geez_name": pattern_info["geez_name"],
+                    "english_name": pattern_info["english_name"],
+                    "stem_number": 1,
+                    "description": f"Zewadla pattern code '{code}'",
+                },
+            )
+
         stem, prefixes, suffixes, affix_steps = self.strip_affixes(normalized)
         for i, step in enumerate(affix_steps):
             step["step"] = len(derivation_steps) + 1 + i
             derivation_steps.append(step)
 
-        grammar_roots = self.grammar.lookup_form(normalized)
-        if grammar_roots:
+        # Rule-first citation restore (applies to every stem, not selected lemmas).
+        restored = restore_citation_root(stem)
+        root = restored["citation"]
+        derivation_steps.append({
+            "step": len(derivation_steps) + 1,
+            "action": "restore_citation_root",
+            "description": "Order-math citation restore",
+            "before": stem,
+            "after": root,
+            "rule": f"{restored['source_rule']} ({restored['by']})",
+        })
+
+        # Grammar index is corroboration only, never invent a mismatched root.
+        grammar_roots = [
+            g for g in self.grammar.lookup_form(normalized)
+            if grammar_root_compatible(stem or normalized, g)
+        ]
+        if not grammar_roots and stem != normalized:
+            grammar_roots = [
+                g for g in self.grammar.lookup_form(stem)
+                if grammar_root_compatible(stem, g)
+            ]
+        # Prefer rule citation when it already satisfies paper constraints;
+        # only fall through to grammar when restore was weak (empty stem)
+        # and grammar offers a compatible hit.
+        if (
+            grammar_roots
+            and restored["by"] in {"empty"}
+        ):
             root = grammar_roots[0]
             derivation_steps.append({
                 "step": len(derivation_steps) + 1,
                 "action": "grammar_form_lookup",
-                "description": "Classical grammar form match",
-                "before": normalized,
+                "description": "Compatible grammar corroboration",
+                "before": stem,
                 "after": root,
-                "rule": f"Grammar dictionary maps conjugated form to root '{root}'",
+                "rule": f"Grammar maps form to compatible root '{root}'",
             })
             return self._build_result(
                 word, root, stem, prefixes, suffixes, derivation_steps, "grammar_form"
             )
-        
+
         skeleton = get_consonant_skeleton(stem)
-        derivation_steps.append({
-            "step": len(derivation_steps) + 1,
-            "action": "devowelize",
-            "description": "Extract consonant skeleton",
-            "before": stem,
-            "after": skeleton,
-            "rule": "Remove vowel orders to get base consonants"
-        })
-        
-        root = stem if len(skeleton) == 3 and stem in self.lexicon_roots else skeleton
         
         if len(root) == 2 and len(stem) >= 1:
             first_char_stem = stem[0]
@@ -1159,15 +1583,117 @@ class GeezStemmer:
 
         return self._build_result(word, root, stem, prefixes, suffixes, derivation_steps, "derived")
 
-    def _build_result(self, word, root, stem, prefixes, suffixes, derivation_steps, method):
+    def _build_nonverbal(self, word, root, kind, derivation_steps):
+        """Closed-class pronoun or citation noun: not a pdf_anqets verb."""
+        is_noun = kind == "noun"
+        pattern = {
+            "name": "noun" if is_noun else "particle_phrase",
+            "geez_name": "ስም" if is_noun else "መራሕያን",
+            "english_name": "Noun" if is_noun else "Pronoun",
+            "stem_number": 0,
+            "description": "Closed class; not a verb root",
+        }
+        derivation_steps = list(derivation_steps or [])
+        derivation_steps.append({
+            "step": len(derivation_steps) + 1,
+            "action": "closed_class",
+            "description": "Pronoun or citation noun blocked from verbal analysis",
+            "before": word,
+            "after": root,
+            "rule": (
+                "Closed-class form is not a verb root; "
+                "pdf_anqets and skeleton verb citations are suppressed"
+            ),
+        })
+        result = {
+            "input": word,
+            "root": root,
+            "root_consonants": list(get_consonant_skeleton(root)),
+            "root_type": "noun" if is_noun else "merahiyan",
+            "verb_home": None,
+            "meaning": None,
+            "confidence": 1.0,
+            "analysis": {
+                "stem": root,
+                "pattern": pattern,
+                "prefixes": [],
+                "suffixes": [],
+                "method": "closed_class",
+            },
+            "derivation_path": derivation_steps,
+            "research_notation": {
+                "root_display": "{" + ", ".join(list(root)) + "}",
+                "pattern_formula": "Noun" if is_noun else "Merahiyan",
+                "affix_formula": "ø",
+            },
+        }
+        return self._attach_classical_fields(
+            result,
+            in_nouns=is_noun,
+            noun_has_verbal_root=False,
+        )
+
+    def _attach_classical_fields(
+        self,
+        result,
+        *,
+        in_nouns=False,
+        noun_has_verbal_root=False,
+    ):
+        """Attach additive classical Sawasow fields (root class / anqets / army head)."""
+        analysis = result.get("analysis") or {}
+        classical = build_classical_analysis(
+            root=result.get("root") or "",
+            stem=analysis.get("stem") or result.get("root") or "",
+            prefixes=analysis.get("prefixes") or [],
+            suffixes=analysis.get("suffixes") or [],
+            pattern=analysis.get("pattern"),
+            root_type=result.get("root_type"),
+            method=analysis.get("method"),
+            in_lexicon_verbs=(result.get("root") or "") in self.lexicon_roots,
+            in_nouns=in_nouns,
+            noun_has_verbal_root=noun_has_verbal_root,
+            surface=analysis.get("stem") or result.get("input") or "",
+        )
+        result["word_class"] = classical["word_class"]
+        result["word_class_geez"] = classical["word_class_geez"]
+        result["root_class"] = classical["root_class"]
+        result["root_class_geez"] = classical["root_class_geez"]
+        result["army_head"] = classical["army_head"]
+        result["anqets"] = classical["anqets"]
+        result["asraw_markers"] = classical["asraw_markers"]
+        result["anqets_transforms"] = classical.get("anqets_transforms")
+        result["arist_transforms"] = classical.get("arist_transforms")
+        result["balabet_suffix"] = classical.get("balabet_suffix")
+        result["structural_features"] = classical.get("structural_features")
+        result["citation_constraints"] = classical["citation_constraints"]
+        result["source_rule"] = classical["source_rule"]
+        result["source_rules"] = classical["source_rules"]
+        analysis["classical"] = {
+            "word_class": classical["word_class"],
+            "army_head_info": classical["army_head_info"],
+            "anqets": classical["anqets"],
+            "asraw_markers": classical["asraw_markers"],
+            "balabet_suffix": classical.get("balabet_suffix"),
+        }
+        result["analysis"] = analysis
+        return result
+
+    def _build_result(self, word, root, stem, prefixes, suffixes, derivation_steps, method, pattern_override=None):
         """
         Build the standardized result dictionary with algorithmic verb type detection.
         
         Includes the 'verb_home' field which algorithmically detects the verb class
         based on radical count and vowel quality (C1 order), without requiring 
         lexicon lookup. Also detects causative prefixes.
+
+        pattern_override: explicit pattern dict (e.g. from a Zewadla pattern-code
+        label) that bypasses identify_verb_pattern inference.
         """
-        pattern = self.identify_verb_pattern(stem, prefixes, suffixes)
+        if pattern_override is not None:
+            pattern = pattern_override
+        else:
+            pattern = self.identify_verb_pattern(stem, prefixes, suffixes)
         canonical_root = self._canonicalize_root(
             root,
             source=word,
@@ -1190,10 +1716,30 @@ class GeezStemmer:
             })
             root = canonical_root
 
+        # Curated base_root annotation (2026-10-01 lexicon curation): if the
+        # resolved root is a derived stem kept for coverage, map to its
+        # annotated base root. The analyzer cannot strip these itself.
+        base_entry = self.lexicon_roots.get(root, {})
+        base_root = base_entry.get("base_root")
+        if base_root and base_root in self.lexicon_roots:
+            derivation_steps.append({
+                "step": len(derivation_steps) + 1,
+                "action": "base_root_remap",
+                "description": "Derived stem mapped to curated base root",
+                "before": root,
+                "after": base_root,
+                "rule": base_entry.get("derivation_note", "base_root annotation")
+            })
+            root = base_root
+
         root_type = self._get_root_type(root)
         
         lexicon_entry = self.lexicon_roots.get(root, {})
         meaning = lexicon_entry.get('meaning', None)
+        if method == "pattern_code":
+            grammar_gloss = self.grammar.primary_gloss(root)
+            if grammar_gloss:
+                meaning = grammar_gloss
         if not meaning:
             meaning = self.grammar.primary_gloss(root)
 
@@ -1217,7 +1763,7 @@ class GeezStemmer:
             "rule": verb_home['evidence']
         })
         
-        return {
+        result = {
             "input": word,
             "root": root,
             "root_consonants": list(get_consonant_skeleton(root)),
@@ -1242,3 +1788,4 @@ class GeezStemmer:
                 "affix_formula": f"Prefix({'+'.join(prefixes) if prefixes else 'ø'}) + Stem + Suffix({'+'.join(suffixes) if suffixes else 'ø'})"
             }
         }
+        return self._attach_classical_fields(result)

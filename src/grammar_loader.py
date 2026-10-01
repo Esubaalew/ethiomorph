@@ -21,6 +21,8 @@ def _is_noisy_gloss(gloss: str | None) -> bool:
     return bool(NOISY_GLOSS_RE.match(gloss.strip()))
 
 
+# Zewadla / grammar-index section codes only (dictionary metadata).
+# Never strip these from surface forms: ቀተለ is a paradigm head, not a suffix.
 PATTERN_CODE_MAP = {
     "ቀተ": {"name": "perfective", "geez_name": "ቀዳማይ አንቀጽ", "english_name": "Perfective"},
     "ቀደ": {"name": "perfective_alt", "geez_name": "ቀዳማይ አንቀጽ", "english_name": "Perfective"},
@@ -102,6 +104,8 @@ class GrammarIndex:
                 self.skeleton_to_roots[skel].append(root)
 
         for form, roots in payload.get("form_to_roots", {}).items():
+            if self._is_pattern_code_label(form, roots):
+                continue
             existing = self.form_to_roots.setdefault(form, [])
             for root in roots:
                 if root not in existing:
@@ -110,6 +114,19 @@ class GrammarIndex:
             for root in roots:
                 if root not in self.skeleton_to_roots.get(skel, []):
                     self.skeleton_to_roots.setdefault(skel, []).append(root)
+
+    @staticmethod
+    def _is_pattern_code_label(form: str, roots: list[str] | None = None) -> bool:
+        """True for dictionary labels like ሰርሐቀተ (citation + Zewadla code)."""
+        for code in PATTERN_CODE_MAP:
+            if not form.endswith(code):
+                continue
+            base = form[: -len(code)]
+            if not base:
+                continue
+            if roots and any(base == r or normalize_geez(base) == normalize_geez(r) for r in roots):
+                return True
+        return False
 
     def get_root(self, root: str) -> dict | None:
         return self.roots.get(root)
@@ -136,15 +153,20 @@ class GrammarIndex:
         candidates = list(dict.fromkeys(self.skeleton_to_roots.get(norm, [])))
         if not candidates:
             return None
-        if len(candidates) == 1:
-            return candidates[0]
-
         if source:
             order = get_char_order(source[0])
             if order:
                 order_hits = [c for c in candidates if get_char_order(c[0]) == order]
                 if len(order_hits) == 1:
                     return order_hits[0]
+                if not order_hits:
+                    return None
+                candidates = order_hits
+        elif len(candidates) == 1:
+            return candidates[0]
+
+        if len(candidates) == 1:
+            return candidates[0]
 
         if pattern_name in {"imperfective", "jussive"} and source and get_char_order(source[0]) == 6:
             for candidate in candidates:
@@ -152,6 +174,10 @@ class GrammarIndex:
                 if "እሽኰኰ" in gloss or candidate.startswith("ን"):
                     return candidate
 
+        # C1-order filter matched nothing useful (or several leftovers).
+        # Do not guess candidates[0] (ስም must not become ኀይለ).
+        if source and get_char_order(source[0]):
+            return None
         return candidates[0]
 
     def lookup_form(self, word: str) -> list[str]:

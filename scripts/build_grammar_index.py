@@ -65,7 +65,49 @@ def clean_gloss(text: str) -> str:
     for part in parts:
         if 2 <= len(part) <= 32 and not part.endswith(tuple(PATTERN_CODES)):
             return part
-    return parts[0] if parts else text[:32]
+    return parts[0] if parts else ""
+
+
+def _strip_glued_headword(text: str, known_roots: set[str] | None = None) -> str:
+    """Remove the next dictionary headword when OCR glued it onto the gloss.
+
+    A peel is accepted only when the removed headword is a real root and the
+    remaining gloss is at least 3 characters (otherwise the cut is ambiguous
+    and the original text is kept). Does not invent a gloss.
+    """
+    import re
+    root_re = re.compile(r"^[ሀ-ፐ]{3,4}$")
+    known = known_roots
+
+    def _is_head(token: str) -> bool:
+        if known is not None and token not in known:
+            return False
+        return bool(root_re.fullmatch(token))
+
+    if " " in text:
+        head, tail = text.split(" ", 1)
+        chunk = re.split(r"[\s\-፣,/]", tail.lstrip(" -/"), maxsplit=1)[0]
+        for n in (4, 3):
+            if len(chunk) >= n + 2 and _is_head(chunk[:n]) and any(
+                chunk[n:].startswith(code) for code in PATTERN_CODES
+            ):
+                text = head.strip()
+                break
+    for code in sorted(PATTERN_CODES, key=len, reverse=True):
+        if not text.endswith(code) or len(text) <= len(code) + 3:
+            continue
+        rest = text[: -len(code)]
+        for n in (4, 3):
+            if len(rest) <= n:
+                continue
+            head, prefix = rest[-n:], rest[:-n].strip(" -/")
+            if (
+                _is_head(head)
+                and len(prefix) >= 3
+                and not prefix.endswith(tuple(PATTERN_CODES))
+            ):
+                return prefix
+    return text
 
 
 def first_gloss_after_marker(text: str, marker_end: int) -> str:
@@ -159,10 +201,21 @@ def build_index(raw_payload: dict) -> dict:
     for page in raw_payload.get("pageTexts", []):
         parse_page(page.get("text", ""), page.get("page", 0), roots, form_lookup)
 
+    known_roots = set(roots)
+    for data in roots.values():
+        cleaned = set()
+        for gloss in data["glosses"]:
+            peeled = _strip_glued_headword(gloss, known_roots)
+            if peeled:
+                cleaned.add(peeled)
+        data["glosses"] = cleaned
+
     root_list = []
     for root, data in sorted(roots.items()):
         glosses = sorted(data["glosses"], key=len)
         primary = GLOSS_OVERRIDES.get(root) or (glosses[0] if glosses else None)
+        if primary:
+            primary = _strip_glued_headword(primary, known_roots) or primary
         root_list.append({
             "root": root,
             "primary_gloss": primary,

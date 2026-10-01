@@ -1,0 +1,3702 @@
+{
+ "date": "2026-10-01",
+ "policy": "Curate the geezRPA lexicon to fix the stem-as-root systematic error.\n\nProblem: the grammar-index merge added derived stems as lexicon headwords\n(e.g. teqebele alongside base root qebele). The analyzer's direct\nlexicon-hit preference then returns the stem verbatim instead of stripping\nto the base root, causing source-attested validation misses.\n\nPolicy (documented here, applied below):\n  For each derived-stem entry E with book-attested base root B:\n  (a) REMOVE E if the base root B is in the lexicon AND the analyzer,\n      with E removed, recovers B for surface form E (empirically tested).\n      This is safe: the analyzer's own affix-stripping covers the derivation.\n  (b) KEEP E but annotate it with \"base_root\": B if removal would lose\n      coverage (analyzer cannot recover B, e.g. reduplicated stems).\n      The stemmer consults this annotation to map derived stems to their\n      base roots during analysis.\n  Entries are never silently dropped: every change is logged with a reason.\n  Orthographic variants (same skeleton) are NOT derived stems and are left alone.\n  Book-mapping noise (no morphological relationship between E and B) is excluded.\n\nAdditionally applies the human-reviewed 284 type_a verdicts and merges the\n17 staged roots (provenance preserved).\n",
+ "entries_before": 3927,
+ "entries_after": 3846,
+ "review_284": {
+  "reassigned": 234,
+  "unknown": 27,
+  "removed": 23,
+  "base_added": 6,
+  "skipped": 0
+ },
+ "derived_stem_candidates": 196,
+ "derived_stems": {
+  "removed": 81,
+  "annotated": 115,
+  "skipped_chain": 0
+ },
+ "staged_merge": {
+  "added": 17,
+  "skipped_collision": 0
+ },
+ "changes": [
+  {
+   "action": "284_artifact_removed",
+   "root": "ሄደቀተ",
+   "stripped_base": "ሄደ",
+   "base_in_lexicon": true,
+   "reason": "pattern-code-suffixed extraction artifact (ሄደ+ቀተ)"
+  },
+  {
+   "action": "284_reassign",
+   "root": "ልሕመክ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "ሐለለቀ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_artifact_removed",
+   "root": "ሐመቀተ",
+   "stripped_base": "ሐመ",
+   "base_in_lexicon": true,
+   "reason": "pattern-code-suffixed extraction artifact (ሐመ+ቀተ)"
+  },
+  {
+   "action": "284_reassign",
+   "root": "ሐብቀቀ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "ሐይወ",
+   "old_type": "type_a",
+   "new_type": "hollow_y",
+   "reason": "phonological shape -> hollow_y"
+  },
+  {
+   "action": "284_artifact_removed",
+   "root": "ሖሰቀተ",
+   "stripped_base": "ሖሰ",
+   "base_in_lexicon": true,
+   "reason": "pattern-code-suffixed extraction artifact (ሖሰ+ቀተ)"
+  },
+  {
+   "action": "284_artifact_removed",
+   "root": "ሖየቀተ",
+   "stripped_base": "ሖየ",
+   "base_in_lexicon": true,
+   "reason": "pattern-code-suffixed extraction artifact (ሖየ+ቀተ)"
+  },
+  {
+   "action": "284_reassign",
+   "root": "መሐረከ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "መሕረከ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "መምዔለ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "መካዕለ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "መውተ",
+   "old_type": "type_a",
+   "new_type": "hollow_w",
+   "reason": "phonological shape -> hollow_w"
+  },
+  {
+   "action": "284_reassign",
+   "root": "መውአቀ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "ማሐረከ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_mark_unknown",
+   "root": "ምእደ",
+   "old_type": "type_a",
+   "reason": "sound triliteral, no pattern evidence in grammar source"
+  },
+  {
+   "action": "284_artifact_removed",
+   "root": "ሞቀቀተ",
+   "stripped_base": "ሞቀ",
+   "base_in_lexicon": true,
+   "reason": "pattern-code-suffixed extraction artifact (ሞቀ+ቀተ)"
+  },
+  {
+   "action": "284_reassign",
+   "root": "ሠይመ",
+   "old_type": "type_a",
+   "new_type": "hollow_y",
+   "reason": "phonological shape -> hollow_y"
+  },
+  {
+   "action": "284_artifact_removed",
+   "root": "ሤበቀተ",
+   "stripped_base": "ሤበ",
+   "base_in_lexicon": true,
+   "reason": "pattern-code-suffixed extraction artifact (ሤበ+ቀተ)"
+  },
+  {
+   "action": "284_mark_unknown",
+   "root": "ሥኅተ",
+   "old_type": "type_a",
+   "reason": "sound triliteral, no pattern evidence in grammar source"
+  },
+  {
+   "action": "284_artifact_removed",
+   "root": "ረመቀተ",
+   "stripped_base": "ረመ",
+   "base_in_lexicon": true,
+   "reason": "pattern-code-suffixed extraction artifact (ረመ+ቀተ)"
+  },
+  {
+   "action": "284_reassign",
+   "root": "ረየመ",
+   "old_type": "type_a",
+   "new_type": "hollow_y",
+   "reason": "phonological shape -> hollow_y"
+  },
+  {
+   "action": "284_reassign",
+   "root": "ርኅበክ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_artifact_removed",
+   "root": "ሮደቀተ",
+   "stripped_base": "ሮደ",
+   "base_in_lexicon": false,
+   "reason": "pattern-code-suffixed extraction artifact (ሮደ+ቀተ)"
+  },
+  {
+   "action": "284_base_added",
+   "root": "ሮደ",
+   "from_artifact": "ሮደቀተ",
+   "type": "type_a",
+   "reason": "stripped base was not in lexicon; added to preserve unique information"
+  },
+  {
+   "action": "284_artifact_removed",
+   "root": "ሮፐቀተ",
+   "stripped_base": "ሮፐ",
+   "base_in_lexicon": true,
+   "reason": "pattern-code-suffixed extraction artifact (ሮፐ+ቀተ)"
+  },
+  {
+   "action": "284_reassign",
+   "root": "ሰንኈተ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "ሰንኰረ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "ሰካዕለ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "ሴሰየር",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "ሶርየመ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_artifact_removed",
+   "root": "ቀለቀተ",
+   "stripped_base": "ቀለ",
+   "base_in_lexicon": true,
+   "reason": "pattern-code-suffixed extraction artifact (ቀለ+ቀተ)"
+  },
+  {
+   "action": "284_artifact_removed",
+   "root": "ቀሰቀተ",
+   "stripped_base": "ቀሰ",
+   "base_in_lexicon": true,
+   "reason": "pattern-code-suffixed extraction artifact (ቀሰ+ቀተ)"
+  },
+  {
+   "action": "284_reassign",
+   "root": "ቀበያው",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "ቀተለር",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_artifact_removed",
+   "root": "ቀተቀተ",
+   "stripped_base": "ቀተ",
+   "base_in_lexicon": true,
+   "reason": "pattern-code-suffixed extraction artifact (ቀተ+ቀተ)"
+  },
+  {
+   "action": "284_mark_unknown",
+   "root": "ቀትለ",
+   "old_type": "type_a",
+   "reason": "sound triliteral, no pattern evidence in grammar source"
+  },
+  {
+   "action": "284_artifact_removed",
+   "root": "ቀነቀተ",
+   "stripped_base": "ቀነ",
+   "base_in_lexicon": true,
+   "reason": "pattern-code-suffixed extraction artifact (ቀነ+ቀተ)"
+  },
+  {
+   "action": "284_reassign",
+   "root": "ቀንጦሰ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "ቀደሰር",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "ቃሕቅሐ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_mark_unknown",
+   "root": "ቈርዐ",
+   "old_type": "type_a",
+   "reason": "sound triliteral, no pattern evidence in grammar source"
+  },
+  {
+   "action": "284_artifact_removed",
+   "root": "በረቀተ",
+   "stripped_base": "በረ",
+   "base_in_lexicon": true,
+   "reason": "pattern-code-suffixed extraction artifact (በረ+ቀተ)"
+  },
+  {
+   "action": "284_reassign",
+   "root": "ባህነነ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "ባረከር",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_mark_unknown",
+   "root": "ቤአለ",
+   "old_type": "type_a",
+   "reason": "sound triliteral, no pattern evidence in grammar source"
+  },
+  {
+   "action": "284_mark_unknown",
+   "root": "ቤዐለ",
+   "old_type": "type_a",
+   "reason": "sound triliteral, no pattern evidence in grammar source"
+  },
+  {
+   "action": "284_reassign",
+   "root": "ተላዐለ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "ተልዐለ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "ተመለአ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "ተመልአ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "ተመረዐ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "ተመራዐ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "ተመርዐ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "ተመርጐ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "ተመስከ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "ተመንደ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "ተመንገ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "ተመኲሰ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "ተመዝጐ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "ተማሕለ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "ተማኅፈ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "ተማዕለ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "ተማዕሰ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "ተሠይመ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "ተሣሀለ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "ተሥሀለ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "ተራኅር",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "ተሰርገ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "ተሰነአ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "ተሰናአ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "ተሰንአ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "ተሰአለ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "ተሰካተ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "ተሳነነ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "ተሳአለ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "ተሳእለ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "ተስእለ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "ተቈናደ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "ተባሕተ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "ተተረአ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "ተተራአ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "ተተርአ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "ተናህሰ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "ተአርወ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "ተአንሰ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "ተአንተ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "ተአንገ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_mark_unknown",
+   "root": "ተኬሰ",
+   "old_type": "type_a",
+   "reason": "sound triliteral, no pattern evidence in grammar source"
+  },
+  {
+   "action": "284_reassign",
+   "root": "ተወሀው",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "ተወላወ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "ተወሐደ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "ተዋህው",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "ተዋፈለ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "ተዐረቀ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "ተዐረከ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_mark_unknown",
+   "root": "ተደመ",
+   "old_type": "type_a",
+   "reason": "sound triliteral, no pattern evidence in grammar source"
+  },
+  {
+   "action": "284_reassign",
+   "root": "ተደብተ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "ተደንገ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "ተጋህረ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "ተጋህግ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "ተጐርዐ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_mark_unknown",
+   "root": "ተጸመ",
+   "old_type": "type_a",
+   "reason": "sound triliteral, no pattern evidence in grammar source"
+  },
+  {
+   "action": "284_reassign",
+   "root": "ተጸመመ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "ተፈሐዘ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "ተፈርነ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_mark_unknown",
+   "root": "ቴከሰ",
+   "old_type": "type_a",
+   "reason": "sound triliteral, no pattern evidence in grammar source"
+  },
+  {
+   "action": "284_mark_unknown",
+   "root": "ኀብረ",
+   "old_type": "type_a",
+   "reason": "sound triliteral, no pattern evidence in grammar source"
+  },
+  {
+   "action": "284_reassign",
+   "root": "ኄረወሴ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_mark_unknown",
+   "root": "ኈበረ",
+   "old_type": "type_a",
+   "reason": "sound triliteral, no pattern evidence in grammar source"
+  },
+  {
+   "action": "284_reassign",
+   "root": "ነሐሰቀ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "ነሐንሐ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "ነሕንሐ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_mark_unknown",
+   "root": "ንበለ",
+   "old_type": "type_a",
+   "reason": "sound triliteral, no pattern evidence in grammar source"
+  },
+  {
+   "action": "284_mark_unknown",
+   "root": "ንኡስ",
+   "old_type": "type_a",
+   "reason": "sound triliteral, no pattern evidence in grammar source"
+  },
+  {
+   "action": "284_reassign",
+   "root": "አልኆሰ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "አሕመል",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "አመልት",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "አመሥጠ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "አመርሰ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "አመርቈ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "አመርዐ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "አመርግ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "አመስቀ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "አመስብ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "አመስከ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "አመስኲ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "አመስፈ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "አመብኲ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "አመንሰ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "አመንተ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "አመንዘ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "አመከዐ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "አመክነ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "አመክዐ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "አመዐረ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "አመዐር",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "አመዝበ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "አመድለ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "አመድቅ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "አመድበ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "አመግዝ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "አመፅጒ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "አማሕፀ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "አማኅበ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "አማእከ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "አማእዘ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "አማዕለ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "አማዕረ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "አማዕሰ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "አማዕቀ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "አማዕበ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "አማዕተ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "አማዕዘ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "አርመስ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "አርሳሕ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "አሰውሰ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "አስቆረ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "አስቆቀ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "አስቈረ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "አስተሓ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "አስተመ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "አስተማ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "አስተም",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "አስተር",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "አስተሰ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "አስተቃ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "አስተባ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "አስተብ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "አስተኀ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "አስተና",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_artifact_removed",
+   "root": "አስተን",
+   "stripped_base": "አስ",
+   "base_in_lexicon": false,
+   "reason": "pattern-code-suffixed extraction artifact (አስ+ተን)"
+  },
+  {
+   "action": "284_base_added",
+   "root": "አስ",
+   "from_artifact": "አስተን",
+   "type": "type_tanbala",
+   "reason": "stripped base was not in lexicon; added to preserve unique information"
+  },
+  {
+   "action": "284_reassign",
+   "root": "አስተኣ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "አስተዋ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "አስተዓ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "አስተደ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "አስተዳ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "አስተጋ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "አስተፃ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "አስተፍ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "አስኮተ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "አስዖዘ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "አስዖጠ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "አስፈድ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "አስፌድ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "አቀምጠ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "አቅሌለ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "አቅዜዘ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "አቅየዐ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "አቅያሕ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "አቅያዕ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "አኅሰር",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "አናሕሰ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "አንሦጠ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "አንሰሐ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "አንሳሕ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "አንሳዕ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "አንሶሰ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "አንቀል",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "አንቃዕ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "አንቆቅ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "አንበል",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "አንበስ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "አንባሕ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "አንቤበ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "አንካሕ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "አንኮለ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "አንኰር",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "አንዘፍ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "አንዛህ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "አንዶረ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "አንገለ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "አንገር",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "አንጌገ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "አንጎገ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "አንጐር",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "አንጐድ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "አንጠብ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "አንጦለ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "አንጦል",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "አንጸብ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "አንጸፍ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "አንጾረ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "አንጾጸ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "አንፈረ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "አንፈር",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "አክሞሰ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "አክሞተ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "አድለቅ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "አገንጰ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "አግደም",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "አጣእጥ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "አጰንገ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "አጸነሕ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "አጸንሕ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "አጸንጰ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "አጸዐደ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "አጸዐድ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "አጸዐጠ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "አጸዐጥ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "አጸድዐ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "አጽነሐ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "አጽናሕ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "አጽደል",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "አፀንግ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "አፈርዘ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_artifact_removed",
+   "root": "ኤኀቀተ",
+   "stripped_base": "ኤኀ",
+   "base_in_lexicon": false,
+   "reason": "pattern-code-suffixed extraction artifact (ኤኀ+ቀተ)"
+  },
+  {
+   "action": "284_base_added",
+   "root": "ኤኀ",
+   "from_artifact": "ኤኀቀተ",
+   "type": "type_a",
+   "reason": "stripped base was not in lexicon; added to preserve unique information"
+  },
+  {
+   "action": "284_mark_unknown",
+   "root": "ከሀለ",
+   "old_type": "type_a",
+   "reason": "sound triliteral, no pattern evidence in grammar source"
+  },
+  {
+   "action": "284_reassign",
+   "root": "ከረስተ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "ከወነ",
+   "old_type": "type_a",
+   "new_type": "hollow_w",
+   "reason": "phonological shape -> hollow_w"
+  },
+  {
+   "action": "284_reassign",
+   "root": "ክህለር",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_mark_unknown",
+   "root": "ክህል",
+   "old_type": "type_a",
+   "reason": "sound triliteral, no pattern evidence in grammar source"
+  },
+  {
+   "action": "284_artifact_removed",
+   "root": "ኮነቀተ",
+   "stripped_base": "ኮነ",
+   "base_in_lexicon": false,
+   "reason": "pattern-code-suffixed extraction artifact (ኮነ+ቀተ)"
+  },
+  {
+   "action": "284_base_added",
+   "root": "ኮነ",
+   "from_artifact": "ኮነቀተ",
+   "type": "type_a",
+   "reason": "stripped base was not in lexicon; added to preserve unique information"
+  },
+  {
+   "action": "284_mark_unknown",
+   "root": "ኰረበ",
+   "old_type": "type_a",
+   "reason": "sound triliteral, no pattern evidence in grammar source"
+  },
+  {
+   "action": "284_mark_unknown",
+   "root": "ዐርበ",
+   "old_type": "type_a",
+   "reason": "sound triliteral, no pattern evidence in grammar source"
+  },
+  {
+   "action": "284_mark_unknown",
+   "root": "ዐበረ",
+   "old_type": "type_a",
+   "reason": "sound triliteral, no pattern evidence in grammar source"
+  },
+  {
+   "action": "284_reassign",
+   "root": "ዐወረ",
+   "old_type": "type_a",
+   "new_type": "hollow_w",
+   "reason": "phonological shape -> hollow_w"
+  },
+  {
+   "action": "284_mark_unknown",
+   "root": "ዓበረ",
+   "old_type": "type_a",
+   "reason": "sound triliteral, no pattern evidence in grammar source"
+  },
+  {
+   "action": "284_artifact_removed",
+   "root": "ዖቀቀተ",
+   "stripped_base": "ዖቀ",
+   "base_in_lexicon": true,
+   "reason": "pattern-code-suffixed extraction artifact (ዖቀ+ቀተ)"
+  },
+  {
+   "action": "284_reassign",
+   "root": "ዜርዜቀ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_mark_unknown",
+   "root": "የቤት",
+   "old_type": "type_a",
+   "reason": "sound triliteral, no pattern evidence in grammar source"
+  },
+  {
+   "action": "284_reassign",
+   "root": "የብረት",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "ገብረር",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_mark_unknown",
+   "root": "ገዘፈ",
+   "old_type": "type_a",
+   "reason": "sound triliteral, no pattern evidence in grammar source"
+  },
+  {
+   "action": "284_reassign",
+   "root": "ጋህግሀ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_artifact_removed",
+   "root": "ጌጰቀተ",
+   "stripped_base": "ጌጰ",
+   "base_in_lexicon": false,
+   "reason": "pattern-code-suffixed extraction artifact (ጌጰ+ቀተ)"
+  },
+  {
+   "action": "284_base_added",
+   "root": "ጌጰ",
+   "from_artifact": "ጌጰቀተ",
+   "type": "type_a",
+   "reason": "stripped base was not in lexicon; added to preserve unique information"
+  },
+  {
+   "action": "284_reassign",
+   "root": "ግሕሠክ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_mark_unknown",
+   "root": "ግሕሰ",
+   "old_type": "type_a",
+   "reason": "sound triliteral, no pattern evidence in grammar source"
+  },
+  {
+   "action": "284_mark_unknown",
+   "root": "ግእዘ",
+   "old_type": "type_a",
+   "reason": "sound triliteral, no pattern evidence in grammar source"
+  },
+  {
+   "action": "284_reassign",
+   "root": "ጎርኤመ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_artifact_removed",
+   "root": "ጠመቀተ",
+   "stripped_base": "ጠመ",
+   "base_in_lexicon": true,
+   "reason": "pattern-code-suffixed extraction artifact (ጠመ+ቀተ)"
+  },
+  {
+   "action": "284_reassign",
+   "root": "ጠፋልሐ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "ጣሴሰየ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "ጦመረር",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_artifact_removed",
+   "root": "ጦዐቀተ",
+   "stripped_base": "ጦዐ",
+   "base_in_lexicon": true,
+   "reason": "pattern-code-suffixed extraction artifact (ጦዐ+ቀተ)"
+  },
+  {
+   "action": "284_mark_unknown",
+   "root": "ጸሐየ",
+   "old_type": "type_a",
+   "reason": "sound triliteral, no pattern evidence in grammar source"
+  },
+  {
+   "action": "284_reassign",
+   "root": "ጸማሐየ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "ጸውረ",
+   "old_type": "type_a",
+   "new_type": "hollow_w",
+   "reason": "phonological shape -> hollow_w"
+  },
+  {
+   "action": "284_reassign",
+   "root": "ጸግበገ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_artifact_removed",
+   "root": "ጼአቀተ",
+   "stripped_base": "ጼአ",
+   "base_in_lexicon": true,
+   "reason": "pattern-code-suffixed extraction artifact (ጼአ+ቀተ)"
+  },
+  {
+   "action": "284_artifact_removed",
+   "root": "ጾኰቀተ",
+   "stripped_base": "ጾኰ",
+   "base_in_lexicon": false,
+   "reason": "pattern-code-suffixed extraction artifact (ጾኰ+ቀተ)"
+  },
+  {
+   "action": "284_base_added",
+   "root": "ጾኰ",
+   "from_artifact": "ጾኰቀተ",
+   "type": "type_a",
+   "reason": "stripped base was not in lexicon; added to preserve unique information"
+  },
+  {
+   "action": "284_mark_unknown",
+   "root": "ፅዕጠ",
+   "old_type": "type_a",
+   "reason": "sound triliteral, no pattern evidence in grammar source"
+  },
+  {
+   "action": "284_mark_unknown",
+   "root": "ፈሐለ",
+   "old_type": "type_a",
+   "reason": "sound triliteral, no pattern evidence in grammar source"
+  },
+  {
+   "action": "284_reassign",
+   "root": "ፈሐለቀ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "284_reassign",
+   "root": "ፈቅዐገ",
+   "old_type": "type_a",
+   "new_type": "quadriliteral",
+   "reason": "phonological shape -> quadriliteral"
+  },
+  {
+   "action": "derived_stem_removed",
+   "root": "ተንበለ",
+   "base_root": "ንበለ",
+   "relation": "ተ+base",
+   "book_base": "ንበለ",
+   "reason": "book maps form to base root; analyzer recovers base root after removal (policy a)"
+  },
+  {
+   "action": "derived_stem_annotated",
+   "root": "ላሕልሐ",
+   "base_root": "ሕልሐ",
+   "relation": "affixation",
+   "reason": "book maps form to base root but analyzer does not recover base after removal; kept with base_root annotation (policy b)"
+  },
+  {
+   "action": "derived_stem_annotated",
+   "root": "ባኅብኀ",
+   "base_root": "ኅብኀ",
+   "relation": "affixation",
+   "reason": "book maps form to base root but analyzer does not recover base after removal; kept with base_root annotation (policy b)"
+  },
+  {
+   "action": "derived_stem_removed",
+   "root": "በኍበኈ",
+   "base_root": "ኍበኈ",
+   "relation": "affixation",
+   "book_base": "ኍበኈ",
+   "reason": "book maps form to base root; analyzer recovers base root after removal (policy a)"
+  },
+  {
+   "action": "derived_stem_annotated",
+   "root": "ታሕታሐ",
+   "base_root": "ሕታሐ",
+   "relation": "affixation",
+   "reason": "book maps form to base root but analyzer does not recover base after removal; kept with base_root annotation (policy b)"
+  },
+  {
+   "action": "derived_stem_annotated",
+   "root": "ናሕንሐ",
+   "base_root": "ሕንሐ",
+   "relation": "affixation",
+   "reason": "book maps form to base root but analyzer does not recover base after removal; kept with base_root annotation (policy b)"
+  },
+  {
+   "action": "derived_stem_annotated",
+   "root": "ጻሕጽሐ",
+   "base_root": "ሕጽሐ",
+   "relation": "affixation",
+   "reason": "book maps form to base root but analyzer does not recover base after removal; kept with base_root annotation (policy b)"
+  },
+  {
+   "action": "derived_stem_removed",
+   "root": "ሳሕለለ",
+   "base_root": "ሕለለ",
+   "relation": "affixation",
+   "book_base": "ሕለለ",
+   "reason": "book maps form to base root; analyzer recovers base root after removal (policy a)"
+  },
+  {
+   "action": "derived_stem_removed",
+   "root": "በልበለ",
+   "base_root": "ልበለ",
+   "relation": "affixation",
+   "book_base": "ልበለ",
+   "reason": "book maps form to base root; analyzer recovers base root after removal (policy a)"
+  },
+  {
+   "action": "derived_stem_annotated",
+   "root": "ተልዕለ",
+   "base_root": "ልዕለ",
+   "relation": "ተ+base",
+   "reason": "book maps form to base root but analyzer does not recover base after removal; kept with base_root annotation (policy b)"
+  },
+  {
+   "action": "derived_stem_removed",
+   "root": "ተመዝጐለ",
+   "base_root": "ዝጐለ",
+   "relation": "reduplication/complex",
+   "book_base": "ዝጐለ",
+   "reason": "book maps form to base root; analyzer recovers base root after removal (policy a)"
+  },
+  {
+   "action": "derived_stem_annotated",
+   "root": "ተሠሀለ",
+   "base_root": "ሠሀለ",
+   "relation": "ተ+base",
+   "reason": "book maps form to base root but analyzer does not recover base after removal; kept with base_root annotation (policy b)"
+  },
+  {
+   "action": "derived_stem_annotated",
+   "root": "ተኬወለ",
+   "base_root": "ኬወለ",
+   "relation": "ተ+base",
+   "reason": "book maps form to base root but analyzer does not recover base after removal; kept with base_root annotation (policy b)"
+  },
+  {
+   "action": "derived_stem_removed",
+   "root": "አሕመልመለ",
+   "base_root": "ልመለ",
+   "relation": "reduplication/complex",
+   "book_base": "ልመለ",
+   "reason": "book maps form to base root; analyzer recovers base root after removal (policy a)"
+  },
+  {
+   "action": "derived_stem_removed",
+   "root": "አንዛህለለ",
+   "base_root": "ህለለ",
+   "relation": "reduplication/complex",
+   "book_base": "ህለለ",
+   "reason": "book maps form to base root; analyzer recovers base root after removal (policy a)"
+  },
+  {
+   "action": "derived_stem_removed",
+   "root": "አቊጸለ",
+   "base_root": "ቊጸለ",
+   "relation": "አ+base",
+   "book_base": "ቊጸለ",
+   "reason": "book maps form to base root; analyzer recovers base root after removal (policy a)"
+  },
+  {
+   "action": "derived_stem_removed",
+   "root": "አንበልበለ",
+   "base_root": "ልበለ",
+   "relation": "reduplication/complex",
+   "book_base": "ልበለ",
+   "reason": "book maps form to base root; analyzer recovers base root after removal (policy a)"
+  },
+  {
+   "action": "derived_stem_annotated",
+   "root": "ሐርተመ",
+   "base_root": "ርተመ",
+   "relation": "affixation",
+   "reason": "book maps form to base root but analyzer does not recover base after removal; kept with base_root annotation (policy b)"
+  },
+  {
+   "action": "derived_stem_removed",
+   "root": "ተሳለመ",
+   "base_root": "ሳለመ",
+   "relation": "ተ+base",
+   "book_base": "ሳለመ",
+   "reason": "book maps form to base root; analyzer recovers base root after removal (policy a)"
+  },
+  {
+   "action": "derived_stem_annotated",
+   "root": "ተደመመ",
+   "base_root": "ደመመ",
+   "relation": "ተ+base",
+   "reason": "book maps form to base root but analyzer does not recover base after removal; kept with base_root annotation (policy b)"
+  },
+  {
+   "action": "derived_stem_removed",
+   "root": "አርመመ",
+   "base_root": "ርመመ",
+   "relation": "አ+base",
+   "book_base": "ርመመ",
+   "reason": "book maps form to base root; analyzer recovers base root after removal (policy a)"
+  },
+  {
+   "action": "derived_stem_removed",
+   "root": "ወስከመ",
+   "base_root": "ስከመ",
+   "relation": "affixation",
+   "book_base": "ስከመ",
+   "reason": "book maps form to base root; analyzer recovers base root after removal (policy a)"
+  },
+  {
+   "action": "derived_stem_annotated",
+   "root": "ዳሕመመ",
+   "base_root": "ሕመመ",
+   "relation": "affixation",
+   "reason": "book maps form to base root but analyzer does not recover base after removal; kept with base_root annotation (policy b)"
+  },
+  {
+   "action": "derived_stem_annotated",
+   "root": "ደክተመ",
+   "base_root": "ክተመ",
+   "relation": "affixation",
+   "reason": "book maps form to base root but analyzer does not recover base after removal; kept with base_root annotation (policy b)"
+  },
+  {
+   "action": "derived_stem_annotated",
+   "root": "ሳርኤመ",
+   "base_root": "ርኤመ",
+   "relation": "affixation",
+   "reason": "book maps form to base root but analyzer does not recover base after removal; kept with base_root annotation (policy b)"
+  },
+  {
+   "action": "derived_stem_annotated",
+   "root": "በስበሰ",
+   "base_root": "ስበሰ",
+   "relation": "affixation",
+   "reason": "book maps form to base root but analyzer does not recover base after removal; kept with base_root annotation (policy b)"
+  },
+  {
+   "action": "derived_stem_removed",
+   "root": "ተሞገሰ",
+   "base_root": "ሞገሰ",
+   "relation": "ተ+base",
+   "book_base": "ሞገሰ",
+   "reason": "book maps form to base root; analyzer recovers base root after removal (policy a)"
+  },
+  {
+   "action": "derived_stem_annotated",
+   "root": "ተወሐሰ",
+   "base_root": "ወሐሰ",
+   "relation": "ተ+base",
+   "reason": "book maps form to base root but analyzer does not recover base after removal; kept with base_root annotation (policy b)"
+  },
+  {
+   "action": "derived_stem_removed",
+   "root": "አልኈሰሰ",
+   "base_root": "ኈሰሰ",
+   "relation": "reduplication/complex",
+   "book_base": "ኈሰሰ",
+   "reason": "book maps form to base root; analyzer recovers base root after removal (policy a)"
+  },
+  {
+   "action": "derived_stem_annotated",
+   "root": "ኰሰኰሰ",
+   "base_root": "ሰኰሰ",
+   "relation": "affixation",
+   "reason": "book maps form to base root but analyzer does not recover base after removal; kept with base_root annotation (policy b)"
+  },
+  {
+   "action": "derived_stem_annotated",
+   "root": "ዘልገሰ",
+   "base_root": "ልገሰ",
+   "relation": "affixation",
+   "reason": "book maps form to base root but analyzer does not recover base after removal; kept with base_root annotation (policy b)"
+  },
+  {
+   "action": "derived_stem_annotated",
+   "root": "ገብሰሰ",
+   "base_root": "ብሰሰ",
+   "relation": "affixation",
+   "reason": "book maps form to base root but analyzer does not recover base after removal; kept with base_root annotation (policy b)"
+  },
+  {
+   "action": "derived_stem_removed",
+   "root": "መዝበረ",
+   "base_root": "ዝበረ",
+   "relation": "affixation",
+   "book_base": "ዝበረ",
+   "reason": "book maps form to base root; analyzer recovers base root after removal (policy a)"
+  },
+  {
+   "action": "derived_stem_annotated",
+   "root": "ባሕረረ",
+   "base_root": "ሕረረ",
+   "relation": "affixation",
+   "reason": "book maps form to base root but analyzer does not recover base after removal; kept with base_root annotation (policy b)"
+  },
+  {
+   "action": "derived_stem_removed",
+   "root": "ተበኵረ",
+   "base_root": "በኵረ",
+   "relation": "ተ+base",
+   "book_base": "በኵረ",
+   "reason": "book maps form to base root; analyzer recovers base root after removal (policy a)"
+  },
+  {
+   "action": "derived_stem_annotated",
+   "root": "ተድኅረ",
+   "base_root": "ድኅረ",
+   "relation": "ተ+base",
+   "reason": "book maps form to base root but analyzer does not recover base after removal; kept with base_root annotation (policy b)"
+  },
+  {
+   "action": "derived_stem_annotated",
+   "root": "ተዝኅረ",
+   "base_root": "ዝኅረ",
+   "relation": "ተ+base",
+   "reason": "book maps form to base root but analyzer does not recover base after removal; kept with base_root annotation (policy b)"
+  },
+  {
+   "action": "derived_stem_removed",
+   "root": "ተደብተረ",
+   "base_root": "ብተረ",
+   "relation": "reduplication/complex",
+   "book_base": "ብተረ",
+   "reason": "book maps form to base root; analyzer recovers base root after removal (policy a)"
+  },
+  {
+   "action": "derived_stem_annotated",
+   "root": "ተገብረ",
+   "base_root": "ገብረ",
+   "relation": "ተ+base",
+   "reason": "book maps form to base root but analyzer does not recover base after removal; kept with base_root annotation (policy b)"
+  },
+  {
+   "action": "derived_stem_removed",
+   "root": "ተጠየረ",
+   "base_root": "ጠየረ",
+   "relation": "ተ+base",
+   "book_base": "ጠየረ",
+   "reason": "book maps form to base root; analyzer recovers base root after removal (policy a)"
+  },
+  {
+   "action": "derived_stem_removed",
+   "root": "ተጋወረ",
+   "base_root": "ጋወረ",
+   "relation": "ተ+base",
+   "book_base": "ጋወረ",
+   "reason": "book maps form to base root; analyzer recovers base root after removal (policy a)"
+  },
+  {
+   "action": "derived_stem_annotated",
+   "root": "አመዐርዐረ",
+   "base_root": "ርዐረ",
+   "relation": "reduplication/complex",
+   "reason": "book maps form to base root but analyzer does not recover base after removal; kept with base_root annotation (policy b)"
+  },
+  {
+   "action": "derived_stem_removed",
+   "root": "አምደረ",
+   "base_root": "ምደረ",
+   "relation": "አ+base",
+   "book_base": "ምደረ",
+   "reason": "book maps form to base root; analyzer recovers base root after removal (policy a)"
+  },
+  {
+   "action": "derived_stem_removed",
+   "root": "አስቆረረ",
+   "base_root": "ቆረረ",
+   "relation": "አስ+base",
+   "book_base": "ቆረረ",
+   "reason": "book maps form to base root; analyzer recovers base root after removal (policy a)"
+  },
+  {
+   "action": "derived_stem_removed",
+   "root": "አስተፃረረ",
+   "base_root": "ፃረረ",
+   "relation": "reduplication/complex",
+   "book_base": "ፃረረ",
+   "reason": "book maps form to base root; analyzer recovers base root after removal (policy a)"
+  },
+  {
+   "action": "derived_stem_removed",
+   "root": "አብደረ",
+   "base_root": "ብደረ",
+   "relation": "አ+base",
+   "book_base": "ብደረ",
+   "reason": "book maps form to base root; analyzer recovers base root after removal (policy a)"
+  },
+  {
+   "action": "derived_stem_removed",
+   "root": "አንፃረረ",
+   "base_root": "ፃረረ",
+   "relation": "አን+base",
+   "book_base": "ፃረረ",
+   "reason": "book maps form to base root; analyzer recovers base root after removal (policy a)"
+  },
+  {
+   "action": "derived_stem_annotated",
+   "root": "አእመረ",
+   "base_root": "እመረ",
+   "relation": "አ+base",
+   "reason": "book maps form to base root but analyzer does not recover base after removal; kept with base_root annotation (policy b)"
+  },
+  {
+   "action": "derived_stem_removed",
+   "root": "አፅረረ",
+   "base_root": "ፅረረ",
+   "relation": "አ+base",
+   "book_base": "ፅረረ",
+   "reason": "book maps form to base root; analyzer recovers base root after removal (policy a)"
+  },
+  {
+   "action": "derived_stem_annotated",
+   "root": "ኰስተረ",
+   "base_root": "ስተረ",
+   "relation": "affixation",
+   "reason": "book maps form to base root but analyzer does not recover base after removal; kept with base_root annotation (policy b)"
+  },
+  {
+   "action": "derived_stem_removed",
+   "root": "አፍቀረ",
+   "base_root": "ፍቀረ",
+   "relation": "አ+base",
+   "book_base": "ፍቀረ",
+   "reason": "book maps form to base root; analyzer recovers base root after removal (policy a)"
+  },
+  {
+   "action": "derived_stem_annotated",
+   "root": "ዘርዘረ",
+   "base_root": "ርዘረ",
+   "relation": "affixation",
+   "reason": "book maps form to base root but analyzer does not recover base after removal; kept with base_root annotation (policy b)"
+  },
+  {
+   "action": "derived_stem_removed",
+   "root": "ተላጸቀ",
+   "base_root": "ላጸቀ",
+   "relation": "ተ+base",
+   "book_base": "ላጸቀ",
+   "reason": "book maps form to base root; analyzer recovers base root after removal (policy a)"
+  },
+  {
+   "action": "derived_stem_annotated",
+   "root": "ተስቈቈ",
+   "base_root": "ስቈቈ",
+   "relation": "ተ+base",
+   "reason": "book maps form to base root but analyzer does not recover base after removal; kept with base_root annotation (policy b)"
+  },
+  {
+   "action": "derived_stem_annotated",
+   "root": "ተዓርቀ",
+   "base_root": "ዓርቀ",
+   "relation": "ተ+base",
+   "reason": "book maps form to base root but analyzer does not recover base after removal; kept with base_root annotation (policy b)"
+  },
+  {
+   "action": "derived_stem_annotated",
+   "root": "ተጠውቀ",
+   "base_root": "ጠውቀ",
+   "relation": "ተ+base",
+   "reason": "book maps form to base root but analyzer does not recover base after removal; kept with base_root annotation (policy b)"
+  },
+  {
+   "action": "derived_stem_removed",
+   "root": "አልጸቀ",
+   "base_root": "ልጸቀ",
+   "relation": "አ+base",
+   "book_base": "ልጸቀ",
+   "reason": "book maps form to base root; analyzer recovers base root after removal (policy a)"
+  },
+  {
+   "action": "derived_stem_removed",
+   "root": "አንጸብረቀ",
+   "base_root": "ብረቀ",
+   "relation": "reduplication/complex",
+   "book_base": "ብረቀ",
+   "reason": "book maps form to base root; analyzer recovers base root after removal (policy a)"
+  },
+  {
+   "action": "derived_stem_annotated",
+   "root": "ዘርዘቀ",
+   "base_root": "ርዘቀ",
+   "relation": "affixation",
+   "reason": "book maps form to base root but analyzer does not recover base after removal; kept with base_root annotation (policy b)"
+  },
+  {
+   "action": "derived_stem_annotated",
+   "root": "ሐበሐበ",
+   "base_root": "በሐበ",
+   "relation": "affixation",
+   "reason": "book maps form to base root but analyzer does not recover base after removal; kept with base_root annotation (policy b)"
+  },
+  {
+   "action": "derived_stem_annotated",
+   "root": "ማዕሰበ",
+   "base_root": "ዕሰበ",
+   "relation": "affixation",
+   "reason": "book maps form to base root but analyzer does not recover base after removal; kept with base_root annotation (policy b)"
+  },
+  {
+   "action": "derived_stem_removed",
+   "root": "ተሐዘበ",
+   "base_root": "ሐዘበ",
+   "relation": "ተ+base",
+   "book_base": "ሐዘበ",
+   "reason": "book maps form to base root; analyzer recovers base root after removal (policy a)"
+  },
+  {
+   "action": "derived_stem_removed",
+   "root": "ተመገበ",
+   "base_root": "መገበ",
+   "relation": "ተ+base",
+   "book_base": "መገበ",
+   "reason": "book maps form to base root; analyzer recovers base root after removal (policy a)"
+  },
+  {
+   "action": "derived_stem_annotated",
+   "root": "ተጥበበ",
+   "base_root": "ጥበበ",
+   "relation": "ተ+base",
+   "reason": "book maps form to base root but analyzer does not recover base after removal; kept with base_root annotation (policy b)"
+  },
+  {
+   "action": "derived_stem_removed",
+   "root": "አማዕቀበ",
+   "base_root": "ዕቀበ",
+   "relation": "reduplication/complex",
+   "book_base": "ዕቀበ",
+   "reason": "book maps form to base root; analyzer recovers base root after removal (policy a)"
+  },
+  {
+   "action": "derived_stem_removed",
+   "root": "አውሰበ",
+   "base_root": "ውሰበ",
+   "relation": "አ+base",
+   "book_base": "ውሰበ",
+   "reason": "book maps form to base root; analyzer recovers base root after removal (policy a)"
+  },
+  {
+   "action": "derived_stem_removed",
+   "root": "አውጸበ",
+   "base_root": "ውጸበ",
+   "relation": "አ+base",
+   "book_base": "ውጸበ",
+   "reason": "book maps form to base root; analyzer recovers base root after removal (policy a)"
+  },
+  {
+   "action": "derived_stem_annotated",
+   "root": "ደብደበ",
+   "base_root": "ብደበ",
+   "relation": "affixation",
+   "reason": "book maps form to base root but analyzer does not recover base after removal; kept with base_root annotation (policy b)"
+  },
+  {
+   "action": "derived_stem_annotated",
+   "root": "ሐርበተ",
+   "base_root": "ርበተ",
+   "relation": "affixation",
+   "reason": "book maps form to base root but analyzer does not recover base after removal; kept with base_root annotation (policy b)"
+  },
+  {
+   "action": "derived_stem_annotated",
+   "root": "ተንኀተ",
+   "base_root": "ንኀተ",
+   "relation": "ተ+base",
+   "reason": "book maps form to base root but analyzer does not recover base after removal; kept with base_root annotation (policy b)"
+  },
+  {
+   "action": "derived_stem_annotated",
+   "root": "ሰንበተ",
+   "base_root": "ንበተ",
+   "relation": "affixation",
+   "reason": "book maps form to base root but analyzer does not recover base after removal; kept with base_root annotation (policy b)"
+  },
+  {
+   "action": "derived_stem_annotated",
+   "root": "ሰንከተ",
+   "base_root": "ንከተ",
+   "relation": "affixation",
+   "reason": "book maps form to base root but analyzer does not recover base after removal; kept with base_root annotation (policy b)"
+  },
+  {
+   "action": "derived_stem_annotated",
+   "root": "ሰክተተ",
+   "base_root": "ክተተ",
+   "relation": "affixation",
+   "reason": "book maps form to base root but analyzer does not recover base after removal; kept with base_root annotation (policy b)"
+  },
+  {
+   "action": "derived_stem_annotated",
+   "root": "ቀብተተ",
+   "base_root": "ብተተ",
+   "relation": "affixation",
+   "reason": "book maps form to base root but analyzer does not recover base after removal; kept with base_root annotation (policy b)"
+  },
+  {
+   "action": "derived_stem_removed",
+   "root": "ተሠይመተ",
+   "base_root": "ይመተ",
+   "relation": "reduplication/complex",
+   "book_base": "ይመተ",
+   "reason": "book maps form to base root; analyzer recovers base root after removal (policy a)"
+  },
+  {
+   "action": "derived_stem_removed",
+   "root": "አመርቈተ",
+   "base_root": "ርቈተ",
+   "relation": "reduplication/complex",
+   "book_base": "ርቈተ",
+   "reason": "book maps form to base root; analyzer recovers base root after removal (policy a)"
+  },
+  {
+   "action": "derived_stem_annotated",
+   "root": "አምአተ",
+   "base_root": "ምአተ",
+   "relation": "አ+base",
+   "reason": "book maps form to base root but analyzer does not recover base after removal; kept with base_root annotation (policy b)"
+  },
+  {
+   "action": "derived_stem_annotated",
+   "root": "ዘርበተ",
+   "base_root": "ርበተ",
+   "relation": "affixation",
+   "reason": "book maps form to base root but analyzer does not recover base after removal; kept with base_root annotation (policy b)"
+  },
+  {
+   "action": "derived_stem_annotated",
+   "root": "ሐልየነ",
+   "base_root": "ልየነ",
+   "relation": "affixation",
+   "reason": "book maps form to base root but analyzer does not recover base after removal; kept with base_root annotation (policy b)"
+  },
+  {
+   "action": "derived_stem_removed",
+   "root": "ተመስከነ",
+   "base_root": "ስከነ",
+   "relation": "reduplication/complex",
+   "book_base": "ስከነ",
+   "reason": "book maps form to base root; analyzer recovers base root after removal (policy a)"
+  },
+  {
+   "action": "derived_stem_removed",
+   "root": "ተመንገነ",
+   "base_root": "ንገነ",
+   "relation": "reduplication/complex",
+   "book_base": "ንገነ",
+   "reason": "book maps form to base root; analyzer recovers base root after removal (policy a)"
+  },
+  {
+   "action": "derived_stem_annotated",
+   "root": "ተሠአነ",
+   "base_root": "ሠአነ",
+   "relation": "ተ+base",
+   "reason": "book maps form to base root but analyzer does not recover base after removal; kept with base_root annotation (policy b)"
+  },
+  {
+   "action": "derived_stem_removed",
+   "root": "ተንተነ",
+   "base_root": "ንተነ",
+   "relation": "ተ+base",
+   "book_base": "ንተነ",
+   "reason": "book maps form to base root; analyzer recovers base root after removal (policy a)"
+  },
+  {
+   "action": "derived_stem_annotated",
+   "root": "ተዐይነ",
+   "base_root": "ዐይነ",
+   "relation": "ተ+base",
+   "reason": "book maps form to base root but analyzer does not recover base after removal; kept with base_root annotation (policy b)"
+  },
+  {
+   "action": "derived_stem_removed",
+   "root": "ተኳነነ",
+   "base_root": "ኳነነ",
+   "relation": "ተ+base",
+   "book_base": "ኳነነ",
+   "reason": "book maps form to base root; analyzer recovers base root after removal (policy a)"
+  },
+  {
+   "action": "derived_stem_annotated",
+   "root": "ተደይነ",
+   "base_root": "ደይነ",
+   "relation": "ተ+base",
+   "reason": "book maps form to base root but analyzer does not recover base after removal; kept with base_root annotation (policy b)"
+  },
+  {
+   "action": "derived_stem_removed",
+   "root": "ተጽዕነ",
+   "base_root": "ጽዕነ",
+   "relation": "ተ+base",
+   "book_base": "ጽዕነ",
+   "reason": "book maps form to base root; analyzer recovers base root after removal (policy a)"
+  },
+  {
+   "action": "derived_stem_removed",
+   "root": "አማሕፀነ",
+   "base_root": "ሕፀነ",
+   "relation": "reduplication/complex",
+   "book_base": "ሕፀነ",
+   "reason": "book maps form to base root; analyzer recovers base root after removal (policy a)"
+  },
+  {
+   "action": "derived_stem_removed",
+   "root": "አስተንተነ",
+   "base_root": "ንተነ",
+   "relation": "reduplication/complex",
+   "book_base": "ንተነ",
+   "reason": "book maps form to base root; analyzer recovers base root after removal (policy a)"
+  },
+  {
+   "action": "derived_stem_annotated",
+   "root": "አዕበነ",
+   "base_root": "ዕበነ",
+   "relation": "አ+base",
+   "reason": "book maps form to base root but analyzer does not recover base after removal; kept with base_root annotation (policy b)"
+  },
+  {
+   "action": "derived_stem_removed",
+   "root": "አጽነነ",
+   "base_root": "ጽነነ",
+   "relation": "አ+base",
+   "book_base": "ጽነነ",
+   "reason": "book maps form to base root; analyzer recovers base root after removal (policy a)"
+  },
+  {
+   "action": "derived_stem_annotated",
+   "root": "ጸንጸነ",
+   "base_root": "ንጸነ",
+   "relation": "affixation",
+   "reason": "book maps form to base root but analyzer does not recover base after removal; kept with base_root annotation (policy b)"
+  },
+  {
+   "action": "derived_stem_removed",
+   "root": "ተማልዐ",
+   "base_root": "ማልዐ",
+   "relation": "ተ+base",
+   "book_base": "ማልዐ",
+   "reason": "book maps form to base root; analyzer recovers base root after removal (policy a)"
+  },
+  {
+   "action": "derived_stem_annotated",
+   "root": "ተሞዕዐ",
+   "base_root": "ሞዕዐ",
+   "relation": "ተ+base",
+   "reason": "book maps form to base root but analyzer does not recover base after removal; kept with base_root annotation (policy b)"
+  },
+  {
+   "action": "derived_stem_annotated",
+   "root": "ተሥዕዐ",
+   "base_root": "ሥዕዐ",
+   "relation": "ተ+base",
+   "reason": "book maps form to base root but analyzer does not recover base after removal; kept with base_root annotation (policy b)"
+  },
+  {
+   "action": "derived_stem_removed",
+   "root": "አመልዐ",
+   "base_root": "መልዐ",
+   "relation": "አ+base",
+   "book_base": "መልዐ",
+   "reason": "book maps form to base root; analyzer recovers base root after removal (policy a)"
+  },
+  {
+   "action": "derived_stem_removed",
+   "root": "አቅያዕይዐ",
+   "base_root": "ዕይዐ",
+   "relation": "reduplication/complex",
+   "book_base": "ዕይዐ",
+   "reason": "book maps form to base root; analyzer recovers base root after removal (policy a)"
+  },
+  {
+   "action": "derived_stem_removed",
+   "root": "አንጦልዐ",
+   "base_root": "ጦልዐ",
+   "relation": "አን+base",
+   "book_base": "ጦልዐ",
+   "reason": "book maps form to base root; analyzer recovers base root after removal (policy a)"
+  },
+  {
+   "action": "derived_stem_removed",
+   "root": "አውሥአ",
+   "base_root": "ውሥአ",
+   "relation": "አ+base",
+   "book_base": "ውሥአ",
+   "reason": "book maps form to base root; analyzer recovers base root after removal (policy a)"
+  },
+  {
+   "action": "derived_stem_removed",
+   "root": "አጣእጥአ",
+   "base_root": "እጥአ",
+   "relation": "reduplication/complex",
+   "book_base": "እጥአ",
+   "reason": "book maps form to base root; analyzer recovers base root after removal (policy a)"
+  },
+  {
+   "action": "derived_stem_annotated",
+   "root": "ረጕነኰ",
+   "base_root": "ጕነኰ",
+   "relation": "affixation",
+   "reason": "book maps form to base root but analyzer does not recover base after removal; kept with base_root annotation (policy b)"
+  },
+  {
+   "action": "derived_stem_removed",
+   "root": "ተክነከ",
+   "base_root": "ክነከ",
+   "relation": "ተ+base",
+   "book_base": "ክነከ",
+   "reason": "book maps form to base root; analyzer recovers base root after removal (policy a)"
+  },
+  {
+   "action": "derived_stem_removed",
+   "root": "መንተወ",
+   "base_root": "ንተወ",
+   "relation": "affixation",
+   "book_base": "ንተወ",
+   "reason": "book maps form to base root; analyzer recovers base root after removal (policy a)"
+  },
+  {
+   "action": "derived_stem_annotated",
+   "root": "ሰንተወ",
+   "base_root": "ንተወ",
+   "relation": "affixation",
+   "reason": "book maps form to base root but analyzer does not recover base after removal; kept with base_root annotation (policy b)"
+  },
+  {
+   "action": "derived_stem_removed",
+   "root": "ሰካዕለወ",
+   "base_root": "ዕለወ",
+   "relation": "reduplication/complex",
+   "book_base": "ዕለወ",
+   "reason": "book maps form to base root; analyzer recovers base root after removal (policy a)"
+  },
+  {
+   "action": "derived_stem_annotated",
+   "root": "ተሰናአወ",
+   "base_root": "ናአወ",
+   "relation": "reduplication/complex",
+   "reason": "book maps form to base root but analyzer does not recover base after removal; kept with base_root annotation (policy b)"
+  },
+  {
+   "action": "derived_stem_annotated",
+   "root": "ተሰጥወ",
+   "base_root": "ሰጥወ",
+   "relation": "ተ+base",
+   "reason": "book maps form to base root but analyzer does not recover base after removal; kept with base_root annotation (policy b)"
+  },
+  {
+   "action": "derived_stem_annotated",
+   "root": "ተቃሐወ",
+   "base_root": "ቃሐወ",
+   "relation": "ተ+base",
+   "reason": "book maps form to base root but analyzer does not recover base after removal; kept with base_root annotation (policy b)"
+  },
+  {
+   "action": "derived_stem_removed",
+   "root": "አመድለወ",
+   "base_root": "ድለወ",
+   "relation": "reduplication/complex",
+   "book_base": "ድለወ",
+   "reason": "book maps form to base root; analyzer recovers base root after removal (policy a)"
+  },
+  {
+   "action": "derived_stem_annotated",
+   "root": "አስተናአወ",
+   "base_root": "ናአወ",
+   "relation": "reduplication/complex",
+   "reason": "book maps form to base root but analyzer does not recover base after removal; kept with base_root annotation (policy b)"
+  },
+  {
+   "action": "derived_stem_removed",
+   "root": "አስደለወ",
+   "base_root": "ደለወ",
+   "relation": "አስ+base",
+   "book_base": "ደለወ",
+   "reason": "book maps form to base root; analyzer recovers base root after removal (policy a)"
+  },
+  {
+   "action": "derived_stem_annotated",
+   "root": "አስፌድለወ",
+   "base_root": "ድለወ",
+   "relation": "reduplication/complex",
+   "reason": "book maps form to base root but analyzer does not recover base after removal; kept with base_root annotation (policy b)"
+  },
+  {
+   "action": "derived_stem_annotated",
+   "root": "ጸለሐወ",
+   "base_root": "ለሐወ",
+   "relation": "affixation",
+   "reason": "book maps form to base root but analyzer does not recover base after removal; kept with base_root annotation (policy b)"
+  },
+  {
+   "action": "derived_stem_removed",
+   "root": "መዝመዘ",
+   "base_root": "ዝመዘ",
+   "relation": "affixation",
+   "book_base": "ዝመዘ",
+   "reason": "book maps form to base root; analyzer recovers base root after removal (policy a)"
+  },
+  {
+   "action": "derived_stem_annotated",
+   "root": "ቀንፈዘ",
+   "base_root": "ንፈዘ",
+   "relation": "affixation",
+   "reason": "book maps form to base root but analyzer does not recover base after removal; kept with base_root annotation (policy b)"
+  },
+  {
+   "action": "derived_stem_removed",
+   "root": "በዝበዘ",
+   "base_root": "ዝበዘ",
+   "relation": "affixation",
+   "book_base": "ዝበዘ",
+   "reason": "book maps form to base root; analyzer recovers base root after removal (policy a)"
+  },
+  {
+   "action": "derived_stem_annotated",
+   "root": "ተዐርዘ",
+   "base_root": "ዐርዘ",
+   "relation": "ተ+base",
+   "reason": "book maps form to base root but analyzer does not recover base after removal; kept with base_root annotation (policy b)"
+  },
+  {
+   "action": "derived_stem_annotated",
+   "root": "ተጋአዘ",
+   "base_root": "ጋአዘ",
+   "relation": "ተ+base",
+   "reason": "book maps form to base root but analyzer does not recover base after removal; kept with base_root annotation (policy b)"
+  },
+  {
+   "action": "derived_stem_removed",
+   "root": "አመንዘዘ",
+   "base_root": "ንዘዘ",
+   "relation": "reduplication/complex",
+   "book_base": "ንዘዘ",
+   "reason": "book maps form to base root; analyzer recovers base root after removal (policy a)"
+  },
+  {
+   "action": "derived_stem_annotated",
+   "root": "ደንጐዘ",
+   "base_root": "ንጐዘ",
+   "relation": "affixation",
+   "reason": "book maps form to base root but analyzer does not recover base after removal; kept with base_root annotation (policy b)"
+  },
+  {
+   "action": "derived_stem_annotated",
+   "root": "ተሐሠየ",
+   "base_root": "ሐሠየ",
+   "relation": "ተ+base",
+   "reason": "book maps form to base root but analyzer does not recover base after removal; kept with base_root annotation (policy b)"
+  },
+  {
+   "action": "derived_stem_annotated",
+   "root": "ተላሀየ",
+   "base_root": "ላሀየ",
+   "relation": "ተ+base",
+   "reason": "book maps form to base root but analyzer does not recover base after removal; kept with base_root annotation (policy b)"
+  },
+  {
+   "action": "derived_stem_removed",
+   "root": "ተመነየ",
+   "base_root": "መነየ",
+   "relation": "ተ+base",
+   "book_base": "መነየ",
+   "reason": "book maps form to base root; analyzer recovers base root after removal (policy a)"
+  },
+  {
+   "action": "derived_stem_annotated",
+   "root": "ተራዐየ",
+   "base_root": "ራዐየ",
+   "relation": "ተ+base",
+   "reason": "book maps form to base root but analyzer does not recover base after removal; kept with base_root annotation (policy b)"
+  },
+  {
+   "action": "derived_stem_removed",
+   "root": "ተነበየ",
+   "base_root": "ነበየ",
+   "relation": "ተ+base",
+   "book_base": "ነበየ",
+   "reason": "book maps form to base root; analyzer recovers base root after removal (policy a)"
+  },
+  {
+   "action": "derived_stem_removed",
+   "root": "ተዐበየ",
+   "base_root": "ዐበየ",
+   "relation": "ተ+base",
+   "book_base": "ዐበየ",
+   "reason": "book maps form to base root; analyzer recovers base root after removal (policy a)"
+  },
+  {
+   "action": "derived_stem_removed",
+   "root": "ተአርወየ",
+   "base_root": "ርወየ",
+   "relation": "reduplication/complex",
+   "book_base": "ርወየ",
+   "reason": "book maps form to base root; analyzer recovers base root after removal (policy a)"
+  },
+  {
+   "action": "derived_stem_removed",
+   "root": "አመስከየ",
+   "base_root": "ስከየ",
+   "relation": "reduplication/complex",
+   "book_base": "ስከየ",
+   "reason": "book maps form to base root; analyzer recovers base root after removal (policy a)"
+  },
+  {
+   "action": "derived_stem_removed",
+   "root": "አማዕለየ",
+   "base_root": "ዕለየ",
+   "relation": "reduplication/complex",
+   "book_base": "ዕለየ",
+   "reason": "book maps form to base root; analyzer recovers base root after removal (policy a)"
+  },
+  {
+   "action": "derived_stem_annotated",
+   "root": "አወፈየ",
+   "base_root": "ወፈየ",
+   "relation": "አ+base",
+   "reason": "book maps form to base root but analyzer does not recover base after removal; kept with base_root annotation (policy b)"
+  },
+  {
+   "action": "derived_stem_annotated",
+   "root": "ጐረዐየ",
+   "base_root": "ረዐየ",
+   "relation": "affixation",
+   "reason": "book maps form to base root but analyzer does not recover base after removal; kept with base_root annotation (policy b)"
+  },
+  {
+   "action": "derived_stem_annotated",
+   "root": "ጸመሐየ",
+   "base_root": "መሐየ",
+   "relation": "affixation",
+   "reason": "book maps form to base root but analyzer does not recover base after removal; kept with base_root annotation (policy b)"
+  },
+  {
+   "action": "derived_stem_annotated",
+   "root": "ተዋሐደ",
+   "base_root": "ዋሐደ",
+   "relation": "ተ+base",
+   "reason": "book maps form to base root but analyzer does not recover base after removal; kept with base_root annotation (policy b)"
+  },
+  {
+   "action": "derived_stem_annotated",
+   "root": "ሰንጐገ",
+   "base_root": "ንጐገ",
+   "relation": "affixation",
+   "reason": "book maps form to base root but analyzer does not recover base after removal; kept with base_root annotation (policy b)"
+  },
+  {
+   "action": "derived_stem_annotated",
+   "root": "ሰፍነገ",
+   "base_root": "ፍነገ",
+   "relation": "affixation",
+   "reason": "book maps form to base root but analyzer does not recover base after removal; kept with base_root annotation (policy b)"
+  },
+  {
+   "action": "derived_stem_removed",
+   "root": "አንገለገ",
+   "base_root": "ገለገ",
+   "relation": "አን+base",
+   "book_base": "ገለገ",
+   "reason": "book maps form to base root; analyzer recovers base root after removal (policy a)"
+  },
+  {
+   "action": "derived_stem_annotated",
+   "root": "ደግደገ",
+   "base_root": "ግደገ",
+   "relation": "affixation",
+   "reason": "book maps form to base root but analyzer does not recover base after removal; kept with base_root annotation (policy b)"
+  },
+  {
+   "action": "derived_stem_annotated",
+   "root": "ተሠለጠ",
+   "base_root": "ሠለጠ",
+   "relation": "ተ+base",
+   "reason": "book maps form to base root but analyzer does not recover base after removal; kept with base_root annotation (policy b)"
+  },
+  {
+   "action": "derived_stem_annotated",
+   "root": "አምሠጠ",
+   "base_root": "ምሠጠ",
+   "relation": "አ+base",
+   "reason": "book maps form to base root but analyzer does not recover base after removal; kept with base_root annotation (policy b)"
+  },
+  {
+   "action": "derived_stem_annotated",
+   "root": "ኀንጸጸ",
+   "base_root": "ንጸጸ",
+   "relation": "affixation",
+   "reason": "book maps form to base root but analyzer does not recover base after removal; kept with base_root annotation (policy b)"
+  },
+  {
+   "action": "derived_stem_annotated",
+   "root": "ተለሐፈ",
+   "base_root": "ለሐፈ",
+   "relation": "ተ+base",
+   "reason": "book maps form to base root but analyzer does not recover base after removal; kept with base_root annotation (policy b)"
+  },
+  {
+   "action": "derived_stem_removed",
+   "root": "ተዓጸፈ",
+   "base_root": "ዓጸፈ",
+   "relation": "ተ+base",
+   "book_base": "ዓጸፈ",
+   "reason": "book maps form to base root; analyzer recovers base root after removal (policy a)"
+  },
+  {
+   "action": "derived_stem_removed",
+   "root": "አስተኀለፈ",
+   "base_root": "ኀለፈ",
+   "relation": "reduplication/complex",
+   "book_base": "ኀለፈ",
+   "reason": "book maps form to base root; analyzer recovers base root after removal (policy a)"
+  },
+  {
+   "action": "derived_stem_removed",
+   "root": "አንዘፍዘፈ",
+   "base_root": "ፍዘፈ",
+   "relation": "reduplication/complex",
+   "book_base": "ፍዘፈ",
+   "reason": "book maps form to base root; analyzer recovers base root after removal (policy a)"
+  },
+  {
+   "action": "derived_stem_annotated",
+   "root": "ሀሀልሀ",
+   "base_root": "ሀልሀ",
+   "relation": "affixation",
+   "reason": "book maps form to base root but analyzer does not recover base after removal; kept with base_root annotation (policy b)"
+  },
+  {
+   "action": "derived_stem_annotated",
+   "root": "ለከወወ",
+   "base_root": "ከወወ",
+   "relation": "affixation",
+   "reason": "book maps form to base root but analyzer does not recover base after removal; kept with base_root annotation (policy b)"
+  },
+  {
+   "action": "derived_stem_annotated",
+   "root": "ሐሰለለ",
+   "base_root": "ሰለለ",
+   "relation": "affixation",
+   "reason": "book maps form to base root but analyzer does not recover base after removal; kept with base_root annotation (policy b)"
+  },
+  {
+   "action": "derived_stem_annotated",
+   "root": "ሐብረተ",
+   "base_root": "ብረተ",
+   "relation": "affixation",
+   "reason": "book maps form to base root but analyzer does not recover base after removal; kept with base_root annotation (policy b)"
+  },
+  {
+   "action": "derived_stem_annotated",
+   "root": "ሐብቈቀ",
+   "base_root": "ብቈቀ",
+   "relation": "affixation",
+   "reason": "book maps form to base root but analyzer does not recover base after removal; kept with base_root annotation (policy b)"
+  },
+  {
+   "action": "derived_stem_annotated",
+   "root": "ሐብቈቈ",
+   "base_root": "ብቈቈ",
+   "relation": "affixation",
+   "reason": "book maps form to base root but analyzer does not recover base after removal; kept with base_root annotation (policy b)"
+  },
+  {
+   "action": "derived_stem_removed",
+   "root": "መለሰሰ",
+   "base_root": "ለሰሰ",
+   "relation": "affixation",
+   "book_base": "ለሰሰ",
+   "reason": "book maps form to base root; analyzer recovers base root after removal (policy a)"
+  },
+  {
+   "action": "derived_stem_annotated",
+   "root": "መውአቀ",
+   "base_root": "መውአ",
+   "relation": "affixation",
+   "reason": "book maps form to base root but analyzer does not recover base after removal; kept with base_root annotation (policy b)"
+  },
+  {
+   "action": "derived_stem_annotated",
+   "root": "ሠብሠበ",
+   "base_root": "ብሠበ",
+   "relation": "affixation",
+   "reason": "book maps form to base root but analyzer does not recover base after removal; kept with base_root annotation (policy b)"
+  },
+  {
+   "action": "derived_stem_annotated",
+   "root": "ረበወወ",
+   "base_root": "በወወ",
+   "relation": "affixation",
+   "reason": "book maps form to base root but analyzer does not recover base after removal; kept with base_root annotation (policy b)"
+  },
+  {
+   "action": "derived_stem_annotated",
+   "root": "ረብዐዐ",
+   "base_root": "ብዐዐ",
+   "relation": "affixation",
+   "reason": "book maps form to base root but analyzer does not recover base after removal; kept with base_root annotation (policy b)"
+  },
+  {
+   "action": "derived_stem_annotated",
+   "root": "ሰለተተ",
+   "base_root": "ለተተ",
+   "relation": "affixation",
+   "reason": "book maps form to base root but analyzer does not recover base after removal; kept with base_root annotation (policy b)"
+  },
+  {
+   "action": "derived_stem_annotated",
+   "root": "ሰዘረረ",
+   "base_root": "ዘረረ",
+   "relation": "affixation",
+   "reason": "book maps form to base root but analyzer does not recover base after removal; kept with base_root annotation (policy b)"
+  },
+  {
+   "action": "derived_stem_annotated",
+   "root": "ቀበወወ",
+   "base_root": "በወወ",
+   "relation": "affixation",
+   "reason": "book maps form to base root but analyzer does not recover base after removal; kept with base_root annotation (policy b)"
+  },
+  {
+   "action": "derived_stem_annotated",
+   "root": "ቀብዐዐ",
+   "base_root": "ብዐዐ",
+   "relation": "affixation",
+   "reason": "book maps form to base root but analyzer does not recover base after removal; kept with base_root annotation (policy b)"
+  },
+  {
+   "action": "derived_stem_annotated",
+   "root": "ቀተለር",
+   "base_root": "ቀተለ",
+   "relation": "affixation",
+   "reason": "book maps form to base root but analyzer does not recover base after removal; kept with base_root annotation (policy b)"
+  },
+  {
+   "action": "derived_stem_annotated",
+   "root": "ቀፈተተ",
+   "base_root": "ፈተተ",
+   "relation": "affixation",
+   "reason": "book maps form to base root but analyzer does not recover base after removal; kept with base_root annotation (policy b)"
+  },
+  {
+   "action": "derived_stem_removed",
+   "root": "በኰረረ",
+   "base_root": "ኰረረ",
+   "relation": "affixation",
+   "book_base": "ኰረረ",
+   "reason": "book maps form to base root; analyzer recovers base root after removal (policy a)"
+  },
+  {
+   "action": "derived_stem_removed",
+   "root": "በደነነ",
+   "base_root": "ደነነ",
+   "relation": "affixation",
+   "book_base": "ደነነ",
+   "reason": "book maps form to base root; analyzer recovers base root after removal (policy a)"
+  },
+  {
+   "action": "derived_stem_removed",
+   "root": "ተምዐዐ",
+   "base_root": "ምዐዐ",
+   "relation": "ተ+base",
+   "book_base": "ምዐዐ",
+   "reason": "book maps form to base root; analyzer recovers base root after removal (policy a)"
+  },
+  {
+   "action": "derived_stem_removed",
+   "root": "ተቀበለ",
+   "base_root": "ቀበለ",
+   "relation": "ተ+base",
+   "book_base": "ቀበለ",
+   "reason": "book maps form to base root; analyzer recovers base root after removal (policy a)"
+  },
+  {
+   "action": "derived_stem_removed",
+   "root": "ተቃረነ",
+   "base_root": "ቃረነ",
+   "relation": "ተ+base",
+   "book_base": "ቃረነ",
+   "reason": "book maps form to base root; analyzer recovers base root after removal (policy a)"
+  },
+  {
+   "action": "derived_stem_removed",
+   "root": "ተከይሰ",
+   "base_root": "ከይሰ",
+   "relation": "ተ+base",
+   "book_base": "ከይሰ",
+   "reason": "book maps form to base root; analyzer recovers base root after removal (policy a)"
+  },
+  {
+   "action": "derived_stem_annotated",
+   "root": "ተዋከተ",
+   "base_root": "ዋከተ",
+   "relation": "ተ+base",
+   "reason": "book maps form to base root but analyzer does not recover base after removal; kept with base_root annotation (policy b)"
+  },
+  {
+   "action": "derived_stem_removed",
+   "root": "ተዳወለ",
+   "base_root": "ዳወለ",
+   "relation": "ተ+base",
+   "book_base": "ዳወለ",
+   "reason": "book maps form to base root; analyzer recovers base root after removal (policy a)"
+  },
+  {
+   "action": "derived_stem_removed",
+   "root": "ተድሕለ",
+   "base_root": "ድሕለ",
+   "relation": "ተ+base",
+   "book_base": "ድሕለ",
+   "reason": "book maps form to base root; analyzer recovers base root after removal (policy a)"
+  },
+  {
+   "action": "derived_stem_annotated",
+   "root": "ተጸመመ",
+   "base_root": "ተጸመ",
+   "relation": "affixation",
+   "reason": "book maps form to base root but analyzer does not recover base after removal; kept with base_root annotation (policy b)"
+  },
+  {
+   "action": "derived_stem_annotated",
+   "root": "ተጽመመ",
+   "base_root": "ተጸመ",
+   "relation": "affixation",
+   "reason": "book maps form to base root but analyzer does not recover base after removal; kept with base_root annotation (policy b)"
+  },
+  {
+   "action": "derived_stem_annotated",
+   "root": "ነቈተተ",
+   "base_root": "ቈተተ",
+   "relation": "affixation",
+   "reason": "book maps form to base root but analyzer does not recover base after removal; kept with base_root annotation (policy b)"
+  },
+  {
+   "action": "derived_stem_annotated",
+   "root": "ነከረረ",
+   "base_root": "ከረረ",
+   "relation": "affixation",
+   "reason": "book maps form to base root but analyzer does not recover base after removal; kept with base_root annotation (policy b)"
+  },
+  {
+   "action": "derived_stem_annotated",
+   "root": "ነፀረረ",
+   "base_root": "ፀረረ",
+   "relation": "affixation",
+   "reason": "book maps form to base root but analyzer does not recover base after removal; kept with base_root annotation (policy b)"
+  },
+  {
+   "action": "derived_stem_removed",
+   "root": "አሰበበ",
+   "base_root": "ሰበበ",
+   "relation": "አ+base",
+   "book_base": "ሰበበ",
+   "reason": "book maps form to base root; analyzer recovers base root after removal (policy a)"
+  },
+  {
+   "action": "derived_stem_removed",
+   "root": "አኀሥዐ",
+   "base_root": "ኀሥዐ",
+   "relation": "አ+base",
+   "book_base": "ኀሥዐ",
+   "reason": "book maps form to base root; analyzer recovers base root after removal (policy a)"
+  },
+  {
+   "action": "derived_stem_removed",
+   "root": "ከፈለለ",
+   "base_root": "ፈለለ",
+   "relation": "affixation",
+   "book_base": "ፈለለ",
+   "reason": "book maps form to base root; analyzer recovers base root after removal (policy a)"
+  },
+  {
+   "action": "derived_stem_annotated",
+   "root": "ወከበበ",
+   "base_root": "ከበበ",
+   "relation": "affixation",
+   "reason": "book maps form to base root but analyzer does not recover base after removal; kept with base_root annotation (policy b)"
+  },
+  {
+   "action": "derived_stem_annotated",
+   "root": "ውውዐዐ",
+   "base_root": "ውዐዐ",
+   "relation": "affixation",
+   "reason": "book maps form to base root but analyzer does not recover base after removal; kept with base_root annotation (policy b)"
+  },
+  {
+   "action": "derived_stem_annotated",
+   "root": "ዐረቀቀ",
+   "base_root": "ረቀቀ",
+   "relation": "ዐ+base",
+   "reason": "book maps form to base root but analyzer does not recover base after removal; kept with base_root annotation (policy b)"
+  },
+  {
+   "action": "derived_stem_annotated",
+   "root": "ዐሰቀቀ",
+   "base_root": "ሰቀቀ",
+   "relation": "ዐ+base",
+   "reason": "book maps form to base root but analyzer does not recover base after removal; kept with base_root annotation (policy b)"
+  },
+  {
+   "action": "derived_stem_annotated",
+   "root": "ዐቈነነ",
+   "base_root": "ቈነነ",
+   "relation": "ዐ+base",
+   "reason": "book maps form to base root but analyzer does not recover base after removal; kept with base_root annotation (policy b)"
+  },
+  {
+   "action": "derived_stem_annotated",
+   "root": "ዐዘለለ",
+   "base_root": "ዘለለ",
+   "relation": "ዐ+base",
+   "reason": "book maps form to base root but analyzer does not recover base after removal; kept with base_root annotation (policy b)"
+  },
+  {
+   "action": "derived_stem_annotated",
+   "root": "ዘንግዐ",
+   "base_root": "ንግዐ",
+   "relation": "affixation",
+   "reason": "book maps form to base root but analyzer does not recover base after removal; kept with base_root annotation (policy b)"
+  },
+  {
+   "action": "derived_stem_removed",
+   "root": "የብሰሰ",
+   "base_root": "ብሰሰ",
+   "relation": "affixation",
+   "book_base": "ብሰሰ",
+   "reason": "book maps form to base root; analyzer recovers base root after removal (policy a)"
+  },
+  {
+   "action": "derived_stem_annotated",
+   "root": "ደመነነ",
+   "base_root": "መነነ",
+   "relation": "affixation",
+   "reason": "book maps form to base root but analyzer does not recover base after removal; kept with base_root annotation (policy b)"
+  },
+  {
+   "action": "derived_stem_annotated",
+   "root": "ገልገለ",
+   "base_root": "ልገለ",
+   "relation": "affixation",
+   "reason": "book maps form to base root but analyzer does not recover base after removal; kept with base_root annotation (policy b)"
+  },
+  {
+   "action": "derived_stem_annotated",
+   "root": "ጐነኰኰ",
+   "base_root": "ነኰኰ",
+   "relation": "affixation",
+   "reason": "book maps form to base root but analyzer does not recover base after removal; kept with base_root annotation (policy b)"
+  },
+  {
+   "action": "derived_stem_annotated",
+   "root": "ጠሞዐዐ",
+   "base_root": "ሞዐዐ",
+   "relation": "affixation",
+   "reason": "book maps form to base root but analyzer does not recover base after removal; kept with base_root annotation (policy b)"
+  },
+  {
+   "action": "derived_stem_annotated",
+   "root": "ጠበቀቀ",
+   "base_root": "በቀቀ",
+   "relation": "affixation",
+   "reason": "book maps form to base root but analyzer does not recover base after removal; kept with base_root annotation (policy b)"
+  },
+  {
+   "action": "derived_stem_annotated",
+   "root": "ጸሐረጸ",
+   "base_root": "ሐረጸ",
+   "relation": "affixation",
+   "reason": "book maps form to base root but analyzer does not recover base after removal; kept with base_root annotation (policy b)"
+  },
+  {
+   "action": "derived_stem_annotated",
+   "root": "ጸረበበ",
+   "base_root": "ረበበ",
+   "relation": "affixation",
+   "reason": "book maps form to base root but analyzer does not recover base after removal; kept with base_root annotation (policy b)"
+  },
+  {
+   "action": "derived_stem_annotated",
+   "root": "ፀበሰሰ",
+   "base_root": "በሰሰ",
+   "relation": "affixation",
+   "reason": "book maps form to base root but analyzer does not recover base after removal; kept with base_root annotation (policy b)"
+  },
+  {
+   "action": "derived_stem_annotated",
+   "root": "ፀንሰሰ",
+   "base_root": "ንሰሰ",
+   "relation": "affixation",
+   "reason": "book maps form to base root but analyzer does not recover base after removal; kept with base_root annotation (policy b)"
+  },
+  {
+   "action": "derived_stem_annotated",
+   "root": "ፈተለለ",
+   "base_root": "ተለለ",
+   "relation": "affixation",
+   "reason": "book maps form to base root but analyzer does not recover base after removal; kept with base_root annotation (policy b)"
+  },
+  {
+   "action": "staged_root_added",
+   "root": "ሐመረ",
+   "type": "unknown",
+   "provenance": {
+    "source": "hailaykidu/movoc_with-moredata data/geez_wordlist_hailay_annotated.txt",
+    "url": "https://github.com/hailaykidu/movoc_with-moredata/blob/main/data/geez_wordlist_hailay_annotated.txt",
+    "date_found": "2026-09-30",
+    "note": "human-provided Ge'ez verb-paradigm wordlist; bare triliteral citation form, geezRPA analyzes as bare root",
+    "example_form": "ሐመረ"
+   },
+   "reason": "merged from new_roots_staging.json; no collision"
+  },
+  {
+   "action": "staged_root_added",
+   "root": "ሐመወ",
+   "type": "unknown",
+   "provenance": {
+    "source": "hailaykidu/movoc_with-moredata data/geez_wordlist_hailay_annotated.txt",
+    "url": "https://github.com/hailaykidu/movoc_with-moredata/blob/main/data/geez_wordlist_hailay_annotated.txt",
+    "date_found": "2026-09-30",
+    "note": "human-provided Ge'ez verb-paradigm wordlist; bare triliteral citation form, geezRPA analyzes as bare root",
+    "example_form": "ሐመወ"
+   },
+   "reason": "merged from new_roots_staging.json; no collision"
+  },
+  {
+   "action": "staged_root_added",
+   "root": "ሐረገ",
+   "type": "unknown",
+   "provenance": {
+    "source": "hailaykidu/movoc_with-moredata data/geez_wordlist_hailay_annotated.txt",
+    "url": "https://github.com/hailaykidu/movoc_with-moredata/blob/main/data/geez_wordlist_hailay_annotated.txt",
+    "date_found": "2026-09-30",
+    "note": "human-provided Ge'ez verb-paradigm wordlist; bare triliteral citation form, geezRPA analyzes as bare root",
+    "example_form": "ሐረገ"
+   },
+   "reason": "merged from new_roots_staging.json; no collision"
+  },
+  {
+   "action": "staged_root_added",
+   "root": "ሐረፈ",
+   "type": "unknown",
+   "provenance": {
+    "source": "hailaykidu/movoc_with-moredata data/geez_wordlist_hailay_annotated.txt",
+    "url": "https://github.com/hailaykidu/movoc_with-moredata/blob/main/data/geez_wordlist_hailay_annotated.txt",
+    "date_found": "2026-09-30",
+    "note": "human-provided Ge'ez verb-paradigm wordlist; bare triliteral citation form, geezRPA analyzes as bare root",
+    "example_form": "ሐረፈ"
+   },
+   "reason": "merged from new_roots_staging.json; no collision"
+  },
+  {
+   "action": "staged_root_added",
+   "root": "ሐነወ",
+   "type": "unknown",
+   "provenance": {
+    "source": "hailaykidu/movoc_with-moredata data/geez_wordlist_hailay_annotated.txt",
+    "url": "https://github.com/hailaykidu/movoc_with-moredata/blob/main/data/geez_wordlist_hailay_annotated.txt",
+    "date_found": "2026-09-30",
+    "note": "human-provided Ge'ez verb-paradigm wordlist; bare triliteral citation form, geezRPA analyzes as bare root",
+    "example_form": "ሐነወ"
+   },
+   "reason": "merged from new_roots_staging.json; no collision"
+  },
+  {
+   "action": "staged_root_added",
+   "root": "ሐገፈ",
+   "type": "unknown",
+   "provenance": {
+    "source": "hailaykidu/movoc_with-moredata data/geez_wordlist_hailay_annotated.txt",
+    "url": "https://github.com/hailaykidu/movoc_with-moredata/blob/main/data/geez_wordlist_hailay_annotated.txt",
+    "date_found": "2026-09-30",
+    "note": "human-provided Ge'ez verb-paradigm wordlist; bare triliteral citation form, geezRPA analyzes as bare root",
+    "example_form": "ሐገፈ"
+   },
+   "reason": "merged from new_roots_staging.json; no collision"
+  },
+  {
+   "action": "staged_root_added",
+   "root": "መለጸ",
+   "type": "unknown",
+   "provenance": {
+    "source": "hailaykidu/movoc_with-moredata data/geez_wordlist_hailay_annotated.txt",
+    "url": "https://github.com/hailaykidu/movoc_with-moredata/blob/main/data/geez_wordlist_hailay_annotated.txt",
+    "date_found": "2026-09-30",
+    "note": "human-provided Ge'ez verb-paradigm wordlist; bare triliteral citation form, geezRPA analyzes as bare root",
+    "example_form": "መለጸ"
+   },
+   "reason": "merged from new_roots_staging.json; no collision"
+  },
+  {
+   "action": "staged_root_added",
+   "root": "መተነ",
+   "type": "unknown",
+   "provenance": {
+    "source": "hailaykidu/movoc_with-moredata data/geez_wordlist_hailay_annotated.txt",
+    "url": "https://github.com/hailaykidu/movoc_with-moredata/blob/main/data/geez_wordlist_hailay_annotated.txt",
+    "date_found": "2026-09-30",
+    "note": "human-provided Ge'ez verb-paradigm wordlist; bare triliteral citation form, geezRPA analyzes as bare root",
+    "example_form": "መተነ"
+   },
+   "reason": "merged from new_roots_staging.json; no collision"
+  },
+  {
+   "action": "staged_root_added",
+   "root": "መአነ",
+   "type": "unknown",
+   "provenance": {
+    "source": "hailaykidu/movoc_with-moredata data/geez_wordlist_hailay_annotated.txt",
+    "url": "https://github.com/hailaykidu/movoc_with-moredata/blob/main/data/geez_wordlist_hailay_annotated.txt",
+    "date_found": "2026-09-30",
+    "note": "human-provided Ge'ez verb-paradigm wordlist; bare triliteral citation form (weak middle radical), geezRPA analyzes as bare root",
+    "example_form": "መአነ"
+   },
+   "reason": "merged from new_roots_staging.json; no collision"
+  },
+  {
+   "action": "staged_root_added",
+   "root": "መክሐ",
+   "type": "unknown",
+   "provenance": {
+    "source": "hailaykidu/movoc_with-moredata data/geez_wordlist_hailay_annotated.txt",
+    "url": "https://github.com/hailaykidu/movoc_with-moredata/blob/main/data/geez_wordlist_hailay_annotated.txt",
+    "date_found": "2026-09-30",
+    "note": "human-provided Ge'ez verb-paradigm wordlist; bare triliteral citation form, geezRPA analyzes as bare root",
+    "example_form": "መክሐ"
+   },
+   "reason": "merged from new_roots_staging.json; no collision"
+  },
+  {
+   "action": "staged_root_added",
+   "root": "መዘነ",
+   "type": "unknown",
+   "provenance": {
+    "source": "hailaykidu/movoc_with-moredata data/geez_wordlist_hailay_annotated.txt",
+    "url": "https://github.com/hailaykidu/movoc_with-moredata/blob/main/data/geez_wordlist_hailay_annotated.txt",
+    "date_found": "2026-09-30",
+    "note": "human-provided Ge'ez verb-paradigm wordlist; bare triliteral citation form, geezRPA analyzes as bare root",
+    "example_form": "መዘነ"
+   },
+   "reason": "merged from new_roots_staging.json; no collision"
+  },
+  {
+   "action": "staged_root_added",
+   "root": "መየነ",
+   "type": "unknown",
+   "provenance": {
+    "source": "hailaykidu/movoc_with-moredata data/geez_wordlist_hailay_annotated.txt",
+    "url": "https://github.com/hailaykidu/movoc_with-moredata/blob/main/data/geez_wordlist_hailay_annotated.txt",
+    "date_found": "2026-09-30",
+    "note": "human-provided Ge'ez verb-paradigm wordlist; bare triliteral citation form (weak middle radical), geezRPA analyzes as bare root",
+    "example_form": "መየነ"
+   },
+   "reason": "merged from new_roots_staging.json; no collision"
+  },
+  {
+   "action": "staged_root_added",
+   "root": "መገለ",
+   "type": "unknown",
+   "provenance": {
+    "source": "hailaykidu/movoc_with-moredata data/geez_wordlist_hailay_annotated.txt",
+    "url": "https://github.com/hailaykidu/movoc_with-moredata/blob/main/data/geez_wordlist_hailay_annotated.txt",
+    "date_found": "2026-09-30",
+    "note": "human-provided Ge'ez verb-paradigm wordlist; bare triliteral citation form, geezRPA analyzes as bare root",
+    "example_form": "መገለ"
+   },
+   "reason": "merged from new_roots_staging.json; no collision"
+  },
+  {
+   "action": "staged_root_added",
+   "root": "ሠገወ",
+   "type": "unknown",
+   "provenance": {
+    "source": "hailaykidu/movoc_with-moredata data/geez_wordlist_hailay_annotated.txt",
+    "url": "https://github.com/hailaykidu/movoc_with-moredata/blob/main/data/geez_wordlist_hailay_annotated.txt",
+    "date_found": "2026-09-30",
+    "note": "human-provided Ge'ez verb-paradigm wordlist; bare triliteral citation form, geezRPA analyzes as bare root",
+    "example_form": "ሠገወ"
+   },
+   "reason": "merged from new_roots_staging.json; no collision"
+  },
+  {
+   "action": "staged_root_added",
+   "root": "ሠጠየ",
+   "type": "unknown",
+   "provenance": {
+    "source": "hailaykidu/movoc_with-moredata data/geez_wordlist_hailay_annotated.txt",
+    "url": "https://github.com/hailaykidu/movoc_with-moredata/blob/main/data/geez_wordlist_hailay_annotated.txt",
+    "date_found": "2026-09-30",
+    "note": "human-provided Ge'ez verb-paradigm wordlist; bare triliteral citation form (weak final radical), geezRPA analyzes as bare root",
+    "example_form": "ሠጠየ"
+   },
+   "reason": "merged from new_roots_staging.json; no collision"
+  },
+  {
+   "action": "staged_root_added",
+   "root": "ሠርገወ",
+   "type": "unknown",
+   "provenance": {
+    "source": "hailaykidu/movoc_with-moredata data/geez_wordlist_hailay_annotated.txt",
+    "url": "https://github.com/hailaykidu/movoc_with-moredata/blob/main/data/geez_wordlist_hailay_annotated.txt",
+    "date_found": "2026-09-30",
+    "note": "human-provided Ge'ez verb-paradigm wordlist; bare quadriliteral citation form, geezRPA analyzes as bare root",
+    "example_form": "ሠርገወ"
+   },
+   "reason": "merged from new_roots_staging.json; no collision"
+  },
+  {
+   "action": "staged_root_added",
+   "root": "ማዕጾ",
+   "type": "unknown",
+   "provenance": {
+    "source": "hailaykidu/movoc_with-moredata data/Geez_Hailay_Morphem.json",
+    "url": "https://github.com/hailaykidu/movoc_with-moredata/blob/main/data/Geez_Hailay_Morphem.json",
+    "date_found": "2026-09-30",
+    "note": "human-annotated prefix/root/suffix segmentation (193 entries, cross-validated); root column value",
+    "example_form": "ማዕጾ"
+   },
+   "reason": "merged from new_roots_staging.json; no collision"
+  }
+ ]
+}

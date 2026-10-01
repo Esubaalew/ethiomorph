@@ -1,0 +1,264 @@
+[
+  {
+    "root": "ምእደ",
+    "action": "type_assigned",
+    "type": "type_a",
+    "skeleton": "መአደ"
+  },
+  {
+    "root": "ሥኅተ",
+    "action": "type_assigned",
+    "type": "type_a",
+    "skeleton": "ሰሀተ"
+  },
+  {
+    "root": "ቀትለ",
+    "action": "type_assigned",
+    "type": "type_a",
+    "skeleton": "ቀተለ"
+  },
+  {
+    "root": "ቈርዐ",
+    "action": "type_assigned",
+    "type": "type_a",
+    "skeleton": "ቈረዐ"
+  },
+  {
+    "root": "ቤአለ",
+    "action": "type_assigned",
+    "type": "type_a",
+    "skeleton": "በአለ"
+  },
+  {
+    "root": "ቤዐለ",
+    "action": "type_assigned",
+    "type": "type_a",
+    "skeleton": "በዐለ"
+  },
+  {
+    "root": "ተኬሰ",
+    "action": "type_assigned",
+    "type": "type_a",
+    "skeleton": "ተከሰ"
+  },
+  {
+    "root": "ተደመ",
+    "action": "type_assigned",
+    "type": "type_a",
+    "skeleton": "ተደመ"
+  },
+  {
+    "root": "ተጸመ",
+    "action": "type_assigned",
+    "type": "type_a",
+    "skeleton": "ተጸመ"
+  },
+  {
+    "root": "ቴከሰ",
+    "action": "type_assigned",
+    "type": "type_a",
+    "skeleton": "ተከሰ"
+  },
+  {
+    "root": "ኀብረ",
+    "action": "type_assigned",
+    "type": "type_a",
+    "skeleton": "ሀበረ"
+  },
+  {
+    "root": "ኈበረ",
+    "action": "type_assigned",
+    "type": "type_a",
+    "skeleton": "ኈበረ"
+  },
+  {
+    "root": "ንበለ",
+    "action": "type_assigned",
+    "type": "type_a",
+    "skeleton": "ነበለ"
+  },
+  {
+    "root": "ንኡስ",
+    "action": "type_assigned",
+    "type": "type_a",
+    "skeleton": "ነአሰ"
+  },
+  {
+    "root": "ከሀለ",
+    "action": "type_assigned",
+    "type": "type_a",
+    "skeleton": "ከሀለ"
+  },
+  {
+    "root": "ክህል",
+    "action": "type_assigned",
+    "type": "type_a",
+    "skeleton": "ከሀለ"
+  },
+  {
+    "root": "ኰረበ",
+    "action": "type_assigned",
+    "type": "type_a",
+    "skeleton": "ኰረበ"
+  },
+  {
+    "root": "ዐርበ",
+    "action": "type_assigned",
+    "type": "type_a",
+    "skeleton": "ዐረበ"
+  },
+  {
+    "root": "ዐበረ",
+    "action": "type_assigned",
+    "type": "type_a",
+    "skeleton": "ዐበረ"
+  },
+  {
+    "root": "ዓበረ",
+    "action": "type_assigned",
+    "type": "type_a",
+    "skeleton": "አበረ"
+  },
+  {
+    "root": "የቤት",
+    "action": "removed",
+    "reason": "genitive phrase 'of the house', not a verb root; extraction artifact"
+  },
+  {
+    "root": "ገዘፈ",
+    "action": "type_assigned",
+    "type": "type_a",
+    "skeleton": "ገዘፈ"
+  },
+  {
+    "root": "ግሕሰ",
+    "action": "type_assigned",
+    "type": "type_a",
+    "skeleton": "ገሀሰ"
+  },
+  {
+    "root": "ግእዘ",
+    "action": "type_assigned",
+    "type": "type_a",
+    "skeleton": "ገአዘ"
+  },
+  {
+    "root": "ጸሐየ",
+    "action": "type_assigned",
+    "type": "type_a",
+    "skeleton": "ጸሀየ"
+  },
+  {
+    "root": "ፅዕጠ",
+    "action": "type_assigned",
+    "type": "type_a",
+    "skeleton": "ጸአጠ"
+  },
+  {
+    "root": "ፈሐለ",
+    "action": "type_assigned",
+    "type": "type_a",
+    "skeleton": "ፈሀለ"
+  },
+  {
+    "root": "ሐመረ",
+    "action": "type_assigned",
+    "type": "type_a",
+    "skeleton": "ሀመረ"
+  },
+  {
+    "root": "ሐመወ",
+    "action": "type_assigned",
+    "type": "type_a",
+    "skeleton": "ሀመወ"
+  },
+  {
+    "root": "ሐረገ",
+    "action": "type_assigned",
+    "type": "type_a",
+    "skeleton": "ሀረገ"
+  },
+  {
+    "root": "ሐረፈ",
+    "action": "type_assigned",
+    "type": "type_a",
+    "skeleton": "ሀረፈ"
+  },
+  {
+    "root": "ሐነወ",
+    "action": "type_assigned",
+    "type": "type_a",
+    "skeleton": "ሀነወ"
+  },
+  {
+    "root": "ሐገፈ",
+    "action": "type_assigned",
+    "type": "type_a",
+    "skeleton": "ሀገፈ"
+  },
+  {
+    "root": "መለጸ",
+    "action": "type_assigned",
+    "type": "type_a",
+    "skeleton": "መለጸ"
+  },
+  {
+    "root": "መተነ",
+    "action": "type_assigned",
+    "type": "type_a",
+    "skeleton": "መተነ"
+  },
+  {
+    "root": "መአነ",
+    "action": "type_assigned",
+    "type": "type_a",
+    "skeleton": "መአነ"
+  },
+  {
+    "root": "መክሐ",
+    "action": "type_assigned",
+    "type": "type_a",
+    "skeleton": "መከሀ"
+  },
+  {
+    "root": "መዘነ",
+    "action": "type_assigned",
+    "type": "type_a",
+    "skeleton": "መዘነ"
+  },
+  {
+    "root": "መየነ",
+    "action": "type_assigned",
+    "type": "type_a",
+    "skeleton": "መየነ"
+  },
+  {
+    "root": "መገለ",
+    "action": "type_assigned",
+    "type": "type_a",
+    "skeleton": "መገለ"
+  },
+  {
+    "root": "ሠገወ",
+    "action": "type_assigned",
+    "type": "type_a",
+    "skeleton": "ሰገወ"
+  },
+  {
+    "root": "ሠጠየ",
+    "action": "type_assigned",
+    "type": "type_a",
+    "skeleton": "ሰጠየ"
+  },
+  {
+    "root": "ሠርገወ",
+    "action": "type_assigned",
+    "type": "quadriliteral",
+    "skeleton": "ሰረገወ"
+  },
+  {
+    "root": "ማዕጾ",
+    "action": "flagged_for_review",
+    "reason": "nominal ma- prefix, no meaning; human-curated but likely noun, needs Esube review before type assignment"
+  }
+]

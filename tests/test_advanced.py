@@ -150,14 +150,26 @@ class TestAdvancedGeezRootAnalyzer(unittest.TestCase):
         self.assertIsNotNone(result["analysis"].get("grammar_ref"))
         self.assertEqual(result["root"], "ሐወረ")
 
-    def test_serha_qete_perfective(self):
-        result = self.stemmer.extract_root("ሰርሐቀተ")
+    def test_serha_is_abat_zer_not_qete_suffix(self):
+        # Shape rule: ሰርሐ has C2 in 6th order → ገብረ house (not a ቀተ suffix).
+        # source_rule: fere_geez.ch4.army_heads.gabra
+        result = self.stemmer.extract_root("ሰርሐ")
         self.assertEqual(normalize_geez(result["root"]), normalize_geez("ሰርሐ"))
         self.assertIn("ሠራ", result["meaning"])
+        self.assertEqual(result["root_class"], "abat_zer")
+        self.assertEqual(result["word_class"], "gis")
+        self.assertEqual(result["army_head"], "ገብረ")
         self.assertEqual(result["analysis"]["pattern"]["name"], "perfective")
-        self.assertIn("ቀተ", result["analysis"]["suffixes"])
+        self.assertNotIn("ቀተ", result["analysis"]["suffixes"])
+
+        labeled = self.stemmer.extract_root("ሰርሐቀተ")
+        self.assertEqual(labeled["root"], "ሰርሐ")
+        self.assertEqual(labeled["analysis"]["suffixes"], ["ቀተ"])
+        self.assertIn("ሠራ", labeled["meaning"])
 
     def test_amlak_noun_suffix(self):
+        # Fere Ge'ez derived nominal (ጥሬ ዘር / ስምዕ) + possessive suffix.
+        # source_rule: fere_geez.ch4.tire_zer
         result = self.stemmer.extract_root("አምላክነ")
         self.assertEqual(result["root"], "መለከ")
         self.assertEqual(result["analysis"]["stem"], "አምላክ")
@@ -165,6 +177,46 @@ class TestAdvancedGeezRootAnalyzer(unittest.TestCase):
         self.assertEqual(result["analysis"]["suffixes"], ["ነ"])
         self.assertIn("God", result["meaning"])
         self.assertNotIn("ለከነ", result["root"])
+        self.assertEqual(result["root_class"], "tire_zer")
+        self.assertEqual(result["word_class"], "sem")
+        self.assertTrue(any(r.startswith("fere_geez") for r in result.get("source_rules", [result["source_rule"]])))
+
+    def test_qatala_paradigm_classical_fields(self):
+        # Fere Ge'ez §4.2–4.4 / geezgram vol.2: ቀተለ conjugation naming.
+        # source_rule: fere_geez.ch4.abat_zer / fere_geez.ch4.anqets.halafi
+        result = self.stemmer.extract_root("ቀተለ")
+        self.assertEqual(result["root"], "ቀተለ")
+        self.assertEqual(result["root_class"], "abat_zer")
+        self.assertEqual(result["army_head"], "ቀተለ")
+        self.assertEqual(result["word_class"], "gis")
+        self.assertEqual(result["analysis"]["pattern"]["name"], "perfective")
+        self.assertIsNotNone(result["anqets"])
+        self.assertIsNotNone(result.get("anqets_transforms"))
+        self.assertEqual(result["anqets"]["name"], "ኃላፊ")
+        self.assertTrue(result["citation_constraints"]["ends_in_geez_order"])
+        self.assertTrue(result["citation_constraints"]["length_ok"])
+
+        imperfect = self.stemmer.extract_root("ይቀትል")
+        self.assertEqual(normalize_geez(imperfect["root"]), normalize_geez("ቀተለ"))
+        self.assertTrue(
+            any(p in imperfect["analysis"]["prefixes"] for p in ("ይ", "የ", "ያ", "ት", "ተ"))
+            or bool(imperfect["asraw_markers"])
+        )
+
+    def test_qaddasa_army_head(self):
+        # source_rule: fere_geez.ch4.army_heads.qaddasa
+        result = self.stemmer.extract_root("ቀደሰ")
+        self.assertEqual(result["root"], "ቀደሰ")
+        self.assertEqual(result["army_head"], "ቀደሰ")
+        self.assertEqual(result["root_class"], "abat_zer")
+
+    def test_nabar_particle_not_forced_verbal_root(self):
+        # source_rule: fere_geez.ch3.nabar
+        result = self.stemmer.extract_root("ወ")
+        self.assertEqual(result["root_class"], "nabar")
+        self.assertEqual(result["word_class"], "nabar")
+        self.assertIsNone(result["army_head"])
+        self.assertIn("and", result["meaning"].lower())
 
 if __name__ == '__main__':
     unittest.main()

@@ -1,0 +1,2274 @@
+[
+ {
+  "root": "ሄደቀተ",
+  "verdict": "artifact_remove",
+  "detail": "pattern-code-suffixed extraction artifact (ሄደ+ቀተ)",
+  "suggested": "remove; stripped root ሄደ already in lexicon",
+  "meaning": "ቀማ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "ልሕመክ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "ን",
+  "source": "grammar_index"
+ },
+ {
+  "root": "ሐለለቀ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "ለ",
+  "source": "grammar_index"
+ },
+ {
+  "root": "ሐመቀተ",
+  "verdict": "artifact_remove",
+  "detail": "pattern-code-suffixed extraction artifact (ሐመ+ቀተ)",
+  "suggested": "remove; stripped root ሐመ already in lexicon",
+  "meaning": "ታመመ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "ሐብቀቀ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "አረካከሰ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "ሐይወ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> hollow_y",
+  "suggested": "hollow_y",
+  "meaning": "",
+  "source": "grammar_index"
+ },
+ {
+  "root": "ሖሰቀተ",
+  "verdict": "artifact_remove",
+  "detail": "pattern-code-suffixed extraction artifact (ሖሰ+ቀተ)",
+  "suggested": "remove; stripped root ሖሰ already in lexicon",
+  "meaning": "ነቀነቀ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "ሖየቀተ",
+  "verdict": "artifact_remove",
+  "detail": "pattern-code-suffixed extraction artifact (ሖየ+ቀተ)",
+  "suggested": "remove; stripped root ሖየ already in lexicon",
+  "meaning": "ድንግዝግዝ አለ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "መሐረከ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "ማረከ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "መሕረከ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "ማረከ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "መምዔለ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "ወነጀለ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "መካዕለ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "አጨደ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "መውተ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> hollow_w",
+  "suggested": "hollow_w",
+  "meaning": "",
+  "source": "grammar_index"
+ },
+ {
+  "root": "መውአቀ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "አሸነፈ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "ማሐረከ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "ማረከ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "ምእደ",
+  "verdict": "genuinely_unknown",
+  "detail": "sound triliteral, no pattern evidence in grammar source",
+  "suggested": "mark as unknown (must not stay type_a)",
+  "meaning": "መከረ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "ሞቀቀተ",
+  "verdict": "artifact_remove",
+  "detail": "pattern-code-suffixed extraction artifact (ሞቀ+ቀተ)",
+  "suggested": "remove; stripped root ሞቀ already in lexicon",
+  "meaning": "ሞቀ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "ሠይመ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> hollow_y",
+  "suggested": "hollow_y",
+  "meaning": "",
+  "source": "grammar_index"
+ },
+ {
+  "root": "ሤበቀተ",
+  "verdict": "artifact_remove",
+  "detail": "pattern-code-suffixed extraction artifact (ሤበ+ቀተ)",
+  "suggested": "remove; stripped root ሤበ already in lexicon",
+  "meaning": "ሸተተ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "ሥኅተ",
+  "verdict": "genuinely_unknown",
+  "detail": "sound triliteral, no pattern evidence in grammar source",
+  "suggested": "mark as unknown (must not stay type_a)",
+  "meaning": "አረፈ 22) ሰለተቀደ- ተዘባበተ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "ረመቀተ",
+  "verdict": "artifact_remove",
+  "detail": "pattern-code-suffixed extraction artifact (ረመ+ቀተ)",
+  "suggested": "remove; stripped root ረመ already in lexicon",
+  "meaning": "ተ",
+  "source": "grammar_index"
+ },
+ {
+  "root": "ረየመ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> hollow_y",
+  "suggested": "hollow_y",
+  "meaning": "ከፍ ከፍ አለ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "ርኅበክ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "ተ",
+  "source": "grammar_index"
+ },
+ {
+  "root": "ሮደቀተ",
+  "verdict": "artifact_remove",
+  "detail": "pattern-code-suffixed extraction artifact (ሮደ+ቀተ)",
+  "suggested": "remove; stripped root ሮደ NOT in lexicon, suggested type type_a if validated",
+  "meaning": "ከበበ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "ሮፐቀተ",
+  "verdict": "artifact_remove",
+  "detail": "pattern-code-suffixed extraction artifact (ሮፐ+ቀተ)",
+  "suggested": "remove; stripped root ሮፐ already in lexicon",
+  "meaning": "ጸና",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "ሰንኈተ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "በጣ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "ሰንኰረ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "አስተማረ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "ሰካዕለ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "ቆጠቆጠ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "ሴሰየር",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "መገበ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "ሶርየመ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "ለምድ አወጣ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "ቀለቀተ",
+  "verdict": "artifact_remove",
+  "detail": "pattern-code-suffixed extraction artifact (ቀለ+ቀተ)",
+  "suggested": "remove; stripped root ቀለ already in lexicon",
+  "meaning": "ቀለለ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "ቀሰቀተ",
+  "verdict": "artifact_remove",
+  "detail": "pattern-code-suffixed extraction artifact (ቀሰ+ቀተ)",
+  "suggested": "remove; stripped root ቀሰ already in lexicon",
+  "meaning": "አገለገለ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "ቀበያው",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "ቀላወጠ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "ቀተለር",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "ገደለ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "ቀተቀተ",
+  "verdict": "artifact_remove",
+  "detail": "pattern-code-suffixed extraction artifact (ቀተ+ቀተ)",
+  "suggested": "remove; stripped root ቀተ already in lexicon",
+  "meaning": "ቅትት ቅትት አለ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "ቀትለ",
+  "verdict": "genuinely_unknown",
+  "detail": "sound triliteral, no pattern evidence in grammar source",
+  "suggested": "mark as unknown (must not stay type_a)",
+  "meaning": "ገደለ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "ቀነቀተ",
+  "verdict": "artifact_remove",
+  "detail": "pattern-code-suffixed extraction artifact (ቀነ+ቀተ)",
+  "suggested": "remove; stripped root ቀነ already in lexicon",
+  "meaning": "ቀኖና ያዘ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "ቀንጦሰ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "ተሰለፈ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "ቀደሰር",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "አመሰገነ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "ቃሕቅሐ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "ደ",
+  "source": "grammar_index"
+ },
+ {
+  "root": "ቈርዐ",
+  "verdict": "genuinely_unknown",
+  "detail": "sound triliteral, no pattern evidence in grammar source",
+  "suggested": "mark as unknown (must not stay type_a)",
+  "meaning": "መታ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "በረቀተ",
+  "verdict": "artifact_remove",
+  "detail": "pattern-code-suffixed extraction artifact (በረ+ቀተ)",
+  "suggested": "remove; stripped root በረ already in lexicon",
+  "meaning": "በረረ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "ባህነነ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "ነ",
+  "source": "grammar_index"
+ },
+ {
+  "root": "ባረከር",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "ስ",
+  "source": "grammar_index"
+ },
+ {
+  "root": "ቤአለ",
+  "verdict": "genuinely_unknown",
+  "detail": "sound triliteral, no pattern evidence in grammar source",
+  "suggested": "mark as unknown (must not stay type_a)",
+  "meaning": "እንቢ አለ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "ቤዐለ",
+  "verdict": "genuinely_unknown",
+  "detail": "sound triliteral, no pattern evidence in grammar source",
+  "suggested": "mark as unknown (must not stay type_a)",
+  "meaning": "ወደደ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "ተላዐለ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "ከፍ ከፍ አለ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "ተልዐለ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "ከፍ ከፍ አለ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "ተመለአ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "ህ",
+  "source": "grammar_index"
+ },
+ {
+  "root": "ተመልአ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "አለቃ ሆነ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "ተመረዐ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "ተሞሸረ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "ተመራዐ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "ተሞሸረ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "ተመርዐ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "ተሞሸረ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "ተመርጐ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "ተመረኮዘ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "ተመስከ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "ን",
+  "source": "grammar_index"
+ },
+ {
+  "root": "ተመንደ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "ተቸገረ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "ተመንገ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "ተተነኳኮለ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "ተመኲሰ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "ሞክሼ ሆነ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "ተመዝጐ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "ተከራከረ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "ተማሕለ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "ምሕላ ያዘ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "ተማኅፈ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "ሠራ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "ተማዕለ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "ነዳ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "ተማዕሰ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "ገለሞተ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "ተሠይመ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "ን",
+  "source": "grammar_index"
+ },
+ {
+  "root": "ተሣሀለ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "ይቅር አለ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "ተሥሀለ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "ይቅር አለ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "ተራኅር",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "ቸር ሆነ 61) ተቃድሐቀተ- ተደነባበረ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "ተሰርገ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "ተሸለመ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "ተሰነአ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "ተስማማ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "ተሰናአ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "ተስማማ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "ተሰንአ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "ተስማማ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "ተሰአለ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "ተጠያየቀ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "ተሰካተ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "ተማማለ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "ተሳነነ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "ተጣላ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "ተሳአለ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "ተጠያየቀ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "ተሳእለ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "ተጠያየቀ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "ተስእለ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "ተጠያየቀ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "ተቈናደ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "ተጓደደ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "ተባሕተ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "ብቸኛ ሆነ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "ተተረአ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "ተንተራሰ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "ተተራአ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "ተንተራሰ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "ተተርአ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "ተንተራሰ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "ተናህሰ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "ተዋረደ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "ተአርወ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "አውሬ ሆነ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "ተአንሰ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "እንስሳ ሆነ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "ተአንተ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "ቸልቸል አለ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "ተአንገ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "እንግዳ ሆነ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "ተኬሰ",
+  "verdict": "genuinely_unknown",
+  "detail": "sound triliteral, no pattern evidence in grammar source",
+  "suggested": "mark as unknown (must not stay type_a)",
+  "meaning": "መታ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "ተወሀው",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "ተመላለሰ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "ተወላወ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "ተመላለሰ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "ተወሐደ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "አንድ ሆነ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "ተዋህው",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "ተመላለሰ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "ተዋፈለ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "አሟረተ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "ተዐረቀ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "ተራረቀ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "ተዐረከ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "ወዳጅ ሆነ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "ተደመ",
+  "verdict": "genuinely_unknown",
+  "detail": "sound triliteral, no pattern evidence in grammar source",
+  "suggested": "mark as unknown (must not stay type_a)",
+  "meaning": "ተደነቀ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "ተደብተ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "ሰፋ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "ተደንገ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "ተጠበቀ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "ተጋህረ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "ተጣላ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "ተጋህግ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "ተከራከረ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "ተጐርዐ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "ታነቀ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "ተጸመ",
+  "verdict": "genuinely_unknown",
+  "detail": "sound triliteral, no pattern evidence in grammar source",
+  "suggested": "mark as unknown (must not stay type_a)",
+  "meaning": "ቸል ቸል አለ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "ተጸመመ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "ቸል ቸል አለ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "ተፈሐዘ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "ተጫወተ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "ተፈርነ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "ደስ ተሰኘ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "ቴከሰ",
+  "verdict": "genuinely_unknown",
+  "detail": "sound triliteral, no pattern evidence in grammar source",
+  "suggested": "mark as unknown (must not stay type_a)",
+  "meaning": "",
+  "source": "grammar_index"
+ },
+ {
+  "root": "ኀብረ",
+  "verdict": "genuinely_unknown",
+  "detail": "sound triliteral, no pattern evidence in grammar source",
+  "suggested": "mark as unknown (must not stay type_a)",
+  "meaning": "አንድ ሆነ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "ኄረወሴ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "አለ",
+  "source": "grammar_index"
+ },
+ {
+  "root": "ኈበረ",
+  "verdict": "genuinely_unknown",
+  "detail": "sound triliteral, no pattern evidence in grammar source",
+  "suggested": "mark as unknown (must not stay type_a)",
+  "meaning": "",
+  "source": "grammar_index"
+ },
+ {
+  "root": "ነሐሰቀ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "ህ",
+  "source": "grammar_index"
+ },
+ {
+  "root": "ነሐንሐ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "ትርፍርፍ አለ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "ነሕንሐ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "ትርፍርፍ አለ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "ንበለ",
+  "verdict": "genuinely_unknown",
+  "detail": "sound triliteral, no pattern evidence in grammar source",
+  "suggested": "mark as unknown (must not stay type_a)",
+  "meaning": "ለመነ",
+  "source": "grammar_index"
+ },
+ {
+  "root": "ንኡስ",
+  "verdict": "genuinely_unknown",
+  "detail": "sound triliteral, no pattern evidence in grammar source",
+  "suggested": "mark as unknown (must not stay type_a)",
+  "meaning": "አደረገ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "አልኆሰ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "መ",
+  "source": "grammar_index"
+ },
+ {
+  "root": "አሕመል",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "ን",
+  "source": "grammar_index"
+ },
+ {
+  "root": "አመልት",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "አመሳቀለ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "አመሥጠ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "አራቀቀ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "አመርሰ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "ጸጥ አደረገ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "አመርቈ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "አጐተነ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "አመርዐ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "ሞሸረ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "አመርግ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "አንከባለለ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "አመስቀ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "አመሳቀለ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "አመስብ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "ሰባት አደረገ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "አመስከ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "ተጠጋ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "አመስኲ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "አመሰኳ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "አመስፈ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "ገዛ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "አመብኲ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "አናፋ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "አመንሰ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "አጠፋ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "አመንተ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "መንታ አደረገ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "አመንዘ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "አመነዘረ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "አመከዐ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "እጥፍ ድርብ አደረገ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "አመክነ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "አመካኘ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "አመክዐ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "ን",
+  "source": "grammar_index"
+ },
+ {
+  "root": "አመዐረ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "አጣፈጠ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "አመዐር",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "አጣፈጠ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "አመዝበ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "አፈረሰ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "አመድለ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "ግብዝ አደረገ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "አመድቅ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "ሠራ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "አመድበ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "አከማቸ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "አመግዝ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "ገዛ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "አመፅጒ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "ታመመ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "አማሕፀ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "ህ",
+  "source": "grammar_index"
+ },
+ {
+  "root": "አማኅበ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "ሰበሰበ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "አማእከ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "መካከል አደረገ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "አማእዘ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "ከበበ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "አማዕለ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "ወነጀለ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "አማዕረ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "አበጀ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "አማዕሰ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "ፈታ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "አማዕቀ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "አደራ አለ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "አማዕበ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "ማዕበል አደረገ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "አማዕተ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "አመሳቀለ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "አማዕዘ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "አበራ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "አርመስ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "ተደነባበረ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "አርሳሕ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "አረሳሳ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "አሰውሰ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "መሰላል ሠራ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "አስቆረ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "ተጸየፈ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "አስቆቀ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "አለቀሰ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "አስቈረ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "ተጸየፈ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "አስተሓ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "ተጋ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "አስተመ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "አማለደ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "አስተማ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "አቀበጠ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "አስተም",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "አማለደ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "አስተር",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "ታየ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "አስተሰ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "አስማማ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "አስተቃ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "አሟረተ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "አስተባ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "አፈራረቀ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "አስተብ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "ሰገድ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "አስተኀ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "ዐዋጅ ነገረ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "አስተና",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "በገረ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "አስተን",
+  "verdict": "artifact_remove",
+  "detail": "pattern-code-suffixed extraction artifact (አስ+ተን)",
+  "suggested": "remove; stripped root አስ NOT in lexicon, suggested type type_tanbala if validated",
+  "meaning": "አሰበ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "አስተኣ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "ሸና አፈሰሰ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "አስተዋ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "አጣላ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "አስተዓ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "አደነቀ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "አስተደ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "አዘጋጀ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "አስተዳ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "አዘጋጀ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "አስተጋ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "ሰበሰበ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "አስተፃ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "አጣላ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "አስተፍ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "ደስ አሰኘ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "አስኮተ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "አረሰ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "አስዖዘ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "ሰቀጠጠ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "አስዖጠ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "ተሰቀጠጠ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "አስፈድ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "መነጠረ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "አስፌድ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "መነጠረ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "አቀምጠ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "ተለመ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "አቅሌለ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "አቅላላ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "አቅዜዘ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "ቅዝዝ ቅዝዝ አለ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "አቅየዐ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "ተፋ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "አቅያሕ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "አቅላላ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "አቅያዕ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "ተፋ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "አኅሰር",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "አቅባባ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "አናሕሰ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "አቃለለ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "አንሦጠ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "ሰቀጠጠ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "አንሰሐ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "አነሣሣ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "አንሳሕ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "አነሣሣ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "አንሳዕ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "አፈላ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "አንሶሰ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "ተመላለሰ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "አንቀል",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "ተነዋወጠ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "አንቃዕ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "አንጋጠጠ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "አንቆቅ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "እንቁላል ጣለ ወይም አንቋቋ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "አንበል",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "ን",
+  "source": "grammar_index"
+ },
+ {
+  "root": "አንበስ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "ተገለባበጠ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "አንባሕ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "አፋሸከ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "አንቤበ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "ለየ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "አንካሕ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "ፈተፈተ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "አንኮለ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "ዱብ ዱብ አደረገ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "አንኰር",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "ተገለባበጠ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "አንዘፍ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "አንዘፈዘፈ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "አንዛህ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "አለል ዘለል አለ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "አንዶረ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "ጩርቅ ጩርቅ አለ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "አንገለ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "አከማቸ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "አንገር",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "ጣለ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "አንጌገ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "ተቅበዘበዘ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "አንጎገ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "ተቅበዘበዘ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "አንጐር",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "አንጐርጐረ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "አንጐድ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "ተነዋወጠ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "አንጠብ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "አንጠባጠበ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "አንጦለ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "ለየ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "አንጦል",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "ጋረደ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "አንጸብ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "አንጸባረቀ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "አንጸፍ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "አንጠፈጠፈ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "አንጾረ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "ጩርቅ ጩርቅ አለ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "አንጾጸ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "አረጋገፈ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "አንፈረ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "ዘለለ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "አንፈር",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "ዘለለ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "አክሞሰ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "ፍግግ አለ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "አክሞተ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "አሳጠረ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "አድለቅ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "ተነዋወጠ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "አገንጰ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "ጻፈ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "አግደም",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "አፋተለ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "አጣእጥ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "አከናወነ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "አጰንገ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "ተረጎመ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "አጸነሕ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "አሻተተ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "አጸንሕ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "አሻተተ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "አጸንጰ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "ጠመዘዘ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "አጸዐደ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "አነጣ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "አጸዐድ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "አነጣ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "አጸዐጠ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "አጣፈጠ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "አጸዐጥ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "አጣፈጠ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "አጸድዐ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "አነጣ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "አጽነሐ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "ወዘወዘ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "አጽናሕ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "ወዘወዘ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "አጽደል",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "አበራ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "አፀንግ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "በረት ሠራ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "አፈርዘ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "በተነ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "ኤኀቀተ",
+  "verdict": "artifact_remove",
+  "detail": "pattern-code-suffixed extraction artifact (ኤኀ+ቀተ)",
+  "suggested": "remove; stripped root ኤኀ NOT in lexicon, suggested type type_a if validated",
+  "meaning": "ወረደ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "ከሀለ",
+  "verdict": "genuinely_unknown",
+  "detail": "sound triliteral, no pattern evidence in grammar source",
+  "suggested": "mark as unknown (must not stay type_a)",
+  "meaning": "ቻለ",
+  "source": "grammar_index"
+ },
+ {
+  "root": "ከረስተ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "ን",
+  "source": "grammar_index"
+ },
+ {
+  "root": "ከወነ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> hollow_w",
+  "suggested": "hollow_w",
+  "meaning": "",
+  "source": "grammar_index"
+ },
+ {
+  "root": "ክህለር",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "ቻለ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "ክህል",
+  "verdict": "genuinely_unknown",
+  "detail": "sound triliteral, no pattern evidence in grammar source",
+  "suggested": "mark as unknown (must not stay type_a)",
+  "meaning": "ስ",
+  "source": "grammar_index"
+ },
+ {
+  "root": "ኮነቀተ",
+  "verdict": "artifact_remove",
+  "detail": "pattern-code-suffixed extraction artifact (ኮነ+ቀተ)",
+  "suggested": "remove; stripped root ኮነ NOT in lexicon, suggested type type_a if validated",
+  "meaning": "ሆነ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "ኰረበ",
+  "verdict": "genuinely_unknown",
+  "detail": "sound triliteral, no pattern evidence in grammar source",
+  "suggested": "mark as unknown (must not stay type_a)",
+  "meaning": "ሰቀለ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "ዐርበ",
+  "verdict": "genuinely_unknown",
+  "detail": "sound triliteral, no pattern evidence in grammar source",
+  "suggested": "mark as unknown (must not stay type_a)",
+  "meaning": "ገባ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "ዐበረ",
+  "verdict": "genuinely_unknown",
+  "detail": "sound triliteral, no pattern evidence in grammar source",
+  "suggested": "mark as unknown (must not stay type_a)",
+  "meaning": "ድርቅ ሆነ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "ዐወረ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> hollow_w",
+  "suggested": "hollow_w",
+  "meaning": "ታወረ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "ዓበረ",
+  "verdict": "genuinely_unknown",
+  "detail": "sound triliteral, no pattern evidence in grammar source",
+  "suggested": "mark as unknown (must not stay type_a)",
+  "meaning": "",
+  "source": "grammar_index"
+ },
+ {
+  "root": "ዖቀቀተ",
+  "verdict": "artifact_remove",
+  "detail": "pattern-code-suffixed extraction artifact (ዖቀ+ቀተ)",
+  "suggested": "remove; stripped root ዖቀ already in lexicon",
+  "meaning": "ዐወቀ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "ዜርዜቀ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "ነፋ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "የቤት",
+  "verdict": "genuinely_unknown",
+  "detail": "sound triliteral, no pattern evidence in grammar source",
+  "suggested": "mark as unknown (must not stay type_a)",
+  "meaning": "",
+  "source": "grammar_index"
+ },
+ {
+  "root": "የብረት",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "",
+  "source": "grammar_index"
+ },
+ {
+  "root": "ገብረር",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "ተ",
+  "source": "grammar_index"
+ },
+ {
+  "root": "ገዘፈ",
+  "verdict": "genuinely_unknown",
+  "detail": "sound triliteral, no pattern evidence in grammar source",
+  "suggested": "mark as unknown (must not stay type_a)",
+  "meaning": "ደነደነ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "ጋህግሀ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "ክፍት ክፍት አለ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "ጌጰቀተ",
+  "verdict": "artifact_remove",
+  "detail": "pattern-code-suffixed extraction artifact (ጌጰ+ቀተ)",
+  "suggested": "remove; stripped root ጌጰ NOT in lexicon, suggested type type_a if validated",
+  "meaning": "በረረ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "ግሕሠክ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "ተ",
+  "source": "grammar_index"
+ },
+ {
+  "root": "ግሕሰ",
+  "verdict": "genuinely_unknown",
+  "detail": "sound triliteral, no pattern evidence in grammar source",
+  "suggested": "mark as unknown (must not stay type_a)",
+  "meaning": "ወገደ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "ግእዘ",
+  "verdict": "genuinely_unknown",
+  "detail": "sound triliteral, no pattern evidence in grammar source",
+  "suggested": "mark as unknown (must not stay type_a)",
+  "meaning": "ተጓዘ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "ጎርኤመ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "አገመ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "ጠመቀተ",
+  "verdict": "artifact_remove",
+  "detail": "pattern-code-suffixed extraction artifact (ጠመ+ቀተ)",
+  "suggested": "remove; stripped root ጠመ already in lexicon",
+  "meaning": "ጠመመ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "ጠፋልሐ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "መዘነ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "ጣሴሰየ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "መገበ",
+  "source": "grammar_index"
+ },
+ {
+  "root": "ጦመረር",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "ጻፈ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "ጦዐቀተ",
+  "verdict": "artifact_remove",
+  "detail": "pattern-code-suffixed extraction artifact (ጦዐ+ቀተ)",
+  "suggested": "remove; stripped root ጦዐ already in lexicon",
+  "meaning": "ሸሸ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "ጸሐየ",
+  "verdict": "genuinely_unknown",
+  "detail": "sound triliteral, no pattern evidence in grammar source",
+  "suggested": "mark as unknown (must not stay type_a)",
+  "meaning": "በራ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "ጸማሐየ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "ጠወለገ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "ጸውረ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> hollow_w",
+  "suggested": "hollow_w",
+  "meaning": "",
+  "source": "grammar_index"
+ },
+ {
+  "root": "ጸግበገ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "ጠገበ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "ጼአቀተ",
+  "verdict": "artifact_remove",
+  "detail": "pattern-code-suffixed extraction artifact (ጼአ+ቀተ)",
+  "suggested": "remove; stripped root ጼአ already in lexicon",
+  "meaning": "ተላ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "ጾኰቀተ",
+  "verdict": "artifact_remove",
+  "detail": "pattern-code-suffixed extraction artifact (ጾኰ+ቀተ)",
+  "suggested": "remove; stripped root ጾኰ NOT in lexicon, suggested type type_a if validated",
+  "meaning": "ሹልዳ አወጣ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "ፅዕጠ",
+  "verdict": "genuinely_unknown",
+  "detail": "sound triliteral, no pattern evidence in grammar source",
+  "suggested": "mark as unknown (must not stay type_a)",
+  "meaning": "ጣፈጠ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "ፈሐለ",
+  "verdict": "genuinely_unknown",
+  "detail": "sound triliteral, no pattern evidence in grammar source",
+  "suggested": "mark as unknown (must not stay type_a)",
+  "meaning": "ቁንጥር ቁንጥር አለ",
+  "source": "grammar_zewadla_index"
+ },
+ {
+  "root": "ፈሐለቀ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "ህ",
+  "source": "grammar_index"
+ },
+ {
+  "root": "ፈቅዐገ",
+  "verdict": "reassigned",
+  "detail": "phonological shape -> quadriliteral",
+  "suggested": "quadriliteral",
+  "meaning": "ገመሰ",
+  "source": "grammar_zewadla_index"
+ }
+]

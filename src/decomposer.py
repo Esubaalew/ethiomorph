@@ -53,7 +53,7 @@ _add_row('አ', ['አ', 'ኡ', 'ኢ', 'ኣ', 'ኤ', 'እ', 'ኦ'])
 _add_row('ከ', ['ከ', 'ኩ', 'ኪ', 'ካ', 'ኬ', 'ክ', 'ኮ'])
 _add_row('ኸ', ['ኸ', 'ኹ', 'ኺ', 'ኻ', 'ኼ', 'ኽ', 'ኾ'])
 _add_row('ወ', ['ወ', 'ዉ', 'ዊ', 'ዋ', 'ዌ', 'ው', 'ዎ'])
-_add_row('ዓ', ['ዓ', 'ዑ', 'ዒ', 'ዓ', 'ዔ', 'ዕ', 'ዖ'])
+_add_row('ዓ', ['ዐ', 'ዑ', 'ዒ', 'ዓ', 'ዔ', 'ዕ', 'ዖ'])
 _add_row('ዘ', ['ዘ', 'ዙ', 'ዚ', 'ዛ', 'ዜ', 'ዝ', 'ዞ'])
 _add_row('ዠ', ['ዠ', 'ዡ', 'ዢ', 'ዣ', 'ዤ', 'ዥ', 'ዦ'])
 _add_row('የ', ['የ', 'ዩ', 'ዪ', 'ያ', 'ዬ', 'ይ', 'ዮ'])
@@ -128,7 +128,7 @@ def get_consonant_skeleton(word: str) -> str:
 
 # Laryngeal consonants (gutturals) that affect conjugation patterns
 # Base laryngeal consonants (1st order only - devowelize handles all 7 orders)
-LARYNGEALS = {'ሀ', 'ሐ', 'ኀ', 'አ', 'ዐ'}
+LARYNGEALS = {'ሀ', 'ሐ', 'ኀ', 'አ', 'ዐ', 'ዓ'}
 
 # Weak consonants (for hollow verb detection)
 WEAK_CONSONANTS = {'ወ', 'የ'}
