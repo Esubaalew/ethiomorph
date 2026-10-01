@@ -1,1361 +1,1181 @@
 <!DOCTYPE html>
-<html class="dark" lang="en">
+<html lang="en">
 <head>
-    <script>
-        if (localStorage.getItem('theme') === 'light') {
-            document.documentElement.classList.remove('dark');
-        }
-    </script>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EthioMorph - Research Platform</title>
-    <link rel="icon" type="image/svg+xml" href="favicon.svg">
-    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>EthioMorph, Ge'ez morphology</title>
+    <link rel="icon" href="favicon.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&family=Noto+Sans+Ethiopic:wght@400;500;700;900&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL@20..48,100..700,0..1&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Ethiopic:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: { extend: {
+                colors: {
+                    paper: "var(--paper)", ink: "var(--ink)", inksoft: "var(--inksoft)",
+                    muted: "var(--muted)", faint: "var(--faint)", line: "var(--line)",
+                    accent: "var(--accent)",
+                },
+                fontFamily: {
+                    serif: ["Georgia", "Times New Roman", "serif"],
+                    sans: ["-apple-system", "BlinkMacSystemFont", "Segoe UI", "sans-serif"],
+                },
+            }}
+        };
+    </script>
+    <style>
+        :root {
+            color-scheme: light;
+            --paper: #f4f1ea;
+            --ink: #1c1916;
+            --inksoft: #3e3932;
+            --muted: #6e675c;
+            --faint: #a89f91;
+            --line: #d9d1c3;
+            --accent: #7c3f36;
+        }
+        .dark {
+            color-scheme: dark;
+            --paper: #141210;
+            --ink: #f3efe6;
+            --inksoft: #d2cbc0;
+            --muted: #a3988c;
+            --faint: #6f675c;
+            --line: #3a342c;
+            --accent: #c9a097;
+        }
+        html { -webkit-font-smoothing: antialiased; background: var(--paper); }
+        body { background: var(--paper); color: var(--ink); }
+        ::selection { background: #e4dccb; color: var(--ink); }
+        .dark ::selection { background: #3a342c; color: var(--ink); }
+        :focus-visible { outline: 1px solid var(--accent); outline-offset: 3px; }
+        .col {
+            width: 100%;
+            max-width: 42rem;
+            margin-inline: auto;
+            padding-inline: 1.5rem;
+        }
+        .geez { font-family: "Noto Sans Ethiopic", Nyala, sans-serif; line-height: 1.45; }
+        .lbl {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            font-size: 11px;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: var(--muted);
+            font-weight: 500;
+        }
+        .mast-title {
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: 1.5rem;
+            font-weight: 400;
+            letter-spacing: -0.015em;
+            line-height: 1;
+            color: var(--ink);
+        }
+        .mast-sub {
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: 0.95rem;
+            line-height: 1.4;
+            color: var(--muted);
+            margin-top: 0.45rem;
+        }
+        .page-title {
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: 1.65rem;
+            font-weight: 400;
+            letter-spacing: -0.01em;
+            line-height: 1.25;
+            color: var(--ink);
+            margin: 0 0 0.45rem;
+        }
+        .lede {
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: 1.02rem;
+            line-height: 1.55;
+            color: var(--muted);
+            max-width: 36rem;
+            margin: 0 0 2.25rem;
+        }
+        .section-title {
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: 1.35rem;
+            font-weight: 400;
+            line-height: 1.3;
+            color: var(--ink);
+            margin: 0 0 0.85rem;
+        }
+        .prose-essay .section-title { margin-top: 2.5rem; }
+        .headword-block {
+            padding-top: 0.35rem;
+            padding-bottom: 1.85rem;
+            margin-bottom: 1.75rem;
+            border-bottom: 1px solid var(--line);
+        }
+        .headword {
+            font-family: "Noto Sans Ethiopic", Nyala, sans-serif;
+            font-size: 2.75rem;
+            font-weight: 400;
+            line-height: 1.35;
+            color: var(--ink);
+            margin: 0;
+        }
+        .headword + .gloss,
+        .headword + .subhead { margin-top: 0.7rem; }
+        .gloss {
+            font-family: Georgia, "Times New Roman", serif;
+            font-style: italic;
+            font-size: 1rem;
+            line-height: 1.5;
+            color: var(--muted);
+            max-width: 34rem;
+            margin: 0;
+        }
+        .subhead {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            font-size: 13px;
+            line-height: 1.4;
+            color: var(--muted);
+            margin: 0;
+        }
+        .hairline-t { border-top: 1px solid var(--line); }
+        .hairline-b { border-bottom: 1px solid var(--line); }
+        .entry-row {
+            display: grid;
+            grid-template-columns: 9.5rem 1fr;
+            gap: 1.25rem;
+            padding: 0.7rem 0;
+            border-bottom: 1px solid var(--line);
+        }
+        @media (max-width: 640px) { .entry-row { grid-template-columns: 6.5rem 1fr; gap: 0.75rem; } }
+        .word-input {
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid var(--line);
+            font-family: "Noto Sans Ethiopic", Nyala, sans-serif;
+            color: var(--ink);
+            outline: none;
+            border-radius: 0;
+            width: 100%;
+        }
+        .word-input:focus { border-bottom-color: var(--accent); }
+        .word-input:focus-visible { outline: none; }
+        .word-input::placeholder { color: var(--faint); }
+        .btn-quiet {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            font-size: 13px;
+            letter-spacing: 0.01em;
+            color: var(--ink);
+            border: none;
+            border-bottom: 1px solid var(--accent);
+            border-radius: 0;
+            padding: 0.1rem 0;
+            background: transparent;
+            cursor: pointer;
+        }
+        .btn-quiet:hover { color: var(--accent); }
+        .btn-quiet:disabled { opacity: 0.4; cursor: default; border-bottom-color: var(--line); color: var(--muted); }
+        .btn-quiet:disabled:hover { color: var(--muted); }
+        .mode-toggle {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            font-size: 12px;
+            color: var(--muted);
+            background: none;
+            border: none;
+            padding: 0;
+            cursor: pointer;
+        }
+        .mode-toggle:hover { color: var(--ink); }
+        .section-nav {
+            display: flex;
+            gap: 1.35rem;
+            overflow-x: auto;
+            margin-top: 1.75rem;
+            border-bottom: 1px solid var(--line);
+        }
+        .navlink {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            font-size: 14px;
+            color: var(--muted);
+            padding: 0 0 0.55rem;
+            margin-bottom: -1px;
+            border: none;
+            border-bottom: 1px solid transparent;
+            background: none;
+            cursor: pointer;
+            border-radius: 0;
+        }
+        .navlink:hover { color: var(--ink); }
+        .navlink.active { color: var(--ink); border-bottom-color: var(--accent); }
+        table.paradigm { width: 100%; border-collapse: collapse; border: none; }
+        table.paradigm th,
+        table.paradigm td {
+            padding: 0.5rem 1rem 0.5rem 0;
+            border: none;
+            border-bottom: 1px solid var(--line);
+            vertical-align: baseline;
+            text-align: left;
+            font-weight: 400;
+        }
+        table.paradigm th {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            font-size: 11px;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: var(--muted);
+            font-weight: 500;
+        }
+        .prose-essay { max-width: 38rem; }
+        .prose-essay p { margin-bottom: 1em; line-height: 1.65; color: var(--inksoft); }
+        .prose-essay p strong { color: var(--ink); font-weight: 600; }
+        a.quiet-link {
+            color: var(--accent);
+            text-decoration: underline;
+            text-decoration-thickness: 1px;
+            text-underline-offset: 0.18em;
+        }
+        a.quiet-link:hover { color: var(--ink); }
+    </style>
+</head>
+<body class="font-sans min-h-screen">
+    <div id="root"></div>
     <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <script src="https://d3js.org/d3.v7.min.js"></script>
-    <script src="https://cdn.tailwindcss.com?plugins=forms"></script>
-    
-    <script>
-        tailwind.config = {
-            darkMode: "class",
-            theme: {
-                extend: {
-                    colors: {
-                        primary: "var(--color-primary)",
-                        bronze: "var(--color-bronze)",
-                        surface: "var(--color-surface)",
-                        "surface-dark": "var(--color-surface-dark)",
-                        "background-dark": "var(--color-bg)",
-                        muted: "var(--color-muted)"
-                    },
-                    fontFamily: {
-                        display: ["Lexend", "Space Grotesk", "sans-serif"],
-                        ethiopic: ["Noto Sans Ethiopic", "serif"]
-                    },
-                    boxShadow: {
-                        glow: "0 0 15px rgba(255, 255, 255, 0.1)",
-                        "glow-strong": "0 0 25px rgba(255, 255, 255, 0.2)"
-                    }
-                }
-            }
-        }
-    </script>
-    <style>
-        :root {
-            --color-primary: #000000;
-            --color-bronze: #e5e5e5;
-            --color-surface: #f5f5f5;
-            --color-surface-dark: #fafafa;
-            --color-bg: #ffffff;
-            --color-muted: #666666;
-        }
-        .dark {
-            --color-primary: #ffffff;
-            --color-bronze: #333333;
-            --color-surface: #1a1a1a;
-            --color-surface-dark: #0f0f0f;
-            --color-bg: #0a0a0a;
-            --color-muted: #888888;
-        }
-        body { background: var(--color-bg); }
-        .dark body, html.dark body { background: #0a0a0a; }
-        ::-webkit-scrollbar { width: 8px; height: 8px; }
-        ::-webkit-scrollbar-track { background: #f5f5f5; }
-        .dark ::-webkit-scrollbar-track { background: #111; }
-        ::-webkit-scrollbar-thumb { background: #ccc; border-radius: 4px; }
-        .dark ::-webkit-scrollbar-thumb { background: #333; }
-        ::-webkit-scrollbar-thumb:hover { background: #999; }
-        .dark ::-webkit-scrollbar-thumb:hover { background: #444; }
-        
-        .manuscript-bg { background: transparent; }
-        .glow-text { text-shadow: none; }
-        .glow-box { box-shadow: 0 0 20px rgba(0, 0, 0, 0.05); }
-        .dark .glow-box { box-shadow: 0 0 20px rgba(255, 255, 255, 0.05); }
-        .ghost-skeleton { font-size: 10rem; opacity: 0.03; user-select: none; pointer-events: none; }
-        .subject-wheel-mask { mask-image: linear-gradient(to bottom, transparent, black 15%, black 85%, transparent); }
-        @keyframes spin-slow { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
-        .animate-spin-slow { animation: spin-slow 60s linear infinite; }
-        @keyframes skeleton-shimmer {
-            0%, 100% { opacity: 0.45; }
-            50% { opacity: 0.85; }
-        }
-        .skeleton {
-            background-color: rgba(0, 0, 0, 0.1);
-            animation: skeleton-shimmer 1.5s ease-in-out infinite;
-        }
-        .dark .skeleton { background-color: rgba(255, 255, 255, 0.12); }
-        .skeleton-surface {
-            background-color: var(--color-surface);
-            border: 1px solid var(--color-bronze);
-        }
-        .dark .skeleton-surface { background-color: var(--color-surface); }
-        .skeleton-node { fill: var(--color-surface); stroke: var(--color-bronze); stroke-width: 1; }
-        .skeleton-fill { fill: rgba(0, 0, 0, 0.1); animation: skeleton-shimmer 1.5s ease-in-out infinite; }
-        .dark .skeleton-fill { fill: rgba(255, 255, 255, 0.12); }
-        .skeleton-stroke { stroke: var(--color-bronze); stroke-opacity: 0.55; animation: skeleton-shimmer 1.5s ease-in-out infinite; }
-    </style>
-</head>
-<body class="text-muted font-display min-h-screen flex flex-col overflow-hidden">
-    <div id="root"></div>
-
     <script type="text/babel">
         const { useState, useEffect, useRef } = React;
 
         const API = {
-            analyze: async (word) => (await fetch(`/api/analyze?word=${encodeURIComponent(word)}`)).json(),
-            expand: async (root) => (await fetch(`/api/expand?root=${encodeURIComponent(root)}`)).json(),
-            expandSimple: async (root) => (await fetch(`/api/expand/simple?root=${encodeURIComponent(root)}`)).json(),
-            templates: async () => (await fetch('/api/templates')).json()
+            analyze: (word) => fetch("/api/analyze?word=" + encodeURIComponent(word)).then((r) => r.json()),
+            expand: (root) => fetch("/api/expand?root=" + encodeURIComponent(root)).then((r) => r.json()),
+            expandSimple: (root) => fetch("/api/expand/simple?root=" + encodeURIComponent(root)).then((r) => r.json()),
+            templates: () => fetch("/api/templates").then((r) => r.json()),
         };
 
-        const Icon = ({ name, className = "" }) => (
-            <span className={`material-symbols-outlined ${className}`}>{name}</span>
-        );
-
-        const Skeleton = ({ className = "", style }) => (
-            <div className={`skeleton ${className}`} style={style} aria-hidden="true" />
-        );
-        const SkeletonLine = ({ w = "w-full", h = "h-3", className = "", style }) => (
-            <Skeleton className={`${w} ${h} rounded ${className}`} style={style} />
-        );
-        const SkeletonSurface = ({ className = "", children }) => (
-            <div className={`skeleton-surface rounded-lg ${className}`}>{children}</div>
-        );
-
-        const RADIAL_LAYOUT = {
-            width: 700, height: 500, cx: 350, cy: 250,
-            branchDist: 110, itemDist: 210, itemSpread: 0.4, itemsPerBranch: 2,
-            branches: [
-                { angle: -90, label: 'TENSE' },
-                { angle: 210, label: 'DERIVED' },
-                { angle: 330, label: 'FORMS' },
-            ],
+        const SUBJECTS = ["he", "she", "you_m", "you_f", "I", "we", "they_m", "they_f", "you_pl_m", "you_pl_f"];
+        const IMPERATIVE_SUBJECTS = ["you_m", "you_f", "you_pl_m", "you_pl_f"];
+        const SUBJECT_LABEL = {
+            he: "3 m. sg.",
+            she: "3 f. sg.",
+            you_m: "2 m. sg.",
+            you_f: "2 f. sg.",
+            I: "1 sg.",
+            we: "1 pl.",
+            they_m: "3 m. pl.",
+            they_f: "3 f. pl.",
+            you_pl_m: "2 m. pl.",
+            you_pl_f: "2 f. pl.",
         };
-        const radialItemAngles = (branchAngle, count = RADIAL_LAYOUT.itemsPerBranch) =>
-            Array.from({ length: count }, (_, i) =>
-                branchAngle + (i - (count - 1) / 2) * RADIAL_LAYOUT.itemSpread
-            );
+        const TENSES = [
+            ["perfective", "Perfective"],
+            ["imperfective", "Imperfective"],
+            ["jussive", "Jussive"],
+            ["imperative", "Imperative"],
+        ];
 
-        const XRayResultsSkeleton = () => (
-            <div className="lg:col-span-12 grid grid-cols-1 lg:grid-cols-12 gap-8" aria-busy="true">
-                <section className="lg:col-span-7">
-                    <h3 className="text-muted text-xs font-bold uppercase tracking-widest mb-3">Morphological Breakdown</h3>
-                    <div className="bg-surface/50 border border-bronze/50 rounded-xl p-6 relative">
-                        <div className="absolute left-10 top-6 bottom-6 w-px bg-bronze/30" />
-                        {[
-                            { stage: 'STAGE 01: INPUT', h: 'h-14' },
-                            { stage: 'STAGE 02: AFFIX PEELING', h: 'h-14' },
-                            { stage: 'STAGE 03: ROOT IDENTIFIED', h: 'h-20' },
-                        ].map((row, i) => (
-                            <div key={i} className={`flex gap-6 relative ${i < 2 ? 'mb-6' : ''}`}>
-                                <div className="size-10 rounded-full skeleton-surface shrink-0 z-10" />
-                                <div className="flex-1">
-                                    <p className="text-xs font-mono text-muted/50 mb-2">{row.stage}</p>
-                                    <SkeletonSurface className={`p-4 ${row.h} flex items-center`}>
-                                        <SkeletonLine w="w-24" h="h-6" />
-                                    </SkeletonSurface>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                </section>
-                <section className="lg:col-span-5 space-y-4">
-                    <h3 className="text-muted text-xs font-bold uppercase tracking-widest mb-3">Lexical Data</h3>
-                    <div className="bg-surface-dark border border-bronze rounded-xl overflow-hidden">
-                        <div className="bg-surface border-b border-bronze px-5 py-3 flex justify-between items-center">
-                            <SkeletonLine w="w-16" h="h-6" />
-                            <Skeleton className="w-16 h-5 rounded" />
-                        </div>
-                        <div className="p-5 space-y-4">
-                            <div>
-                                <p className="text-xs text-muted/50 uppercase tracking-wider mb-1">Meaning</p>
-                                <SkeletonLine w="w-full" h="h-5" />
-                            </div>
-                            <div>
-                                <p className="text-xs text-muted/50 uppercase tracking-wider mb-1">Analysis Method</p>
-                                <SkeletonLine w="w-3/4" h="h-4" />
-                            </div>
-                        </div>
-                    </div>
-                    <div className="grid grid-cols-2 gap-3">
-                        {['Pattern', 'Confidence'].map(label => (
-                            <div key={label} className="bg-surface rounded-lg p-4 border border-bronze">
-                                <p className="text-xs text-muted/50 uppercase mb-2">{label}</p>
-                                <SkeletonLine w="w-16" h="h-5" />
-                            </div>
-                        ))}
-                    </div>
-                </section>
-            </div>
-        );
-
-        const MatrixGridSkeleton = () => (
-            <div className="flex-1 overflow-auto grid lg:grid-cols-4 gap-6 content-start" aria-busy="true">
-                <div className="lg:col-span-3 bg-surface-dark rounded-xl border border-bronze overflow-hidden shadow-xl h-fit">
-                    <div className="overflow-x-auto">
-                        <table className="w-full">
-                            <thead className="bg-surface border-b-2 border-primary/30">
-                                <tr>
-                                    <th className="py-4 px-5 text-left text-xs font-bold text-primary uppercase tracking-wider w-32">Subject</th>
-                                    {['Perfect', 'Imperfect', 'Jussive', 'Imperative'].map(label => (
-                                        <th key={label} className="py-4 px-5 text-left min-w-[140px]">
-                                            <span className="text-gray-900 dark:text-white text-sm font-bold block">{label}</span>
-                                            <SkeletonLine w="w-12" h="h-2" className="mt-1" />
-                                        </th>
-                                    ))}
-                                </tr>
-                            </thead>
-                            <tbody className="divide-y divide-bronze/30">
-                                {Array.from({ length: 10 }).map((_, i) => (
-                                    <tr key={i}>
-                                        <td className="py-3 px-5">
-                                            <SkeletonLine w="w-12" h="h-5" className="mb-1" />
-                                            <SkeletonLine w="w-8" h="h-2" />
-                                        </td>
-                                        {[0, 1, 2, 3].map(j => (
-                                            <td key={j} className="px-5 py-3">
-                                                <SkeletonSurface className="px-3 py-2 inline-block min-w-[80px]">
-                                                    <SkeletonLine w="w-14" h="h-5" />
-                                                </SkeletonSurface>
-                                            </td>
-                                        ))}
-                                    </tr>
-                                ))}
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-                <div className="space-y-3">
-                    <h3 className="text-xs text-muted uppercase tracking-widest font-bold">Derived Forms</h3>
-                    {['infinitive', 'active participle', 'passive participle', 'instrumental', 'verbal noun', 'abstract noun', 'causative agent'].map(key => (
-                        <div key={key} className="bg-surface-dark rounded-lg p-4 border border-bronze/50">
-                            <p className="text-[10px] text-muted/50 uppercase tracking-wider mb-2">{key}</p>
-                            <SkeletonLine w="w-16" h="h-6" />
-                        </div>
-                    ))}
-                </div>
-            </div>
-        );
-
-        const MorpherSkeleton = () => (
-            <div className="text-center" aria-busy="true">
-                <SkeletonSurface className="inline-block px-12 py-6 md:px-16 md:py-8">
-                    <SkeletonLine w="w-32 md:w-40" h="h-14 md:h-20" />
-                </SkeletonSurface>
-                <div className="mt-8 inline-block px-6 py-3 rounded-full border border-bronze bg-surface/50">
-                    <SkeletonLine w="w-52" h="h-4" />
-                </div>
-            </div>
-        );
-
-        const CompareTableSkeleton = ({ verbCount = 3, forms }) => (
-            <tbody className="divide-y divide-bronze/30" aria-busy="true">
-                {forms.map((form, fi) => (
-                    <tr key={form.key} className={fi % 2 === 0 ? 'bg-background-dark/30' : ''}>
-                        <td className="p-4 text-sm font-medium text-gray-900 dark:text-white sticky left-0 bg-surface-dark border-r border-bronze/30 z-10">
-                            {form.label}
-                        </td>
-                        {Array.from({ length: verbCount }).map((_, vi) => (
-                            <td key={vi} className="p-4 text-center">
-                                <SkeletonSurface className="px-4 py-2 inline-block min-w-[100px]">
-                                    <SkeletonLine w="w-16" h="h-6" className="mx-auto" />
-                                </SkeletonSurface>
-                            </td>
-                        ))}
-                    </tr>
-                ))}
-            </tbody>
-        );
-
-        const RadialTreeSkeleton = () => {
-            const { width, height, cx, cy, branchDist, itemDist, branches } = RADIAL_LAYOUT;
-            return (
-                <svg
-                    viewBox={`0 0 ${width} ${height}`}
-                    width="100%"
-                    height="auto"
-                    preserveAspectRatio="xMidYMid meet"
-                    className="max-w-[700px] w-full"
-                    aria-busy="true"
-                >
-                    <circle cx={cx} cy={cy} r={150} className="skeleton-fill" opacity="0.15" />
-                    <circle cx={cx} cy={cy} r={180} fill="none" className="skeleton-stroke" strokeWidth="1" strokeDasharray="5,5" />
-                    <circle cx={cx} cy={cy} r={50} className="skeleton-node" />
-                    <rect x={cx - 22} y={cy - 14} width={44} height={16} rx={3} className="skeleton-fill" />
-                    <rect x={cx - 14} y={cy + 6} width={28} height={8} rx={2} className="skeleton-fill" />
-                    {branches.map((branch) => {
-                        const rad = (branch.angle * Math.PI) / 180;
-                        const bx = cx + Math.cos(rad) * branchDist;
-                        const by = cy + Math.sin(rad) * branchDist;
-                        return (
-                            <g key={branch.label}>
-                                <line x1={cx} y1={cy} x2={bx} y2={by} className="skeleton-stroke" strokeWidth="1" strokeDasharray="4,4" />
-                                <rect x={bx - 35} y={by - 10} width={70} height={20} rx={4} className="skeleton-node" />
-                                <rect x={bx - 18} y={by - 4} width={36} height={8} rx={2} className="skeleton-fill" />
-                                {radialItemAngles(branch.angle).map((itemAngle, ii) => {
-                                    const itemRad = (itemAngle * Math.PI) / 180;
-                                    const ix = cx + Math.cos(itemRad) * itemDist;
-                                    const iy = cy + Math.sin(itemRad) * itemDist;
-                                    return (
-                                        <g key={ii}>
-                                            <line x1={bx} y1={by} x2={ix} y2={iy} className="skeleton-stroke" strokeWidth="1" opacity="0.6" />
-                                            <rect x={ix - 45} y={iy - 25} width={90} height={50} rx={8} className="skeleton-node" />
-                                            <rect x={ix - 20} y={iy - 12} width={40} height={14} rx={3} className="skeleton-fill" />
-                                            <rect x={ix - 24} y={iy + 4} width={48} height={8} rx={2} className="skeleton-fill" />
-                                        </g>
-                                    );
-                                })}
-                            </g>
-                        );
-                    })}
-                </svg>
-            );
+        const TYPE_LABELS = {
+            type_a: "Type A",
+            type_b: "Type B",
+            type_c: "Type C",
+            type_c_o: "Type C, o",
+            type_c_e: "Type C, e",
+            "type_mahräka": "Mahräka",
+            type_tanbala: "Tanbala",
+            quad_a: "Quadriliteral A",
+            quadriliteral: "Quadriliteral",
+            hollow_w: "Hollow, w",
+            hollow_y: "Hollow, y",
+            weak_initial: "Weak initial",
+            strong: "Strong",
+            type_d: "Type D",
+            type_a_passive: "Type A, passive",
+            type_a_causative: "Type A, causative",
+            type_a_aste: "Type A, አስተ",
+            type_a_reciprocal: "Type A, reciprocal",
+            particle_phrase: "Particle phrase",
+            non_lexical: "Not a word",
+            noun: "Noun",
+            derived_noun: "Derived noun",
+            merahiyan: "Pronoun",
+            unknown: "Unknown",
+        };
+        const METHOD_LABELS = {
+            order_math: "Vowel-order analysis",
+            pattern_code: "Pattern code",
+            lexicon: "Dictionary lookup",
+            lexicon_noun: "Noun lexicon",
+            particle_phrase: "Particle phrase",
+            derived: "Morphological derivation",
+            non_lexical: "Not a word",
+            closed_class: "Closed class",
+            grammar_form: "Grammar form",
         };
 
-        const PatternCardsSkeleton = () => (
-            <div aria-busy="true">
-                <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5">
-                    {Array.from({ length: 6 }).map((_, i) => (
-                        <div key={i} className="bg-surface-dark rounded-xl border border-bronze/50 p-5">
-                            <SkeletonLine w="w-32" h="h-5" className="mb-1" />
-                            <SkeletonLine w="w-full" h="h-3" className="mb-4 font-mono" />
-                            <SkeletonSurface className="p-4 flex items-center justify-center gap-3 mb-4 h-16">
-                                <SkeletonLine w="w-8" h="h-5" />
-                                <SkeletonLine w="w-12" h="h-4" />
-                                <SkeletonLine w="w-8" h="h-5" />
-                            </SkeletonSurface>
-                            <div className="flex flex-wrap gap-2">
-                                <Skeleton className="w-20 h-5 rounded" />
-                                <Skeleton className="w-20 h-5 rounded" />
-                            </div>
-                        </div>
-                    ))}
-                </div>
-                <div className="mt-10">
-                    <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-4">Available Verb Types</h2>
-                    <div className="flex flex-wrap gap-2">
-                        {Array.from({ length: 8 }).map((_, i) => (
-                            <Skeleton key={i} className="w-20 h-9 rounded-lg" />
-                        ))}
-                    </div>
-                </div>
-            </div>
+        const typeLabel = (t) => {
+            if (typeof t !== "string" || !t) return "";
+            if (TYPE_LABELS[t]) return TYPE_LABELS[t];
+            return t.replace(/^type_/, "Type ").replace(/_/g, " ");
+        };
+        const methodLabel = (m) => {
+            if (typeof m !== "string" || !m) return "";
+            return METHOD_LABELS[m] || m.replace(/_/g, " ");
+        };
+        const subjectsFor = (tense) => (tense === "imperative" ? IMPERATIVE_SUBJECTS : SUBJECTS);
+        const isPlain = (v) => typeof v === "string" || typeof v === "number";
+        const plain = (v) => (isPlain(v) ? String(v) : "");
+
+        const errorText = (data) => {
+            if (!data || data.error == null || data.error === false) return "";
+            return typeof data.error === "string" ? data.error : "The service returned an error.";
+        };
+
+        const stringList = (value) => {
+            if (typeof value === "string" && value) return [value];
+            if (!Array.isArray(value)) return [];
+            return value.filter((item) => typeof item === "string" && item);
+        };
+
+        const patternName = (pattern) => {
+            if (typeof pattern === "string") {
+                if (pattern === "Unknown/Noun" || pattern === "unknown") return "Nominal";
+                return pattern;
+            }
+            if (pattern && typeof pattern === "object") {
+                if (typeof pattern.english_name === "string" && pattern.english_name) return pattern.english_name;
+                if (typeof pattern.geez_name === "string" && pattern.geez_name) return pattern.geez_name;
+                if (typeof pattern.name === "string") return pattern.name;
+            }
+            return "";
+        };
+
+        const ordersText = (pattern) => {
+            if (!pattern || typeof pattern !== "object" || Array.isArray(pattern)) return "";
+            return Object.keys(pattern)
+                .filter((key) => isPlain(pattern[key]))
+                .map((key) => key + " " + pattern[key])
+                .join(", ");
+        };
+
+        const wordOf = (value) => {
+            if (typeof value === "string") return value;
+            if (value && typeof value === "object" && typeof value.word === "string") return value.word;
+            return "";
+        };
+
+        const Page = ({ title, lede, children }) => (
+            <article className="col pt-10 pb-16">
+                <h1 className="page-title">{title}</h1>
+                {lede ? <p className="lede">{lede}</p> : null}
+                {children}
+            </article>
         );
 
-        const RootInput = ({ value, onChange, onSubmit, loading, label = 'Root Input', submitLabel = 'Expand', submitIcon = 'play_arrow', showLabel = true, className = '' }) => (
-            <div className={className}>
-                {showLabel && <p className="text-xs text-muted/50 uppercase tracking-widest mb-2">{label}</p>}
-                <div className="flex gap-2 items-center">
+        const Fault = ({ children }) => (
+            <p className="font-serif italic text-inksoft hairline-t pt-4">{children}</p>
+        );
+
+        const RootField = ({ id, label, value, onChange, onSubmit, busy, action }) => (
+            <form
+                className="flex items-end gap-4 mb-10"
+                onSubmit={(event) => { event.preventDefault(); if (!busy && value.trim()) onSubmit(); }}
+            >
+                <div className="flex-1 max-w-xs">
+                    <label className="lbl block mb-2" htmlFor={id}>{label}</label>
                     <input
-                        type="text"
+                        id={id}
+                        className="word-input text-3xl py-1"
                         value={value}
-                        onChange={onChange}
-                        onKeyPress={(e) => e.key === 'Enter' && !loading && onSubmit()}
-                        className="bg-surface border border-bronze rounded-lg px-4 py-2.5 text-2xl font-ethiopic w-32 text-center text-gray-900 dark:text-white focus:outline-none focus:border-primary"
+                        onChange={(event) => onChange(event.target.value)}
+                        spellCheck="false"
+                        autoCapitalize="off"
                     />
-                    <button
-                        onClick={onSubmit}
-                        disabled={loading || !value.trim()}
-                        className="px-4 py-2.5 bg-primary text-background-dark font-bold rounded-lg flex items-center gap-2 disabled:opacity-50 transition-opacity"
-                    >
-                        <Icon name={loading ? 'progress_activity' : submitIcon} className={`text-lg ${loading ? 'animate-spin-slow' : ''}`} />
-                        <span>{submitLabel}</span>
-                    </button>
                 </div>
-            </div>
+                <button className="btn-quiet shrink-0" type="submit" disabled={busy || !value.trim()}>
+                    {busy ? "Working" : action}
+                </button>
+            </form>
         );
 
-        // Navigation Component
-        const Nav = ({ activeTab, setActiveTab }) => {
-            const tabs = [
-                { id: 'xray', label: 'Analyze', icon: 'search' },
-                { id: 'matrix', label: 'Multiplier', icon: 'grid_view' },
-                { id: 'slider', label: 'Morpher', icon: 'tune' },
-                { id: 'compare', label: 'Compare', icon: 'compare' },
-                { id: 'radial', label: 'Root Tree', icon: 'account_tree' },
-                { id: 'patterns', label: 'Patterns', icon: 'category' }
-            ];
-
-            const titles = {
-                xray: 'X-Ray Feed', matrix: 'Multiplier Grid', slider: 'Subject Morpher',
-                compare: 'Compare Matrix', radial: 'Root Tree', patterns: 'Pattern Library'
-            };
-
+        const Paradigm = ({ title, tense, forms, variants }) => {
+            const bucket = variants && typeof variants === "object" ? variants[tense] : null;
+            const rows = subjectsFor(tense)
+                .filter((key) => forms && typeof forms[key] === "string" && forms[key])
+                .map((key) => ({
+                    key,
+                    word: forms[key],
+                    alts: stringList(bucket && bucket[key]).filter((alt) => alt !== forms[key]),
+                }));
+            if (!rows.length) return null;
             return (
-                <header className="flex-none border-b border-bronze bg-surface-dark px-6 py-3 z-50">
-                    <div className="flex items-center justify-between">
-                        <div className="flex items-center gap-8">
-                            <div className="flex items-center gap-3 text-gray-900 dark:text-white">
-                                <div className="size-9 rounded-lg bg-primary/10 flex items-center justify-center text-primary">
-                                    <Icon name="translate" className="text-2xl" />
-                                </div>
-                                <div>
-                                    <h2 className="text-gray-900 dark:text-white text-lg font-bold tracking-tight leading-none">EthioMorph</h2>
-                                    <span className="text-xs text-primary/70">{titles[activeTab]}</span>
-                                </div>
-                            </div>
-                            <nav className="hidden md:flex items-center gap-1 bg-surface p-1 rounded-lg border border-bronze">
-                                {tabs.map(tab => (
-                                    <button
-                                        key={tab.id}
-                                        onClick={() => setActiveTab(tab.id)}
-                                        className={`px-3 py-1.5 rounded text-sm font-medium flex items-center gap-1.5 transition-all ${
-                                            activeTab === tab.id 
-                                                ? 'bg-primary text-background-dark font-bold' 
-                                                : 'text-muted hover:text-gray-900 dark:text-white'
-                                        }`}
-                                    >
-                                        <Icon name={tab.icon} className="text-base" />
-                                        <span className="hidden lg:inline">{tab.label}</span>
-                                    </button>
-                                ))}
-                            </nav>
-                        </div>
-                    <div className="flex items-center gap-3">
-                            <button 
-                                onClick={() => {
-                                    document.documentElement.classList.toggle('dark');
-                                    localStorage.setItem('theme', document.documentElement.classList.contains('dark') ? 'dark' : 'light');
-                                }} 
-                                className="size-9 rounded-full bg-surface hover:bg-bronze flex items-center justify-center border border-bronze transition-colors" 
-                                title="Toggle theme"
-                            >
-                                <Icon name="contrast" className="text-lg" />
-                            </button>
-                            <a href="/api/health" target="_blank" className="hidden md:flex size-9 rounded-full bg-surface hover:bg-bronze items-center justify-center border border-bronze transition-colors" title="API Health">
-                                <Icon name="monitor_heart" className="text-lg" />
-                            </a>
-                            <a href="/api/templates" target="_blank" className="hidden md:flex size-9 rounded-full bg-surface hover:bg-bronze items-center justify-center border border-bronze transition-colors" title="Templates JSON">
-                                <Icon name="data_object" className="text-lg" />
-                            </a>
-                        </div>
-                    </div>
-                </header>
+                <section className="mb-10">
+                    <h2 className="lbl mb-2">{title}</h2>
+                    <table className="paradigm">
+                        <tbody>
+                            {rows.map((row) => (
+                                <tr key={row.key}>
+                                    <td className="text-muted text-sm w-28">{SUBJECT_LABEL[row.key]}</td>
+                                    <td className="geez text-xl">
+                                        {row.word}
+                                        {row.alts.length ? (
+                                            <span className="text-muted text-base ml-3">{row.alts.join(", ")}</span>
+                                        ) : null}
+                                    </td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                </section>
             );
         };
 
-        // Mobile Bottom Navigation
-        const MobileNav = ({ activeTab, setActiveTab }) => {
-            const tabs = [
-                { id: 'xray', label: 'Analyze', icon: 'search' },
-                { id: 'matrix', label: 'Grid', icon: 'grid_view' },
-                { id: 'slider', label: 'Morph', icon: 'tune' },
-                { id: 'compare', label: 'Compare', icon: 'compare' },
-                { id: 'radial', label: 'Tree', icon: 'account_tree' },
-                { id: 'patterns', label: 'Patterns', icon: 'category' },
-            ];
+        const DerivedList = ({ derived }) => {
+            if (!derived || typeof derived !== "object" || Array.isArray(derived)) return null;
+            const rows = Object.keys(derived).map((key) => {
+                const value = derived[key];
+                const word = wordOf(value);
+                if (!word) return null;
+                let note = "";
+                if (value && typeof value === "object") {
+                    if (typeof value.meaning === "string") note = value.meaning;
+                    else if (typeof value.template === "string") note = value.template;
+                }
+                return { key, word, note };
+            }).filter(Boolean);
+            if (!rows.length) return null;
             return (
-                <nav className="md:hidden fixed bottom-0 left-0 right-0 bg-surface-dark border-t border-bronze z-50">
-                    <div className="flex flex-nowrap justify-around items-center py-2 overflow-x-auto">
-                        {tabs.map(tab => (
-                            <button
-                                key={tab.id}
-                                onClick={() => setActiveTab(tab.id)}
-                                className={`flex flex-col items-center gap-0.5 px-2 py-1 rounded-lg transition-all shrink-0 ${
-                                    activeTab === tab.id 
-                                        ? 'text-primary' 
-                                        : 'text-muted'
-                                }`}
-                            >
-                                <Icon name={tab.icon} className={`text-xl ${activeTab === tab.id ? 'text-primary' : ''}`} />
-                                <span className="text-[9px] font-medium">{tab.label}</span>
-                            </button>
-                        ))}
-                </div>
-            </nav>
+                <section className="mb-10">
+                    <h2 className="lbl mb-2">Derived</h2>
+                    <table className="paradigm">
+                        <tbody>
+                            {rows.map((row) => (
+                                <tr key={row.key}>
+                                    <td className="text-muted text-sm w-40">{typeLabel(row.key) || row.key.replace(/_/g, " ")}</td>
+                                    <td>
+                                        <span className="geez text-xl">{row.word}</span>
+                                        {row.note ? <span className="font-serif italic text-muted text-sm ml-3">{row.note}</span> : null}
+                                    </td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                </section>
             );
         };
 
-        // X-Ray Tab - Morphological Analysis
-        const XRayTab = () => {
-            const [word, setWord] = useState('አግብርት');
+        const NominalList = ({ nominals }) => {
+            if (!Array.isArray(nominals)) return null;
+            const rows = nominals.map((entry, index) => {
+                if (typeof entry === "string" && entry) return { index, word: entry, meaning: "" };
+                if (entry && typeof entry === "object" && typeof entry.word === "string") {
+                    return {
+                        index,
+                        word: entry.word,
+                        meaning: typeof entry.meaning === "string" ? entry.meaning : "",
+                    };
+                }
+                return null;
+            }).filter(Boolean);
+            if (!rows.length) return null;
+            return (
+                <section className="mb-10">
+                    <h2 className="lbl mb-2">Lexicon nominals</h2>
+                    <table className="paradigm">
+                        <tbody>
+                            {rows.map((row) => (
+                                <tr key={row.index}>
+                                    <td className="geez text-xl">{row.word}</td>
+                                    <td className="gloss">{row.meaning}</td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                </section>
+            );
+        };
+
+        const AnalyzerTab = () => {
+            const [word, setWord] = useState("አዝጋብርት");
             const [result, setResult] = useState(null);
             const [loading, setLoading] = useState(false);
+            const [fault, setFault] = useState("");
 
             const analyze = async () => {
                 if (!word.trim()) return;
                 setLoading(true);
-                try { setResult(await API.analyze(word)); } catch (e) { console.error(e); }
-                setLoading(false);
-            };
-
-            return (
-                <div className="flex-1 overflow-auto manuscript-bg">
-                    <div className="max-w-[1280px] mx-auto p-6 lg:p-10 grid grid-cols-1 lg:grid-cols-12 gap-8">
-                        {/* Input Section */}
-                        <section className="lg:col-span-12">
-                            <h3 className="text-muted text-xs font-bold uppercase tracking-widest mb-3">Scriptorium Input</h3>
-                            <div className="rounded-xl overflow-hidden shadow-2xl border border-bronze">
-                                <div className="flex bg-surface px-4 py-3 border-b border-bronze justify-between items-center">
-                                    <div className="flex items-center gap-2 text-muted/50">
-                                        <Icon name="keyboard" className="text-sm" />
-                                        <span className="text-xs font-mono">GEEZ_INPUT_MODE: ACTIVE</span>
-                                    </div>
-                                    <div className="flex gap-2">
-                                        <div className="size-3 rounded-full bg-red-500/30 border border-red-500/50"></div>
-                                        <div className="size-3 rounded-full bg-primary/30 border border-primary/50"></div>
-                                        <div className="size-3 rounded-full bg-green-500/30 border border-green-500/50"></div>
-                                    </div>
-                                </div>
-                                <div className="relative">
-                                    <textarea 
-                                value={word}
-                                onChange={(e) => setWord(e.target.value)}
-                                        onKeyPress={(e) => e.key === 'Enter' && !e.shiftKey && (e.preventDefault(), analyze())}
-                                        className="w-full resize-none bg-surface-dark border-none focus:ring-0 min-h-[140px] p-6 text-4xl lg:text-5xl font-ethiopic text-gray-900 dark:text-white placeholder-muted/30"
-                                        placeholder="Enter Ge'ez text..."
-                                        spellCheck="false"
-                                    />
-                                    <div className="absolute bottom-4 right-4">
-                            <button
-                                onClick={analyze}
-                                disabled={loading}
-                                            className="flex items-center gap-2 px-6 py-2.5 bg-primary hover:bg-gray-200 text-background-dark text-sm font-bold rounded-lg transition-all disabled:opacity-50"
-                            >
-                                <Icon name="arrow_forward" />
-                                            {loading ? 'Analyzing...' : 'Analyze Sequence'}
-                            </button>
-                                    </div>
-                                </div>
-                                <div className="bg-surface px-4 py-2 border-t border-bronze">
-                                    <div className="flex gap-4 text-xs text-muted/50 font-mono">
-                                        <span>Ln 1, Col {word.length}</span>
-                                        <span>UTF-8</span>
-                                        <span>Ethiopic Classic</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </section>
-
-                        {loading && <XRayResultsSkeleton />}
-
-                        {!loading && result && !result.error && (
-                            <>
-                                {/* Morphological Breakdown */}
-                                <section className="lg:col-span-7">
-                                    <h3 className="text-muted text-xs font-bold uppercase tracking-widest mb-3">Morphological Breakdown</h3>
-                                    <div className="bg-surface/50 border border-bronze/50 rounded-xl p-6 relative">
-                                        <div className="absolute left-10 top-6 bottom-6 w-px bg-bronze/30"></div>
-                                        
-                                        {/* Input Stage */}
-                                        <div className="flex gap-6 mb-6 relative">
-                                            <div className="size-10 rounded-full bg-surface border-2 border-bronze flex items-center justify-center z-10">
-                                                <Icon name="input" className="text-gray-900 dark:text-white" />
-                                            </div>
-                                            <div className="flex-1">
-                                                <p className="text-xs font-mono text-muted/50 mb-2">STAGE 01: INPUT</p>
-                                                <div className="bg-surface-dark border border-bronze rounded-lg p-4 flex justify-between items-center">
-                                                    <span className="text-2xl font-bold font-ethiopic text-gray-900 dark:text-white">{result.input}</span>
-                                                    <span className="text-xs text-muted/50">Original Token</span>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        {/* Particle Breakdown */}
-                                        {result.analysis?.method === 'particle_phrase' && result.analysis?.particles?.length > 0 && (
-                                            <div className="flex gap-6 mb-6 relative">
-                                                <div className="size-10 rounded-full bg-surface border-2 border-cyan-400/50 flex items-center justify-center z-10">
-                                                    <Icon name="segment" className="text-cyan-400" />
-                                                </div>
-                                                <div className="flex-1">
-                                                    <p className="text-xs font-mono text-muted/50 mb-2">STAGE 02: PARTICLE BREAKDOWN</p>
-                                                    <div className="space-y-2">
-                                                        {result.analysis.particles.map((particle, i) => (
-                                                            <div key={i} className="bg-surface-dark border border-bronze rounded-lg p-3 flex justify-between items-center hover:border-cyan-400/30 transition-colors">
-                                                                <div className="flex items-center gap-3">
-                                                                    <span className="font-bold font-ethiopic text-lg text-cyan-400">{particle.form}</span>
-                                                                    <span className="text-sm text-muted/50">{particle.meaning}</span>
-                                                                </div>
-                                                                <span className="text-[10px] font-bold uppercase px-2 py-1 rounded bg-bronze/50 text-muted">
-                                                                    {particle.english_type}
-                                                                </span>
-                                                            </div>
-                                                        ))}
-                                                    </div>
-                                                    {result.analysis.flow && (
-                                                        <p className="text-xs text-muted/60 mt-3 font-mono">{result.analysis.flow}</p>
-                                                    )}
-                                                </div>
-                                            </div>
-                                        )}
-
-                                        {/* Affix Stripping */}
-                                        {result.derivation_path?.filter(s => s.action?.includes('strip')).length > 0 && (
-                                            <div className="flex gap-6 mb-6 relative">
-                                                <div className="size-10 rounded-full bg-surface border-2 border-primary/50 flex items-center justify-center z-10">
-                                                    <Icon name="content_cut" className="text-primary" />
-                                                </div>
-                                                <div className="flex-1">
-                                                    <p className="text-xs font-mono text-muted/50 mb-2">STAGE 02: AFFIX PEELING</p>
-                                                    <div className="space-y-2">
-                                                        {result.derivation_path.filter(s => s.action?.includes('strip')).map((step, i) => (
-                                                            <div key={i} className="bg-surface-dark border border-bronze rounded-lg p-3 flex justify-between items-center hover:border-primary/30 transition-colors">
-                                                                <div className="flex items-center gap-3">
-                                                                    <span className={`font-bold font-ethiopic text-lg ${step.action?.includes('prefix') ? 'text-cyan-400' : 'text-red-400'}`}>
-                                                                        {step.affix}
-                                                                    </span>
-                                                                    <span className="text-sm text-muted/50">{step.rule?.split("'")[1] || 'Affix'}</span>
-                                                                </div>
-                                                                <span className="text-[10px] font-bold uppercase px-2 py-1 rounded bg-bronze/50 text-muted">
-                                                                    {step.action?.includes('prefix') ? 'Prefix' : 'Suffix'}
-                                                                </span>
-                                                            </div>
-                                                        ))}
-                                                    </div>
-                            </div>
-                        </div>
-                    )}
-
-                                        {/* Root Identified */}
-                                        <div className="flex gap-6 relative">
-                                            <div className="size-10 rounded-full bg-primary/20 border-2 border-primary flex items-center justify-center z-10">
-                                                <Icon name="diamond" className="text-primary" />
-                                            </div>
-                                            <div className="flex-1">
-                                                <p className="text-xs font-mono text-primary mb-2">
-                                                    {result.analysis?.method === 'particle_phrase' ? 'STAGE 03: PHRASE IDENTIFIED' : 'STAGE 03: ROOT IDENTIFIED'}
-                                                </p>
-                                                <div className="bg-surface-dark border-2 border-primary/50 rounded-xl p-5 glow-box relative overflow-hidden">
-                                                    <div className="absolute inset-0 opacity-5" style={{backgroundImage: 'radial-gradient(#000000 1px, transparent 1px)', backgroundSize: '10px 10px'}}></div>
-                                                    <div className="relative flex justify-between items-center">
-                                                        <div>
-                                                            <p className="text-3xl font-bold font-ethiopic text-primary">{result.root}</p>
-                                                            <p className="text-sm text-gray-900 dark:text-white mt-1">
-                                                                {result.analysis?.method === 'particle_phrase'
-                                                                    ? `${result.analysis?.pattern?.english_name} (${result.analysis?.particles?.map(p => p.form).join(' · ')})`
-                                                                    : `${result.root_type?.replace(/_/g, ' ')} (${result.root?.split('').join('-')})`}
-                                                            </p>
-                                                        </div>
-                                                        <div className="size-12 rounded-full bg-primary/10 flex items-center justify-center">
-                                                            <Icon name="check_circle" className="text-primary text-2xl" />
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </section>
-
-                                {/* Lexical Data */}
-                                <section className="lg:col-span-5 space-y-4">
-                                    <h3 className="text-muted text-xs font-bold uppercase tracking-widest mb-3">Lexical Data</h3>
-                                    <div className="bg-surface-dark border border-bronze rounded-xl overflow-hidden">
-                                        <div className="bg-surface border-b border-bronze px-5 py-3 flex justify-between items-center">
-                                            <span className="text-xl font-bold text-gray-900 dark:text-white font-ethiopic">{result.root}</span>
-                                            <span className="text-[10px] font-bold uppercase px-2 py-1 rounded bg-primary/20 text-primary border border-primary/30">
-                                                {result.root_type?.replace('type_', 'TYPE ')}
-                                            </span>
-                                        </div>
-                                        <div className="p-5">
-                                            {result.meaning && (
-                                                <div className="mb-6">
-                                                    <p className="text-xs text-muted/50 uppercase tracking-wider mb-1">Meaning</p>
-                                                    <p className="text-gray-900 dark:text-white text-lg">{result.meaning}</p>
-                                                </div>
-                                            )}
-                                            <div>
-                                                <p className="text-xs text-muted/50 uppercase tracking-wider mb-1">Analysis Method</p>
-                                                <p className="text-gray-900 dark:text-white">{result.analysis?.method}</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="grid grid-cols-2 gap-3">
-                                        <div className="bg-surface rounded-lg p-4 border border-bronze">
-                                            <p className="text-xs text-muted/50 uppercase">Pattern</p>
-                                            <p className="text-gray-900 dark:text-white text-lg font-bold">{result.analysis?.pattern?.english_name || '-'}</p>
-                                        </div>
-                                        <div className="bg-surface rounded-lg p-4 border border-bronze">
-                                            <p className="text-xs text-muted/50 uppercase">Confidence</p>
-                                            <p className="text-primary text-lg font-bold font-mono">{Math.round((result.confidence || 0) * 100)}%</p>
-                                        </div>
-                                    </div>
-                                </section>
-                            </>
-                        )}
-                    </div>
-                </div>
-            );
-        };
-
-        // Matrix Tab - Conjugation Grid with Subject Wheel
-        const MatrixTab = () => {
-            const [root, setRoot] = useState('ቀተለ');
-            const [data, setData] = useState(null);
-            const [loading, setLoading] = useState(true);
-            const [selectedSubject, setSelectedSubject] = useState(0);
-
-            const SUBJECTS = [
-                { key: 'he', geez: 'ውእቱ', en: 'He', label: '3SM' },
-                { key: 'she', geez: 'ይእቲ', en: 'She', label: '3SF' },
-                { key: 'they_m', geez: 'ውእቶሙ', en: 'They M', label: '3PM' },
-                { key: 'they_f', geez: 'ውእቶን', en: 'They F', label: '3PF' },
-                { key: 'you_m', geez: 'አንተ', en: 'You M', label: '2SM' },
-                { key: 'you_f', geez: 'አንቲ', en: 'You F', label: '2SF' },
-                { key: 'you_pl_m', geez: 'አንትሙ', en: 'You pl M', label: '2PM' },
-                { key: 'you_pl_f', geez: 'አንትን', en: 'You pl F', label: '2PF' },
-                { key: 'I', geez: 'አነ', en: 'I', label: '1S' },
-                { key: 'we', geez: 'ንሕነ', en: 'We', label: '1P' }
-            ];
-
-            const TENSES = [
-                { key: 'perfective', geez: 'ቀዳማይ', en: 'Perfect' },
-                { key: 'imperfective', geez: 'ካልኣይ', en: 'Imperfect' },
-                { key: 'jussive', geez: 'ሣልሳይ', en: 'Jussive' },
-                { key: 'imperative', geez: 'ትእዛዝ', en: 'Imperative' }
-            ];
-
-            const expand = async () => {
-                if (!root.trim()) return;
-                setLoading(true);
-                try { setData(await API.expandSimple(root)); } catch (e) { console.error(e); }
-                setLoading(false);
-            };
-
-            useEffect(() => { expand(); }, []);
-
-            return (
-                <div className="flex-1 flex flex-col lg:flex-row overflow-hidden manuscript-bg">
-                    {/* Left Sidebar - Subject Wheel */}
-                    <aside className="w-full lg:w-72 flex-none bg-surface-dark border-b lg:border-b-0 lg:border-r border-bronze flex flex-col z-10">
-                        <div className="p-5 border-b border-bronze">
-                            <RootInput
-                                value={root}
-                                onChange={(e) => setRoot(e.target.value)}
-                                onSubmit={expand}
-                                loading={loading}
-                                submitLabel="Expand"
-                                submitIcon="grid_view"
-                            />
-                        </div>
-                        <div className="p-5 border-b border-bronze">
-                            <span className="text-xs font-bold tracking-widest text-primary uppercase">Subject Control</span>
-                            <h3 className="text-gray-900 dark:text-white text-lg font-bold mt-1">Grammatical Person</h3>
-                            <p className="text-sm text-muted/50 mt-1">Select subject to filter grid.</p>
-                        </div>
-                        
-                        {/* Subject Wheel */}
-                        <div className="flex-1 flex flex-col items-center justify-center relative p-4 lg:p-8">
-                            {/* Decorative rings */}
-                            <div className="absolute inset-0 flex items-center justify-center opacity-10 pointer-events-none">
-                                <div className="w-56 h-56 rounded-full border border-primary border-dashed animate-spin-slow"></div>
-                                <div className="absolute w-40 h-40 rounded-full border border-white/20"></div>
-                            </div>
-                            
-                            {/* Wheel */}
-                            <div className="relative w-48 h-48 rounded-full border-4 border-bronze bg-surface-dark shadow-2xl flex items-center justify-center">
-                                <div className="absolute z-20 w-14 h-14 rounded-full bg-gradient-to-br from-bronze to-surface-dark border border-bronze/50 flex items-center justify-center shadow-lg">
-                                    <Icon name="api" className="text-primary text-2xl" />
-                                </div>
-                                
-                                {/* Subject labels around wheel */}
-                                {SUBJECTS.slice(0, 6).map((subj, i) => {
-                                    const angle = (i * 60 - 90) * Math.PI / 180;
-                                    const x = Math.cos(angle) * 75;
-                                    const y = Math.sin(angle) * 75;
-                                    const isActive = selectedSubject === i;
-                                    
-                                    return (
-                                        <button
-                                            key={subj.key}
-                                            onClick={() => setSelectedSubject(i)}
-                                            className={`absolute flex flex-col items-center transition-all ${isActive ? 'scale-110' : 'opacity-50 hover:opacity-80'}`}
-                                            style={{ transform: `translate(${x}px, ${y}px)` }}
-                                        >
-                                            <span className={`font-ethiopic font-bold ${isActive ? 'text-primary text-lg' : 'text-muted'}`}>{subj.geez}</span>
-                                            <span className={`text-[9px] uppercase ${isActive ? 'text-primary font-bold' : 'text-muted/50'}`}>{subj.label}</span>
-                                        </button>
-                                    );
-                                })}
-                            </div>
-                            
-                            {/* Additional subjects below */}
-                            <div className="mt-6 grid grid-cols-4 gap-2 w-full">
-                                {SUBJECTS.slice(6).map((subj, i) => {
-                                    const idx = i + 6;
-                                    const isActive = selectedSubject === idx;
-                                    return (
-                                        <button
-                                            key={subj.key}
-                                            onClick={() => setSelectedSubject(idx)}
-                                            className={`p-2 rounded-lg border text-center transition-all ${isActive ? 'border-primary bg-primary/10 text-primary' : 'border-bronze/50 text-muted/50 hover:border-bronze'}`}
-                                        >
-                                            <span className="font-ethiopic text-sm block">{subj.geez}</span>
-                                            <span className="text-[8px] uppercase">{subj.label}</span>
-                                        </button>
-                                    );
-                                })}
-                            </div>
-                        </div>
-                    </aside>
-
-                    {/* Main Grid */}
-                    <main className="flex-1 min-w-0 overflow-hidden flex flex-col p-6">
-                        <div className="mb-6 flex-none">
-                            <h1 className="text-2xl font-bold text-gray-900 dark:text-white flex items-baseline gap-3">
-                                Root: <span className="text-primary font-ethiopic">{root}</span>
-                                {data?._meta?.meaning && <span className="text-base font-normal text-muted">({data._meta?.meaning})</span>}
-                            </h1>
-                            <p className="text-muted/70 text-sm mt-1">Morphological Expansion Grid • Showing all subjects</p>
-                        </div>
-
-                        {(loading || !data) ? (
-                            <MatrixGridSkeleton />
-                        ) : data && !data.error && (
-                            <div className="flex-1 overflow-auto grid lg:grid-cols-4 gap-6 content-start">
-                                <div className="lg:col-span-3 bg-surface-dark rounded-xl border border-bronze overflow-hidden shadow-xl h-fit">
-                                    <div className="overflow-x-auto">
-                                        <table className="w-full">
-                                            <thead className="bg-surface border-b-2 border-primary/30">
-                                                <tr>
-                                                    <th className="py-4 px-5 text-left text-xs font-bold text-primary uppercase tracking-wider w-32">Subject</th>
-                                                    {TENSES.map(t => (
-                                                        <th key={t.key} className="py-4 px-5 text-left min-w-[140px]">
-                                                            <span className="text-gray-900 dark:text-white text-sm font-bold block">{t.en}</span>
-                                                            <span className="font-ethiopic text-xs text-primary/70">{t.geez}</span>
-                                                        </th>
-                                                    ))}
-                                                </tr>
-                                            </thead>
-                                            <tbody className="divide-y divide-bronze/30">
-                                                {SUBJECTS.map((subj, i) => (
-                                                    <tr key={subj.key} className={`transition-colors ${selectedSubject === i ? 'bg-primary/5' : 'hover:bg-surface/50'}`}>
-                                                        <td className="py-3 px-5">
-                                                            <span className="font-ethiopic text-lg text-gray-900 dark:text-white">{subj.geez}</span>
-                                                            <span className="text-xs text-muted/50 block">{subj.en}</span>
-                                                        </td>
-                                                        {TENSES.map(t => (
-                                                            <td key={t.key} className="px-5 py-3">
-                                                                <span className="font-ethiopic text-xl text-gray-900 dark:text-white">
-                                                                    {data?.[t.key]?.[subj.key] || '—'}
-                                                                </span>
-                                                                {data?.variants?.[t.key]?.[subj.key]?.length > 0 && (
-                                                                    <span className="block font-ethiopic text-sm text-muted/60 mt-1">
-                                                                        {data.variants[t.key][subj.key].join(' · ')}
-                                                                    </span>
-                                                                )}
-                                                            </td>
-                                                        ))}
-                                                    </tr>
-                                                ))}
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-
-                                {/* Derived Forms Sidebar */}
-                                <div className="space-y-3">
-                                    <h3 className="text-xs text-muted uppercase tracking-widest font-bold">Derived Forms</h3>
-                                    {data?.derived && Object.entries(data.derived).map(([key, word]) => (
-                                        <div key={key} className="bg-surface-dark rounded-lg p-4 border border-bronze/50 hover:border-primary/30 transition-all">
-                                            <p className="text-[10px] text-muted/50 uppercase tracking-wider">{key.replace(/_/g, ' ')}</p>
-                                            <p className="font-ethiopic text-xl text-gray-900 dark:text-white">{word}</p>
-                                        </div>
-                                    ))}
-                                </div>
-                            </div>
-                        )}
-                    </main>
-                </div>
-            );
-        };
-
-        // Slider Tab - Subject Morpher
-        const SliderTab = () => {
-            const [root, setRoot] = useState('ቀተለ');
-            const [tense, setTense] = useState('perfective');
-            const [subjectIndex, setSubjectIndex] = useState(0);
-            const [data, setData] = useState(null);
-            const [loading, setLoading] = useState(true);
-
-            const SUBJECTS = [
-                { key: 'he', geez: 'ውእቱ', en: 'He', label: '3SM' },
-                { key: 'she', geez: 'ይእቲ', en: 'She', label: '3SF' },
-                { key: 'they_m', geez: 'ውእቶሙ', en: 'They M', label: '3PM' },
-                { key: 'they_f', geez: 'ውእቶን', en: 'They F', label: '3PF' },
-                { key: 'you_m', geez: 'አንተ', en: 'You M', label: '2SM' },
-                { key: 'you_f', geez: 'አንቲ', en: 'You F', label: '2SF' },
-                { key: 'you_pl_m', geez: 'አንትሙ', en: 'You pl M', label: '2PM' },
-                { key: 'you_pl_f', geez: 'አንትን', en: 'You pl F', label: '2PF' },
-                { key: 'I', geez: 'አነ', en: 'I', label: '1S' },
-                { key: 'we', geez: 'ንሕነ', en: 'We', label: '1P' }
-            ];
-
-            const expand = async () => {
-                if (!root.trim()) return;
-                setLoading(true);
-                try { setData(await API.expandSimple(root)); } catch(e) { console.error(e); }
-                setLoading(false);
-            };
-
-            useEffect(() => { expand(); }, []);
-
-            const currentSubject = SUBJECTS[subjectIndex];
-            const currentWord = data?.[tense]?.[currentSubject.key] || '—';
-            const currentVariants = data?.variants?.[tense]?.[currentSubject.key] || [];
-
-            return (
-                <main className="flex-1 relative overflow-hidden manuscript-bg">
-                    {!loading && data && (
-                        <div className="ghost-skeleton absolute inset-0 flex items-center justify-center text-gray-900 dark:text-white font-ethiopic">{root}</div>
-                    )}
-                    
-                    <div className="relative z-10 h-full flex flex-col p-4 sm:p-8">
-                        {/* Top Controls */}
-                        <div className="flex flex-col gap-4 sm:flex-row sm:justify-between sm:items-start mb-auto">
-                            <RootInput
-                                value={root}
-                                onChange={(e) => setRoot(e.target.value)}
-                                onSubmit={expand}
-                                loading={loading}
-                                submitLabel="Load"
-                                submitIcon="tune"
-                                className="w-full sm:w-auto"
-                            />
-
-                            {/* Tense Selector */}
-                            <div className="bg-surface/80 backdrop-blur border border-bronze rounded-xl p-4 w-full sm:w-auto shrink-0">
-                                <p className="text-[10px] text-muted/50 uppercase tracking-widest mb-3">Tense</p>
-                                <div className="grid grid-cols-2 gap-2">
-                                    {['perfective', 'imperfective', 'jussive', 'imperative'].map(t => (
-                                        <button 
-                                            key={t}
-                                            onClick={() => setTense(t)}
-                                            className={`px-3 py-2 rounded-lg text-[11px] font-bold uppercase transition-all ${
-                                                tense === t ? 'bg-primary text-background-dark' : 'bg-bronze/50 text-muted hover:text-gray-900 dark:text-white'
-                                            }`}
-                                        >
-                                            {t}
-                                        </button>
-                                    ))}
-                                </div>
-                            </div>
-                        </div>
-
-                        {/* Center Display */}
-                        <div className="flex-1 flex items-center justify-center">
-                            {(loading || !data) ? (
-                                <MorpherSkeleton />
-                            ) : (
-                            <div className="text-center">
-                                <div className="text-7xl md:text-8xl lg:text-9xl font-bold font-ethiopic text-primary transition-all duration-300">
-                                    {currentWord}
-                                </div>
-                                {currentVariants.length > 0 && (
-                                    <div className="mt-4">
-                                        <p className="text-[10px] text-muted/50 uppercase tracking-widest mb-2">collapsed</p>
-                                        <div className="flex flex-wrap justify-center gap-3">
-                                            {currentVariants.map((variant) => (
-                                                <span key={variant} className="font-ethiopic text-2xl md:text-3xl text-muted/80">{variant}</span>
-                                            ))}
-                                        </div>
-                                    </div>
-                                )}
-                                <div className="mt-8">
-                                    <span className="inline-block px-6 py-3 rounded-full border border-bronze bg-surface/50 backdrop-blur text-sm uppercase tracking-widest">
-                                        {tense} • <span className="text-gray-900 dark:text-white font-bold">{currentSubject.en}</span> • <span className="font-ethiopic text-primary">{currentSubject.geez}</span>
-                                    </span>
-                                </div>
-                            </div>
-                            )}
-                            </div>
-
-                        {/* Bottom Subject Slider */}
-                        <div className="mt-auto">
-                            <p className="text-xs text-muted/50 uppercase tracking-widest text-center mb-4">Subject Selector</p>
-                            <div className="overflow-x-auto -mx-2 px-2">
-                            <div className="flex flex-nowrap justify-start gap-2 min-w-max sm:justify-center sm:flex-wrap sm:min-w-0">
-                                {SUBJECTS.map((subj, i) => (
-                                    <button
-                                        key={subj.key}
-                                        onClick={() => setSubjectIndex(i)}
-                                        className={`px-3 py-2 sm:px-4 sm:py-3 rounded-lg border transition-all shrink-0 ${
-                                            i === subjectIndex 
-                                                ? 'border-primary bg-primary/10 text-primary sm:scale-110' 
-                                                : 'border-bronze/50 text-muted/50 hover:border-bronze hover:text-muted'
-                                        }`}
-                                    >
-                                        <span className="font-ethiopic text-lg block">{subj.geez}</span>
-                                        <span className="text-[9px] uppercase">{subj.label}</span>
-                                    </button>
-                                            ))}
-                                        </div>
-                            </div>
-                                    </div>
-                                                    </div>
-                </main>
-            );
-        };
-
-        // Compare Tab - Side by side comparison
-        const CompareTab = () => {
-            const [verbs, setVerbs] = useState(['ሰከበ', 'ቀደሰ', 'ባረከ']);
-            const [data, setData] = useState({});
-            const [loading, setLoading] = useState(true);
-
-            const loadAll = async () => {
-                setLoading(true);
-                const results = {};
-                for (const v of verbs.filter(x => x)) {
-                    try { results[v] = await API.expandSimple(v); } catch(e) { results[v] = null; }
+                setFault("");
+                try {
+                    setResult(await API.analyze(word));
+                } catch (e) {
+                    setResult(null);
+                    setFault("The request failed.");
                 }
-                setData(results);
                 setLoading(false);
             };
 
-            useEffect(() => { loadAll(); }, []);
+            useEffect(() => { analyze(); }, []);
 
-            const FORMS = [
-                { key: 'perfective.he', label: 'Perfect (He)', get: d => d?.perfective?.he },
-                { key: 'imperfective.he', label: 'Imperfect (He)', get: d => d?.imperfective?.he },
-                { key: 'jussive.he', label: 'Jussive (He)', get: d => d?.jussive?.he },
-                { key: 'imperative.you_m', label: 'Imperative (You M)', get: d => d?.imperative?.you_m },
-                { key: 'imperative_collapsed.you_m', label: 'Imperative collapsed', get: d => d?.variants?.imperative?.you_m?.join(' · ') },
-                { key: 'derived.infinitive', label: 'Infinitive', get: d => d?.derived?.infinitive },
-                { key: 'derived.active_participle', label: 'Active Part.', get: d => d?.derived?.active_participle },
-                { key: 'derived.passive_participle', label: 'Passive Part.', get: d => d?.derived?.passive_participle },
-                { key: 'derived.instrumental', label: 'Instrumental', get: d => d?.derived?.instrumental },
-                { key: 'derived.verbal_noun', label: 'Verbal Noun', get: d => d?.derived?.verbal_noun }
-            ];
+            const analysis = result && result.analysis && typeof result.analysis === "object" ? result.analysis : {};
+            const particles = Array.isArray(analysis.particles) ? analysis.particles : [];
+            const steps = Array.isArray(result && result.derivation_path) ? result.derivation_path : [];
+            const consonants = Array.isArray(result && result.root_consonants)
+                ? result.root_consonants.filter((item) => typeof item === "string")
+                : [];
+            const shownError = errorText(result);
 
             return (
-                <div className="flex-1 overflow-auto manuscript-bg p-8">
-                    <div className="max-w-[1400px] mx-auto">
-                        <div className="flex flex-wrap items-end justify-between gap-4 mb-8">
+                <Page title="Analyzer" lede="A surface form, read back to its root.">
+                    <RootField
+                        id="analyze-word"
+                        label="Word"
+                        value={word}
+                        onChange={setWord}
+                        onSubmit={analyze}
+                        busy={loading}
+                        action="Analyze"
+                    />
+                    {fault ? <Fault>{fault}</Fault> : null}
+                    {shownError ? <Fault>{shownError}</Fault> : null}
+                    {result && !shownError ? (
+                        <div>
+                            <header className="headword-block">
+                                <p className="headword">{plain(result.input) || word}</p>
+                                {typeof result.meaning === "string" && result.meaning ? (
+                                    <p className="gloss">{result.meaning}</p>
+                                ) : null}
+                            </header>
                             <div>
-                                <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">Comparison Matrix</h1>
-                                <p className="text-muted/70">Compare conjugation patterns across different verb types</p>
-                                                </div>
-                            <div className="flex flex-wrap items-end gap-4">
-                                <div>
-                                    <p className="text-xs text-muted/50 uppercase tracking-widest mb-2">Verb Roots</p>
-                                    <div className="flex gap-2 items-center flex-wrap">
-                                {verbs.map((v, i) => (
-                                    <input
-                                        key={i}
-                                        type="text"
-                                        value={v}
-                                        onChange={(e) => { const newV = [...verbs]; newV[i] = e.target.value; setVerbs(newV); }}
-                                        placeholder={`Root ${i + 1}`}
-                                        className="bg-surface border border-bronze rounded-lg px-4 py-2.5 text-2xl font-ethiopic w-32 text-center text-gray-900 dark:text-white focus:outline-none focus:border-primary placeholder:text-muted/30 placeholder:text-sm"
-                                    />
-                                ))}
-                                <button onClick={() => setVerbs([...verbs, ''])} className="px-3 py-2.5 border border-bronze/50 rounded-lg text-muted hover:text-gray-900 dark:text-white">
-                                    <Icon name="add" />
-                                </button>
-                                <button onClick={loadAll} disabled={loading} className="px-4 py-2.5 bg-primary text-background-dark font-bold rounded-lg flex items-center gap-2 disabled:opacity-50">
-                                    <Icon name={loading ? 'progress_activity' : 'compare'} className={`text-lg ${loading ? 'animate-spin-slow' : ''}`} />
-                                    <span>Compare</span>
-                                </button>
+                                <div className="entry-row">
+                                    <span className="lbl pt-1">Root</span>
+                                    <span className="geez text-2xl">{result.root == null ? "none" : plain(result.root)}</span>
+                                </div>
+                                {typeof result.root_type === "string" && result.root_type ? (
+                                    <div className="entry-row">
+                                        <span className="lbl pt-1">Root type</span>
+                                        <span className="text-inksoft">{typeLabel(result.root_type)}</span>
                                     </div>
-                                </div>
-                                            </div>
-                                        </div>
-
-                        <div className="bg-surface-dark rounded-xl border border-bronze overflow-hidden shadow-xl" aria-busy={loading}>
-                                <div className="overflow-x-auto">
-                                    <table className="w-full">
-                                    <thead className="bg-surface border-b-2 border-primary/30">
-                                        <tr>
-                                            <th className="p-4 text-left text-xs font-bold uppercase tracking-wider text-primary min-w-[140px] sticky left-0 bg-surface z-10">Form</th>
-                                            {verbs.filter(v => v).map(v => (
-                                                <th key={v} className="p-4 text-center min-w-[160px]">
-                                                    <span className="text-2xl font-bold font-ethiopic text-primary block">{v}</span>
-                                                    </th>
-                                                ))}
-                                            </tr>
-                                        </thead>
-                                    {loading ? (
-                                        <CompareTableSkeleton verbCount={verbs.filter(v => v).length} forms={FORMS} />
-                                    ) : (
-                                    <tbody className="divide-y divide-bronze/30">
-                                        {FORMS.map((form, fi) => (
-                                            <tr key={form.key} className={fi % 2 === 0 ? 'bg-background-dark/30' : ''}>
-                                                <td className="p-4 text-sm font-medium text-gray-900 dark:text-white sticky left-0 bg-surface-dark border-r border-bronze/30 z-10">
-                                                    {form.label}
-                                                </td>
-                                                {verbs.filter(v => v).map(v => (
-                                                    <td key={v} className="p-4 text-center">
-                                                        <span className="font-ethiopic text-xl text-gray-900 dark:text-white">{form.get(data[v]) || '—'}</span>
-                                                    </td>
-                                                ))}
-                                                </tr>
-                                            ))}
-                                        </tbody>
-                                    )}
-                                    </table>
-                                </div>
+                                ) : null}
+                                {typeof analysis.method === "string" && analysis.method ? (
+                                    <div className="entry-row">
+                                        <span className="lbl pt-1">Method</span>
+                                        <span className="text-inksoft">{methodLabel(analysis.method)}</span>
+                                    </div>
+                                ) : null}
+                                {patternName(analysis.pattern) ? (
+                                    <div className="entry-row">
+                                        <span className="lbl pt-1">Pattern</span>
+                                        <span className="text-inksoft">{patternName(analysis.pattern)}</span>
+                                    </div>
+                                ) : null}
+                                {typeof result.word_class === "string" && result.word_class ? (
+                                    <div className="entry-row">
+                                        <span className="lbl pt-1">Class</span>
+                                        <span className="text-inksoft">
+                                            {result.word_class.replace(/_/g, " ")}
+                                            {typeof result.word_class_geez === "string" && result.word_class_geez ? (
+                                                <span className="geez text-ink ml-3">{result.word_class_geez}</span>
+                                            ) : null}
+                                        </span>
+                                    </div>
+                                ) : null}
+                                {consonants.length ? (
+                                    <div className="entry-row">
+                                        <span className="lbl pt-1">Consonants</span>
+                                        <span className="geez text-lg">{consonants.join(" · ")}</span>
+                                    </div>
+                                ) : null}
+                                {typeof result.confidence === "number" ? (
+                                    <div className="entry-row">
+                                        <span className="lbl pt-1">Confidence</span>
+                                        <span className="text-inksoft">{result.confidence.toFixed(2)}</span>
+                                    </div>
+                                ) : null}
                             </div>
-
-                        {/* Type explanations */}
-                        <div className="mt-6 grid grid-cols-3 gap-4">
-                            <div className="p-4 rounded-lg bg-surface border border-bronze/50">
-                                <p className="text-xs text-primary uppercase font-bold mb-1">Type A (ሰከበ)</p>
-                                <p className="text-muted text-sm">Standard pattern - no vowel shift in imperfective</p>
-                            </div>
-                            <div className="p-4 rounded-lg bg-surface border border-bronze/50">
-                                <p className="text-xs text-primary uppercase font-bold mb-1">Type B (ቀደሰ)</p>
-                                <p className="text-muted text-sm">C1 shifts to 5th order (ቄ) in imperfective</p>
-                            </div>
-                            <div className="p-4 rounded-lg bg-surface border border-bronze/50">
-                                <p className="text-xs text-primary uppercase font-bold mb-1">Type C (ባረከ)</p>
-                                <p className="text-muted text-sm">C1 stays 4th order (ባ) throughout</p>
-                            </div>
+                            {particles.length ? (
+                                <section className="mt-10">
+                                    <h2 className="lbl mb-2">Particles</h2>
+                                    <div className="hairline-t">
+                                        {particles.map((particle, index) => {
+                                            if (!particle || typeof particle !== "object") return null;
+                                            const form = typeof particle.form === "string" ? particle.form : "";
+                                            const kind = typeof particle.english_type === "string"
+                                                ? particle.english_type
+                                                : (typeof particle.type === "string" ? particle.type.replace(/_/g, " ") : "");
+                                            const gloss = typeof particle.meaning === "string" ? particle.meaning : "";
+                                            if (!form && !kind && !gloss) return null;
+                                            return (
+                                                <div className="entry-row" key={form + index}>
+                                                    <span className="geez text-xl">{form}</span>
+                                                    <span className="text-inksoft">
+                                                        {kind}
+                                                        {gloss ? <span className="font-serif italic text-muted">, {gloss}</span> : null}
+                                                    </span>
+                                                </div>
+                                            );
+                                        })}
+                                    </div>
+                                </section>
+                            ) : null}
+                            {steps.length ? (
+                                <section className="mt-10">
+                                    <h2 className="lbl mb-2">Derivation</h2>
+                                    <div className="hairline-t">
+                                        {steps.map((step, index) => {
+                                            if (!step || typeof step !== "object") return null;
+                                            const action = typeof step.action === "string" ? step.action.replace(/_/g, " ") : "";
+                                            const description = typeof step.description === "string" ? step.description : "";
+                                            const before = typeof step.before === "string" ? step.before : "";
+                                            const after = typeof step.after === "string" ? step.after : "";
+                                            if (!action && !description && !before && !after) return null;
+                                            return (
+                                                <div className="entry-row" key={index}>
+                                                    <span className="lbl pt-1">{typeof step.step === "number" ? step.step : index + 1}. {action}</span>
+                                                    <span className="text-inksoft">
+                                                        {description}
+                                                        {(before || after) ? (
+                                                            <span className="block mt-1">
+                                                                {before ? <span className="geez">{before}</span> : null}
+                                                                {before && after ? <span className="text-faint mx-2">to</span> : null}
+                                                                {after ? <span className="geez">{after}</span> : null}
+                                                            </span>
+                                                        ) : null}
+                                                    </span>
+                                                </div>
+                                            );
+                                        })}
+                                    </div>
+                                </section>
+                            ) : null}
                         </div>
-                    </div>
-                </div>
+                    ) : null}
+                </Page>
             );
         };
 
-        // Radial Tab - Root Tree
-        const RadialTab = () => {
-            const svgRef = useRef();
-            const [root, setRoot] = useState('ገበረ');
+        const ConjugatorTab = () => {
+            const [root, setRoot] = useState("ቀተለ");
             const [data, setData] = useState(null);
             const [loading, setLoading] = useState(false);
+            const [fault, setFault] = useState("");
 
-            const expand = async () => {
+            const run = async () => {
                 if (!root.trim()) return;
                 setLoading(true);
-                try { setData(await API.expand(root)); } catch(e) { console.error(e); }
+                setFault("");
+                try {
+                    setData(await API.expandSimple(root));
+                } catch (e) {
+                    setData(null);
+                    setFault("The request failed.");
+                }
                 setLoading(false);
             };
 
-            useEffect(() => {
-                if (!data || data.error) return;
-                const width = 700, height = 500;
-                const cx = width / 2, cy = height / 2;
-                const isDark = document.documentElement.classList.contains('dark');
-                const c = isDark ? {
-                    nodeFill: '#1a1a1a',
-                    nodeStroke: 'rgba(255,255,255,0.15)',
-                    textPrimary: '#ffffff',
-                    textMuted: '#888888',
-                    linePrimary: 'rgba(255,255,255,0.2)',
-                    lineSecondary: 'rgba(255,255,255,0.08)',
-                    glow: 'rgba(255,255,255,0.04)',
-                    ring: 'rgba(255,255,255,0.06)',
-                } : {
-                    nodeFill: '#f5f5f5',
-                    nodeStroke: 'rgba(0,0,0,0.12)',
-                    textPrimary: '#000000',
-                    textMuted: '#666666',
-                    linePrimary: 'rgba(0,0,0,0.15)',
-                    lineSecondary: 'rgba(0,0,0,0.08)',
-                    glow: 'rgba(0,0,0,0.03)',
-                    ring: 'rgba(0,0,0,0.06)',
-                };
+            useEffect(() => { run(); }, []);
+            const shownError = errorText(data);
 
-                d3.select(svgRef.current).selectAll("*").remove();
-                const svg = d3.select(svgRef.current)
-                    .attr("viewBox", `0 0 ${width} ${height}`)
-                    .attr("width", "100%")
-                    .attr("preserveAspectRatio", "xMidYMid meet")
-                    .attr("class", "max-w-[700px] w-full");
+            return (
+                <Page title="Conjugator" lede="Perfective, imperfective, jussive, and imperative.">
+                    <RootField id="conj-root" label="Root" value={root} onChange={setRoot} onSubmit={run} busy={loading} action="Conjugate" />
+                    {fault ? <Fault>{fault}</Fault> : null}
+                    {shownError ? <Fault>{shownError}</Fault> : null}
+                    {data && !shownError ? (
+                        <div>
+                            <div className="headword-block">
+                                <p className="headword">{root}</p>
+                            </div>
+                            {TENSES.map(([key, label]) => (
+                                <Paradigm key={key} title={label} tense={key} forms={data[key]} variants={data.variants} />
+                            ))}
+                        </div>
+                    ) : null}
+                </Page>
+            );
+        };
 
-                const gradient = svg.append("defs").append("radialGradient").attr("id", "glow").attr("cx", "50%").attr("cy", "50%").attr("r", "50%");
-                gradient.append("stop").attr("offset", "0%").attr("stop-color", c.glow);
-                gradient.append("stop").attr("offset", "100%").attr("stop-color", "transparent");
+        const WordFormsTab = () => {
+            const [root, setRoot] = useState("ቀተለ");
+            const [data, setData] = useState(null);
+            const [loading, setLoading] = useState(false);
+            const [fault, setFault] = useState("");
 
-                svg.append("circle").attr("cx", cx).attr("cy", cy).attr("r", 150).attr("fill", "url(#glow)");
-                svg.append("circle").attr("cx", cx).attr("cy", cy).attr("r", 180).attr("fill", "none").attr("stroke", c.ring).attr("stroke-dasharray", "5,5");
-                svg.append("circle").attr("cx", cx).attr("cy", cy).attr("r", 50).attr("fill", c.nodeFill).attr("stroke", c.nodeStroke).attr("stroke-width", 1.5);
-
-                svg.append("text").attr("x", cx).attr("y", cy - 5).attr("text-anchor", "middle").attr("dominant-baseline", "middle")
-                    .attr("fill", c.textPrimary).attr("font-family", "Noto Sans Ethiopic").attr("font-size", "22px").attr("font-weight", "bold")
-                    .text(data._meta?.root || root);
-                svg.append("text").attr("x", cx).attr("y", cy + 16).attr("text-anchor", "middle").attr("fill", c.textMuted).attr("font-size", "9px")
-                    .text("ROOT");
-
-                const branches = [
-                    { angle: -90, label: "TENSE", items: [] },
-                    { angle: 210, label: "DERIVED", items: [] },
-                    { angle: 330, label: "FORMS", items: [] }
-                ];
-
-                if (data.perfective?.conjugations?.['3sm']) branches[0].items.push({ label: "Perfect", word: data.perfective.conjugations['3sm'].word });
-                if (data.imperfective?.conjugations?.['3sm']) branches[0].items.push({ label: "Imperfect", word: data.imperfective.conjugations['3sm'].word });
-                if (data.imperative?.conjugations?.['2sm']) {
-                    branches[0].items.push({ label: "Imperative", word: data.imperative.conjugations['2sm'].word });
-                    const collapsed = data.imperative.conjugations['2sm'].variants || [];
-                    collapsed.forEach((variant, i) => {
-                        branches[0].items.push({
-                            label: i === 0 ? "Imp. collapsed" : "collapsed",
-                            word: variant
-                        });
-                    });
+            const run = async () => {
+                if (!root.trim()) return;
+                setLoading(true);
+                setFault("");
+                try {
+                    setData(await API.expandSimple(root));
+                } catch (e) {
+                    setData(null);
+                    setFault("The request failed.");
                 }
-                if (data.derived?.infinitive) branches[1].items.push({ label: "Infinitive", word: data.derived.infinitive.word });
-                if (data.derived?.active_participle) branches[1].items.push({ label: "Participle", word: data.derived.active_participle.word });
-                if (data.derived?.verbal_noun) branches[2].items.push({ label: "Verbal Noun", word: data.derived.verbal_noun.word });
-                if (data.derived?.instrumental) branches[2].items.push({ label: "Instrumental", word: data.derived.instrumental.word });
+                setLoading(false);
+            };
 
-                branches.forEach((branch) => {
-                    const rad = (branch.angle * Math.PI) / 180;
-                    const bx = cx + Math.cos(rad) * 110, by = cy + Math.sin(rad) * 110;
+            useEffect(() => { run(); }, []);
+            const shownError = errorText(data);
 
-                    svg.append("line").attr("x1", cx).attr("y1", cy).attr("x2", bx).attr("y2", by)
-                        .attr("stroke", c.linePrimary).attr("stroke-width", 1).attr("stroke-dasharray", "4,4");
+            return (
+                <Page title="Word forms" lede="The paradigm, alternate spellings, derived classes, and lexicon nominals.">
+                    <RootField id="forms-root" label="Root" value={root} onChange={setRoot} onSubmit={run} busy={loading} action="Show forms" />
+                    {fault ? <Fault>{fault}</Fault> : null}
+                    {shownError ? <Fault>{shownError}</Fault> : null}
+                    {data && !shownError ? (
+                        <div>
+                            <div className="headword-block">
+                                <p className="headword">{root}</p>
+                            </div>
+                            {TENSES.map(([key, label]) => (
+                                <Paradigm key={key} title={label} tense={key} forms={data[key]} variants={data.variants} />
+                            ))}
+                            <DerivedList derived={data.derived} />
+                            <NominalList nominals={data.nominals} />
+                        </div>
+                    ) : null}
+                </Page>
+            );
+        };
 
-                    const g = svg.append("g").attr("transform", `translate(${bx}, ${by})`);
-                    g.append("rect").attr("x", -35).attr("y", -10).attr("width", 70).attr("height", 20).attr("rx", 4)
-                        .attr("fill", c.nodeFill).attr("stroke", c.nodeStroke);
-                    g.append("text").attr("x", 0).attr("y", 4).attr("text-anchor", "middle").attr("fill", c.textMuted).attr("font-size", "9px").attr("font-weight", "bold")
-                        .text(branch.label);
+        const CompareTab = () => {
+            const [roots, setRoots] = useState(["ቀተለ", "ሰከበ"]);
+            const [data, setData] = useState([null, null]);
+            const [loading, setLoading] = useState(false);
+            const [fault, setFault] = useState("");
 
-                    branch.items.forEach((item, i) => {
-                        const itemRad = rad + (i - (branch.items.length - 1) / 2) * 0.4;
-                        const ix = cx + Math.cos(itemRad) * 210, iy = cy + Math.sin(itemRad) * 210;
+            const run = async () => {
+                setLoading(true);
+                setFault("");
+                try {
+                    const out = await Promise.all(roots.map((item) => (
+                        item.trim() ? API.expandSimple(item) : Promise.resolve({ error: "Missing root." })
+                    )));
+                    setData(out);
+                } catch (e) {
+                    setData([null, null]);
+                    setFault("The request failed.");
+                }
+                setLoading(false);
+            };
 
-                        svg.append("line").attr("x1", bx).attr("y1", by).attr("x2", ix).attr("y2", iy)
-                            .attr("stroke", c.lineSecondary).attr("stroke-width", 1);
+            useEffect(() => { run(); }, []);
 
-                        const ig = svg.append("g").attr("transform", `translate(${ix}, ${iy})`).style("cursor", "pointer");
-                        ig.append("rect").attr("x", -45).attr("y", -25).attr("width", 90).attr("height", 50).attr("rx", 8)
-                            .attr("fill", c.nodeFill).attr("stroke", c.nodeStroke);
-                        ig.append("text").attr("x", 0).attr("y", -3).attr("text-anchor", "middle").attr("fill", c.textPrimary)
-                            .attr("font-family", "Noto Sans Ethiopic").attr("font-size", "15px").text(item.word);
-                        ig.append("text").attr("x", 0).attr("y", 12).attr("text-anchor", "middle").attr("fill", c.textMuted).attr("font-size", "8px")
-                            .text(item.label.toUpperCase());
-                    });
+            const setRoot = (index, value) => {
+                const next = roots.slice();
+                next[index] = value;
+                setRoots(next);
+            };
+
+            return (
+                <Page title="Compare" lede="The same persons, two roots, the whole paradigm.">
+                    <form
+                        className="mb-10"
+                        onSubmit={(event) => { event.preventDefault(); if (!loading) run(); }}
+                    >
+                        <div className="max-w-xs">
+                            {roots.map((item, index) => (
+                                <div key={index} className={index ? "mt-6" : ""}>
+                                    <label className="lbl block mb-2" htmlFor={"cmp-" + index}>Root {index + 1}</label>
+                                    <input
+                                        id={"cmp-" + index}
+                                        className="word-input text-3xl py-1"
+                                        value={item}
+                                        onChange={(event) => setRoot(index, event.target.value)}
+                                        spellCheck="false"
+                                    />
+                                </div>
+                            ))}
+                        </div>
+                        <button className="btn-quiet mt-6" type="submit" disabled={loading}>
+                            {loading ? "Working" : "Compare"}
+                        </button>
+                    </form>
+                    {fault ? <Fault>{fault}</Fault> : null}
+                    {data.map((entry, index) => {
+                        const message = errorText(entry);
+                        if (!message) return null;
+                        return <Fault key={index}>{roots[index] || "Root " + (index + 1)}: {message}</Fault>;
+                    })}
+                    {TENSES.map(([tense, label]) => {
+                        const keys = subjectsFor(tense).filter((key) => data.some((entry) => (
+                            entry && !errorText(entry) && entry[tense] && typeof entry[tense][key] === "string"
+                        )));
+                        if (!keys.length) return null;
+                        return (
+                            <section key={tense} className="mb-10">
+                                <h2 className="lbl mb-2">{label}</h2>
+                                <table className="paradigm">
+                                    <tbody>
+                                        <tr>
+                                            <td className="lbl w-28">Person</td>
+                                            {roots.map((item, index) => (
+                                                <td key={index} className="geez text-2xl">{item}</td>
+                                            ))}
+                                        </tr>
+                                        {keys.map((key) => (
+                                            <tr key={key}>
+                                                <td className="text-muted text-sm">{SUBJECT_LABEL[key]}</td>
+                                                {data.map((entry, index) => {
+                                                    const word = entry && entry[tense] && typeof entry[tense][key] === "string" ? entry[tense][key] : "";
+                                                    const bucket = entry && entry.variants && entry.variants[tense];
+                                                    const alts = stringList(bucket && bucket[key]).filter((alt) => alt !== word);
+                                                    return (
+                                                        <td key={index} className="geez text-xl">
+                                                            {word}
+                                                            {alts.length ? <span className="text-muted text-base ml-2">{alts.join(", ")}</span> : null}
+                                                        </td>
+                                                    );
+                                                })}
+                                            </tr>
+                                        ))}
+                                    </tbody>
+                                </table>
+                            </section>
+                        );
+                    })}
+                </Page>
+            );
+        };
+
+        const ETHIOPIC_FONT = "Noto Sans Ethiopic";
+
+        const DerivationsTab = () => {
+            const [root, setRoot] = useState("ገብረ");
+            const [data, setData] = useState(null);
+            const [loading, setLoading] = useState(false);
+            const [fault, setFault] = useState("");
+            const svgRef = useRef(null);
+
+            const draw = async () => {
+                if (!root.trim()) return;
+                setLoading(true);
+                setFault("");
+                try {
+                    setData(await API.expand(root));
+                } catch (e) {
+                    setData(null);
+                    setFault("The request failed.");
+                }
+                setLoading(false);
+            };
+
+            useEffect(() => { draw(); }, []);
+
+            useEffect(() => {
+                if (!svgRef.current || !window.d3) return;
+                const svg = d3.select(svgRef.current);
+                svg.selectAll("*").remove();
+                if (!data || data.error) return;
+
+                const meta = data._meta && typeof data._meta === "object" ? data._meta : {};
+                const rootWord = typeof meta.root === "string" && meta.root ? meta.root : root;
+                const verbType = typeLabel(typeof meta.verb_type === "string" ? meta.verb_type : "");
+                const derived = data.derived && typeof data.derived === "object" && !Array.isArray(data.derived) ? data.derived : {};
+                const keys = Object.keys(derived);
+
+                const ink = getComputedStyle(document.body).getPropertyValue("--ink").trim() || "#1c1916";
+                const muted = getComputedStyle(document.body).getPropertyValue("--muted").trim() || "#6e675c";
+                const line = getComputedStyle(document.body).getPropertyValue("--line").trim() || "#d9d1c3";
+
+                const rowH = 52;
+                const W = 720;
+                const top = 92;
+                const H = Math.max(140, top + Math.max(keys.length, 1) * rowH + 16);
+                const g = svg.attr("viewBox", "0 0 " + W + " " + H).append("g");
+                const text = (selection) => selection.attr("font-family", ETHIOPIC_FONT);
+
+                text(g.append("text"))
+                    .attr("x", 36).attr("y", 40)
+                    .attr("font-size", 28).attr("fill", ink)
+                    .text(rootWord);
+                if (verbType) {
+                    text(g.append("text"))
+                        .attr("x", 36).attr("y", 64)
+                        .attr("font-size", 13).attr("fill", muted)
+                        .text(verbType);
+                }
+
+                if (!keys.length) return;
+
+                const spineBottom = top + (keys.length - 1) * rowH + 8;
+                g.append("line")
+                    .attr("x1", 18).attr("y1", 78)
+                    .attr("x2", 18).attr("y2", spineBottom)
+                    .attr("stroke", line);
+
+                keys.forEach((key, index) => {
+                    const y = top + index * rowH;
+                    const entry = derived[key];
+                    const word = wordOf(entry);
+                    const note = entry && typeof entry === "object" && typeof entry.template === "string" ? entry.template : "";
+                    const label = typeLabel(key) || key.replace(/_/g, " ");
+                    g.append("line")
+                        .attr("x1", 18).attr("y1", y - 6)
+                        .attr("x2", 36).attr("y2", y - 6)
+                        .attr("stroke", line);
+                    text(g.append("text"))
+                        .attr("x", 44).attr("y", y)
+                        .attr("font-size", 13).attr("fill", muted)
+                        .text(label);
+                    if (word) {
+                        text(g.append("text"))
+                            .attr("x", 280).attr("y", y)
+                            .attr("font-size", 22).attr("fill", ink)
+                            .text(word);
+                    }
+                    if (note) {
+                        text(g.append("text"))
+                            .attr("x", 470).attr("y", y)
+                            .attr("font-size", 13).attr("fill", muted)
+                            .text(note);
+                    }
                 });
             }, [data, root]);
 
+            const shownError = errorText(data);
+            const meta = data && data._meta && typeof data._meta === "object" ? data._meta : null;
+            const metaRoot = meta && typeof meta.root === "string" ? meta.root : "";
+            const metaType = meta && typeof meta.verb_type === "string" ? typeLabel(meta.verb_type) : "";
+
             return (
-                <div className="flex-1 overflow-auto manuscript-bg p-8">
-                    <div className="max-w-[1000px] mx-auto">
-                        <div className="flex items-center justify-between mb-6">
-                            <div>
-                                <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Radial Root Tree</h1>
-                                <p className="text-muted/70 text-sm">Interactive visualization of root derivations</p>
+                <Page title="Derivations" lede="Derived classes of one root. Not the personal paradigm.">
+                    <RootField id="deriv-root" label="Root" value={root} onChange={setRoot} onSubmit={draw} busy={loading} action="Draw" />
+                    {fault ? <Fault>{fault}</Fault> : null}
+                    {shownError ? <Fault>{shownError}</Fault> : null}
+                    {data && !shownError ? (
+                        <div>
+                            <div className="headword-block">
+                                <p className="headword">{metaRoot || root}</p>
+                                {metaType ? <p className="subhead">{metaType}</p> : null}
                             </div>
-                            <RootInput
-                                value={root}
-                                onChange={(e) => setRoot(e.target.value)}
-                                onSubmit={expand}
-                                loading={loading}
-                                submitLabel="Generate"
-                                submitIcon="hub"
-                                showLabel={false}
-                            />
-                        </div>
-                        <div className="bg-surface-dark/50 rounded-xl border border-bronze p-4 sm:p-8 flex justify-center items-center min-h-[500px] w-full" aria-busy={loading}>
-                            <div className="w-full overflow-x-auto flex justify-center">
-                            {loading ? (
-                                <RadialTreeSkeleton />
-                            ) : data && !data.error ? (
-                                <svg ref={svgRef}></svg>
-                            ) : (
-                                <div className="text-center text-muted/50">
-                                    <Icon name="hub" className="text-6xl mb-4" />
-                                    <p>Enter a root and click Generate</p>
-                                </div>
-                            )}
+                            <div className="hairline-t hairline-b py-2">
+                                <svg ref={svgRef} className="w-full" role="img" aria-label="Derived classes of the root" />
                             </div>
+                            <p className="text-muted text-sm mt-4 font-serif italic">
+                                Each branch is a derived class. Personal forms stay on the Conjugator.
+                            </p>
+                            <DerivedList derived={data.derived} />
+                            <NominalList nominals={data.nominals} />
                         </div>
-                    </div>
-                </div>
+                    ) : null}
+                </Page>
             );
         };
 
-        // Patterns Tab
         const PatternsTab = () => {
-            const [templates, setTemplates] = useState(null);
-            const [loading, setLoading] = useState(true);
+            const [tpl, setTpl] = useState(null);
+            const [fault, setFault] = useState("");
 
             useEffect(() => {
-                API.templates().then(data => { setTemplates(data); setLoading(false); }).catch(() => setLoading(false));
+                API.templates().then(setTpl).catch(() => setFault("The request failed."));
             }, []);
 
-            const derivedPatterns = templates?.type_a?.derived ? Object.entries(templates.type_a.derived).map(([key, val]) => ({
-                key, name: key.replace(/_/g, ' ').replace(/\b\w/g, c => c.toUpperCase()),
-                template: val.template || '-', prefix: val.prefix || '', suffix: val.suffix || '', pattern: val.pattern || {}
-            })) : [];
+            const shownError = errorText(tpl);
+            const types = tpl && typeof tpl === "object" && !shownError
+                ? Object.keys(tpl).filter((key) => !key.startsWith("_") && tpl[key] && typeof tpl[key] === "object")
+                : [];
+            const meta = tpl && tpl._meta && typeof tpl._meta === "object" ? tpl._meta : null;
+            const lede = meta && typeof meta.description === "string"
+                ? meta.description
+                : "Verb types and the vowel melodies on each stem.";
 
             return (
-                <div className="flex-1 overflow-auto manuscript-bg p-8">
-                    <div className="max-w-[1400px] mx-auto">
-                        <div className="flex items-end justify-between mb-8">
-                            <div>
-                                <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">Pattern Library</h1>
-                                <p className="text-muted/70">Morphological templates from templates.json</p>
-                            </div>
-                            <a href="/api/templates" target="_blank" className="flex items-center gap-2 px-4 py-2 border border-primary/30 rounded-lg text-sm font-medium text-primary hover:bg-primary/5">
-                                <Icon name="code" />
-                                View Raw JSON
-                            </a>
-                        </div>
-
-                        {loading ? (
-                            <PatternCardsSkeleton />
-                        ) : (
-                            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5">
-                                {derivedPatterns.map((pattern, i) => (
-                                    <div key={i} className="group bg-surface-dark rounded-xl border border-bronze/50 hover:border-primary/50 transition-all p-5 relative overflow-hidden">
-                                        <div className="absolute top-0 right-0 w-24 h-24 bg-primary/5 -mr-12 -mt-12 rounded-full blur-2xl group-hover:bg-primary/10 transition-all"></div>
-                                        <div className="relative">
-                                            <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-1">{pattern.name}</h3>
-                                            <p className="text-xs text-muted/50 font-mono mb-4">{pattern.template}</p>
-                                            <div className="bg-background-dark/50 rounded-lg p-4 flex items-center justify-center gap-3 mb-4">
-                                                {pattern.prefix && <span className="text-cyan-400 text-xl font-bold">{pattern.prefix}</span>}
-                                                {Object.entries(pattern.pattern).map(([k, v], pi) => (
-                                                    <span key={pi} className="text-muted">{k}:{v}</span>
-                                                ))}
-                                                {pattern.suffix && <span className="text-cyan-400 text-xl font-bold">{pattern.suffix}</span>}
-                                            </div>
-                                            <div className="flex flex-wrap gap-2">
-                                                {pattern.prefix && <span className="px-2 py-1 bg-primary/10 text-primary text-[10px] font-bold uppercase rounded">Prefix: {pattern.prefix}</span>}
-                                                {pattern.suffix && <span className="px-2 py-1 bg-cyan-400/10 text-cyan-400 text-[10px] font-bold uppercase rounded">Suffix: {pattern.suffix}</span>}
-                                            </div>
-                                        </div>
+                <Page title="Patterns" lede={lede}>
+                    {fault ? <Fault>{fault}</Fault> : null}
+                    {shownError ? <Fault>{shownError}</Fault> : null}
+                    {types.map((typeKey) => {
+                        const entry = tpl[typeKey];
+                        const derived = entry.derived && typeof entry.derived === "object" ? entry.derived : null;
+                        return (
+                            <section key={typeKey} className="mb-12">
+                                <h2 className="section-title">{typeLabel(typeKey)}</h2>
+                                <table className="paradigm">
+                                    <tbody>
+                                        {TENSES.filter(([tense]) => entry[tense] && typeof entry[tense] === "object").map(([tense, label]) => (
+                                            <tr key={tense}>
+                                                <td className="text-muted text-sm w-36">{label}</td>
+                                                <td className="font-serif italic">{typeof entry[tense].template_name === "string" ? entry[tense].template_name : ""}</td>
+                                                <td className="text-muted text-sm">{ordersText(entry[tense].base_pattern)}</td>
+                                            </tr>
+                                        ))}
+                                    </tbody>
+                                </table>
+                                {derived ? (
+                                    <div className="mt-6">
+                                        <h3 className="lbl mb-2">Derived</h3>
+                                        <table className="paradigm">
+                                            <tbody>
+                                                {Object.keys(derived).map((key) => {
+                                                    const item = derived[key];
+                                                    if (!item || typeof item !== "object") return null;
+                                                    const note = typeof item.geez_note === "string" ? item.geez_note : "";
+                                                    const template = typeof item.template === "string" ? item.template : "";
+                                                    return (
+                                                        <tr key={key}>
+                                                            <td className="text-muted text-sm w-40">{key.replace(/_/g, " ")}</td>
+                                                            <td>
+                                                                {note ? <span className="geez">{note}</span> : null}
+                                                                {template ? <span className="font-serif italic text-sm text-muted ml-3">{template}</span> : null}
+                                                            </td>
+                                                            <td className="text-muted text-sm">{ordersText(item.pattern)}</td>
+                                                        </tr>
+                                                    );
+                                                })}
+                                            </tbody>
+                                        </table>
                                     </div>
-                                ))}
-                            </div>
-                        )}
-
-                        {templates && (
-                            <div className="mt-10">
-                                <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-4">Available Verb Types</h2>
-                                <div className="flex flex-wrap gap-2">
-                                    {Object.keys(templates).filter(k => !k.startsWith('_') && !k.startsWith('weak')).map(type => (
-                                        <span key={type} className="px-3 py-2 bg-surface border border-bronze/50 rounded-lg text-sm text-muted">
-                                            {type}
-                                        </span>
-                                    ))}
-                                </div>
-                            </div>
-                        )}
-                    </div>
-                </div>
+                                ) : null}
+                            </section>
+                        );
+                    })}
+                </Page>
             );
         };
 
-        // Main App
+        const ResearchTab = () => (
+            <Page title="The mathematics of the script" lede="How a written syllable becomes a root, and how a root becomes a paradigm.">
+                <div className="prose-essay font-serif text-[17px]">
+                    <p>
+                        EthioMorph treats the Ethiopic writing system as an ordered, computable space.
+                        Each syllable carries its consonant and its vowel order, so the analyzer can
+                        read those orders, strip a surface form down to its consonantal skeleton, and
+                        restore the citation root. The lexicon then supplies the gloss and the verb type.
+                    </p>
+                    <h2 className="section-title">Order, base, revowelize</h2>
+                    <p>
+                        Each Ethiopic syllable has two coordinates: its consonant row and its vowel
+                        order, from 1st (ä) to 7th (o). A Ge'ez word is a sequence of orders.
+                        <span className="geez"> ፊደል </span>
+                        is the order pattern [3, 1, 6].
+                    </p>
+                    <p>
+                        The analyzer works from the orders. <strong>Order</strong> reads the vowel
+                        orders off the surface form. <strong>Base</strong> strips the vowel melody
+                        to the consonantal skeleton. <strong>Revowelize</strong> restores the citation
+                        form, the dictionary form of the root.
+                    </p>
+                    <p className="py-2">
+                        <span className="geez text-2xl">ፊደል</span>
+                        <span className="text-faint mx-3">to</span>
+                        <span>[3, 1, 6]</span>
+                        <span className="text-faint mx-3">to</span>
+                        <span>[1, 1, 1]</span>
+                        <span className="text-faint mx-3">to</span>
+                        <span className="geez text-2xl">ፈደለ</span>
+                    </p>
+                    <p>
+                        So <span className="geez">ፊደል</span> ("letter") resolves to the root
+                        <span className="geez"> ፈደለ </span> ("to spell, write"). The analyzer
+                        returns the citation root. The lexicon supplies the gloss and the verb type.
+                    </p>
+                    <h2 className="section-title">Both directions</h2>
+                    <p>
+                        Analysis takes a surface form to its root. Generation takes a root and
+                        produces its forms: perfective, imperfective, jussive, imperative, and
+                        the derived nouns.
+                    </p>
+                    <h2 className="section-title">Verb types</h2>
+                    <div className="hairline-t font-sans text-[15px] not-italic">
+                        {[
+                            ["Type A", "ሰከበ", "The ordinary triliteral."],
+                            ["Type B", "ቀደሰ", "The second radical takes a higher order in the imperfect."],
+                            ["Type C", "ባረከ", "The first radical holds the 4th order."],
+                            ["Hollow", "ሐወረ", "The middle radical is w or y, and the imperative can collapse."],
+                            ["Derived stems", "አስተማረ", "ተ, አ, and አስተ prefixes."],
+                        ].map(([name, example, detail]) => (
+                            <div key={name} className="entry-row">
+                                <span className="lbl pt-1">{name}</span>
+                                <span>
+                                    <span className="geez text-lg text-ink">{example}</span>
+                                    <span className="text-muted text-sm ml-3">{detail}</span>
+                                </span>
+                            </div>
+                        ))}
+                    </div>
+                    <h2 className="section-title">Programmatic access</h2>
+                    <p>The same operations are available as JSON.</p>
+                    <div className="font-sans text-sm not-italic hairline-t">
+                        {[
+                            ["/api/analyze?word=ፊደል", "Analyze a word"],
+                            ["/api/expand?root=ቀተለ", "Full expansion, including verb class"],
+                            ["/api/expand/simple?root=ቀተለ", "Paradigm, variants, derived words, nominals"],
+                            ["/api/templates", "Morphological templates"],
+                        ].map(([url, desc]) => (
+                            <div key={url} className="hairline-b py-3">
+                                <a href={url} className="quiet-link text-[13px] break-all">{url}</a>
+                                <p className="text-muted mt-1">{desc}</p>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </Page>
+        );
+
+        const TABS = [
+            ["analyzer", "Analyzer", AnalyzerTab],
+            ["conjugator", "Conjugator", ConjugatorTab],
+            ["forms", "Word forms", WordFormsTab],
+            ["compare", "Compare", CompareTab],
+            ["derivations", "Derivations", DerivationsTab],
+            ["patterns", "Patterns", PatternsTab],
+            ["research", "Research", ResearchTab],
+        ];
+
         const App = () => {
-            const [activeTab, setActiveTab] = useState('xray');
+            const [tab, setTab] = useState("analyzer");
+            const [dark, setDark] = useState(false);
+
+            useEffect(() => {
+                document.documentElement.classList.toggle("dark", dark);
+            }, [dark]);
+
+            const Active = TABS.find((item) => item[0] === tab)[2];
+
             return (
-                <div className="h-screen flex flex-col">
-                    <Nav activeTab={activeTab} setActiveTab={setActiveTab} />
-                    <div className="flex-1 overflow-auto pb-16 md:pb-0">
-                        {activeTab === 'xray' && <XRayTab />}
-                        {activeTab === 'matrix' && <MatrixTab />}
-                        {activeTab === 'slider' && <SliderTab />}
-                        {activeTab === 'compare' && <CompareTab />}
-                        {activeTab === 'radial' && <RadialTab />}
-                        {activeTab === 'patterns' && <PatternsTab />}
-                    </div>
-                    <MobileNav activeTab={activeTab} setActiveTab={setActiveTab} />
+                <div className="min-h-screen flex flex-col">
+                    <header>
+                        <div className="col pt-10">
+                            <div className="flex items-baseline justify-between gap-6">
+                                <div>
+                                    <p className="mast-title">EthioMorph</p>
+                                    <p className="mast-sub">A dictionary of Ge'ez morphology</p>
+                                </div>
+                                <button
+                                    className="mode-toggle"
+                                    type="button"
+                                    onClick={() => setDark(!dark)}
+                                    aria-pressed={dark}
+                                >
+                                    {dark ? "Day" : "Night"}
+                                </button>
+                            </div>
+                            <nav className="section-nav" aria-label="Sections">
+                                {TABS.map(([id, label]) => (
+                                    <button
+                                        key={id}
+                                        type="button"
+                                        className={"navlink whitespace-nowrap " + (tab === id ? "active" : "")}
+                                        onClick={() => setTab(id)}
+                                    >
+                                        {label}
+                                    </button>
+                                ))}
+                            </nav>
+                        </div>
+                    </header>
+                    <main className="flex-1">
+                        <Active />
+                    </main>
+                    <footer className="hairline-t">
+                        <div className="col py-6 text-[12px] text-faint">
+                            Computational morphology of Ge'ez
+                        </div>
+                    </footer>
                 </div>
             );
         };
 
-        ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+        ReactDOM.createRoot(document.getElementById("root")).render(<App />);
     </script>
 </body>
 </html>

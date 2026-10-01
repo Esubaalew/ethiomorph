@@ -358,11 +358,10 @@ class GeezStemmer:
             return None
         stem = word[1:]
         candidate = "ወ" + get_consonant_skeleton(stem)
-        if candidate in getattr(self, "weak_initial_roots", set()):
+        # Order class check: Weak-initial dropped W leaves C1 in 1st or 4th order.
+        # Bihla-house dropped laryngeal leaves C1 in 6th order.
+        if get_char_order(stem[0]) in {1, 4}:
             return candidate, word[0]
-        cand_norm = normalize_geez(candidate)
-        if cand_norm in getattr(self, "lexicon_normalized_lookup", {}):
-            return self.lexicon_normalized_lookup[cand_norm], word[0]
         return None
 
     def _is_laryngeal_drop_candidate(self, stem):
@@ -399,13 +398,7 @@ class GeezStemmer:
                 continue
             # Base must be a known root or valid citation shape.
             base_norm = normalize_geez(base)
-            is_lexicon_root = (
-                base in self.lexicon_roots
-                or base_norm in self.lexicon_roots
-                or base in self.lexicon_normalized_lookup
-                or base_norm in self.lexicon_normalized_lookup
-            )
-            if is_lexicon_root or looks_like_verbal_citation(base_norm):
+            if looks_like_verbal_citation(base_norm):
                 return base, code, PATTERN_CODE_MAP[code]
         return None
     
@@ -443,16 +436,6 @@ class GeezStemmer:
         """
         if len(skeleton) != 2:
             return None, None
-
-        candidate_w = skeleton[0] + 'ወ' + skeleton[1]
-        restored_w = self.hollow_w_lookup.get(normalize_geez(candidate_w))
-        if restored_w:
-            return restored_w, "hollow_w"
-
-        candidate_y = skeleton[0] + 'የ' + skeleton[1]
-        restored_y = self.hollow_y_lookup.get(normalize_geez(candidate_y))
-        if restored_y:
-            return restored_y, "hollow_y"
 
         return None, None
 
@@ -1180,36 +1163,14 @@ class GeezStemmer:
         if particle_segments:
             return self._build_particle_result(word, particle_segments, derivation_steps)
 
-        if len(normalized) == 1:
-            one_char_map = {
-                'ፃ': ('ወጸአ', "Imperative of ወጸአ 'to go out'"),
-                'ጻ': ('ወጸአ', "Imperative of ወጸአ 'to go out'"),
-                'ሖ': ('ሐወረ', "Imperative of ሐወረ 'to go'"),
-                'ሆ': ('ሐወረ', "Imperative of ሐወረ 'to go'")
-            }
-            if normalized in one_char_map:
-                root, explanation = one_char_map[normalized]
-                derivation_steps.append({
-                    "step": 2,
-                    "action": "one_char_lookup",
-                    "description": "Single-character imperative reconstruction",
-                    "before": normalized,
-                    "after": root,
-                    "rule": explanation
-                })
-                return self._build_result(word, root, normalized, [], [], derivation_steps, "irregular")
 
         # Zewadla labels on the raw spelling, before homophone normalization
         # collapses ሠርሐቀደ onto the type-A twin ሰርሐ.
         code_hit = self._match_pattern_code_label(word)
         if code_hit:
             base, code, pattern_info = code_hit
-            if base in self.lexicon_roots or base in self.lexicon_normalized_lookup:
-                # Prefer the raw lexicon key over its normalized twin.
-                if base not in self.lexicon_roots:
-                    base = self.lexicon_normalized_lookup.get(normalize_geez(base), base)
-                derivation_steps.append({
-                    "step": len(derivation_steps) + 1,
+            derivation_steps.append({
+                "step": len(derivation_steps) + 1,
                     "action": "pattern_code_label",
                     "description": "Dictionary label: citation + Zewadla pattern code",
                     "before": word,
@@ -1218,8 +1179,8 @@ class GeezStemmer:
                         f"Pattern code '{code}' ({pattern_info['english_name']}); "
                         f"base '{base}' kept from the raw spelling"
                     ),
-                })
-                return self._build_result(
+            })
+            return self._build_result(
                     word, base, base, [], [code], derivation_steps, "pattern_code",
                     pattern_override={
                         "name": pattern_info["name"],
